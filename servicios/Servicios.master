@@ -1,0 +1,207 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Servicios.master.cs" Inherits="servicios_Servicios" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="../Content/animate.min.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" type="image/x-icon" href="/images/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+    <link href="../Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="../styles/layout.css" rel="stylesheet" />
+    <link href="../styles/slick/slick.css" rel="stylesheet" />
+    <link href="../styles/slick/slick-theme.css" rel="stylesheet" />
+    <link href="styles/listas.css" rel="stylesheet" />
+</head>
+<body id="top">
+    <div class="topspacer bgded overlay" style="background-image: url('../images/eventos/3.jpg');">
+        <div class="wrapper row0">
+            <div id="topbar" class="clear">
+                <div class="fl_left">
+                    <ul class="nospace">
+                        <li><i class="fa fa-phone"></i>+591 347-4704</li>
+                        <li><i class="fa fa-envelope-o"></i>info@sea.com.bo</li>
+                    </ul>
+                </div>
+                <div class="fl_right">
+                    <ul class="nospace">
+                        <li><a href="../index.aspx"><i class="fa fa-lg fa-home"></i></a></li>
+                        <li id="login"><a href="../login.aspx?form=login" runat="server">Iniciar Sesion</a></li>
+                        <li id="signup"><a href="../login.aspx?form=signup" runat="server">Registrarse</a></li>
+                        <li id="miperfil">
+                            <img src="../images/profile.png" id="imagenperfil2" alt="img-perfil" style="width: 20px; height: 20px; border-radius: 50%;" />
+                            <a href="MyProfile.aspx" runat="server"></a></li>
+                        <li id="pnladmin" style="display: none;"><a href="../admin/index.aspx" runat="server">Panel Adm.</a></li>
+                        <li id="logout"><a href="javascript:logout2();"><i class="fa fa-sign-out" aria-hidden="true"></i>Salir</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper row1">
+            <header id="header" class="clear">
+                <div id="logo" class="fl_left">
+                    <h1><a href="../index.aspx">
+                        <img src="../images/logo.png" alt="sea" style="width: 60px;" /></a></h1>
+                </div>
+                <nav id="mainav" class="fl_right">
+                    <ul class="clear" style="font-size: 11px !important;">
+                        <li><a href="../index.aspx">Inicio</a></li>
+                        <li>
+                            <a class="drop" href="#">Eventos</a>
+                            <ul>
+                                <li><a href="EventosDeportivos.aspx">Eventos</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="drop" href="#">Marketing Deportivo</a>
+                            <ul>
+                                <li><a href="Marketing.aspx">Marketing Deportivo</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="drop" href="#">Club Atlético Juniors</a>
+                            <ul>
+                                <li><a href="ClubAtletico.aspx">Club Atletico Juniors</a></li>
+                                <li><a href="SoccerAcademy.aspx">Academia de Fútbol</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="drop" href="#">Complejo Deportivo</a>
+                            <ul>
+                                <li><a href="ComplejoDeportivo.aspx">Complejo Deportivo</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="drop" href="#">Students & Athletics</a>
+                            <ul>
+                                <li><a href="StudentsAthletics.aspx">Students & Athletics</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="drop" href="#">Sea TV</a>
+                            <ul>
+                                <li><a href="#">SEA TV</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
+    </div>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="wrapper row5">
+            <div id="copyright" class="hoc clear">
+                <p class="fl_left">Copyright &copy; 2017 - SEA - <a href="http://sea.com.bo/">www.sea.com.bo</a></p>
+                <p class="fl_right">Desarrollado por <a target="_blank" href="http://osbolivia.com/" title="OSBolivia">OSBolivia</a></p>
+            </div>
+        </div>
+        <div class="wrapper row2">
+            <div class="hoc container clear">
+                <div class="group">
+                    <div class="one_half first">
+                        <div class="one_third first">
+                            <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
+                                <img alt="logo" src="../images/logo.png" style="height: 50px;" />
+                            </h6>
+                            <ul class="nospace linklist contact serv">
+                                <li class="wow bounceIn" data-wow-delay="0.8s"><a href="EventosDeportivos.aspx">Eventos Deportivos</a></li>
+                            </ul>
+                        </div>
+                        <div class="one_third">
+                            <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
+                                <img alt="logo" src="../images/logo.png" style="height: 50px;" />
+                            </h6>
+                            <ul class="nospace linklist contact serv">
+                                <li class="wow bounceIn" data-wow-delay="0.8s"><a href="Marketing.aspx">Marketing Deportivo</a></li>
+                            </ul>
+                        </div>
+                        <div class="one_third">
+                            <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
+                                <img alt="logo" src="../images/atletico.png" style="height: 50px;" />
+                            </h6>
+                            <ul class="nospace linklist contact serv">
+                                <li class="wow bounceIn" data-wow-delay="0.8s"><a href="ClubAtletico.aspx">Club Atletico Juniors</a></li>
+                                <li class="wow bounceIn" data-wow-delay="0.8s"><a href="SoccerAcademy.aspx">Academia de Fútbol</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="one_half">
+                        <div class="one_third first">
+                            <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
+                                <img alt="logo" src="../images/logo.png" style="height: 50px;" />
+                            </h6>
+                            <ul class="nospace linklist contact serv">
+                                <li class="wow bounceIn" data-wow-delay="0.8s"><a href="ComplejoDeportivo.aspx">Complejo Deportivo SEA</a></li>
+                            </ul>
+                        </div>
+                        <div class="one_third">
+                            <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
+                                <img alt="logo" src="../images/S&A.png" style="height: 50px;" />
+                            </h6>
+                            <ul class="nospace linklist contact serv">
+                                <li class="wow bounceIn" data-wow-delay="0.8s"><a href="StudentsAthletics.aspx">Students & Athletics</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="one_third">
+                            <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
+                                <img alt="logo" src="../images/seatv.png" style="height: 50px;" />
+                            </h6>
+                            <ul class="nospace linklist contact serv">
+                                <li class="wow bounceIn" data-wow-delay="0.8s"><a href="#">Sea TV</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper row5">
+            <div class="hoc container clear">
+                <p class="sponsor-title">Con el Apoyo de</p>
+                <p style="border-bottom: 3px solid white;"></p>
+                <div class="auspiciadores">
+                    <asp:Repeater runat="server" DataSourceID="objSponsorDS" ID="repaterSponsors">
+                        <ItemTemplate>
+                            <div class="wow rotateIn" data-wow-delay="0.8s">
+                                <img class="ausp" src="/images/sponsors/<%# Eval("ID") %>.png" alt="<%# Eval("Nombre") %>" />
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                    <asp:ObjectDataSource ID="objSponsorDS" 
+                        runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="selectByModulo" 
+                        TypeName="SponsorDSTableAdapters.tbl_sponsorsTableAdapter">
+                        <SelectParameters>
+                            <asp:SessionParameter DefaultValue="" Name="modulo" SessionField="modulo" Type="String" />
+                        </SelectParameters>
+                    </asp:ObjectDataSource>
+                </div>
+            </div>
+        </div>
+    </form>
+    <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+    <script src="../scripts/jquery-1.9.1.min.js"></script>
+    <script src="../scripts/jquery.min.js"></script>
+    <script src="../scripts/jquery.backtotop.js"></script>
+    <script src="../scripts/jquery.mobilemenu.js"></script>
+    <script src="../scripts/smoothScroll.js"></script>
+    <script src="../styles/slick/slick.js"></script>
+    <script src="../scripts/js.js"></script>
+    <script src="../scripts/wow.min.js"></script>
+    <script src="js/myprofile.js"></script>
+    <script type="text/javascript">
+        new WOW().init();
+    </script>
+    <asp:ContentPlaceHolder ID="Scripts" runat="server">
+    </asp:ContentPlaceHolder>
+</body>
+</html>
+

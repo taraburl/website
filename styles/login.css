@@ -1,0 +1,254 @@
+@import url(http://fonts.googleapis.com/css?family=Vibur);
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-family: arial;
+}
+
+body {
+    background: #3B3B3B;
+}
+
+h1 {
+    color: #ccc;
+    text-align: center;
+    font-family: 'Vibur', cursive;
+    font-size: 50px;
+}
+
+.login-form {
+    width: 350px;
+    padding: 40px 30px;
+    background: #eee;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.form-control {
+    width: 100%;
+    height: 40px !important;
+    border: none;
+    padding: 5px 7px 5px 15px;
+    background: #fff;
+    color: #666;
+    border: 2px solid #ddd;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+    .form-control:focus, .form-control:focus + .fa {
+        border-color: #00C6D7;
+        color: #00C6D7;
+    }
+
+.form-group .fa {
+    position: absolute;
+    right: 15px;
+    top: 17px;
+    color: #999;
+}
+
+.log-pass.wrong-entry {
+    -moz-animation: wrong-log 0.3s;
+    -webkit-animation: wrong-log 0.3s;
+    animation: wrong-log 0.3s;
+}
+
+    .log-pass.wrong-entry .form-control, .wrong-entry .form-control + .fa {
+        border-color: #ed1c24;
+        color: #ed1c24;
+    }
+
+.sign-name.wrong-entry {
+    -moz-animation: wrong-log 0.3s;
+    -webkit-animation: wrong-log 0.3s;
+    animation: wrong-log 0.3s;
+}
+
+    .sign-name.wrong-entry .form-control, .wrong-entry .form-control + .fa {
+        border-color: #ed1c24;
+        color: #ed1c24;
+    }
+
+.log-name.wrong-entry {
+    -moz-animation: wrong-log 0.3s;
+    -webkit-animation: wrong-log 0.3s;
+    animation: wrong-log 0.3s;
+}
+
+    .log-name.wrong-entry .form-control, .wrong-entry .form-control + .fa {
+        border-color: #ed1c24;
+        color: #ed1c24;
+    }
+
+.sign-last.wrong-entry {
+    -moz-animation: wrong-log 0.3s;
+    -webkit-animation: wrong-log 0.3s;
+    animation: wrong-log 0.3s;
+}
+
+    .sign-last.wrong-entry .form-control, .wrong-entry .form-control + .fa {
+        border-color: #ed1c24;
+        color: #ed1c24;
+    }
+
+.sign-pass.wrong-entry {
+    -moz-animation: wrong-log 0.3s;
+    -webkit-animation: wrong-log 0.3s;
+    animation: wrong-log 0.3s;
+}
+
+    .sign-pass.wrong-entry .form-control, .wrong-entry .form-control + .fa {
+        border-color: #ed1c24;
+        color: #ed1c24;
+    }
+
+.sign-pass2.wrong-entry {
+    -moz-animation: wrong-log 0.3s;
+    -webkit-animation: wrong-log 0.3s;
+    animation: wrong-log 0.3s;
+}
+
+    .sign-pass2.wrong-entry .form-control, .wrong-entry .form-control + .fa {
+        border-color: #ed1c24;
+        color: #ed1c24;
+    }
+
+.sign-user.wrong-entry {
+    -moz-animation: wrong-log 0.3s;
+    -webkit-animation: wrong-log 0.3s;
+    animation: wrong-log 0.3s;
+}
+
+    .sign-user.wrong-entry .form-control, .wrong-entry .form-control + .fa {
+        border-color: #ed1c24;
+        color: #ed1c24;
+    }
+
+.sign-email.wrong-entry {
+    -moz-animation: wrong-log 0.3s;
+    -webkit-animation: wrong-log 0.3s;
+    animation: wrong-log 0.3s;
+}
+
+    .sign-email.wrong-entry .form-control, .wrong-entry .form-control + .fa {
+        border-color: #ed1c24;
+        color: #ed1c24;
+    }
+
+.log-btn, .sign-btn {
+    background: #03A9F4;
+    display: inline-block;
+    width: 100%;
+    font-size: 16px;
+    height: 50px;
+    width: 100%;
+    font-size: 16px;
+    height: 50px;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    text-align: center;
+    padding: 10px;
+}
+
+    .log-btn:hover, .sign-btn:hover {
+        text-decoration: none;
+        color: white;
+    }
+
+.link {
+    text-decoration: none;
+    color: #C6C6C6;
+    float: right;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+    .link:hover {
+        text-decoration: underline;
+        color: #8C918F;
+    }
+
+.alert {
+    display: none;
+    font-size: 12px;
+    color: #f00;
+    float: left;
+}
+
+@-moz-keyframes wrong-log {
+    0%, 100% {
+        left: 0px;
+    }
+
+    20%, 60% {
+        left: 15px;
+    }
+
+    40%, 80% {
+        left: -15px;
+    }
+}
+
+@-webkit-keyframes wrong-log {
+    0%, 100% {
+        left: 0px;
+    }
+
+    20%, 60% {
+        left: 15px;
+    }
+
+    40%, 80% {
+        left: -15px;
+    }
+}
+
+@keyframes wrong-log {
+    0%, 100% {
+        left: 0px;
+    }
+
+    20%, 60% {
+        left: 15px;
+    }
+
+    40%, 80% {
+        left: -15px;
+    }
+}
+
+#video {
+    z-index: -99;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}

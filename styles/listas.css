@@ -1,0 +1,19 @@
+﻿.slider {
+    width: 100%;
+    margin: 20px auto 10px auto;
+}
+
+.slick-slide {
+    margin: 0px 20px;
+}
+
+    .slick-slide img {
+        width: 70%;
+        text-align: center !important;
+        margin: auto !important;
+    }
+
+.slick-prev:before,
+.slick-next:before {
+    color: black;
+}

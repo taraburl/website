@@ -1,0 +1,35 @@
+﻿.slider {
+    width: 100%;
+    margin: 3% auto 0px auto;
+}
+
+@media only screen and (max-width: 480px) {
+    .slider {
+        margin: 15% auto 0px auto;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .slider {
+        margin: 15% auto 0px auto;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .slider {
+        margin: 2% auto 0px auto;
+    }
+}
+
+.slick-slide {
+    margin: 0px 20px;
+}
+
+    .slick-slide img {
+        width: 100%;
+    }
+
+.slick-prev:before,
+.slick-next:before {
+    color: black;
+}
