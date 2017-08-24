@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://services.vlink.com.bo/" targetNamespace="http://services.vlink.com.bo/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="consultarEstado" type="tns:consultarEstado" />
+  <xs:element name="consultarEstadoResponse" type="tns:consultarEstadoResponse" />
+  <xs:element name="revertirPago" type="tns:revertirPago" />
+  <xs:element name="revertirPagoResponse" type="tns:revertirPagoResponse" />
+  <xs:element name="solicitarPago" type="tns:solicitarPago" />
+  <xs:element name="solicitarPagoAsincrono" type="tns:solicitarPagoAsincrono" />
+  <xs:element name="solicitarPagoAsincronoResponse" type="tns:solicitarPagoAsincronoResponse" />
+  <xs:element name="solicitarPagoResponse" type="tns:solicitarPagoResponse" />
+  <xs:complexType name="revertirPago">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="key" type="xs:string" />
+      <xs:element minOccurs="0" name="parametros" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="revertirPagoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="consultarEstado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="key" type="xs:string" />
+      <xs:element minOccurs="0" name="parametros" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="consultarEstadoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="solicitarPagoAsincrono">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="key" type="xs:string" />
+      <xs:element minOccurs="0" name="parametros" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="solicitarPagoAsincronoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="solicitarPago">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="key" type="xs:string" />
+      <xs:element minOccurs="0" name="parametros" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="solicitarPagoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
