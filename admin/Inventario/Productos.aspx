@@ -32,7 +32,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Subir Fotos">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-warning" href="SubirFotoImagen.aspx?ID=<%# Eval("IdProducto")%>">
+                            <a class="btn btn-block btn-social-icon btn-warning" href="SubirImagenProducto.aspx?ID=<%# Eval("IdProducto")%>">
                                 <i class="fa  fa-file-photo-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>

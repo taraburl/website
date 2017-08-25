@@ -5,6 +5,19 @@
     $(".select2").select2();
 });
 
+jQuery('#ContentPlaceHolder1_uploader').on('change', function (e) {
+    var Lector,
+            oFileInput = this;
+    if (oFileInput.files.length === 0) {
+        return;
+    }
+    Lector = new FileReader();
+    Lector.onloadend = function (e) {
+        jQuery('#ContentPlaceHolder1_imgPrincipal').attr('src', e.target.result);
+    }
+    Lector.readAsDataURL(oFileInput.files[0]);
+});
+
 function cancelnewProducto() {
     $("#newProducto").slideUp(500, function () {
         $("#listProducto").slideDown(500);
@@ -123,7 +136,7 @@ function guardarProducto() {
                 var tr =
                     '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:actualizarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
                     '<td><a class="btn btn-block btn-social-icon btn-danger actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:eliminarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-social-icon btn-warning" href="SubirFotoProducto.aspx?ID=' + objProducto.IdProducto + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-social-icon btn-warning" href="SubirImagenProducto.aspx?ID=' + objProducto.IdProducto + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objProducto.Nombre + '</td>' +
                     '<td>' + objProducto.Descripcion + '</td>' +
                     '<td>' + objProducto.PrecioVenta + '</td>' +
@@ -162,7 +175,7 @@ function guardarProducto() {
                 var tr = '<tr>' +
                     '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:actualizarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
                     '<td><a class="btn btn-block btn-social-icon btn-danger actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:eliminarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-social-icon btn-warning" href="SubirFotoProducto.aspx?ID=' + objProducto.IdProducto + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-social-icon btn-warning" href="SubirImagenProducto.aspx?ID=' + objProducto.IdProducto + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objProducto.Nombre + '</td>' +
                     '<td>' + objProducto.Descripcion + '</td>' +
                     '<td>' + objProducto.PrecioVenta + '</td>' +
