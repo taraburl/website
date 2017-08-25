@@ -1,8 +1,7 @@
 ﻿$(document).ready(function () {
     if (!sessionStorage.getItem("idUsuario")) {
-        return window.location.href = "../Login.aspx";
+        return window.location.href = "/Login.aspx";
     }
-    $("#GridView1").DataTable();
 });
 
 function isNumberKey(evt) {

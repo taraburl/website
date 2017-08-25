@@ -8,21 +8,21 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="../Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-    <link href="../Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" />
-    <link href="js/select2/select2.min.css" rel="stylesheet" />
-    <link href="css/AdminLTE.min.css" rel="stylesheet" />
-    <link href="css/skins/_all-skins.min.css" rel="stylesheet" />
-    <script src="../scripts/jquery-1.9.1.min.js"></script>
-    <script src="../scripts/bootstrap.min.js"></script>
-    <script src="../scripts/jquery.slimscroll.min.js"></script>
-    <script src="../scripts/fastclick.js"></script>
-    <script src="../scripts/DataTables/jquery.dataTables.min.js"></script>
-    <script src="js/app.min.js"></script>
-    <script src="js/demo.js"></script>
-    <script src="js/select2/select2.full.min.js"></script>
+    <link href="/admin/js/select2/select2.min.css" rel="stylesheet" />
+    <link href="/admin/css/AdminLTE.min.css" rel="stylesheet" />
+    <link href="/admin/css/skins/_all-skins.min.css" rel="stylesheet" />
+    <script src="/scripts/jquery-1.9.1.min.js"></script>
+    <script src="/scripts/bootstrap.min.js"></script>
+    <script src="/scripts/jquery.slimscroll.min.js"></script>
+    <script src="/scripts/fastclick.js"></script>
+    <script src="/scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="/admin/js/app.min.js"></script>
+    <script src="/admin/js/demo.js"></script>
+    <script src="/admin/js/select2/select2.full.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -30,13 +30,13 @@
     <div class="wrapper">
         <header class="main-header">
             <!-- Logo -->
-            <a href="index.aspx" class="logo">
+            <a href="/admin/index.aspx" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini">
-                    <img src="../images/logo.png" width="20" /></span>
+                    <img src="/images/logo.png" width="20" /></span>
                 <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg">
-                    <img src="../images/logo.png" width="20" />SEA</span>
+                    <img src="/images/logo.png" width="20" />SEA</span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
@@ -53,19 +53,19 @@
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="../images/profile.png" id="userimglog" class="user-image" alt="User Image" />
+                                <img src="/images/profile.png" id="userimglog" class="user-image" alt="User Image" />
                                 <span class="hidden-xs" id="usernamelog"></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
-                                <li class="user-header" style="background-image: url(../images/background1.jpg); background-size: cover;">
-                                    <img src="../images/profile.png" id="userimglog2" class="img-circle" alt="User Image" />
+                                <li class="user-header" style="background-image: url(/images/background1.jpg); background-size: cover;">
+                                    <img src="/images/profile.png" id="userimglog2" class="img-circle" alt="User Image" />
                                     <p id="usernamelog2"></p>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="MyProfile.aspx" class="btn btn-default btn-flat">Perfil</a>
+                                        <a href="/MyProfile.aspx" class="btn btn-default btn-flat">Perfil</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="javascript:logout();" class="btn btn-default btn-flat">Cerrar Sesion</a>
@@ -84,7 +84,7 @@
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="../images/profile.png" id="userimglog3" class="img-circle" alt="User Image" />
+                        <img src="/images/profile.png" id="userimglog3" class="img-circle" alt="User Image" />
                     </div>
                     <div class="pull-left info">
                         <p id="usernamelog3"></p>
@@ -94,16 +94,37 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
                     <li class="header">MENU</li>
+                    <li><a href="/index.aspx"><i class="fa fa-newspaper-o" aria-hidden="true"></i><span>Inicio</span></a></li>
+                    <li><a href="/admin/Usuarios.aspx"><i class="fa fa-user-circle-o" aria-hidden="true"></i><span>Usuarios</span></a></li>
+                    <li><a href="/admin/Sponsors.aspx"><i class="fa fa-get-pocket" aria-hidden="true"></i><span>Sponsors</span></a></li>
                     <li class="treeview">
-                        <a href="../index.aspx">
-                            <i class="fa fa-newspaper-o" aria-hidden="true"></i><span>Inicio</span>
+                        <a href="#">
+                            <i class="fa fa-picture-o"></i><span>Galeria</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/admin/Galeria/Imagenes.aspx"><i class="fa fa-file-picture-o"></i>Imágenes</a></li>
+                            <li><a href="/admin/Galeria/Videos.aspx"><i class="fa fa-video-camera"></i>Videos</a></li>
+                        </ul>
                     </li>
-                    <li><a href="Usuarios.aspx"><i class="fa fa-user-circle-o" aria-hidden="true"></i><span>Usuarios</span></a></li>
-                    <li><a href="Sponsors.aspx"><i class="fa fa-get-pocket" aria-hidden="true"></i><span>Sponsors</span></a></li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-archive"></i><span>Inventario</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/admin/Inventario/Categoria.aspx"><i class="fa fa-circle"></i>Categorias</a></li>
+                            <li><a href="/admin/Inventario/Productos.aspx"><i class="fa fa-stop"></i>Producto</a></li>
+                            <li><a href="/admin/Inventario/Inventario.aspx"><i class="fa fa-clone"></i>Inventario</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </section>
-            <!-- /.sidebar -->
+            <!-- /.sidebar-->
         </aside>
         <div class="content-wrapper">
             <section class="content-header">

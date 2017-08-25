@@ -12,11 +12,12 @@
     <link rel="shortcut icon" type="image/x-icon" href="/images/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
-    <link href="../Content/font-awesome.min.css" rel="stylesheet" />
-    <link href="../styles/layout.css" rel="stylesheet" />
-    <link href="../styles/slick/slick.css" rel="stylesheet" />
-    <link href="../styles/slick/slick-theme.css" rel="stylesheet" />
+    <link href="/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="/styles/layout.css" rel="stylesheet" />
+    <link href="/styles/slick/slick.css" rel="stylesheet" />
+    <link href="/styles/slick/slick-theme.css" rel="stylesheet" />
     <link href="styles/listas.css" rel="stylesheet" />
+    <link href="/styles/cubeportfolio.min.css" rel="stylesheet" />
 </head>
 <body id="top">
     <div class="topspacer bgded overlay" style="background-image: url('../images/eventos/3.jpg');">
@@ -176,8 +177,8 @@
                             </div>
                         </ItemTemplate>
                     </asp:Repeater>
-                    <asp:ObjectDataSource ID="objSponsorDS" 
-                        runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="selectByModulo" 
+                    <asp:ObjectDataSource ID="objSponsorDS"
+                        runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="selectByModulo"
                         TypeName="SponsorDSTableAdapters.tbl_sponsorsTableAdapter">
                         <SelectParameters>
                             <asp:SessionParameter DefaultValue="" Name="modulo" SessionField="modulo" Type="String" />
@@ -188,17 +189,96 @@
         </div>
     </form>
     <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
-    <script src="../scripts/jquery-1.9.1.min.js"></script>
-    <script src="../scripts/jquery.min.js"></script>
-    <script src="../scripts/jquery.backtotop.js"></script>
-    <script src="../scripts/jquery.mobilemenu.js"></script>
-    <script src="../scripts/smoothScroll.js"></script>
-    <script src="../styles/slick/slick.js"></script>
-    <script src="../scripts/js.js"></script>
-    <script src="../scripts/wow.min.js"></script>
+    <script src="/scripts/jquery-1.9.1.min.js"></script>
+    <script src="/scripts/jquery.min.js"></script>
+    <script src="/scripts/jquery.backtotop.js"></script>
+    <script src="/scripts/jquery.mobilemenu.js"></script>
+    <script src="/scripts/smoothScroll.js"></script>
+    <script src="/styles/slick/slick.js"></script>
+    <script src="/scripts/js.js"></script>
+    <script src="/scripts/wow.min.js"></script>
     <script src="js/myprofile.js"></script>
+    <script src="/scripts/jquery.cubeportfolio.min.js"></script>
     <script type="text/javascript">
         new WOW().init();
+        (function ($, window, document, undefined) {
+            'use strict';
+
+            // init cubeportfolio
+            $('#js-grid-masonry').cubeportfolio({
+                filters: '#js-filters-masonry',
+                layoutMode: 'grid',
+                defaultFilter: '*',
+                animationType: 'slideDelay',
+                gapHorizontal: 20,
+                gapVertical: 20,
+                gridAdjustment: 'responsive',
+                mediaQueries: [{
+                    width: 1500,
+                    cols: 5,
+                }, {
+                    width: 1100,
+                    cols: 4,
+                }, {
+                    width: 800,
+                    cols: 3,
+                }, {
+                    width: 480,
+                    cols: 2,
+                    options: {
+                        caption: '',
+                        gapHorizontal: 10,
+                        gapVertical: 10,
+                    }
+                }],
+                caption: 'overlayBottomAlong',
+                displayType: 'bottomToTop',
+                displayTypeSpeed: 100,
+
+                // lightbox
+                lightboxDelegate: '.cbp-lightbox',
+                lightboxGallery: true,
+                lightboxTitleSrc: 'data-title',
+                lightboxCounter: '<div class="cbp-popup-lightbox-counter">{{current}} of {{total}}</div>',
+            });
+
+            $('#js-grid-masonry2').cubeportfolio({
+                filters: '#js-filters-masonry',
+                layoutMode: 'grid',
+                defaultFilter: '*',
+                animationType: 'slideDelay',
+                gapHorizontal: 20,
+                gapVertical: 20,
+                gridAdjustment: 'responsive',
+                mediaQueries: [{
+                    width: 1500,
+                    cols: 5,
+                }, {
+                    width: 1100,
+                    cols: 4,
+                }, {
+                    width: 800,
+                    cols: 3,
+                }, {
+                    width: 480,
+                    cols: 2,
+                    options: {
+                        caption: '',
+                        gapHorizontal: 10,
+                        gapVertical: 10,
+                    }
+                }],
+                caption: 'overlayBottomAlong',
+                displayType: 'bottomToTop',
+                displayTypeSpeed: 100,
+
+                // lightbox
+                lightboxDelegate: '.cbp-lightbox',
+                lightboxGallery: true,
+                lightboxTitleSrc: 'data-title',
+                lightboxCounter: '<div class="cbp-popup-lightbox-counter">{{current}} of {{total}}</div>',
+            });
+        })(jQuery, window, document);
     </script>
     <asp:ContentPlaceHolder ID="Scripts" runat="server">
     </asp:ContentPlaceHolder>

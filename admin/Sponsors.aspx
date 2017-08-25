@@ -14,24 +14,24 @@
             </a>
         </div>
         <div class="box-body table-responsive">
-            <asp:GridView ID="GridView1" runat="server" DataSourceID="SponsorsDS" AllowPaging="True" 
+            <asp:GridView ID="GridView1" runat="server" DataSourceID="SponsorsDS" 
                 AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id"
                  CssClass="table text-center table-striped table-bordered table-hover table-sm " CellPadding="4" ForeColor="#333333" GridLines="None"
                 >
                 <Columns>
-                    <asp:TemplateField>
+                    <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
                             <a class="btn btn-block btn-social-icon btn-info actualizarFilaSponsor<%# Eval("id") %>" href="javascript:actualizarSponsor(<%# Eval("id")%>)">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
+                    <asp:TemplateField HeaderText="Eliminar">
                         <ItemTemplate>
                             <a class="btn btn-block btn-social-icon btn-danger eliminarFilaSponsor<%# Eval("id")%>" href="javascript:eliminarSponsor(<%# Eval("id") %>)">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
+                    <asp:TemplateField HeaderText="Subir Foto">
                         <ItemTemplate>
                             <a class="btn btn-block btn-social-icon btn-warning" href="SubirFotoSponsor.aspx?ID=<%# Eval("id")%>">
                                 <i class="fa  fa-file-photo-o" aria-hidden="true"></i></a>

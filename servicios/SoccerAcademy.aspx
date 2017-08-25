@@ -26,10 +26,10 @@
             </section>
         </div>
     </div>
-    <div class="wrapper row3" >
+    <div class="wrapper row3">
         <main class="hoc container clear">
             <div class="content" id="">
-                 <div class="iconserv wow rotateIn" data-wow-delay="0.5s">
+                <div class="iconserv wow rotateIn" data-wow-delay="0.5s">
                     <img alt="logo" src="../images/atletico.png" style="height: 100px;" />
                 </div>
                 <p class="wow bounceInLeft" data-wow-delay="0.7s">
@@ -58,7 +58,66 @@
             </div>
         </main>
     </div>
+    <div class="wrapper row3">
+        <div class="clear" style="margin: 0 1% 1% 1%;">
+            <div id="js-grid-masonry" class="cbp">
+                <asp:repeater id="repaterGallery" runat="server" datasourceid="ObjectDataSource1">
+                    <ItemTemplate>
+                        <div class="cbp-item identity">
+                            <a href="/images/galeria/<%# Eval("ID") %>.jpg" class="cbp-caption cbp-lightbox" data-title="<%# Eval("Descripcion") %>">
+                                <div class="cbp-caption-defaultWrap">
+                                    <img src="/images/galeria/<%# Eval("ID") %>.jpg" alt="<%# Eval("Descripcion") %>">
+                                </div>
+                                <div class="cbp-caption-activeWrap">
+                                    <div class="cbp-l-caption-alignCenter">
+                                        <div class="cbp-l-caption-body">
+                                            <div class="cbp-l-caption-desc"><%# Eval("Descripcion") %></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </ItemTemplate>
+                </asp:repeater>
+                <asp:objectdatasource id="ObjectDataSource1" runat="server" oldvaluesparameterformatstring="original_{0}" selectmethod="selectByModulo" typename="ImagenDSTableAdapters.tbl_imagenesTableAdapter">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="modulo" SessionField="modulo" Type="String" />
+                    </SelectParameters>
+                </asp:objectdatasource>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper row3">
+        <div class="clear" style="margin: 0 1% 1% 1%;">
+            <div id="js-grid-masonry2" class="cbp">
+                <asp:repeater runat="server" datasourceid="ObjectDataSource2">
+                    <ItemTemplate>
+                        <div class="cbp-item graphic">
+                    <div class="cbp-caption">
+                        <a href="<%# Eval("URL") %>" class="cbp-caption cbp-lightbox" data-title="<%# Eval("Descripcion") %>">
+                            <div class="cbp-caption-defaultWrap">
+                                <img src="/images/video.png" alt="imagen-video"/>
+                            </div>
+                            <div class="cbp-caption-activeWrap">
+                                <div class="cbp-l-caption-alignCenter">
+                                    <div class="cbp-l-caption-body">
+                                        <div class="cbp-l-caption-desc"><%# Eval("Descripcion") %></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                    </ItemTemplate>
+                </asp:repeater>
+                <asp:objectdatasource id="ObjectDataSource2" runat="server" oldvaluesparameterformatstring="original_{0}" selectmethod="selectByModulo" typename="VideoDSTableAdapters.tbl_videoTableAdapter">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="modulo" SessionField="modulo" Type="String" />
+                    </SelectParameters>
+                </asp:objectdatasource>
+            </div>
+        </div>
+    </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Scripts" runat="server">
-    
 </asp:Content>

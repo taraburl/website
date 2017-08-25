@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     if (!sessionStorage.getItem("idUsuario")) {
-        return window.location.href = "../Login.aspx";
+        return window.location.href = "/Login.aspx";
     }
     $(".select2").select2();
 });
@@ -86,9 +86,9 @@ function guardarSponsor() {
                 var linkActualizar = $('.actualizarFilaSponsor' + objSponsor.IdSponsor);
                 var trActualizado = linkActualizar.parent().parent();
                 var tr =
-                    '<td><a class="btn btn-block btn-info actualizarFilaSponsor' + objSponsor.IdSponsor + '" href="javascript:actualizarSponsor(' + objSponsor.IdSponsor + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger actualizarFilaSponsor' + objSponsor.IdSponsor + '" href="javascript:eliminarSponsor(' + objSponsor.IdSponsor + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-warning" href="SubirFotoSponsor.aspx?ID=' + objSponsor.IdSponsor + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaSponsor' + objSponsor.IdSponsor + '" href="javascript:actualizarSponsor(' + objSponsor.IdSponsor + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-social-icon btn-danger actualizarFilaSponsor' + objSponsor.IdSponsor + '" href="javascript:eliminarSponsor(' + objSponsor.IdSponsor + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-social-icon btn-warning" href="SubirFotoSponsor.aspx?ID=' + objSponsor.IdSponsor + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objSponsor.Nombre + '</td>' +
                     '<td>' + objSponsor.Modulo + '</td>'
                 trActualizado.html(tr);
@@ -116,9 +116,9 @@ function guardarSponsor() {
             success: function (data) {
                 var objSponsor = data.d;
                 var tr = '<tr>' +
-                    '<td><a class="btn btn-block btn-info actualizarFilaSponsor' + objSponsor.IdSponsor + '" href="javascript:actualizarSponsor(' + objSponsor.IdSponsor + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger actualizarFilaSponsor' + objSponsor.IdSponsor + '" href="javascript:eliminarSponsor(' + objSponsor.IdSponsor + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-warning" href="SubirFotoSponsor.aspx?ID=' + objSponsor.IdSponsor + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaSponsor' + objSponsor.IdSponsor + '" href="javascript:actualizarSponsor(' + objSponsor.IdSponsor + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-social-icon btn-danger actualizarFilaSponsor' + objSponsor.IdSponsor + '" href="javascript:eliminarSponsor(' + objSponsor.IdSponsor + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-social-icon btn-warning" href="SubirFotoSponsor.aspx?ID=' + objSponsor.IdSponsor + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objSponsor.Nombre + '</td>' +
                     '<td>' + objSponsor.Modulo + '</td>' +
                     '</tr>';
@@ -155,7 +155,6 @@ function eliminarSponsor(id) {
             var linkEliminar = $('.eliminarFilaSponsor' + resultado);
             var trActualizado = linkEliminar.parent().parent();
             trActualizado.remove();
-            $("#transporteViaje option[value='" + id + "']").remove();
 
         }
     });

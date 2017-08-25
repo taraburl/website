@@ -17,13 +17,13 @@
                 CssClass="table table-striped table-bordered table-hover table-sm " CellPadding="4" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
-                    <asp:TemplateField>
+                    <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
                             <a class="btn btn-block btn-social-icon btn-info actualizarFilaUsuario<%# Eval("id") %>" href="javascript:actualizarUser(<%# Eval("id")%>)">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
+                    <asp:TemplateField HeaderText="Eliminar">
                         <ItemTemplate>
                             <a class="btn btn-block btn-social-icon btn-danger eliminarFilaUsuario<%# Eval("id")%>" href="javascript:eliminarUsuario(<%# Eval("id") %>)">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i></a>
