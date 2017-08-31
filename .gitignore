@@ -4,3 +4,5 @@
 
 /App_Data/PublishProfiles/Perfil IIS Local.pubxml
 /website.publishproj
+/.vs/config/applicationhost.config
+/.vs
