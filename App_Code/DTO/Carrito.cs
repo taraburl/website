@@ -11,4 +11,6 @@ public class Carrito
     int idOrdenCompra { get; set; }
     int idProducto { get; set; }
 
+    int CantidadProducto { get; set; }
+
 }

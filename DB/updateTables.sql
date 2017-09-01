@@ -47,3 +47,6 @@ add idProducto int not null
 alter table [dbo].[tbl_carrito] 
 add foreign key (idProducto) references tbl_producto(id)
 
+alter table [dbo].[tbl_carrito]
+add cantidadProducto int
+
