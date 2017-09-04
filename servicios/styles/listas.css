@@ -33,3 +33,62 @@
 .slick-next:before {
     color: black;
 }
+
+
+
+.bgimg-1 {
+    position: relative;
+    /*opacity: 0.75;*/
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bgimg-1 {
+    background-image: url("/images/contactenos.jpg");
+    min-height: 100%;
+}
+
+@media only screen and (max-device-width: 1024px) {
+    .bgimg-1 {
+        background-attachment: scroll;
+    }
+}
+
+.caption {
+    color: #fff;
+    margin: 15px 0 15px 0;
+    padding: 4% 0 4% 0;
+    text-align: center;
+}
+
+    .caption span.border {
+        background-image: url("/images/footer.jpg");
+        background-position: center;
+        color: #fff;
+        padding: 20px;
+        font-size: 30px;
+        letter-spacing: 10px;
+        font-weight: bold;
+        border-bottom-style: solid;
+    }
+
+@media screen and (max-width: 750px) {
+    .cbp-item {
+        width: -webkit-fill-available !important;
+    }
+}
+.boton-pi{
+    color: #FFF;
+}
+
+.boton-pi:hover {
+    color: #FFF !important;
+}
+
+.caption2{
+    margin:0 !important;
+    font-size: 25px;
+    padding: 1% 0 1% 0;
+}

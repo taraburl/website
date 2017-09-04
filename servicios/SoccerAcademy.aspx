@@ -58,12 +58,72 @@
             </div>
         </main>
     </div>
+    <!--<div class="wrapper row3">
+        <div class=" container clear">
+            <div class="content">
+                <div class="group btmspace-50 demo " id="">
+                    <div class="cbp-item one_half first" style="margin: 0px !important;">
+                        <a href="#" class="cbp-caption cbp-singlePage" rel="">
+                            <div class=""
+                                style="background-image: url(/images/background2.jpg); height: 250px; background-attachment: fixed; background-size: cover; margin-right: -50px;">
+                            </div>
+                        </a>
+                        <a href="#" class="cbp-l-grid-work-title" rel="">Catalogo de Productos</a>
+                    </div>
+                    <div class="cbp-item one_half" style="margin: 0px !important;">
+                        <a href="#" class="cbp-caption cbp-singlePage" rel="">
+                            <div class=""
+                                style="background-image: url(/images/background3.jpg); height: 250px; background-attachment: fixed; background-size: cover; margin-right: -50px;">
+                            </div>
+                        </a>
+                        <a href="#" class="cbp-l-grid-work-title " rel="">Inscripciones</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <div class="wrapper row3">
+        <div class=" container clear">
+            <div class="content">
+                <div class="bgimg-1 one_half first" style="background-image: url(/images/background2.jpg) !important;">
+                    <div class="caption">
+                        <span class="border">
+                            <a href="/carrito/inicio.aspx" class="boton-pi">PRODUCTOS</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="bgimg-1 one_half" style="background-image: url(/images/background3.jpg) !important;">
+                    <div class="caption" style="color: #48AEC5 !important;">
+                        <span class="border">
+                            <a href="#" class="boton-pi">INSCRIPCIONES</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="wrapper row5">
+        <div class="bgimg-1">
+            <div class="caption">
+                <span class="border">
+                    <img src="/images/logo.png" alt="logosea" style="width: 50px !important;" />IMAGENES</span>
+            </div>
+        </div>
+    </div>-->
+    <div class="wrapper row5" style="margin: 0px 0 20px 0;">
+        <div id="" class="hoc clear">
+            <div class="caption2 caption">
+                <span class="">
+                    <img src="/images/logo.png" alt="logosea" style="width: 50px !important;" />IMAGENES</span>
+            </div>
+        </div>
+    </div>
     <div class="wrapper row3">
         <div class="clear" style="margin: 0 1% 1% 1%;">
             <div id="js-grid-masonry" class="cbp">
                 <asp:repeater id="repaterGallery" runat="server" datasourceid="ObjectDataSource1">
                     <ItemTemplate>
-                        <div class="cbp-item identity">
+                        <div class="cbp-item">
                             <a href="/images/galeria/<%# Eval("ID") %>.jpg" class="cbp-caption cbp-lightbox" data-title="<%# Eval("Descripcion") %>">
                                 <div class="cbp-caption-defaultWrap">
                                     <img src="/images/galeria/<%# Eval("ID") %>.jpg" alt="<%# Eval("Descripcion") %>">
@@ -87,27 +147,43 @@
             </div>
         </div>
     </div>
+    <!--<div class="wrapper row5">
+        <div class="bgimg-1">
+            <div class="caption">
+                <span class="border">
+                    <img src="../images/logo.png" alt="logosea" style="width: 50px !important;" />VIDEOS</span>
+            </div>
+        </div>
+    </div>-->
+    <div class="wrapper row5" style="margin: 0px 0 20px 0;">
+        <div id="" class="hoc clear">
+            <div class="caption2 caption">
+                <span class="">
+                    <img src="/images/logo.png" alt="logosea" style="width: 50px !important;" />VIDEOS</span>
+            </div>
+        </div>
+    </div>
     <div class="wrapper row3">
         <div class="clear" style="margin: 0 1% 1% 1%;">
             <div id="js-grid-masonry2" class="cbp">
                 <asp:repeater runat="server" datasourceid="ObjectDataSource2">
                     <ItemTemplate>
                         <div class="cbp-item graphic">
-                    <div class="cbp-caption">
-                        <a href="<%# Eval("URL") %>" class="cbp-caption cbp-lightbox" data-title="<%# Eval("Descripcion") %>">
-                            <div class="cbp-caption-defaultWrap">
-                                <img src="/images/video.png" alt="imagen-video"/>
-                            </div>
-                            <div class="cbp-caption-activeWrap">
-                                <div class="cbp-l-caption-alignCenter">
-                                    <div class="cbp-l-caption-body">
-                                        <div class="cbp-l-caption-desc"><%# Eval("Descripcion") %></div>
+                            <div class="cbp-caption">
+                                <a href="<%# Eval("URL") %>" class="cbp-caption cbp-lightbox" data-title="<%# Eval("Descripcion") %>">
+                                    <div class="cbp-caption-defaultWrap">
+                                        <img src="/images/video.png" alt="imagen-video" />
                                     </div>
-                                </div>
+                                    <div class="cbp-caption-activeWrap">
+                                        <div class="cbp-l-caption-alignCenter">
+                                            <div class="cbp-l-caption-body">
+                                                <div class="cbp-l-caption-desc"><%# Eval("Descripcion") %></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                </div>
+                        </div>
                     </ItemTemplate>
                 </asp:repeater>
                 <asp:objectdatasource id="ObjectDataSource2" runat="server" oldvaluesparameterformatstring="original_{0}" selectmethod="selectByModulo" typename="VideoDSTableAdapters.tbl_videoTableAdapter">

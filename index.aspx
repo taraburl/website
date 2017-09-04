@@ -17,145 +17,149 @@
     <link href="styles/slick/slick-theme.css" rel="stylesheet" />
     <link href="styles/listas.css" rel="stylesheet" />
     <link href="styles/layout.css" rel="stylesheet" />
+    <link href="Content/youmax.css" rel="stylesheet" />
 </head>
 <body id="top">
     <form id="form1" runat="server">
-    <div class="topspacer bgded overlay" style="background-image: url('images/background1.jpg');">
-        <div class="wrapper row0">
-            <div id="topbar" class="clear">
-                <div class="fl_left">
-                    <ul class="nospace">
-                        <li><i class="fa fa-phone"></i>+591 347-4704</li>
-                        <li><i class="fa fa-envelope-o"></i>info@sea.com.bo</li>
-                    </ul>
+        <div class="topspacer bgded overlay" style="background-image: url('images/background1.jpg');">
+            <div class="wrapper row0">
+                <div id="topbar" class="clear">
+                    <div class="fl_left">
+                        <ul class="nospace">
+                            <li><i class="fa fa-phone"></i>+591 347-4704</li>
+                            <li><i class="fa fa-envelope-o"></i>info@sea.com.bo</li>
+                        </ul>
+                    </div>
+                    <div class="fl_right">
+                        <ul class="nospace">
+                            <li><a href="index.aspx"><i class="fa fa-lg fa-home"></i></a></li>
+                            <li id="login"><a href="login.aspx?form=login" runat="server">Iniciar Sesión</a></li>
+                            <li id="signup"><a href="login.aspx?form=signup" runat="server">Registrarse</a></li>
+                            <li id="miperfil">
+                                <img src="images/profile.png" id="imagenperfil" alt="img-perfil" style="width: 20px; height: 20px; border-radius: 50%;" />
+                                <a href="servicios/MyProfile.aspx" runat="server"></a></li>
+                            <li id="pnladmin" style="display: none;"><a href="admin/index.aspx" runat="server">Panel Adm.</a></li>
+                            <li id="logout"><a href="javascript:logout();"><i class="fa fa-sign-out" aria-hidden="true"></i>Salir</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="fl_right">
-                    <ul class="nospace">
-                        <li><a href="index.aspx"><i class="fa fa-lg fa-home"></i></a></li>
-                        <li id="login"><a href="login.aspx?form=login" runat="server">Iniciar Sesión</a></li>
-                        <li id="signup"><a href="login.aspx?form=signup" runat="server">Registrarse</a></li>
-                        <li id="miperfil">
-                            <img src="images/profile.png" id="imagenperfil" alt="img-perfil" style="width: 20px; height: 20px; border-radius: 50%;" />
-                            <a href="servicios/MyProfile.aspx" runat="server"></a></li>
-                        <li id="pnladmin" style="display: none;"><a href="admin/index.aspx" runat="server">Panel Adm.</a></li>
-                        <li id="logout"><a href="javascript:logout();"><i class="fa fa-sign-out" aria-hidden="true"></i>Salir</a></li>
-                    </ul>
+            </div>
+            <div class="wrapper row1">
+                <header id="header" class="clear">
+                    <div id="logo" class="fl_left">
+                        <h1><a href="index.aspx">
+                            <img src="images/logo.png" alt="sea" style="width: 60px;" /></a></h1>
+                    </div>
+                    <nav id="mainav" class="fl_right">
+                        <ul class="clear">
+                            <li class="active"><a href="index.aspx">Inicio</a></li>
+                            <li>
+                                <a class="drop" href="#">Eventos</a>
+                                <ul>
+                                    <li><a href="servicios/EventosDeportivos.aspx">Eventos</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="drop" href="#">Marketing Deportivo</a>
+                                <ul>
+                                    <li><a href="servicios/Marketing.aspx">Marketing Deportivo</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="drop" href="#">Club Atlético Juniors</a>
+                                <ul>
+                                    <li><a href="servicios/ClubAtletico.aspx">Club Atletico Juniors</a></li>
+                                    <li><a href="servicios/SoccerAcademy.aspx">Academia de Fútbol</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="drop" href="#">Complejo Deportivo</a>
+                                <ul>
+                                    <li><a href="servicios/ComplejoDeportivo.aspx">Complejo Deportivo</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="drop" href="#">Students & Athletics</a>
+                                <ul>
+                                    <li><a href="servicios/StudentsAthletics.aspx">Students & Athletics</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="drop" href="#">Sea TV</a>
+                                <ul>
+                                    <li><a href="#">SEA TV</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+            </div>
+            <div id="pageintro" class="hoc clear">
+                <article>
+                    <h2 class="heading wow zoomIn" data-wow-delay="0.6s">
+                        <img src="images/logo.png" alt="sea" style="width: 150px;" />
+                    </h2>
+                    <p class="wow zoomIn" data-wow-delay="0.6s">SEA SRL nace en Bolivia el año 2013 bajo la motivación de nuestros directores de poder aportar y apoyar al deporte en nuestro país.</p>
+                    <footer>
+                        <ul class="nospace inline pushright scroll">
+                            <li><a class="btn wow zoomIn" data-wow-delay="0.6s" href="#conocenos">Conócenos</a></li>
+                            <li><a class="btn inverse wow zoomIn" data-wow-delay="0.6s" href="#comments">Contáctenos</a></li>
+                        </ul>
+                    </footer>
+                </article>
+            </div>
+        </div>
+        <div class="wrapper clear" style="top: 20%;">
+            <div class="auspiciadores-title">
+                <p>CON EL APOYO DE:</p>
+            </div>
+            <section class="center2 slider">
+                <div>
+                    <img src="images/sponsors2/alianza.png" alt="alianza" />
                 </div>
-            </div>
-        </div>
-        <div class="wrapper row1">
-            <header id="header" class="clear">
-                <div id="logo" class="fl_left">
-                    <h1><a href="index.aspx">
-                        <img src="images/logo.png" alt="sea" style="width: 60px;" /></a></h1>
+                <div>
+                    <img src="images/sponsors2/cuartito.png" alt="cuartito" />
                 </div>
-                <nav id="mainav" class="fl_right">
-                    <ul class="clear">
-                        <li class="active"><a href="index.aspx">Inicio</a></li>
-                        <li>
-                            <a class="drop" href="#">Eventos</a>
-                            <ul>
-                                <li><a href="servicios/EventosDeportivos.aspx">Eventos</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="drop" href="#">Marketing Deportivo</a>
-                            <ul>
-                                <li><a href="servicios/Marketing.aspx">Marketing Deportivo</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="drop" href="#">Club Atlético Juniors</a>
-                            <ul>
-                                <li><a href="servicios/ClubAtletico.aspx">Club Atletico Juniors</a></li>
-                                <li><a href="servicios/SoccerAcademy.aspx">Academia de Fútbol</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="drop" href="#">Complejo Deportivo</a>
-                            <ul>
-                                <li><a href="servicios/ComplejoDeportivo.aspx">Complejo Deportivo</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="drop" href="#">Students & Athletics</a>
-                            <ul>
-                                <li><a href="servicios/StudentsAthletics.aspx">Students & Athletics</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="drop" href="#">Sea TV</a>
-                            <ul>
-                                <li><a href="#">SEA TV</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
+                <div>
+                    <img src="images/sponsors2/maltareal.png" alt="maltareal" />
+                </div>
+                <div>
+                    <img src="images/sponsors2/sante.png" alt="sante" />
+                </div>
+                <div>
+                    <img src="images/sponsors2/terbonova.png" alt="terbonova" />
+                </div>
+            </section>
         </div>
-        <div id="pageintro" class="hoc clear">
-            <article>
-                <h2 class="heading wow zoomIn" data-wow-delay="0.6s">
-                    <img src="images/logo.png" alt="sea" style="width: 150px;" />
-                </h2>
-                <p class="wow zoomIn" data-wow-delay="0.6s">SEA SRL nace en Bolivia el año 2013 bajo la motivación de nuestros directores de poder aportar y apoyar al deporte en nuestro país.</p>
-                <footer>
-                    <ul class="nospace inline pushright scroll">
-                        <li><a class="btn wow zoomIn" data-wow-delay="0.6s" href="#conocenos">Conócenos</a></li>
-                        <li><a class="btn inverse wow zoomIn" data-wow-delay="0.6s" href="#comments">Contáctenos</a></li>
-                    </ul>
-                </footer>
-            </article>
-        </div>
-    </div>
-    <div class="wrapper clear" style="top: 20%;">
-        <div class="auspiciadores-title">
-            <p>CON EL APOYO DE:</p>
-        </div>
-        <section class="center2 slider">
-            <div>
-                <img src="images/sponsors2/alianza.png" alt="alianza" />
-            </div>
-            <div>
-                <img src="images/sponsors2/cuartito.png" alt="cuartito" />
-            </div>
-            <div>
-                <img src="images/sponsors2/maltareal.png" alt="maltareal" />
-            </div>
-            <div>
-                <img src="images/sponsors2/sante.png" alt="sante" />
-            </div>
-            <div>
-                <img src="images/sponsors2/terbonova.png" alt="terbonova" />
-            </div>
-        </section>
-    </div>
-    <div class="wrapper row3" id="conocenos" style="top: 20%;">
-        <div class="hoc container clear">
-            <div class="group">
-                <section class="wow fadeInUp" data-wow-delay="0.9s">
-                    <h6 class="heading mision">MISIÓN</h6>
-                    <p class="btmspace-30 misionvisionp">
-                        Ayudar a la mejora del bienestar de las personas mediante la práctica del deporte,
+        <div class="wrapper row3" id="conocenos" style="top: 20%;">
+            <div class="hoc container clear">
+                <div class="group">
+                    <section class="wow fadeInUp" data-wow-delay="0.9s">
+                        <h6 class="heading mision">MISIÓN</h6>
+                        <p class="btmspace-30 misionvisionp">
+                            Ayudar a la mejora del bienestar de las personas mediante la práctica del deporte,
              con ética profesional mediante el Marketing Deportivo.
-                    </p>
-                </section>
-            </div>
-            <div class="group">
-                <section class="wow fadeInUp" data-wow-delay="0.9s">
-                    <h6 class="heading vision">VISIÓN</h6>
-                    <p class="btmspace-30 misionvisionp">
-                        Ser una corporación deportiva líder y de referencia a nivel nacional,
+                        </p>
+                    </section>
+                </div>
+                <div class="group">
+                    <section class="wow fadeInUp" data-wow-delay="0.9s">
+                        <h6 class="heading vision">VISIÓN</h6>
+                        <p class="btmspace-30 misionvisionp">
+                            Ser una corporación deportiva líder y de referencia a nivel nacional,
              mediante nuestras unidades de negocios buscamos fomentar la práctica del deporte sano, el respeto mutuo y el trabajo en equipo.
-                    </p>
-                </section>
+                        </p>
+                    </section>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="wrapper row4 bgded overlay" style="background-image: url('images/contactenos.jpg'); z-index: 0; background-position: center center;">
-        <footer id="footer" class="hoc clear">
-            <div class="one_half first  wow fadeInUp" data-wow-delay="0.9s" id="comments">
-                <h6 class="heading">Contáctenos</h6>
+        <div class="wrapper row4 bgded overlay">
+            <div id="youmax"></div>
+        </div>
+        <div class="wrapper row4 bgded overlay" style="background-image: url('images/contactenos.jpg'); z-index: 0; background-position: center center;">
+            <footer id="footer" class="hoc clear">
+                <div class="one_half first  wow fadeInUp" data-wow-delay="0.9s" id="comments">
+                    <h6 class="heading">Contáctenos</h6>
                     <label for="name">Nombre <span>*</span></label>
                     <input type="text" name="name" id="name" value="" runat="server" />
                     <label for="email">E-Mail <span>*</span></label>
@@ -171,126 +175,127 @@
                         <input type="submit" name="submit" value="Enviar" class="btn" />
                         <input type="reset" name="reset" value="Limpiar" class="btn inverse" />
                     </div>
-            </div>
-            <div class="one_half">
-                <div class="block  wow fadeInUp" data-wow-delay="0.9s">
-                    <h6 class="heading">Donde Estamos</h6>
-                    <ul class="nospace linklist contact">
-                        <li><i class="fa fa-map-marker"></i>
-                            <address>
-                                Av. Paragua 4to anillo Santa Cruz de la Sierra
-                            </address>
-                        </li>
-                        <li><i class="fa fa-phone"></i>+59178557777</li>
-                        <li><i class="fa fa-fax"></i>+591 347-4704</li>
-                        <li><i class="fa fa-envelope-o"></i>info@sea.com.bo</li>
-                    </ul>
-                    <div class="block">
-                        <p>Siguenos en nuestras redes sociales</p>
-                        <ul class="faico clear">
-                            <li><a class="faicon-facebook" href="https://www.facebook.com/sports.events.agency/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                            <li><a class="faicon-twitter" href="https://twitter.com/SEA_SRL" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                            <li><a class="faicon-youtube" href="https://www.youtube.com/user/SportsEventsAgency" target="_blank"><i class="fa fa-youtube"></i></a></li>
-                            <li><a class="faicon-instagram" href="https://www.instagram.com/sea_srl/?hl=es" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <div class="wrapper row5">
-        <div id="copyright" class="hoc clear">
-            <p class="fl_left">Copyright &copy; 2017 - SEA - <a href="http://sea.com.bo/">www.sea.com.bo</a></p>
-            <p class="fl_right">Desarrollado por <a target="_blank" href="http://osbolivia.com/" title="OSBolivia">OSBolivia</a></p>
-        </div>
-    </div>
-    <div class="wrapper row2">
-        <div class="hoc container clear">
-            <div class="group">
-                <div class="one_half first">
-                    <div class="one_third first">
-                        <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
-                            <img alt="logo" src="images/logo.png" style="height: 50px;" />
-                        </h6>
-                        <ul class="nospace linklist contact serv">
-                            <li class="wow bounceIn" data-wow-delay="0.8s"><a href="servicios/EventosDeportivos.aspx">Eventos Deportivos</a></li>
-                        </ul>
-                    </div>
-                    <div class="one_third">
-                        <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
-                            <img alt="logo" src="images/logo.png" style="height: 50px;" />
-                        </h6>
-                        <ul class="nospace linklist contact serv">
-                            <li class="wow bounceIn" data-wow-delay="0.8s"><a href="servicios/Marketing.aspx">Marketing Deportivo</a></li>
-                        </ul>
-                    </div>
-                    <div class="one_third">
-                        <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
-                            <img alt="logo" src="images/atletico.png" style="height: 50px;" />
-                        </h6>
-                        <ul class="nospace linklist contact serv">
-                            <li class="wow bounceIn" data-wow-delay="0.8s"><a href="servicios/ClubAtletico.aspx">Club Atletico Juniors</a></li>
-                            <li class="wow bounceIn" data-wow-delay="0.8s"><a href="servicios/SoccerAcademy.aspx">Academia de Fútbol</a></li>
-                        </ul>
-                    </div>
                 </div>
                 <div class="one_half">
-                    <div class="one_third first">
-                        <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
-                            <img alt="logo" src="images/logo.png" style="height: 50px;" />
-                        </h6>
-                        <ul class="nospace linklist contact serv">
-                            <li class="wow bounceIn" data-wow-delay="0.8s"><a href="servicios/ComplejoDeportivo.aspx">Complejo Deportivo SEA</a></li>
+                    <div class="block  wow fadeInUp" data-wow-delay="0.9s">
+                        <h6 class="heading">Donde Estamos</h6>
+                        <ul class="nospace linklist contact">
+                            <li><i class="fa fa-map-marker"></i>
+                                <address>
+                                    Av. Paragua 4to anillo Santa Cruz de la Sierra
+                                </address>
+                            </li>
+                            <li><i class="fa fa-phone"></i>+59178557777</li>
+                            <li><i class="fa fa-fax"></i>+591 347-4704</li>
+                            <li><i class="fa fa-envelope-o"></i>info@sea.com.bo</li>
                         </ul>
+                        <div class="block">
+                            <p>Siguenos en nuestras redes sociales</p>
+                            <ul class="faico clear">
+                                <li><a class="faicon-facebook" href="https://www.facebook.com/sports.events.agency/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="faicon-twitter" href="https://twitter.com/SEA_SRL" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="faicon-youtube" href="https://www.youtube.com/user/SportsEventsAgency" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                                <li><a class="faicon-instagram" href="https://www.instagram.com/sea_srl/?hl=es" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="one_third">
-                        <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
-                            <img alt="logo" src="images/S&A.png" style="height: 50px;" />
-                        </h6>
-                        <ul class="nospace linklist contact serv">
-                            <li class="wow bounceIn" data-wow-delay="0.8s"><a href="servicios/StudentsAthletics.aspx">Students & Athletics</a></li>
-                        </ul>
+                </div>
+            </footer>
+        </div>
+        <div class="wrapper row5">
+            <div id="copyright" class="hoc clear">
+                <p class="fl_left">Copyright &copy; 2017 - SEA - <a href="http://sea.com.bo/">www.sea.com.bo</a></p>
+                <p class="fl_right">Desarrollado por <a target="_blank" href="http://osbolivia.com/" title="OSBolivia">OSBolivia</a></p>
+            </div>
+        </div>
+        <div class="wrapper row2">
+            <div class="hoc container clear">
+                <div class="group">
+                    <div class="one_half first">
+                        <div class="one_third first">
+                            <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
+                                <img alt="logo" src="images/logo.png" style="height: 50px;" />
+                            </h6>
+                            <ul class="nospace linklist contact serv">
+                                <li class="wow bounceIn" data-wow-delay="0.8s"><a href="servicios/EventosDeportivos.aspx">Eventos Deportivos</a></li>
+                            </ul>
+                        </div>
+                        <div class="one_third">
+                            <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
+                                <img alt="logo" src="images/logo.png" style="height: 50px;" />
+                            </h6>
+                            <ul class="nospace linklist contact serv">
+                                <li class="wow bounceIn" data-wow-delay="0.8s"><a href="servicios/Marketing.aspx">Marketing Deportivo</a></li>
+                            </ul>
+                        </div>
+                        <div class="one_third">
+                            <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
+                                <img alt="logo" src="images/atletico.png" style="height: 50px;" />
+                            </h6>
+                            <ul class="nospace linklist contact serv">
+                                <li class="wow bounceIn" data-wow-delay="0.8s"><a href="servicios/ClubAtletico.aspx">Club Atletico Juniors</a></li>
+                                <li class="wow bounceIn" data-wow-delay="0.8s"><a href="servicios/SoccerAcademy.aspx">Academia de Fútbol</a></li>
+                            </ul>
+                        </div>
                     </div>
+                    <div class="one_half">
+                        <div class="one_third first">
+                            <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
+                                <img alt="logo" src="images/logo.png" style="height: 50px;" />
+                            </h6>
+                            <ul class="nospace linklist contact serv">
+                                <li class="wow bounceIn" data-wow-delay="0.8s"><a href="servicios/ComplejoDeportivo.aspx">Complejo Deportivo SEA</a></li>
+                            </ul>
+                        </div>
+                        <div class="one_third">
+                            <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
+                                <img alt="logo" src="images/S&A.png" style="height: 50px;" />
+                            </h6>
+                            <ul class="nospace linklist contact serv">
+                                <li class="wow bounceIn" data-wow-delay="0.8s"><a href="servicios/StudentsAthletics.aspx">Students & Athletics</a></li>
+                            </ul>
+                        </div>
 
-                    <div class="one_third wow ">
-                        <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
-                            <img alt="logo" src="images/seatv.png" style="height: 50px;" />
-                        </h6>
-                        <ul class="nospace linklist contact serv">
-                            <li class="wow bounceIn" data-wow-delay="0.8s"><a href="servicios/ClubAtletico.aspx">Sea TV</a></li>
-                        </ul>
+                        <div class="one_third wow ">
+                            <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
+                                <img alt="logo" src="images/seatv.png" style="height: 50px;" />
+                            </h6>
+                            <ul class="nospace linklist contact serv">
+                                <li class="wow bounceIn" data-wow-delay="0.8s"><a href="servicios/ClubAtletico.aspx">Sea TV</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="wrapper row5">
-        <div class="hoc container clear">
-            <p class="sponsor-title">Con el Apoyo de</p>
-            <p style="border-bottom: 3px solid white;"></p>
-            <div class="auspiciadores">
-                <asp:Repeater runat="server" ID="repaterSponsors" DataSourceID="ObjectDataSource1">
-                    <ItemTemplate>
+        <div class="wrapper row5">
+            <div class="hoc container clear">
+                <p class="sponsor-title">Con el Apoyo de</p>
+                <p style="border-bottom: 3px solid white;"></p>
+                <div class="auspiciadores">
+                    <asp:Repeater runat="server" ID="repaterSponsors" DataSourceID="ObjectDataSource1">
+                        <ItemTemplate>
                             <div class="wow rotateIn" data-wow-delay="0.8s">
                                 <img class="ausp" src="/images/sponsors/<%# Eval("ID") %>.png" alt="<%# Eval("Nombre") %>" />
                             </div>
                         </ItemTemplate>
-                </asp:Repeater>
-                <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="SelectAll" TypeName="SponsorDSTableAdapters.tbl_sponsorsTableAdapter"></asp:ObjectDataSource>
+                    </asp:Repeater>
+                    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="SelectAll" TypeName="SponsorDSTableAdapters.tbl_sponsorsTableAdapter"></asp:ObjectDataSource>
+                </div>
             </div>
         </div>
-    </div>
-    <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
-    <script src="scripts/jquery-1.9.1.min.js"></script>
-    <script src="scripts/jquery.backtotop.js"></script>
-    <script src="scripts/jquery.mobilemenu.js"></script>
-    <script src="scripts/smoothScroll.js"></script>
-    <script src="scripts/wow.min.js"></script>
-    <script src="styles/slick/slick.js"></script>
-    <script src="scripts/js.js"></script>
-    <script type="text/javascript">
-        new WOW().init();
-    </script>
+        <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+        <script src="scripts/jquery-1.9.1.min.js"></script>
+        <script src="scripts/jquery.backtotop.js"></script>
+        <script src="scripts/jquery.mobilemenu.js"></script>
+        <script src="scripts/smoothScroll.js"></script>
+        <script src="scripts/wow.min.js"></script>
+        <script src="styles/slick/slick.js"></script>
+        <script src="scripts/youmax.min.js"></script>
+        <script src="scripts/js.js"></script>
+        <script type="text/javascript">
+            new WOW().init();
+        </script>
     </form>
 </body>
 </html>

@@ -30,13 +30,13 @@
                         ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator>
                 </div>
                 <div class="col-xs-12 col-lg-3 col-md-6">
-                    <asp:Image ImageUrl="~/images/galeria.png" CssClass="img-responsive" ID="imgPrincipal" runat="server" AlternateText="imagen-galeria" />
+                    <asp:Image ImageUrl="/images/producto.png" CssClass="img-responsive" ID="imgPrincipal" runat="server" AlternateText="imagen-producto" />
                 </div>
             </div>
         </div>
         <div class="box-footer">
             <asp:LinkButton ID="btnGuardarImagen" Text="Guardar Imagen" runat="server" CssClass="btn btn-success btn-lg" OnClick="btnGuardarImagen_Click"><i class="fa fa-floppy-o" aria-hidden="true"></i>GUARDAR</asp:LinkButton>
-            <a id="btnCancelar" class="btn btn-default pull-right btn-lg" href="Imagenes.aspx"><i class="fa fa-times" aria-hidden="true"></i>Cancelar</a>
+            <a id="btnCancelar" class="btn btn-default pull-right btn-lg" href="Productos.aspx"><i class="fa fa-times" aria-hidden="true"></i>Cancelar</a>
         </div>
     </div>
     <script src="../scripts/producto.js"></script>

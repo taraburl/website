@@ -18,9 +18,10 @@
     <link href="/styles/slick/slick-theme.css" rel="stylesheet" />
     <link href="styles/listas.css" rel="stylesheet" />
     <link href="/styles/cubeportfolio.min.css" rel="stylesheet" />
+    <link href="/Content/youmax.css" rel="stylesheet" />
 </head>
-<body id="top">
-    <div class="topspacer bgded overlay" style="background-image: url('../images/eventos/3.jpg');">
+<body id="top" class="inner-page masonry-page">
+    <div class="topspacer bgded overlay wb-header" style="background-image: url('../images/eventos/3.jpg');">
         <div class="wrapper row0">
             <div id="topbar" class="clear">
                 <div class="fl_left">
@@ -195,6 +196,7 @@
     <script src="/scripts/jquery.mobilemenu.js"></script>
     <script src="/scripts/smoothScroll.js"></script>
     <script src="/styles/slick/slick.js"></script>
+    <script src="/scripts/youmax.min.js"></script>
     <script src="/scripts/js.js"></script>
     <script src="/scripts/wow.min.js"></script>
     <script src="js/myprofile.js"></script>
@@ -203,7 +205,6 @@
         new WOW().init();
         (function ($, window, document, undefined) {
             'use strict';
-
             // init cubeportfolio
             $('#js-grid-masonry').cubeportfolio({
                 filters: '#js-filters-masonry',
