@@ -881,6 +881,7 @@ input:focus, textarea:focus, *:required:focus {
 .row4 {
     color: #CBCBCB;
     background-color: #272727;
+    z-index: 0;
 }
 
 .row5, .row5 a {
@@ -1405,7 +1406,7 @@ article.clients {
     }
 
 .ausp {
-    width: 17% ;
+    width: 17%;
     /* height:75px !important;*/
     float: left !important;
     margin: 20px 15px 0 10px !important;
@@ -1413,18 +1414,18 @@ article.clients {
 
 @media only screen and (min-width: 768px) {
     .ausp {
-        width: 17% ;
+        width: 17%;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .ausp {
-        width: 20% ;
+        width: 20%;
     }
 }
 
 @media only screen and (max-width: 480px) {
     .ausp {
-        width: 90% ;
+        width: 90%;
     }
 }
