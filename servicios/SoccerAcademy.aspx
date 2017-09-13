@@ -95,7 +95,7 @@
                 <div class="bgimg-1 one_half" style="background-image: url(/images/background3.jpg) !important;">
                     <div class="caption" style="color: #48AEC5 !important;">
                         <span class="border">
-                            <a href="#" class="boton-pi">INSCRIPCIONES</a>
+                            <a href="/carrito/Inscripciones.aspx" class="boton-pi">INSCRIPCIONES</a>
                         </span>
                     </div>
                 </div>
@@ -155,7 +155,7 @@
             </div>
         </div>
     </div>-->
-    <div class="wrapper row5" style="margin: 0px 0 20px 0;">
+    <div class="wrapper row5" style="margin: 0px 0 20px 0; margin-top: 100px;">
         <div id="" class="hoc clear">
             <div class="caption2 caption">
                 <span class="">
@@ -166,13 +166,13 @@
     <div class="wrapper row3">
         <div class="clear" style="margin: 0 1% 1% 1%;">
             <div id="js-grid-masonry2" class="cbp">
-                <asp:repeater runat="server" datasourceid="ObjectDataSource2">
+                <asp:repeater runat="server" ID="repeaterVideos" datasourceid="ObjectDataSource3">
                     <ItemTemplate>
                         <div class="cbp-item graphic">
                             <div class="cbp-caption">
                                 <a href="<%# Eval("URL") %>" class="cbp-caption cbp-lightbox" data-title="<%# Eval("Descripcion") %>">
                                     <div class="cbp-caption-defaultWrap">
-                                        <img src="/images/video.png" alt="imagen-video" />
+                                        <img src="http://img.youtube.com/vi/<%# Eval("Imagen") %>/0.jpg" alt="imagen-video" />
                                     </div>
                                     <div class="cbp-caption-activeWrap">
                                         <div class="cbp-l-caption-alignCenter">
@@ -191,6 +191,11 @@
                         <asp:SessionParameter Name="modulo" SessionField="modulo" Type="String" />
                     </SelectParameters>
                 </asp:objectdatasource>
+                <asp:ObjectDataSource ID="ObjectDataSource3" runat="server" SelectMethod="SelectByModulo" TypeName="VideoBLL">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="modulo" SessionField="modulo" Type="String" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
             </div>
         </div>
     </div>

@@ -14,4 +14,13 @@ public class Video
     public String Descripcion { get; set; }
     public String Modulo { get; set; }
     public int Eliminado { get; set; }
+
+    public String Imagen {
+        get
+        {
+            String[] substrings = URL.Split('=');
+            String img = substrings[1];
+            return img;
+        }
+    }
 }

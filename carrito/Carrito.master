@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" type="image/x-icon" href="/images/logo.png" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -17,6 +18,7 @@
     <script src="/scripts/jquery.min.js"></script>
     <script src="/scripts/bootstrap.min.js"></script>
     <script src="/admin/js/select2/select2.full.min.js"></script>
+    <link href="/Content/alertifyjs/alertify.css" rel="stylesheet" />
     <script type="application/x-javascript">
         addEventListener("load", function() { 
             setTimeout(hideURLbar, 0); 
@@ -38,31 +40,17 @@
     <!-- header -->
     <div class="header" id="home1">
         <div class="container">
-            <!--<div class="w3l_login">
-                <a href="#" data-toggle="modal" data-target="#myModal88"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
-            </div>-->
-            <div class="w3l_logo">
-                <h1><a href="#">SEA
-                    <span>Sport Event Agency</span>
-                </a>
+            <div class="w3l_logo" style="text-align: center !important;">
+                <h1>
+                    <a href="#">
+                        <img src="/images/logo.png" alt="logo-sea" style="width: 50px;" />
+                    </a>
                 </h1>
             </div>
-            <!--<div class="search">
-                <input class="search_box" type="checkbox" id="search_box">
-                <label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
-                <div class="search_form">
-                    <form action="#" method="post">
-                        <input type="text" name="Search" placeholder="Search...">
-                        <input type="submit" value="Send">
-                    </form>
-                </div>
-            </div>-->
             <div class="cart cart box_1">
-                <form action="#" method="post" class="last">
-                    <input type="hidden" name="cmd" value="_cart" />
-                    <input type="hidden" name="display" value="1" />
-                    <a class="w3view-cart" href="#" name="submit"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a>
-                </form>
+                <input type="hidden" name="cmd" value="_cart" />
+                <input type="hidden" name="display" value="1" />
+                <a class="w3view-cart btn btn-sm" href="#" data-toggle="modal" data-target="#modalCarrito"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
@@ -82,70 +70,63 @@
                 </div>
                 <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                     <ul class="nav navbar-nav">
-                        <li><a href="index.html">Home</a></li>
-                        <!-- Mega Menu -->
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle act" data-toggle="dropdown">Products <b class="caret"></b></a>
-                            <ul class="dropdown-menu multi-column columns-3">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <ul class="multi-column-dropdown">
-                                            <h6>Mobiles</h6>
-                                            <li><a href="products.html">Mobile Phones</a></li>
-                                            <li><a href="products.html">Mp3 Players <span>New</span></a></li>
-                                            <li><a href="products.html">Popular Models</a></li>
-                                            <li><a href="products.html">All Tablets<span>New</span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <ul class="multi-column-dropdown">
-                                            <h6>Accessories</h6>
-                                            <li><a href="products1.html">Laptop</a></li>
-                                            <li><a href="products1.html">Desktop</a></li>
-                                            <li><a href="products1.html">Wearables <span>New</span></a></li>
-                                            <li><a href="products1.html"><i>Summer Store</i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <ul class="multi-column-dropdown">
-                                            <h6>Home</h6>
-                                            <li><a href="products2.html">Tv</a></li>
-                                            <li><a href="products2.html">Camera</a></li>
-                                            <li><a href="products2.html">AC</a></li>
-                                            <li><a href="products2.html">Grinders</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="w3ls_products_pos">
-                                            <h4>30%<i>Off/-</i></h4>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </ul>
-                        </li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li class="w3pages"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="icons.html">Web Icons</a></li>
-                                <li><a href="codes.html">Short Codes</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="mail.html">Mail Us</a></li>
+                        <li><a href="/index.aspx">Inicio</a></li>
+                        <li><a href="/carrito/inicio.aspx">Productos</a></li>
+                        <li><a href="/carrito/inscripciones.aspx">Inscripciones</a></li>
                     </ul>
                 </div>
             </nav>
         </div>
     </div>
-    <!-- //navigation -->
     <form id="form1" runat="server">
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
     </form>
-    <!-- footer -->
     <div class="footer">
+        <div class="container">
+            <div class="w3_footer_grids">
+                <div class="col-md-3 w3_footer_grid">
+                    <h3>DONDE ESTAMOS</h3>
+                    <ul class="address">
+                        <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Av. Paragua 4to anillo, <span>Santa Cruz de la Sierra.</span></li>
+                        <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@sea.com.bo</a></li>
+                        <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+591 78557777</li>
+                        <li><i class="glyphicon glyphicon-phone" aria-hidden="true"></i>+591 347-4704</li>
+                    </ul>
+                </div>
+                <div class="col-md-3 w3_footer_grid">
+                    <h3>Informacion</h3>
+                    <ul class="info">
+                        <li><a href="/index.aspx">Inicio</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 w3_footer_grid">
+                    <h3>Categorias</h3>
+                    <ul class="info">
+                        <li><a href="/carrito/inicio">Productos</a></li>
+                        <li><a href="/carrito/Inscripciones.aspx">Inscripciones</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 w3_footer_grid">
+                    <h3>Perfil</h3>
+                    <ul class="info">
+                        <li><a href="#">Inicio</a></li>
+                    </ul>
+                    <h4>Follow Us</h4>
+                    <div class="agileits_social_button">
+                        <ul>
+                            <li><a href="https://www.facebook.com/sports.events.agency/" target="_blank" class="facebook"><i class="fa fa-facebook-f"></i></a></li>
+                            <li><a href="https://twitter.com/SEA_SRL" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://www.youtube.com/user/SportsEventsAgency" target="_blank" class="google"><i class="fa fa-youtube-play"></i></a></li>
+                            <li><a href="https://www.instagram.com/sea_srl/?hl=es" target="_blank" class="pinterest"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
         <div class="footer-copy">
             <div class="footer-copy1">
                 <div class="footer-copy-pos">
@@ -158,19 +139,7 @@
             </div>
         </div>
     </div>
-    <!-- //footer -->
     <script src="/scripts/jquery.flexisel.js"></script>
-    <!--<script src="/scripts/minicart.js"></script>
-    <script>
-        w3ls.render();
-        w3ls.cart.on('w3sb_checkout', function (evt) {
-            var items, len, i;
-            if (this.subtotal() > 0) {
-                items = this.items();
-                for (i = 0, len = items.length; i < len; i++) {
-                }
-            }
-        });
-    </script>-->
+    <script src="/scripts/alertify.js"></script>
 </body>
 </html>

@@ -46,10 +46,11 @@ public class Inventario
             {
                 return "Guardado";
             }
-            else
+            else if (Estado == 1)
             {
                 return "Consolidado";
             }
+            return "";
         }
     }
 }

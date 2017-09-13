@@ -102,3 +102,63 @@ function eliminarInventario(id) {
         }
     });
 }
+
+function guardarInventario() {
+    var glosa = $("#Glosa").val();
+    var Tipo = $("#TipoInventario").val();
+    var idInventario = $("#ContentPlaceHolder1_hdnIdInventario").val();
+    $(".CantProd").parent('td').parent("tr").find("td:first-child").each(function () {
+        var idProcucto = $(this).html()
+        var cantidad = $("#Pro" + idProcucto).val();
+        cantidad = parseInt(cantidad);
+        if (cantidad > 0) {
+            var parametros = {
+                idInventario: idInventario,
+                idProducto: idProcucto,
+                cantidad: cantidad
+            };
+            $.ajax({
+                url: 'Inventario.aspx/InsertarDetalle',
+                dataType: 'json',
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(parametros),
+                success: function (data) {
+                    var objInventario = data.d;
+                }
+            });
+        }
+    });
+    var parametros = {
+        idUsuario: sessionStorage.getItem('idUsuario'),
+        tipo: Tipo,
+        glosa: glosa,
+        id: idInventario
+    };
+    $.ajax({
+        url: 'Inventario.aspx/ActualizarInventario',
+        dataType: 'json',
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(parametros),
+        success: function (data) {
+            var objInventario = data.d;
+            var linkActualizar = $('.actualizarFilaInventario' + objInventario.IdInventario);
+            var trActualizado = linkActualizar.parent().parent();
+            var tr =
+                '<td></td>' +
+                '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaInventario' + objInventario.IdInventario + '" href="javascript:eliminarInventario(' + objInventario.idInventario + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                '<td>' + objInventario.IdInventario + '</td>' +
+                '<td>' + objInventario.Tipo + '</td>' +
+                '<td>' + objInventario.Usuario.Username + '</td>' +
+                '<td>' + objInventario.Glosa + '</td>' +
+                '<td>' + objInventario.FechaForDisplay + '</td>' +
+                '<td>' + objInventario.HoraForDisplay + '</td>' +
+                '<td>' + objInventario.EstadoForDisplay + '</td>'
+            trActualizado.html(tr);
+            $("#newInventario").slideUp(500, function () {
+                $("#listInventario").slideDown(500);
+            });
+        }
+    });
+}

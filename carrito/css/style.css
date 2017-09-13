@@ -76,7 +76,7 @@ input[type="submit"], .panel-body ul li a, .checkout-right-basket a, .additional
     }
 
 a.act {
-    color: #ff5063 !important;
+    color: #337ab7 !important;
 }
 /*-- search --*/
 .search {
@@ -491,7 +491,7 @@ p.sbmincart-empty-text {
 }
 
 .navbar-default .navbar-nav > li > a:focus {
-    color: #ff5063 !important;
+    color: #48aec5 !important;
 }
 
 .navbar-default {
@@ -582,7 +582,7 @@ ul.multi-column-dropdown h6 {
 }
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-    color: #ff5063;
+    color: #48aec5;
 }
 
 .navbar {
@@ -781,13 +781,13 @@ li.w3pages .dropdown-menu > li > a:hover {
     margin: 6em auto 0;
 }
 
-.modal-header {
+.modal-header2 {
     border: none;
     min-height: 2.5em;
     padding: 0em 1em 0;
 }
 
-.modal button.close {
+.modal a.close {
     color: #48aec5;
     opacity: 1;
     font-size: 2em;
@@ -1617,7 +1617,7 @@ ul.wmuSliderPagination {
 .w3_footer_grid h4 {
     margin: 2em 0 1em;
     font-size: 1.2em;
-    color: #3c43a4;
+    color: #47AEC5;
 }
 /*-- social-buttons --*/
 .agileits_social_button ul li {
@@ -1635,6 +1635,8 @@ ul.wmuSliderPagination {
         -o-transition: .5s all;
         -ms-transition: .5s all;
         transition: .5s all;
+        text-align: center;
+        padding: 30%;
     }
 
         .agileits_social_button ul li a.twitter {
@@ -1650,7 +1652,7 @@ ul.wmuSliderPagination {
         }
 
         .agileits_social_button ul li a:hover {
-            background-color: #3c43a4;
+            background-color: #337ab7;
             display: block;
             -webkit-border-radius: 50%;
             -moz-border-radius: 50%;
@@ -1758,7 +1760,7 @@ h2.resp-accordion {
     padding: 3em !important;
 }
 
-.modal-title {
+.modal-title2 {
     font-size: 1.5em;
     color: #212121;
     padding-left: 1.5em;
@@ -1949,7 +1951,7 @@ h3.other-nw {
     }
 
         .breadcrumb_dress ul li a {
-            color: #3c43a4;
+            color: #48aec5;
             text-decoration: none;
         }
 
@@ -4686,7 +4688,7 @@ td.invert-image a img {
         top: 11.5%;
     }
 
-    .modal-title {
+    .modal-title2 {
         font-size: 1.3em;
         padding-left: 1em;
     }
@@ -5629,7 +5631,7 @@ td.invert-image a img {
         width: 365px;
     }
 
-    .modal-title {
+    .modal-title2 {
         font-size: 1.2em;
         padding-left: 0em;
     }

@@ -37,7 +37,6 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
-                    <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" SortExpression="Descripcion" />
                     <asp:BoundField DataField="PrecioVenta" HeaderText="Precio de Venta" SortExpression="PrecioVenta" />
                     <asp:BoundField DataField="Categoria.Nombre" HeaderText="Categoria" ReadOnly="True" SortExpression="Categoria.Nombre" />
                     <asp:BoundField DataField="Medida" HeaderText="Medida/Talla" SortExpression="Medida" />

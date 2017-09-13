@@ -96,7 +96,7 @@ function guardarCategoria() {
                 var trActualizado = linkActualizar.parent().parent();
                 var tr =
                     '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaCategoria' + objCategoria.IdCategoria + '" href="javascript:actualizarCategoria(' + objCategoria.IdCategoria + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-social-icon btn-danger actualizarFilaCategoria' + objCategoria.IdCategoria + '" href="javascript:eliminarCategoria(' + objCategoria.IdCategoria + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaCategoria' + objCategoria.IdCategoria + '" href="javascript:eliminarCategoria(' + objCategoria.IdCategoria + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objCategoria.Nombre + '</td>';
                 trActualizado.html(tr);
                 $('#ContentPlaceHolder1_hdnIdCategoria').val('');

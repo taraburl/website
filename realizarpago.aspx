@@ -160,14 +160,11 @@
 </html>
 
 <script type="text/javascript">
-
     var iconsultar = 0;
     var snroOrden;
-
     $(document).ready(function () {
         // RealizarPago();
     });
-
     function RealizarPago()
     {
         iconsultar = 0;

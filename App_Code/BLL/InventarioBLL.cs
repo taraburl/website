@@ -59,6 +59,7 @@ public class InventarioBLL
         objInventario.Glosa = row.glosa;
         objInventario.Fecha = row.fecha;
         objInventario.Hora = row.hora;
+        objInventario.Estado = row.estado;
         objInventario.Eliminado = row.eliminado;
         return objInventario;
     }

@@ -24,7 +24,7 @@ public partial class admin_Inventario_Inventario : System.Web.UI.Page
         return objInventario;
     }
     [WebMethod]
-    public static Inventario ActualizarProducto(string idUsuario, string tipo, string glosa, string id)
+    public static Inventario ActualizarInventario(string idUsuario, string tipo, string glosa, string id)
     {
         InventarioBLL.Update(idUsuario, tipo, glosa, id);
         Inventario objInventario = InventarioBLL.SelectById(Convert.ToInt32(id));
@@ -43,5 +43,12 @@ public partial class admin_Inventario_Inventario : System.Web.UI.Page
             return -1;
         }
 
+    }
+
+    [WebMethod]
+    public static DetalleInventario InsertarDetalle(string idProducto, string cantidad, string idInventario)
+    {
+        DetalleInventario objDetalleInventario = DetalleInventarioBLL.InsertWithReturn(idProducto, cantidad, idInventario);
+        return objDetalleInventario;
     }
 }

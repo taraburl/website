@@ -7,13 +7,25 @@ public class VideoBLL
 {
     public VideoBLL()
     {
-        
+
     }
-    public static Video InsertWithReturn(string url ,string descripcion, string modulo)
+    public static List<Video> SelectByModulo(string modulo)
     {
         VideoDSTableAdapters.tbl_videoTableAdapter adapter
             = new VideoDSTableAdapters.tbl_videoTableAdapter();
-        VideoDS.tbl_videoDataTable table = adapter.InsertWithReturn(url,descripcion, modulo, 0);
+        VideoDS.tbl_videoDataTable table = adapter.selectByModulo(modulo);
+        List<Video> listVideo = new List<Video>();
+        foreach (VideoDS.tbl_videoRow row in table)
+        {
+            listVideo.Add(RowToDto(row));
+        }
+        return listVideo;
+    }
+    public static Video InsertWithReturn(string url, string descripcion, string modulo)
+    {
+        VideoDSTableAdapters.tbl_videoTableAdapter adapter
+            = new VideoDSTableAdapters.tbl_videoTableAdapter();
+        VideoDS.tbl_videoDataTable table = adapter.InsertWithReturn(url, descripcion, modulo, 0);
         if (table.Rows.Count == 0)
         {
             return null;
@@ -22,8 +34,8 @@ public class VideoBLL
     }
     public static Video SelectById(int id)
     {
-         VideoDSTableAdapters.tbl_videoTableAdapter adapter
-             = new VideoDSTableAdapters.tbl_videoTableAdapter();
+        VideoDSTableAdapters.tbl_videoTableAdapter adapter
+            = new VideoDSTableAdapters.tbl_videoTableAdapter();
         VideoDS.tbl_videoDataTable table = adapter.selectById(id);
         if (table.Rows.Count == 0)
         {
@@ -31,11 +43,11 @@ public class VideoBLL
         }
         return RowToDto(table[0]);
     }
-    public static void Update(string url,string descripcion, string modulo, int id)
+    public static void Update(string url, string descripcion, string modulo, int id)
     {
         VideoDSTableAdapters.tbl_videoTableAdapter adapter
             = new VideoDSTableAdapters.tbl_videoTableAdapter();
-        adapter.updateById(url,modulo, descripcion, 0, id, id);
+        adapter.updateById(url, modulo, descripcion, 0, id, id);
     }
     public static void Delete(int id)
     {

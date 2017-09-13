@@ -4,12 +4,17 @@
     <title>SEA-Catalogo de Productos</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <!-- banner -->
-    <div class="banner banner1">
+    <!-- breadcrumbs -->
+    <div class="breadcrumb_dress">
         <div class="container">
-            <h2>Great Offers on <span>Mobiles</span> Flat <i>35% Discount</i></h2>
+            <ul>
+                <li><a href="/index.aspx">
+                    <span class="glyphicon glyphicon-home" aria-hidden="true"></span>Inicio</a> <i>/</i></li>
+                <li>Productos</li>
+            </ul>
         </div>
     </div>
+    <!-- //breadcrumbs -->
     <div class="mobiles">
         <div class="container">
             <div class="w3ls_mobiles_grids">
@@ -20,12 +25,13 @@
                             <h3>Listado de Productos</h3>
                         </div>
                         <div class="w3ls_mobiles_grid_right_grid2_right">
-                            <asp:DropDownList runat="server" ID="IdCategoria" 
+                            <asp:DropDownList runat="server" ID="IdCategoria"
                                 CssClass="select_item select2" DataSourceID="ObjectDataSource2"
-                                 DataTextField="nombre" DataValueField="id" AutoPostBack="True" 
-                                onselectedindexchanged="Unnamed_Click"></asp:DropDownList>
-                            <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" 
-                                OldValuesParameterFormatString="original_{0}" SelectMethod="selectAll" 
+                                DataTextField="nombre" DataValueField="id" AutoPostBack="True"
+                                OnSelectedIndexChanged="Unnamed_Click">
+                            </asp:DropDownList>
+                            <asp:ObjectDataSource ID="ObjectDataSource2" runat="server"
+                                OldValuesParameterFormatString="original_{0}" SelectMethod="selectAll"
                                 TypeName="CategoriaDSTableAdapters.tbl_categoriaTableAdapter"></asp:ObjectDataSource>
                         </div>
                         <div class="clearfix"></div>
@@ -57,9 +63,10 @@
                                             <div>
                                                 <input type="hidden" name="cmd" value="_cart" />
                                                 <input type="hidden" name="add" value="1" />
-                                                <input type="hidden" name="w3ls_item" value="<%# Eval("nombre") %>" />
-                                                <input type="hidden" name="amount" value="<%# Eval("precio") %>" />
-                                                <a href="#" class="w3ls-cart">Agregar al Carrito</a>
+                                                <input type="hidden" id="productoid<%# Eval("id") %>" value="<%# Eval("id") %>" />
+                                                <input type="hidden" id="productonombre<%# Eval("id") %>" value="<%# Eval("nombre") %>" />
+                                                <input type="hidden" id="productoprecio<%# Eval("id") %>" value="<%# Eval("precio") %>" />
+                                                <a href="javascript:agregarCarrito2(<%# Eval("id") %>)" class="w3ls-cart">Agregar al Carrito</a>
                                             </div>
                                         </div>
                                     </div>
@@ -80,30 +87,77 @@
         <div class="modal video-modal fade" id="myModal9" tabindex="-1" role="dialog" aria-labelledby="myModal9">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="modal-header2">
+                        <a href="#" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
                     </div>
                     <section>
                         <div class="modal-body">
                             <div class="col-md-5 modal_body_left">
-                                <img src="" alt=" " class="img-responsive"  id="img-producto"/>
+                                <img src="" alt="logo-producto" class="img-responsive" id="img-producto" />
                             </div>
                             <div class="col-md-7 modal_body_right">
                                 <h4 id="nombre-producto"></h4>
                                 <p id="descripcion-producto"></p>
+                                <h5>Talla:</h5>
+                                <p id="medida"></p>
+                                <h5>Categoria:</h5>
+                                <p id="categoria"></p>
                                 <div class="modal_body_right_cart simpleCart_shelfItem">
-                                    <p><i class="fa fa-usd" id="precio-producto" ></i></p>
+                                    <p><i class="fa fa-usd" id="precio-producto"></i></p>
                                     <input type="hidden" name="cmd" value="_cart" />
                                     <input type="hidden" name="add" value="1" />
-                                    <input type="hidden" name="idproducto" value="id-producto" />
-                                    <input type="hidden" name="w3ls_item" value="" id="nombre-producto2"/>
-                                    <input type="hidden" name="amount" value="" id="precio-producto2"/>
-                                    <a href="#" class="w3ls-cart">Agregar Al Carrito</a>
+                                    <input type="hidden" value="id-producto" id="idproducto" />
+                                    <input type="hidden" value="" id="nombre-producto2" />
+                                    <input type="hidden" value="" id="precio-producto2" />
+                                    <a href="javascript:agregarCarrito();" class="w3ls-cart">Agregar Al Carrito</a>
                                 </div>
                             </div>
                             <div class="clearfix"></div>
                         </div>
                     </section>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div id="modalCarrito" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3 class="modal-title">Carrito de Compras</h3>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="TotalCarrito" value="0"/>
+                        <div class="table-responsive">
+                            <table class="table" id="tbl_carrito">
+                                <thead>
+                                    <tr>
+                                        <th>Eliminar</th>
+                                        <th>Nombre Producto</th>
+                                        <th>Cantidad</th>
+                                        <th>Precio</th>
+                                        <th>Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="4">
+                                            <strong>TOTAL:</strong>
+                                        </td>
+                                        <td colspan="1" id="total-carrito">0
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:pagar();" class="btn btn-success pull-left">Pagar</a>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
                 </div>
             </div>
         </div>

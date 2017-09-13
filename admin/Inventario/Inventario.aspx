@@ -20,8 +20,8 @@
                 <Columns>
                     <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-info actualizarFilaInventario<%# Eval("IdInventario") %>" href="javascript:actualizarInventario(<%# Eval("IdInventario")%>)">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                             <%#Eval("EstadoForDisplay").ToString() == "Consolidado" ? "" :
+                                     String.Format("<a class='btn btn-block btn-social-icon btn-info actualizarFilaInventario{0}' href='javascript:actualizarInventario({0})'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>", Eval("IdInventario")) %>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Eliminar">
@@ -79,20 +79,19 @@
             <div class="col-xs-12">
                 <h4>Listado de Productos</h4>
             </div>
-            <div class="col-xs-12">
+            <div class="col-xs-12 table-responsive">
                 <asp:GridView runat="server" ID="ListadoDeProductos"
                     CssClass="table text-center table-striped table-bordered table-hover table-sm "
                     AutoGenerateColumns="False" DataSourceID="ObjectDataSource1">
                     <Columns>
                         <asp:BoundField DataField="IdProducto" HeaderText="Codigo de Producto" SortExpression="IdProducto" />
                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
-                        <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" SortExpression="Descripcion" />
                         <asp:BoundField DataField="PrecioVenta" HeaderText="Precio devVenta" SortExpression="PrecioVenta" />
                         <asp:BoundField DataField="Medida" HeaderText="Medida/Talla" SortExpression="Medida" />
                         <asp:BoundField DataField="Categoria.Nombre" HeaderText="Categoria" SortExpression="Categoria.Nombre" />
                         <asp:TemplateField HeaderText="Cantidad">
                             <ItemTemplate>
-                                <input type="text" id='Pro<%# Eval("IdProducto")%>' value="0" />
+                                <input type="text" id='Pro<%# Eval("IdProducto")%>' value="0" class="CantProd"/>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

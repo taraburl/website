@@ -100,7 +100,7 @@
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-        <div class="wrapper row5">
+        <div class="wrapper row5" style="margin-top: 100px;">
             <div id="copyright" class="hoc clear">
                 <p class="fl_left">Copyright &copy; 2017 - SEA - <a href="http://sea.com.bo/">www.sea.com.bo</a></p>
                 <p class="fl_right">Desarrollado por <a target="_blank" href="http://osbolivia.com/" title="OSBolivia">OSBolivia</a></p>

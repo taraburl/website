@@ -122,6 +122,29 @@
                             <li><a href="/admin/Inventario/Inventario.aspx"><i class="fa fa-clone"></i>Inventario</a></li>
                         </ul>
                     </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-cart-plus"></i><span>E-Commerce</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-shopping-bag"></i>Ventas</a></li>
+                            <li><a href="#"><i class="fa fa-bookmark-o"></i>Inscripciones</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-cog"></i><span>Configuración</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                            <ul class="treeview-menu">
+                                <li><a href="/admin/Configuracion/formapago.aspx"><i class="fa fa-money"></i>Tipos de Pago</a></li>
+                            </ul>
+                        </a>
+                    </li>
                 </ul>
             </section>
             <!-- /.sidebar-->

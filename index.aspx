@@ -11,13 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" />
-    <link href="Content/font-awesome.min.css" rel="stylesheet" />
-    <link href="Content/animate.css" rel="stylesheet" />
-    <link href="styles/slick/slick.css" rel="stylesheet" />
-    <link href="styles/slick/slick-theme.css" rel="stylesheet" />
-    <link href="styles/listas.css" rel="stylesheet" />
-    <link href="styles/layout.css" rel="stylesheet" />
-    <link href="Content/youmax.css" rel="stylesheet" />
+    <link href="/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="/Content/animate.css" rel="stylesheet" />
+    <link href="/styles/slick/slick.css" rel="stylesheet" />
+    <link href="/styles/slick/slick-theme.css" rel="stylesheet" />
+    <link href="/styles/listas.css" rel="stylesheet" />
+    <link href="/styles/layout.css" rel="stylesheet" />
+    <link href="/Content/styles-menu.css" rel="stylesheet" />
+    <link href="/Content/youmax.css" rel="stylesheet" />
 </head>
 <body id="top">
     <form id="form1" runat="server">
@@ -93,6 +94,49 @@
                         </ul>
                     </nav>
                 </header>
+                <!--<div id='cssmenu'>
+                    <ul>
+                        <li><a href="/index.aspx" style="padding: 0px !important; padding-top: 5px !important; padding-left: 10px !important;">
+                            <img src="/images/logo.png" alt="sea" style="width: 40px; padding: 0px !important;" /></a></li>
+                        <li class='has-sub'>
+                            <a  href="#">Eventos</a>
+                            <ul>
+                                <li><a href="servicios/EventosDeportivos.aspx">Eventos</a></li>
+                            </ul>
+                        </li>
+                        <li class='has-sub'>
+                            <a  href="#">Marketing Deportivo</a>
+                            <ul>
+                                <li><a href="/servicios/Marketing.aspx">Marketing Deportivo</a></li>
+                            </ul>
+                        </li>
+                        <li class='has-sub'>
+                            <a href="#">Club Atlético Juniors</a>
+                            <ul>
+                                <li><a href="/servicios/ClubAtletico.aspx">Club Atletico Juniors</a></li>
+                                <li><a href="/servicios/SoccerAcademy.aspx">Academia de Fútbol</a></li>
+                            </ul>
+                        </li>
+                        <li class='has-sub'>
+                            <a href="#">Complejo Deportivo</a>
+                            <ul>
+                                <li><a href="/servicios/ComplejoDeportivo.aspx">Complejo Deportivo</a></li>
+                            </ul>
+                        </li>
+                        <li class='has-sub'>
+                            <a  href="#">Students & Athletics</a>
+                            <ul>
+                                <li><a href="/servicios/StudentsAthletics.aspx">Students & Athletics</a></li>
+                            </ul>
+                        </li>
+                        <li class='has-sub'>
+                            <a href="#">Sea TV</a>
+                            <ul>
+                                <li><a href="#">SEA TV</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>-->
             </div>
             <div id="pageintro" class="hoc clear">
                 <article>
@@ -292,6 +336,7 @@
         <script src="scripts/wow.min.js"></script>
         <script src="styles/slick/slick.js"></script>
         <script src="scripts/youmax.min.js"></script>
+        <script src="scripts/script-menu.js"></script>
         <script src="scripts/js.js"></script>
         <script type="text/javascript">
             new WOW().init();

@@ -6,6 +6,7 @@ public class TipoPago
 	{
 	}
 
-    int idTipoPago { get; set; }
-    string nombre { get; set; }
+    public int IdTipoPago { get; set; }
+    public string Nombre { get; set; }
+    public int Eliminado { get; set; }
 }

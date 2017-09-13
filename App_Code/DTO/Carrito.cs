@@ -1,16 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
 public class Carrito
 {
-	public Carrito()
-	{
-	}
-    
-    int idCarrito { get; set; }
-    int EstadoCarrito { get; set; }
-    int idOrdenCompra { get; set; }
-    int idProducto { get; set; }
+    public Carrito() { }
 
-    int CantidadProducto { get; set; }
+    public int idCarrito { get; set; }
+    public int EstadoCarrito { get; set; }
+    public int idOrdenCompra { get; set; }
+    public int idProducto { get; set; }
+    public int CantidadProducto { get; set; }
 
 }

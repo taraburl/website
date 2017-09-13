@@ -3,9 +3,10 @@
         apiKey: 'AIzaSyCvcRe4dX3rWAQGhz9TFSoqWNcurrspe0A',
         youTubeChannelURL: "https://www.youtube.com/user/SportsEventsAgency",
         youmaxDefaultTab: "UPLOADS", //can be UPLOADS or PLAYLISTS or FEATURED
-        youmaxColumns: 4,
-        showVideoInLightbox: true,
+        youmaxColumns: 6,
+        showVideoInLightbox: false,
         maxResults: 12,
+        responsiveBreakpoints: [600, 900, 2000, 2500]
     });
     $(".center").slick({
         infinite: true,

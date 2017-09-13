@@ -138,7 +138,6 @@ function guardarProducto() {
                     '<td><a class="btn btn-block btn-social-icon btn-danger actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:eliminarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td><a class="btn btn-block btn-social-icon btn-warning" href="SubirImagenProducto.aspx?ID=' + objProducto.IdProducto + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objProducto.Nombre + '</td>' +
-                    '<td>' + objProducto.Descripcion + '</td>' +
                     '<td>' + objProducto.PrecioVenta + '</td>' +
                     '<td>' + objProducto.Categoria.Nombre + '</td>' +
                     '<td>' + objProducto.Medida + '</td>'
@@ -177,7 +176,6 @@ function guardarProducto() {
                     '<td><a class="btn btn-block btn-social-icon btn-danger actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:eliminarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td><a class="btn btn-block btn-social-icon btn-warning" href="SubirImagenProducto.aspx?ID=' + objProducto.IdProducto + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objProducto.Nombre + '</td>' +
-                    '<td>' + objProducto.Descripcion + '</td>' +
                     '<td>' + objProducto.PrecioVenta + '</td>' +
                     '<td>' + objProducto.Categoria.Nombre + '</td>' +
                     '<td>' + objProducto.Medida + '</td>'
