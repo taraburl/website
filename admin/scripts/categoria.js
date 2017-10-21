@@ -76,7 +76,7 @@ function guardarCategoria() {
         $("#Nombre").parent().addClass("has-error");
         return false;
     } else {
-        $("#Descripcion").parent().removeClass('has-error');
+        $("#Nombre").parent().removeClass('has-error');
     }
     if ($('#ContentPlaceHolder1_hdnIdCategoria').val() != "") {
         //Actualizar

@@ -12,12 +12,7 @@ public partial class carrito_inicio : System.Web.UI.Page
     {
 
     }
-
-    protected void Unnamed_Click(object sender, EventArgs e)
-    {
-        repaterProductos.DataBind();
-        ClientScript.RegisterStartupScript(this.GetType(), "scroll", "window.location.href = 'inicio.aspx#productos'", true);
-    }
+    
     [WebMethod]
     public static Producto TraerProducto(int idProducto)
     {

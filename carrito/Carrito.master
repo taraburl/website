@@ -8,138 +8,236 @@
     <link rel="shortcut icon" type="image/x-icon" href="/images/logo.png" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="keywords" content="SEA-SPORT EVENT AGENCY" />
-    <link href="/Content/bootstrap.css" rel="stylesheet" />
-    <link href="/carrito/css/style.css" rel="stylesheet" />
-    <link href="/carrito/css/fasthover.css" rel="stylesheet" />
-    <link href="/Content/font-awesome.css" rel="stylesheet" />
-    <link href="/admin/js/select2/select2.min.css" rel="stylesheet" />
-    <script src="/scripts/jquery.min.js"></script>
-    <script src="/scripts/bootstrap.min.js"></script>
-    <script src="/admin/js/select2/select2.full.min.js"></script>
-    <link href="/Content/alertifyjs/alertify.css" rel="stylesheet" />
-    <script type="application/x-javascript">
-        addEventListener("load", function() { 
-            setTimeout(hideURLbar, 0); 
-            }, false);
-	    function hideURLbar(){
-         window.scrollTo(0,1);
-         }
-    </script>
-    <script type="text/javascript">
-        jQuery(document).ready(function ($) {
-            $(".scroll").click(function (event) {
-                event.preventDefault();
-                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
-            });
-        });
-    </script>
+    <link href="css/vendor.min.css" rel="stylesheet" />
+    <link href="css/styles.min.css" rel="stylesheet" />
+    <link href="css/customizer.min.css" rel="stylesheet" />
+    <script src="js/modernizr.min.js"></script>
+    <script src="js/vendor.min.js"></script>
+    <script src="js/scripts.min.js"></script>
+    <script src="css/customizer.min.js"></script>
+    <script src="../scripts/jquery-1.9.1.min.js"></script>
+    <script src="js/main.js"></script>
 </head>
 <body>
-    <!-- header -->
-    <div class="header" id="home1">
-        <div class="container">
-            <div class="w3l_logo" style="text-align: center !important;">
-                <h1>
-                    <a href="#">
-                        <img src="/images/logo.png" alt="logo-sea" style="width: 50px;" />
-                    </a>
-                </h1>
+    <noscript>
+      <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-T4DJFPZ" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+    </noscript>
+    <div class="offcanvas-container" id="shop-categories">
+        <div class="offcanvas-header">
+            <h3 class="offcanvas-title">MENU</h3>
+        </div>
+        <nav class="offcanvas-menu">
+            <ul class="menu">
+                <li class="has-children">
+                    <span>
+                        <a href="#">Comprar productos</a>
+                        <span class="sub-menu-toggle"></span>
+                    </span>
+                    <ul class="offcanvas-submenu">
+                        <li><a href="inicio.aspx">Catalogo de Productos</a></li>
+                    </ul>
+                </li>
+                <li class="has-children">
+                    <span>
+                        <a href="#">Academia de Futbol</a>
+                        <span class="sub-menu-toggle"></span>
+                    </span>
+                    <ul class="offcanvas-submenu">
+                        <li>
+                            <a href="Inscripciones.aspx">Formulario de Inscripcion</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Menu Celulares -->
+    <div class="offcanvas-container" id="mobile-menu">
+        <a class="account-link" href="MiPerfil.aspx">
+            <div class="user-ava">
+                <img src="" alt="foto-perfil" class="imgPerfil" />
             </div>
-            <div class="cart cart box_1">
-                <input type="hidden" name="cmd" value="_cart" />
-                <input type="hidden" name="display" value="1" />
-                <a class="w3view-cart btn btn-sm" href="#" data-toggle="modal" data-target="#modalCarrito"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a>
+            <div class="user-info">
+                <h6 class="user-name"></h6>
             </div>
+        </a>
+        <nav class="offcanvas-menu">
+            <ul class="menu">
+                <li><a href="Inscripciones.aspx">Inscriciones: Academia SEA</a></li>
+                <li><a href="inicio.aspx">Catalogo de Productos</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Topbar-->
+    <div class="topbar">
+        <div class="topbar-column">
+            <a class="hidden-md-down" href="mailto:info@sea.com.bo">
+                <i class="icon-mail"></i>&nbsp; info@sea.com.bo</a>
+            <a class="hidden-md-down" href="tel:00331697720">
+                <i class="icon-bell"></i>&nbsp; +591 347-4704</a>
+            <a class="social-button sb-facebook shape-none sb-dark" href="https://www.facebook.com/sports.events.agency/" target="_blank">
+                <i class="socicon-facebook"></i></a>
+            <a class="social-button sb-twitter shape-none sb-dark" href="https://twitter.com/SEA_SRL" target="_blank">
+                <i class="socicon-twitter"></i></a>
+            <a class="social-button sb-instagram shape-none sb-dark" href="https://www.instagram.com/sea_srl/?hl=es" target="_blank">
+                <i class="socicon-instagram"></i></a>
+            <a class="social-button sb-youtube shape-none sb-dark" href="https://www.youtube.com/user/SportsEventsAgency" target="_blank">
+                <i class="socicon-youtube"></i></a>
         </div>
     </div>
-    <!-- //header -->
-    <!-- navigation -->
-    <div class="navigation">
-        <div class="container">
-            <nav class="navbar navbar-default">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header nav_2">
-                    <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-                    <ul class="nav navbar-nav">
-                        <li><a href="/index.aspx">Inicio</a></li>
-                        <li><a href="/carrito/inicio.aspx">Productos</a></li>
-                        <li><a href="/carrito/inscripciones.aspx">Inscripciones</a></li>
-                    </ul>
-                </div>
-            </nav>
+    <header class="navbar navbar-sticky">
+        <div class="site-branding">
+            <div class="inner">
+                <!-- Off-Canvas Toggle (#shop-categories)-->
+                <a class="offcanvas-toggle cats-toggle" href="#shop-categories"
+                    data-toggle="offcanvas"></a>
+                <!-- Off-Canvas Toggle (#mobile-menu)-->
+                <a class="offcanvas-toggle menu-toggle" href="#mobile-menu"
+                    data-toggle="offcanvas"></a>
+                <!-- Site Logo-->
+                <a class="site-logo" href="#">
+                    <img src="../images/logo.png" alt="SEA-logo" style="width: 50px !important;" /></a>
+            </div>
         </div>
-    </div>
-    <form id="form1" runat="server">
-        <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
-    </form>
-    <div class="footer">
-        <div class="container">
-            <div class="w3_footer_grids">
-                <div class="col-md-3 w3_footer_grid">
-                    <h3>DONDE ESTAMOS</h3>
-                    <ul class="address">
-                        <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Av. Paragua 4to anillo, <span>Santa Cruz de la Sierra.</span></li>
-                        <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@sea.com.bo</a></li>
-                        <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+591 78557777</li>
-                        <li><i class="glyphicon glyphicon-phone" aria-hidden="true"></i>+591 347-4704</li>
+        <!-- Main Navigation-->
+        <nav class="site-menu">
+            <ul>
+                <li class="has-megamenu">
+                    <a href="#"><span>Inicio</span></a>
+                    <ul class="mega-menu">
+                        <li><a class="d-block img-thumbnail text-center navi-link"
+                            href="/carrito/inicio.aspx">
+                            <img alt="Featured Products Slider"
+                                src="../images/04.jpg" />
+                            <h6 class="mt-3">Catálogo de Productos</h6>
+                        </a></li>
+                        <li><a class="d-block img-thumbnail text-center navi-link"
+                            href="/carrito/inscripciones.aspx">
+                            <img alt="Featured Categories"
+                                src="../images/04.jpg" />
+                            <h6 class="mt-3">Inscripciones a la Academia de Futbol SEA</h6>
+                        </a></li>
                     </ul>
-                </div>
-                <div class="col-md-3 w3_footer_grid">
-                    <h3>Informacion</h3>
-                    <ul class="info">
-                        <li><a href="/index.aspx">Inicio</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 w3_footer_grid">
-                    <h3>Categorias</h3>
-                    <ul class="info">
-                        <li><a href="/carrito/inicio">Productos</a></li>
-                        <li><a href="/carrito/Inscripciones.aspx">Inscripciones</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 w3_footer_grid">
-                    <h3>Perfil</h3>
-                    <ul class="info">
-                        <li><a href="#">Inicio</a></li>
-                    </ul>
-                    <h4>Follow Us</h4>
-                    <div class="agileits_social_button">
-                        <ul>
-                            <li><a href="https://www.facebook.com/sports.events.agency/" target="_blank" class="facebook"><i class="fa fa-facebook-f"></i></a></li>
-                            <li><a href="https://twitter.com/SEA_SRL" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="https://www.youtube.com/user/SportsEventsAgency" target="_blank" class="google"><i class="fa fa-youtube-play"></i></a></li>
-                            <li><a href="https://www.instagram.com/sea_srl/?hl=es" target="_blank" class="pinterest"><i class="fa fa-instagram"></i></a></li>
+                </li>
+            </ul>
+        </nav>
+        <!-- Toolbar-->
+        <div class="toolbar">
+            <div class="inner">
+                <div class="tools">
+                    <div class="account">
+                        <a href="MiCarrito.aspx"></a><i class="icon-head"></i>
+                        <ul class="toolbar-dropdown">
+                            <li class="sub-menu-user">
+                                <div class="user-ava">
+                                    <img src="" alt="perfil" class="imgPerfil"/>
+                                </div>
+                                <div class="user-info">
+                                    <h6 class="user-name"></h6>
+                                </div>
+                            </li>
+                            <li><a href="MiPerfil.aspx">Mi Perfil</a></li>
+                            <li><a href="#">Mis Compras</a></li>
+                            <li class="sub-menu-separator"></li>
+                            <li><a href="javascript:logout();"><i class="icon-unlock"></i>Salir</a></li>
                         </ul>
                     </div>
+                    <div class="cart">
+                        <a href="MiCarrito.aspx"></a>
+                        <i class="icon-bag"></i>
+                        <span class="count" id="cantProductos">0</span>
+                        <span class="subtotal" id="Total">0</span>
+                        <div class="toolbar-dropdown">
+                            <div id="detallePedido"></div>
+                            <div class="toolbar-dropdown-group">
+                                <div class="column">
+                                    <span class="text-lg">Total:</span>
+                                </div>
+                                <div class="column text-right">
+                                    <span class="text-lg text-medium" id="TotalDetalle"></span>
+                                </div>
+                            </div>
+                            <div class="toolbar-dropdown-group">
+                                <div class="column">
+                                    <a class="btn btn-sm btn-block btn-secondary" href="MiCarrito.aspx">Ver Carrito</a>
+                                </div>
+                                <div class="column">
+                                    <a class="btn btn-sm btn-block btn-success" href="javascript:finalizar()">Finalizar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="clearfix"></div>
             </div>
         </div>
-        <div class="footer-copy">
-            <div class="footer-copy1">
-                <div class="footer-copy-pos">
-                    <a href="#home1" class="scroll">
-                        <img src="/images/arrow.png" alt=" " class="img-responsive" /></a>
-                </div>
+    </header>
+    <div class="offcanvas-wrapper">
+        <form id="form1" runat="server">
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
             </div>
+        </form>
+        <footer class="site-footer">
             <div class="container">
-                <p>&copy; Copyright © 2017 - SEA - www.sea.com.bo | Desarrollado por  <a href="http://www.osbolivia.com/" target="_blank">OSBolivia</a></p>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <!-- Contact Info-->
+                        <section class="widget widget-light-skin">
+                            <h3 class="widget-title">Contáctanos</h3>
+                            <p class="text-white">Teléfono: +591 347 4704</p>
+                            <p class="text-white">Celular: +591 785 57777</p>
+                            <p><a class="navi-link-light" href="mailto:info@sea.com.bo">info@sea.comb.bo</a></p>
+                            <a class="social-button shape-circle sb-facebook sb-light-skin" href="#"><i class="socicon-facebook"></i></a>
+                            <a class="social-button shape-circle sb-twitter sb-light-skin" href="#"><i class="socicon-twitter"></i></a>
+                            <a class="social-button shape-circle sb-instagram sb-light-skin" href="#"><i class="socicon-instagram"></i></a>
+                            <a class="social-button shape-circle sb-youtube sb-light-skin" href="#"><i class="socicon-youtube"></i></a>
+                        </section>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <!-- Mobile App Buttons-->
+                        <section class="widget widget-light-skin">
+                            <h3 class="widget-title">Descaraga Nuestra 
+                                aplicación
+                            </h3>
+                            <a class="market-button apple-button mb-light-skin" href="#">
+                                <span class="mb-subtitle">Descargar en la </span>
+                                <span class="mb-title">App Store</span>
+                            </a>
+                            <a class="market-button google-button mb-light-skin" href="#">
+                                <span class="mb-subtitle">Descargarla en </span>
+                                <span class="mb-title">Google Play</span>
+                            </a>
+                        </section>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <!-- About Us-->
+                        <section class="widget widget-links widget-light-skin">
+                            <h3 class="widget-title">Acerca de Nosotros</h3>
+                            <ul>
+                                <li><a href="../index.aspx">Inicio</a></li>
+                            </ul>
+                        </section>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <!-- Account / Shipping Info-->
+                        <section class="widget widget-links widget-light-skin">
+                            <h3 class="widget-title">Mi Cuenta</h3>
+                            <ul>
+                                <li><a href="MiPerfil.aspx">Mi Perfil</a></li>
+                                <li><a href="#">Información de Entrega</a></li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+                <!-- Copyright-->
+                <p class="footer-copyright">© Todos los derechos reservado. Desarrollado &nbsp;<a href="http://www.osbolivia.com/" target="_blank"> &nbsp;por OsBolivia</a></p>
             </div>
-        </div>
+        </footer>
     </div>
-    <script src="/scripts/jquery.flexisel.js"></script>
-    <script src="/scripts/alertify.js"></script>
+    <a class="scroll-to-top-btn" href="#"><i class="icon-arrow-up"></i></a>
+    <div class="site-backdrop"></div>
 </body>
 </html>

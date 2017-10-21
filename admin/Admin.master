@@ -65,7 +65,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="/MyProfile.aspx" class="btn btn-default btn-flat">Perfil</a>
+                                        <a href="../servicios/MyProfile.aspx" class="btn btn-default btn-flat">Perfil</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="javascript:logout();" class="btn btn-default btn-flat">Cerrar Sesion</a>
@@ -97,6 +97,18 @@
                     <li><a href="/index.aspx"><i class="fa fa-newspaper-o" aria-hidden="true"></i><span>Inicio</span></a></li>
                     <li><a href="/admin/Usuarios.aspx"><i class="fa fa-user-circle-o" aria-hidden="true"></i><span>Usuarios</span></a></li>
                     <li><a href="/admin/Sponsors.aspx"><i class="fa fa-get-pocket" aria-hidden="true"></i><span>Sponsors</span></a></li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-futbol-o"></i><span>Academia</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/admin/academia/categorias.aspx"><i class="fa fa-caret-up"></i>Categorias</a></li>
+                            <li><a href="/admin/ecommerce/inscripciones.aspx"><i class="fa fa-bookmark-o"></i>Inscripciones</a></li>
+                        </ul>
+                    </li>
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-picture-o"></i><span>Galeria</span>
@@ -131,7 +143,17 @@
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="#"><i class="fa fa-shopping-bag"></i>Ventas</a></li>
-                            <li><a href="#"><i class="fa fa-bookmark-o"></i>Inscripciones</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-file-archive-o"></i><span>Reportes</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-file-pdf-o"></i>Estado de Inventario</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -140,10 +162,10 @@
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
-                            <ul class="treeview-menu">
-                                <li><a href="/admin/Configuracion/formapago.aspx"><i class="fa fa-money"></i>Tipos de Pago</a></li>
-                            </ul>
                         </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/admin/Configuracion/formapago.aspx"><i class="fa fa-money"></i>Tipos de Pago</a></li>
+                        </ul>
                     </li>
                 </ul>
             </section>

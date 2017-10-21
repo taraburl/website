@@ -918,7 +918,7 @@ input:focus, textarea:focus, *:required:focus {
     background-image: url(../images/footer.jpg);
     background-position: center;
     background-attachment: fixed;
-    margin-top: 35px;
+    margin-top: 25px;
     z-index: 100;
     width: 100%; /* hacemos que la cabecera ocupe el ancho completo de la página */
     left: 0; /* Posicionamos la cabecera al lado izquierdo */
@@ -1170,7 +1170,7 @@ table a {
 
     #header {
         text-align: center;
-        margin-top: 65px;
+        margin-top: 45px;
     }
 
         #header #logo {

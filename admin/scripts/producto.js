@@ -30,6 +30,8 @@ function newProducto() {
     $('#Descripcion').val('');
     $('#PrecioVenta').val('');
     $('#Medida').val('');
+    $("#Costo").val('');
+    $("#ContentPlaceHolder1_Stock").val('');
     $('#ContentPlaceHolder1_hdnIdProducto').val('');
     $("#new").show();
     $("#upd").hide();
@@ -67,6 +69,8 @@ function actualizarProducto(id) {
     $('#Descripcion').val('');
     $('#PrecioVenta').val('');
     $('#Medida').val('');
+    $('#Costo').val('');
+    $("#ContentPlaceHolder1_Stock").val('');
     $("#new").hide();
     $("#upd").show();
     $(".input-group").removeClass('has-error');
@@ -88,6 +92,8 @@ function actualizarProducto(id) {
             $('#Descripcion').val(ObjProducto.Descripcion);
             $('#PrecioVenta').val(ObjProducto.PrecioVenta);
             $('#Medida').val(ObjProducto.Medida);
+            $('#Costo').val(ObjProducto.Costo);
+            $('#ContentPlaceHolder1_Stock').val(ObjProducto.Stock);
             $('#ContentPlaceHolder1_IdCategoria').val(ObjProducto.IdCategoria).trigger('change');
             $('#ContentPlaceHolder1_hdnIdProducto').val(ObjProducto.IdProducto);
         }
@@ -113,6 +119,12 @@ function guardarProducto() {
     } else {
         $("#PrecioVenta").parent().removeClass('has-error');
     }
+    if (!$('#Costo').val() || !$('#Costo').val().trim().length) {
+        $("#Costo").parent().addClass("has-error");
+        return false;
+    } else {
+        $("#Costo").parent().removeClass('has-error');
+    }
     if ($('#ContentPlaceHolder1_hdnIdProducto').val() != "") {
         //Actualizar
         var parametros = {
@@ -121,7 +133,9 @@ function guardarProducto() {
             idcategoria: $('#ContentPlaceHolder1_IdCategoria').val(),
             id: $('#ContentPlaceHolder1_hdnIdProducto').val(),
             precio: $('#PrecioVenta').val(),
-            medida: $('#Medida').val()
+            costo: $('#Costo').val(),
+            medida: $('#Medida').val(),
+            stock: $('#ContentPlaceHolder1_Stock').val()
         };
         $.ajax({
             url: 'Productos.aspx/ActualizarProducto',
@@ -152,6 +166,8 @@ function guardarProducto() {
                 $("#Nombre").parent().addClass("has-error");
                 $("#PrecioVenta").parent().addClass("has-error");
                 $("#Medida").parent().addClass("has-error");
+                $("#Costo").parent().addClass("has-error");
+                $("#StockContentPlaceHolder1_Stock").val('');
             }
         });
     } else {
@@ -161,7 +177,8 @@ function guardarProducto() {
             nombre: $('#Nombre').val(),
             idcategoria: $('#ContentPlaceHolder1_IdCategoria').val(),
             precio: $('#PrecioVenta').val(),
-            medida: $('#Medida').val()
+            medida: $('#Medida').val(),
+            costo: $('#Costo').val()
         };
         $.ajax({
             url: 'Productos.aspx/InsertarProducto',
@@ -191,6 +208,7 @@ function guardarProducto() {
                 $("#Nombre").parent().addClass("has-error");
                 $("#PrecioVenta").parent().addClass("has-error");
                 $("#Medida").parent().addClass("has-error");
+                $("#Costo").partent().addClass("has-error");
             }
         });
     }

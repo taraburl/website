@@ -1,4 +1,17 @@
-﻿.slider {
+﻿a {
+    color: white !important;
+}
+
+    a:hover {
+        color: #47AEC5 !important;
+        text-decoration: none;
+    }
+
+.btn.inverse:hover {
+    color: white !important;
+}
+
+.slider {
     width: 100%;
     margin: 20px auto 10px auto;
 }

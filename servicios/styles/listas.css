@@ -1,4 +1,21 @@
-﻿.slider {
+﻿a {
+    color: white !important;
+}
+
+    a:hover {
+        color: #47AEC5 !important;
+        text-decoration: none;
+    }
+
+.btn.inverse:hover {
+    color: white !important;
+}
+
+.btn-primary:hover {
+    color: white !important;
+}
+
+.slider {
     width: 100%;
     margin: 3% auto 0px auto;
 }
@@ -79,16 +96,17 @@
         width: -webkit-fill-available !important;
     }
 }
-.boton-pi{
+
+.boton-pi {
     color: #FFF;
 }
 
-.boton-pi:hover {
-    color: #FFF !important;
-}
+    .boton-pi:hover {
+        color: #FFF !important;
+    }
 
-.caption2{
-    margin:0 !important;
+.caption2 {
+    margin: 0 !important;
     font-size: 25px;
     padding: 1% 0 1% 0;
 }

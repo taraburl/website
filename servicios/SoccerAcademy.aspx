@@ -47,13 +47,12 @@
                 </p>
                 <h2 class="wow bounceInLeft subtitulo" data-wow-delay="0.7s">NUESTRAS CATEGORIAS</h2>
                 <ul>
-                    <li class="wow bounceInLeft" data-wow-delay="0.8s"><strong>Baby Juniors</strong> - 3 a 5 años</li>
-                    <li class="wow bounceInLeft" data-wow-delay="0.8s"><strong>Little Juniors</strong> - 5 a 7 años</li>
-                    <li class="wow bounceInLeft" data-wow-delay="0.8s"><strong>Rookie Juniors</strong> - 8 a 10 años</li>
-                    <li class="wow bounceInLeft" data-wow-delay="0.8s"><strong>Pre Juniors</strong> - 11 a 13 años</li>
-                    <li class="wow bounceInLeft" data-wow-delay="0.8s"><strong>Juniors</strong> - 14 a16 años</li>
-                    <li class="wow bounceInLeft" data-wow-delay="0.8s"><strong>Pro Juniors</strong> - 17 a 22 años</li>
-                    <li class="wow bounceInLeft" data-wow-delay="0.8s"><strong>Pink Juniors</strong> - Damas Arqueros Juniors</li>
+                    <asp:Repeater runat="server" ID="CategoriaRepeater" DataSourceID="ObjectDataSource4">
+                        <ItemTemplate>
+                            <li class="wow bounceInLeft" data-wow-delay="0.8s"><strong><%#Eval("Nombre") %></strong> - <%#Eval("Descripcion") %></li>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                    <asp:ObjectDataSource ID="ObjectDataSource4" runat="server" SelectMethod="SelectAll" TypeName="CategoriaAcademiaBLL"></asp:ObjectDataSource>
                 </ul>
             </div>
         </main>
@@ -83,8 +82,30 @@
         </div>
     </div>-->
     <div class="wrapper row3">
-        <div class=" container clear">
-            <div class="content">
+        <div class="group">
+            <div class="content-lg container">
+                <div class="col-xs-12 col-lg-6 col-md-6">
+                    <div class="card">
+                        <img class="card-img-top" src="../images/background3.jpg" alt="Card image cap" />
+                        <div class="card-block">
+                            <h4 class="card-title">CATALOGO DE PRODUCTOS</h4>
+                            <p class="card-text">Puedes comprar tus unifomes.</p>
+                            <a href="../carrito/inicio.aspx" class="btn btn-primary">IR AL CATALOGO DE PRODUCTOS</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-6 col-md-6">
+                    <div class="card">
+                        <img class="card-img-top" src="../images/background3.jpg" alt="Card image cap" />
+                        <div class="card-block">
+                            <h4 class="card-title">INSCRIPCIONES</h4>
+                            <p class="card-text">Puedes Inscribirte a nuestros diferentes curs`</p>
+                            <a href="../carrito/Inscripciones.aspx" class="btn btn-primary">IR AL FORMULARIO DE INSCRIPCIONES</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div-- class="content">
                 <div class="bgimg-1 one_half first" style="background-image: url(/images/background2.jpg) !important;">
                     <div class="caption">
                         <span class="border">
@@ -99,7 +120,7 @@
                         </span>
                     </div>
                 </div>
-            </div>
+            </div-->
         </div>
     </div>
     <!--<div class="wrapper row5">
@@ -121,7 +142,7 @@
     <div class="wrapper row3">
         <div class="clear" style="margin: 0 1% 1% 1%;">
             <div id="js-grid-masonry" class="cbp">
-                <asp:repeater id="repaterGallery" runat="server" datasourceid="ObjectDataSource1">
+                <asp:Repeater ID="repaterGallery" runat="server" DataSourceID="ObjectDataSource1">
                     <ItemTemplate>
                         <div class="cbp-item">
                             <a href="/images/galeria/<%# Eval("ID") %>.jpg" class="cbp-caption cbp-lightbox" data-title="<%# Eval("Descripcion") %>">
@@ -138,12 +159,12 @@
                             </a>
                         </div>
                     </ItemTemplate>
-                </asp:repeater>
-                <asp:objectdatasource id="ObjectDataSource1" runat="server" oldvaluesparameterformatstring="original_{0}" selectmethod="selectByModulo" typename="ImagenDSTableAdapters.tbl_imagenesTableAdapter">
+                </asp:Repeater>
+                <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="selectByModulo" TypeName="ImagenDSTableAdapters.tbl_imagenesTableAdapter">
                     <SelectParameters>
                         <asp:SessionParameter Name="modulo" SessionField="modulo" Type="String" />
                     </SelectParameters>
-                </asp:objectdatasource>
+                </asp:ObjectDataSource>
             </div>
         </div>
     </div>
@@ -166,7 +187,7 @@
     <div class="wrapper row3">
         <div class="clear" style="margin: 0 1% 1% 1%;">
             <div id="js-grid-masonry2" class="cbp">
-                <asp:repeater runat="server" ID="repeaterVideos" datasourceid="ObjectDataSource3">
+                <asp:Repeater runat="server" ID="repeaterVideos" DataSourceID="ObjectDataSource3">
                     <ItemTemplate>
                         <div class="cbp-item graphic">
                             <div class="cbp-caption">
@@ -185,12 +206,12 @@
                             </div>
                         </div>
                     </ItemTemplate>
-                </asp:repeater>
-                <asp:objectdatasource id="ObjectDataSource2" runat="server" oldvaluesparameterformatstring="original_{0}" selectmethod="selectByModulo" typename="VideoDSTableAdapters.tbl_videoTableAdapter">
+                </asp:Repeater>
+                <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="selectByModulo" TypeName="VideoDSTableAdapters.tbl_videoTableAdapter">
                     <SelectParameters>
                         <asp:SessionParameter Name="modulo" SessionField="modulo" Type="String" />
                     </SelectParameters>
-                </asp:objectdatasource>
+                </asp:ObjectDataSource>
                 <asp:ObjectDataSource ID="ObjectDataSource3" runat="server" SelectMethod="SelectByModulo" TypeName="VideoBLL">
                     <SelectParameters>
                         <asp:SessionParameter Name="modulo" SessionField="modulo" Type="String" />

@@ -20,10 +20,13 @@ public class ProductoBLL
         }
         return listProducto;
     }
-    public static Producto InsertWithReturn(string descripcion, string nombre, string precio, string medida, string idcategoria)
+    public static Producto InsertWithReturn(string descripcion, string nombre,
+        string precio, string medida, string idcategoria, string costo)
     {
         ProductoDSTableAdapters.tbl_productoTableAdapter adapter = new ProductoDSTableAdapters.tbl_productoTableAdapter();
-        ProductoDS.tbl_productoDataTable table = adapter.InsertWithReturn(descripcion, nombre, Convert.ToDouble(precio), medida, Convert.ToInt32(idcategoria), 0);
+        ProductoDS.tbl_productoDataTable table = adapter.InsertWithReturn(descripcion,
+            nombre, Convert.ToDouble(precio), medida, Convert.ToInt32(idcategoria), 0,
+            Convert.ToDouble(costo), 0);
         if (table.Rows.Count == 0)
         {
             return null;
@@ -40,10 +43,13 @@ public class ProductoBLL
         }
         return RowToDto(table[0]);
     }
-    public static void Update(string descripcion, string nombre, string precio, string medida, string idcategoria, string id)
+    public static void Update(string descripcion, string nombre, string precio,
+        string medida, string idcategoria, string id, string costo, string stock)
     {
         ProductoDSTableAdapters.tbl_productoTableAdapter adapter = new ProductoDSTableAdapters.tbl_productoTableAdapter();
-        adapter.updateById(descripcion, nombre, Convert.ToDouble(precio), medida, Convert.ToInt32(idcategoria), 0, Convert.ToInt32(id), Convert.ToInt32(id));
+        adapter.updateById(descripcion, nombre, Convert.ToDouble(precio), medida,
+            Convert.ToInt32(idcategoria), 0, Convert.ToInt32(id), Convert.ToInt32(id),
+            Convert.ToDouble(costo), Convert.ToInt32(stock));
     }
     public static void Delete(int id)
     {
@@ -60,6 +66,8 @@ public class ProductoBLL
         objProducto.Medida = row.medida;
         objProducto.IdCategoria = row.idcategoria;
         objProducto.Eliminado = row.eliminado;
+        objProducto.Costo = row.costo;
+        objProducto.Stock = row.stock;
         return objProducto;
     }
 }

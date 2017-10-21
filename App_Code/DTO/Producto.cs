@@ -14,6 +14,8 @@ public class Producto
     public double PrecioVenta { get; set; }
     public String Medida { get; set; }
     public int IdCategoria { get; set; }
+    public double Costo { get; set; }
+    public int Stock { get; set; }
     public int Eliminado { get; set; }
     public Categoria Categoria
     {

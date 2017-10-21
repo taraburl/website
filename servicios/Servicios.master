@@ -5,20 +5,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="../Content/animate.min.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <meta charset="utf-8" />
     <link rel="shortcut icon" type="image/x-icon" href="/images/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
-    <link href="/Content/font-awesome.min.css" rel="stylesheet" />
-    <link href="/styles/layout.css" rel="stylesheet" />
-    <link href="/styles/slick/slick.css" rel="stylesheet" />
-    <link href="/styles/slick/slick-theme.css" rel="stylesheet" />
+    <link href="../Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="../styles/layout.css" rel="stylesheet" />
+    <link href="../Content/animate.min.css" rel="stylesheet" />
+    <link href="../styles/slick/slick.css" rel="stylesheet" />
+    <link href="../styles/slick/slick-theme.css" rel="stylesheet" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="styles/listas.css" rel="stylesheet" />
-    <link href="/styles/cubeportfolio.min.css" rel="stylesheet" />
-    <link href="/Content/youmax.css" rel="stylesheet" />
+    <link href="../styles/cubeportfolio.min.css" rel="stylesheet" />
+    <!--<link href="../Content/youmax.css" rel="stylesheet" />-->
 </head>
 <body id="top" class="inner-page masonry-page">
     <div class="topspacer bgded overlay wb-header" style="background-image: url('../images/eventos/3.jpg');">
@@ -36,8 +37,8 @@
                         <li id="login"><a href="../login.aspx?form=login" runat="server">Iniciar Sesion</a></li>
                         <li id="signup"><a href="../login.aspx?form=signup" runat="server">Registrarse</a></li>
                         <li id="miperfil">
-                            <img src="../images/profile.png" id="imagenperfil2" alt="img-perfil" style="width: 20px; height: 20px; border-radius: 50%;" />
-                            <a href="MyProfile.aspx" runat="server"></a></li>
+                            <img src="../images/profile.png" id="imagenperfil2" alt="img-perfil" style="width: 10px; height: 10px; border-radius: 50%;" />
+                            <a href="~/carrito/MiPerfil.aspx" runat="server"></a></li>
                         <li id="pnladmin" style="display: none;"><a href="../admin/index.aspx" runat="server">Panel Adm.</a></li>
                         <li id="logout"><a href="javascript:logout2();"><i class="fa fa-sign-out" aria-hidden="true"></i>Salir</a></li>
                     </ul>
@@ -51,7 +52,7 @@
                         <img src="../images/logo.png" alt="sea" style="width: 60px;" /></a></h1>
                 </div>
                 <nav id="mainav" class="fl_right">
-                    <ul class="clear" style="font-size: 11px !important;">
+                    <ul class="clear">
                         <li><a href="../index.aspx">Inicio</a></li>
                         <li>
                             <a class="drop" href="#">Eventos</a>

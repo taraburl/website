@@ -12,4 +12,6 @@ public class OrdenCompra
     public int IdEstadoCompra { get; set; }
     public int IdTipoPago { get; set; }
     public int IdUsuario { get; set; }
+    public Double Total { get; set; }
+    public int Eliminado { get; set; }
 }

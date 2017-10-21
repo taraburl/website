@@ -14,9 +14,11 @@ public partial class admin_Inventario_Productos : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static Producto InsertarProducto(string descripcion, string nombre, string precio, string medida, string idcategoria)
+    public static Producto InsertarProducto(string descripcion, string nombre,
+        string precio, string medida, string idcategoria, string costo)
     {
-        Producto objProducto = ProductoBLL.InsertWithReturn(descripcion, nombre,precio, medida, idcategoria);
+        Producto objProducto = ProductoBLL.InsertWithReturn(descripcion, nombre, precio,
+            medida, idcategoria, costo);
         return objProducto;
     }
     [WebMethod]
@@ -26,9 +28,11 @@ public partial class admin_Inventario_Productos : System.Web.UI.Page
         return objProducto;
     }
     [WebMethod]
-    public static Producto ActualizarProducto(string descripcion, string nombre, string precio, string medida, string idcategoria, string id)
+    public static Producto ActualizarProducto(string descripcion, string nombre,
+        string precio, string medida, string idcategoria, string id, string costo, 
+        string stock)
     {
-        ProductoBLL.Update(descripcion, nombre, precio, medida, idcategoria,id);
+        ProductoBLL.Update(descripcion, nombre, precio, medida, idcategoria, id, costo,stock);
         Producto objProducto = ProductoBLL.SelectById(Convert.ToInt32(id));
         return objProducto;
     }

@@ -11,14 +11,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" />
-    <link href="/Content/font-awesome.min.css" rel="stylesheet" />
-    <link href="/Content/animate.css" rel="stylesheet" />
-    <link href="/styles/slick/slick.css" rel="stylesheet" />
-    <link href="/styles/slick/slick-theme.css" rel="stylesheet" />
-    <link href="/styles/listas.css" rel="stylesheet" />
-    <link href="/styles/layout.css" rel="stylesheet" />
-    <link href="/Content/styles-menu.css" rel="stylesheet" />
-    <link href="/Content/youmax.css" rel="stylesheet" />
+    <link href="Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="styles/layout.css" rel="stylesheet" />
+    <link href="Content/animate.css" rel="stylesheet" />
+    <link href="styles/slick/slick.css" rel="stylesheet" />
+    <link href="styles/slick/slick-theme.css" rel="stylesheet" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="styles/listas.css" rel="stylesheet" />
+    <!--<link href="/Content/styles-menu.css" rel="stylesheet" />
+    <link href="/Content/youmax.css" rel="stylesheet" />-->
 </head>
 <body id="top">
     <form id="form1" runat="server">
@@ -37,8 +38,8 @@
                             <li id="login"><a href="login.aspx?form=login" runat="server">Iniciar Sesión</a></li>
                             <li id="signup"><a href="login.aspx?form=signup" runat="server">Registrarse</a></li>
                             <li id="miperfil">
-                                <img src="images/profile.png" id="imagenperfil" alt="img-perfil" style="width: 20px; height: 20px; border-radius: 50%;" />
-                                <a href="servicios/MyProfile.aspx" runat="server"></a></li>
+                                <img src="images/profile.png" id="imagenperfil" alt="img-perfil" style="width: 10px; height: 10px; border-radius: 50%;" />
+                                <a href="~/carrito/MiPerfil.aspx" runat="server"></a></li>
                             <li id="pnladmin" style="display: none;"><a href="admin/index.aspx" runat="server">Panel Adm.</a></li>
                             <li id="logout"><a href="javascript:logout();"><i class="fa fa-sign-out" aria-hidden="true"></i>Salir</a></li>
                         </ul>
@@ -157,7 +158,7 @@
             <div class="auspiciadores-title">
                 <p>CON EL APOYO DE:</p>
             </div>
-            <section class="center2 slider">
+            <section class="center2 slider" id="conocenos">
                 <div>
                     <img src="images/sponsors2/alianza.png" alt="alianza" />
                 </div>
@@ -175,30 +176,56 @@
                 </div>
             </section>
         </div>
-        <div class="wrapper row3" id="conocenos" style="top: 20%;">
-            <div class="hoc container clear">
-                <div class="group">
-                    <section class="wow fadeInUp" data-wow-delay="0.9s">
-                        <h6 class="heading mision">MISIÓN</h6>
-                        <p class="btmspace-30 misionvisionp">
-                            Ayudar a la mejora del bienestar de las personas mediante la práctica del deporte,
-             con ética profesional mediante el Marketing Deportivo.
-                        </p>
-                    </section>
-                </div>
-                <div class="group">
-                    <section class="wow fadeInUp" data-wow-delay="0.9s">
-                        <h6 class="heading vision">VISIÓN</h6>
-                        <p class="btmspace-30 misionvisionp">
-                            Ser una corporación deportiva líder y de referencia a nivel nacional,
-             mediante nuestras unidades de negocios buscamos fomentar la práctica del deporte sano, el respeto mutuo y el trabajo en equipo.
-                        </p>
-                    </section>
+        <div class="wrapper row3" style="top: 20%;">
+            <div class="group">
+                <div class="content-lg container">
+                    <!-- Masonry Grid -->
+                    <div class="masonry-grid row">
+                        <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-6 sm-margin-b-30">
+                            <div class="margin-b-60">
+                                <h2>MISIÓN</h2>
+                                <p>
+                                    Ayudar a la mejora del bienestar de las personas mediante la práctica del deporte,
+                                        con ética profesional mediante el Marketing Deportivo.
+                                </p>
+                            </div>
+                            <img class="full-width img-responsive wow fadeInUp"
+                                src="images/mision.jpg" alt="Misión" data-wow-duration=".3"
+                                data-wow-delay=".2s"
+                                style="border-top: 10px solid #47AEC5;" />
+                        </div>
+                        <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-6">
+                            <div class="margin-b-60">
+                                <img class="full-width img-responsive wow fadeInUp"
+                                    src="images/vision.jpg" alt="Visión" data-wow-duration=".3"
+                                    data-wow-delay=".3s"
+                                    style="border-bottom: 10px solid #47AEC5;" />
+                            </div>
+                            <h2>VISIÓN</h2>
+                            <p>
+                                Ser una corporación deportiva líder y de referencia a nivel nacional,
+                                   mediante nuestras unidades de negocios buscamos fomentar la práctica del deporte sano, el respeto mutuo y el trabajo en equipo.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- End Masonry Grid -->
                 </div>
             </div>
         </div>
         <div class="wrapper row4 bgded overlay">
-            <div id="youmax"></div>
+            <!--<div id="youmax"></div>-->
+            <div data-yt
+                data-yt-channel="https://www.youtube.com/channel/UCxqs4wK9T-dvoK235ZNsAPg"
+                data-yt-lang="es"
+                data-yt-header-layout="minimal"
+                data-yt-video-layout="classic"
+                data-yt-header-channel-name=" "
+                data-yt-header-channel-logo="images/logo-yt.jpg"
+                data-yt-content-columns="4"
+                data-yt-content-rows="2"
+                data-yt-content-auto-pause-on-hover="true"
+                data-yt-content-responsive="%7B%22480%22%3A%7B%22columns%22%3A%221%22%2C%22rows%22%3A%222%22%2C%22gutter%22%3A%2220%22%7D%2C%22600%22%3A%7B%22columns%22%3A%222%22%2C%22rows%22%3A%222%22%2C%22gutter%22%3A%2220%22%7D%2C%22800%22%3A%7B%22columns%22%3A%223%22%2C%22rows%22%3A%222%22%2C%22gutter%22%3A%2220%22%7D%2C%221000%22%3A%7B%22columns%22%3A%224%22%2C%22rows%22%3A%222%22%2C%22gutter%22%3A%2220%22%7D%7D">
+            </div>
         </div>
         <div class="wrapper row4 bgded overlay" style="background-image: url('images/contactenos.jpg'); z-index: 0; background-position: center center;">
             <footer id="footer" class="hoc clear">
@@ -335,8 +362,9 @@
         <script src="scripts/smoothScroll.js"></script>
         <script src="scripts/wow.min.js"></script>
         <script src="styles/slick/slick.js"></script>
-        <script src="scripts/youmax.min.js"></script>
-        <script src="scripts/script-menu.js"></script>
+        <script src="scripts/jquery.yottie.bundled.js"></script>
+        <!--<script src="scripts/youmax.min.js"></script>
+        <script src="scripts/script-menu.js"></script>-->
         <script src="scripts/js.js"></script>
         <script type="text/javascript">
             new WOW().init();

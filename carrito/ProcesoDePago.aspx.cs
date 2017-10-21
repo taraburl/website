@@ -10,6 +10,8 @@ public partial class carrito_ProcesoDePago : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         String form = Request.QueryString["Total"];
-        totalventa.Value = form;
+        Total.Value = form;
+        String form2 = Request.QueryString["Nro"];
+        OrdenNro.Value = form2;
     }
 }

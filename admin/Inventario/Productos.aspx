@@ -99,6 +99,14 @@
                     <input class="form-control" placeholder="Insertar Medida/Talla" id="Medida" type="text" />
                 </div>
             </div>
+            <div class="col-xs-12 col-lg-6 col-md-6">
+                <label for="Costo">Costo:</label>
+                <div class=" input-group">
+                    <asp:HiddenField ID="Stock" runat="server" />
+                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                    <input class="form-control" placeholder="Insertar el Costo del Producto" id="Costo" type="text" />
+                </div>
+            </div>
         </div>
         <div class="box-footer">
             <a class="btn btn-success btn-lg" href="javascript:guardarProducto()"><i class="fa fa-floppy-o" aria-hidden="true"></i>Guardar</a>
