@@ -85,6 +85,24 @@ function inscripcion() {
                 window.location.href = "ProcesoDePago.aspx?Nro=" + objInscripciones.IdInscripcion
                 + "&Total=" + objInscripciones.Total;
             } else {
+                var parametros = {
+                    emaila: $("#Email").val(),
+                    nombrea: $('#Nombre').val() + " " + $('#Apellido').val(),
+                    codInscripcion: objInscripciones.IdInscripcion
+                }
+                $.ajax({
+                    url: 'Inscripciones.aspx/EnviarMail',
+                    dataType: 'json',
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(parametros),
+                    success: function () {
+
+                    },
+                    error: function() {
+                        alert("Error al Enviar Mail");
+                    }
+                });
                 window.location.href = "InscripcionCompleta.aspx?Nro=" + objInscripciones.IdInscripcion;
             }
         },

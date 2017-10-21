@@ -22,4 +22,12 @@ public partial class carrito_Inscripciones : System.Web.UI.Page
             idUsuario, idTipoPago, estado, total, inscrito);
         return objInscripcion;
     }
+
+    [WebMethod]
+    public static void EnviarMail(string emaila, string nombrea, string codInscripcion)
+    {
+        string mensaje = "Muchas Gracias por Inscribirte a nuestra Academia\nTu Codigo de inscriopcion es " + codInscripcion +
+            "\n Saludos.";
+        new SendEmail("sea.website.info@gmail.com", "SEA Info", "Inscripcion a la Academia SEA", mensaje, emaila, nombrea);
+    }
 }

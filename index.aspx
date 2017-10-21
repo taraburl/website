@@ -232,19 +232,30 @@
                 <div class="one_half first  wow fadeInUp" data-wow-delay="0.9s" id="comments">
                     <h6 class="heading">Contáctenos</h6>
                     <label for="name">Nombre <span>*</span></label>
-                    <input type="text" name="name" id="name" value="" runat="server" />
+                    <asp:TextBox runat="server" ID="name"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                        ControlToValidate="name" ErrorMessage="Inserte Nombre"
+                        ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator><br />
                     <label for="email">E-Mail <span>*</span></label>
-                    <input type="email" name="email" id="email" value="" runat="server" />
-                    <label for="url">Asunto</label>
-                    <input type="text" name="asunto" id="asunto" value="" runat="server" />
+                    <asp:TextBox runat="server" ID="email" TextMode="Email"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                        ControlToValidate="email" ErrorMessage="Inserte Email"
+                        ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator><br />
+                    <label for="url">Asunto <span>*</span></label>
+                    <asp:TextBox runat="server" ID="asunto"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
+                        ControlToValidate="asunto" ErrorMessage="Inserte Email"
+                        ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator><br />
                     <div class="block clear">
-                        <label for="comment">Comentario</label>
-                        <textarea name="comment" id="comment" cols="25" rows="10" runat="server"></textarea>
+                        <label for="comment">Comentario <span>*</span></label>
+                        <asp:TextBox runat="server" ID="comment" TextMode="MultiLine" Columns="5"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
+                            ControlToValidate="comment" ErrorMessage="Inserte Email"
+                            ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator><br />
                     </div>
                     <div>
-                        <!--<asp:LinkButton CssClass="btn emailsend" Text="Enviar" runat="server" OnClick="Unnamed1_Click"></asp:LinkButton>-->
-                        <input type="submit" name="submit" value="Enviar" class="btn" />
-                        <input type="reset" name="reset" value="Limpiar" class="btn inverse" />
+                        <asp:Button CssClass="btn emailsend" Text="Enviar" runat="server" OnClick="EnviarMail"
+                            OnClientClick="return false;"></asp:Button>
                     </div>
                 </div>
                 <div class="one_half">
