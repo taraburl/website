@@ -24,6 +24,16 @@
                     <asp:BoundField DataField="Categoria.Nombre" HeaderText="Categoria" SortExpression="Categoria.Nombre" />
                     <asp:BoundField DataField="Stock" HeaderText="Stock" SortExpression="Stock" />
                 </Columns>
+                <EditRowStyle BackColor="#2461BF" />
+                <FooterStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#47AEC5" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#EFF3FB" />
+                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                <SortedAscendingHeaderStyle BackColor="#081A28" />
+                <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                <SortedDescendingHeaderStyle BackColor="#081A28" />
             </asp:GridView>
             <asp:objectdatasource id="ObjectDataSource1" runat="server" selectmethod="SelectAll"
                 typename="ProductoBLL"></asp:objectdatasource>

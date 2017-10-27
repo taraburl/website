@@ -141,7 +141,7 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i>Ventas</a></li>
+                            <li><a href="/admin/ecommerce/ventas.aspx"><i class="fa fa-shopping-bag"></i>Ventas</a></li>
                         </ul>
                     </li>
                     <li class="treeview">

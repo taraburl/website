@@ -10,6 +10,17 @@ public class OrdenCompraBLL
     {
 
     }
+    public static List<OrdenCompra> SelectAll()
+    {
+        OrdenCompraDSTableAdapters.tbl_ordenCompraTableAdapter adapter = new OrdenCompraDSTableAdapters.tbl_ordenCompraTableAdapter();
+        OrdenCompraDS.tbl_ordenCompraDataTable table = adapter.selectNoEliminados();
+        List<OrdenCompra> listOrdenCompra = new List<OrdenCompra>();
+        foreach (OrdenCompraDS.tbl_ordenCompraRow row in table)
+        {
+            listOrdenCompra.Add(RowToDto(row));
+        }
+        return listOrdenCompra;
+    }
     public static OrdenCompra InsertWithReturn(string idEstadoCompra, string idTipoPago,
         string idUsuario, string total)
     {

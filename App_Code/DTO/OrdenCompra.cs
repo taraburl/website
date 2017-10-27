@@ -14,4 +14,26 @@ public class OrdenCompra
     public int IdUsuario { get; set; }
     public Double Total { get; set; }
     public int Eliminado { get; set; }
+    public EstadoCompra Estado
+    {
+        get
+        {
+            return EstadoCompraBLL.SelectById(Convert.ToString(IdEstadoCompra));
+        }
+    }
+
+    public Usuario Usuario
+    {
+        get
+        {
+            return UsuarioBLL.SelectById(IdUsuario);
+        }
+    }
+    public TipoPago TipoPago
+    {
+        get
+        {
+            return TipoPagoBLL.SelectById(IdTipoPago);
+        }
+    }
 }
