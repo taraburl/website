@@ -152,7 +152,7 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="../reports/EstadoInventario.aspx"><i class="fa fa-file-pdf-o"></i>Estado de Inventario</a></li>
+                            <li><a href="/reports/EstadoInventario.aspx"><i class="fa fa-file-pdf-o"></i>Estado de Inventario</a></li>
                         </ul>
                     </li>
                     <li class="treeview">

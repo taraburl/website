@@ -115,7 +115,8 @@ function guardarInventario() {
             var parametros = {
                 idInventario: idInventario,
                 idProducto: idProcucto,
-                cantidad: cantidad
+                cantidad: cantidad,
+                tipo: Tipo
             };
             $.ajax({
                 url: 'Inventario.aspx/InsertarDetalle',

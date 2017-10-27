@@ -33,6 +33,11 @@ public class ProductoBLL
         }
         return RowToDto(table[0]);
     }
+    public static void UpdateStock(string id, int stock)
+    {
+        ProductoDSTableAdapters.tbl_productoTableAdapter adapter = new ProductoDSTableAdapters.tbl_productoTableAdapter();
+        adapter.UpdateStock(stock, Convert.ToInt32(id));
+    }
     public static Producto SelectById(int id)
     {
         ProductoDSTableAdapters.tbl_productoTableAdapter adapter = new ProductoDSTableAdapters.tbl_productoTableAdapter();

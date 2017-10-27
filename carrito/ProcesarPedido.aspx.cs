@@ -26,6 +26,10 @@ public partial class carrito_ProcesarPedido : System.Web.UI.Page
     {
         Carrito objCarrito = CarritoBLL.InsertWithReturn(idOrdenCompra, idProducto, cantidadProducto,
             precio, subTotal);
+        Producto objProducto = ProductoBLL.SelectById(Convert.ToInt32(idProducto));
+        int stock = objProducto.Stock;
+        stock = stock - Convert.ToInt32(cantidadProducto);
+        ProductoBLL.UpdateStock(idProducto, stock);
         return objCarrito;
     }
 }

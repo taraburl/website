@@ -46,9 +46,21 @@ public partial class admin_Inventario_Inventario : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static DetalleInventario InsertarDetalle(string idProducto, string cantidad, string idInventario)
+    public static DetalleInventario InsertarDetalle(string idProducto, string cantidad, string idInventario, string tipo)
     {
-        DetalleInventario objDetalleInventario = DetalleInventarioBLL.InsertWithReturn(idProducto, cantidad, idInventario);
+        DetalleInventario objDetalleInventario = 
+        DetalleInventarioBLL.InsertWithReturn(idProducto, cantidad, idInventario);
+        Producto objProducto = ProductoBLL.SelectById(Convert.ToInt32(idProducto));
+        int stock = objProducto.Stock;
+        if (tipo == "Ingreso")
+        {
+            stock = stock + Convert.ToInt32(cantidad);
+        }
+        else
+        {
+            stock = stock - Convert.ToInt32(cantidad);
+        }
+        ProductoBLL.UpdateStock(idProducto, stock);
         return objDetalleInventario;
     }
 }
