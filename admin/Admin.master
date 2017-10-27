@@ -1,5 +1,4 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Admin.master.cs" Inherits="admin_Admin" %>
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -153,7 +152,7 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-file-pdf-o"></i>Estado de Inventario</a></li>
+                            <li><a href="../reports/EstadoInventario.aspx"><i class="fa fa-file-pdf-o"></i>Estado de Inventario</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -178,10 +177,8 @@
             </section>
             <section class="content">
                 <form id="form1" runat="server">
-                    <div>
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>
-                    </div>
                 </form>
             </section>
         </div>
