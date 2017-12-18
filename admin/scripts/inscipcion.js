@@ -3,6 +3,10 @@
         return window.location.href = "/Login.aspx";
     }
     $(".select2").select2();
+    $('#ContentPlaceHolder1_IdCategoria').on('change', function () {
+        cargarPrecio();
+    });
+    cargarPrecio();
 });
 
 
@@ -55,6 +59,45 @@ function actualizarInscripcion(id) {
                 '<td>' + objInscripcion.TipoPago.Nombre + '</td>' +
                 '<td>Consolidado</td>';
             trActualizado.html(tr);
+        }
+    });
+}
+
+function cancelnewInscripcion() {
+    $("#newInscripcion").slideUp(500, function () {
+        $("#listInscripcion").slideDown(500);
+    });
+}
+
+function newInscripcion() {
+    $(".input-group").removeClass('has-error');
+    $('#Nombre').val('');
+    $('#Descripcion').val('');
+    $("#new").show();
+    $("#upd").hide();
+    $("#listInscripcion").slideUp(500, function () {
+        $("#newInscripcion").slideDown(500);
+    });
+}
+
+function guardarInscripcion() {
+
+}
+
+function cargarPrecio() {
+    var IdCategoria = $("#ContentPlaceHolder1_IdCategoria").val();
+    var parametros = {
+        idCategoria: IdCategoria
+    };
+    $.ajax({
+        url: '/admin/academia/categorias.aspx/TraerCategoria',
+        dataType: 'json',
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(parametros),
+        success: function (data) {
+            var ObjCategoria = data.d;
+            $("#Precio").val(ObjCategoria.PrecioVenta);
         }
     });
 }

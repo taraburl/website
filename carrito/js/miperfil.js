@@ -1,4 +1,7 @@
 ﻿$(document).ready(function () {
+    if (!sessionStorage.getItem("idUsuario")) {
+        return window.location.href = "/Login.aspx";
+    }
     cargarDatosCliente();
 });
 

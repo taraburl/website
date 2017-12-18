@@ -1,7 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Carrito.master.cs" Inherits="carrito_Carrito" %>
-
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -105,21 +103,22 @@
         <nav class="site-menu">
             <ul>
                 <li class="has-megamenu">
-                    <a href="#"><span>Inicio</span></a>
+                    <a href="#"><span>Academia de Fútbol</span></a>
                     <ul class="mega-menu">
                         <li><a class="d-block img-thumbnail text-center navi-link"
                             href="/carrito/inicio.aspx">
                             <img alt="Featured Products Slider"
-                                src="../images/04.jpg" />
+                                src="../images/background1.jpg" />
                             <h6 class="mt-3">Catálogo de Productos</h6>
                         </a></li>
                         <li><a class="d-block img-thumbnail text-center navi-link"
                             href="/carrito/inscripciones.aspx">
                             <img alt="Featured Categories"
-                                src="../images/04.jpg" />
-                            <h6 class="mt-3">Inscripciones a la Academia de Futbol SEA</h6>
+                                src="../images/background1.jpg" />
+                            <h6 class="mt-3">Inscripciones a la Academia de Fútbol SEA</h6>
                         </a></li>
                     </ul>
+                    <
                 </li>
             </ul>
         </nav>
@@ -233,7 +232,7 @@
                     </div>
                 </div>
                 <!-- Copyright-->
-                <p class="footer-copyright">© Todos los derechos reservado. Desarrollado &nbsp;<a href="http://www.osbolivia.com/" target="_blank"> &nbsp;por OsBolivia</a></p>
+                <p class="footer-copyright">© Todos los derechos reservado. Desarrollado por &nbsp;<a href="http://www.osbolivia.com/" target="_blank"> &nbsp;OsBolivia</a></p>
             </div>
         </footer>
     </div>

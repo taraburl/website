@@ -2,6 +2,9 @@
 var snroOrden;
 
 $(document).ready(function () {
+    if (!sessionStorage.getItem("idUsuario")) {
+        return window.location.href = "/Login.aspx";
+    }
     cargarDatosCliente();
     cargarPrecio();
     $('#ContentPlaceHolder1_IdCategoria').on('change', function () {

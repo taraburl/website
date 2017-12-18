@@ -1,12 +1,14 @@
 ﻿$(document).ready(function () {
-    if (!sessionStorage.getItem("idUsuario")) {
-        return window.location.href = "/Login.aspx";
-    }
     if (!localStorage.getItem("carrito")) {
         (localStorage.setItem("carrito", "{}"));
     }
-    $(".user-name").text(sessionStorage.getItem("fullName"));
-    $(".imgPerfil").attr("src", "../" + sessionStorage.getItem("imagen"));
+    if (!sessionStorage.getItem("fullName")) {
+        $(".user-name").text("Mi Perfil");
+        $(".imgPerfil").attr("src", "../images/profile.png");
+    } else {
+        $(".user-name").text(sessionStorage.getItem("fullName"));
+        $(".imgPerfil").attr("src", "../" + sessionStorage.getItem("imagen"));
+    }
     loadCart();
     cargarMiCarrito();
     loadCartPay();
@@ -128,6 +130,9 @@ function finalizar() {
     if (total == "Bs. 0") {
         alert("Carrito Vacio");
     } else {
+        if (!sessionStorage.getItem("idUsuario")) {
+            return window.location.href = "/Login.aspx";
+        }
         window.location.href = "ProcesarPedido.aspx";
     }
 }

@@ -95,52 +95,9 @@
                         </ul>
                     </nav>
                 </header>
-                <!--<div id='cssmenu'>
-                    <ul>
-                        <li><a href="/index.aspx" style="padding: 0px !important; padding-top: 5px !important; padding-left: 10px !important;">
-                            <img src="/images/logo.png" alt="sea" style="width: 40px; padding: 0px !important;" /></a></li>
-                        <li class='has-sub'>
-                            <a  href="#">Eventos</a>
-                            <ul>
-                                <li><a href="servicios/EventosDeportivos.aspx">Eventos</a></li>
-                            </ul>
-                        </li>
-                        <li class='has-sub'>
-                            <a  href="#">Marketing Deportivo</a>
-                            <ul>
-                                <li><a href="/servicios/Marketing.aspx">Marketing Deportivo</a></li>
-                            </ul>
-                        </li>
-                        <li class='has-sub'>
-                            <a href="#">Club Atlético Juniors</a>
-                            <ul>
-                                <li><a href="/servicios/ClubAtletico.aspx">Club Atletico Juniors</a></li>
-                                <li><a href="/servicios/SoccerAcademy.aspx">Academia de Fútbol</a></li>
-                            </ul>
-                        </li>
-                        <li class='has-sub'>
-                            <a href="#">Complejo Deportivo</a>
-                            <ul>
-                                <li><a href="/servicios/ComplejoDeportivo.aspx">Complejo Deportivo</a></li>
-                            </ul>
-                        </li>
-                        <li class='has-sub'>
-                            <a  href="#">Students & Athletics</a>
-                            <ul>
-                                <li><a href="/servicios/StudentsAthletics.aspx">Students & Athletics</a></li>
-                            </ul>
-                        </li>
-                        <li class='has-sub'>
-                            <a href="#">Sea TV</a>
-                            <ul>
-                                <li><a href="#">SEA TV</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>-->
             </div>
             <div id="pageintro" class="hoc clear">
-                <article>
+                <article class="col-xs-12 col-sm-6 col-md-6">
                     <h2 class="heading wow zoomIn" data-wow-delay="0.6s">
                         <img src="images/logo.png" alt="sea" style="width: 150px;" />
                     </h2>
@@ -151,6 +108,11 @@
                             <li><a class="btn inverse wow zoomIn" data-wow-delay="0.6s" href="#comments">Contáctenos</a></li>
                         </ul>
                     </footer>
+                </article>
+                <article class="col-xs-12 col-sm-6 col-md-6">
+                    <a class="twitter-timeline" data-lang="es" data-height="300" target="_blank"
+                        href="https://twitter.com/SEA_SRL?ref_src=twsrc%5Etfw">Tweets by SEA_SRL</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </article>
             </div>
         </div>
@@ -178,37 +140,54 @@
         </div>
         <div class="wrapper row3" style="top: 20%;">
             <div class="group">
-                <div class="content-lg container">
-                    <!-- Masonry Grid -->
+                <div class="">
                     <div class="masonry-grid row">
-                        <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-6 sm-margin-b-30">
-                            <div class="margin-b-60">
-                                <h2>MISIÓN</h2>
-                                <p>
-                                    Ayudar a la mejora del bienestar de las personas mediante la práctica del deporte,
+                        <div class="card masonry-grid-item col-xs-12 col-sm-9 col-md-9 sm-margin-b-30">
+                            <div class="card-block masonry-grid">
+                                <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-6 sm-margin-b-30">
+                                    <div class="margin-b-60">
+                                        <h2>MISIÓN</h2>
+                                        <p>
+                                            Ayudar a la mejora del bienestar de las personas mediante la práctica del deporte,
                                         con ética profesional mediante el Marketing Deportivo.
-                                </p>
-                            </div>
-                            <img class="full-width img-responsive wow fadeInUp"
-                                src="images/mision.jpg" alt="Misión" data-wow-duration=".3"
-                                data-wow-delay=".2s"
-                                style="border-top: 10px solid #47AEC5;" />
-                        </div>
-                        <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-6">
-                            <div class="margin-b-60">
-                                <img class="full-width img-responsive wow fadeInUp"
-                                    src="images/vision.jpg" alt="Visión" data-wow-duration=".3"
-                                    data-wow-delay=".3s"
-                                    style="border-bottom: 10px solid #47AEC5;" />
-                            </div>
-                            <h2>VISIÓN</h2>
-                            <p>
-                                Ser una corporación deportiva líder y de referencia a nivel nacional,
+                                        </p>
+                                    </div>
+                                    <img class="full-width img-responsive wow fadeInUp"
+                                        src="images/mision.jpg" alt="Misión" data-wow-duration=".3"
+                                        data-wow-delay=".2s"
+                                        style="border-top: 10px solid #47AEC5;" />
+                                </div>
+                                <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-6">
+                                    <div class="margin-b-60">
+                                        <img class="full-width img-responsive wow fadeInUp"
+                                            src="images/vision.jpg" alt="Visión" data-wow-duration=".3"
+                                            data-wow-delay=".3s"
+                                            style="border-bottom: 10px solid #47AEC5;" />
+                                    </div>
+                                    <h2>VISIÓN</h2>
+                                    <p>
+                                        Ser una corporación deportiva líder y de referencia a nivel nacional,
                                    mediante nuestras unidades de negocios buscamos fomentar la práctica del deporte sano, el respeto mutuo y el trabajo en equipo.
-                            </p>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card masonry-grid-item col-xs-12 col-sm-3 col-md-3">
+                            <div class="fb-page card-block" data-href="https://www.facebook.com/sports.events.agency/"
+                                data-tabs="timeline,events,messages"
+                                data-small-header="true"
+                                data-width="500"
+                                data-adapt-container-width="true"
+                                data-hide-cover="false" data-show-facepile="true">
+                            </div>
                         </div>
                     </div>
-                    <!-- End Masonry Grid -->
+                </div>
+            </div>
+        </div>
+        <div class="wrapper row3">
+            <div class="group">
+                <div class="content-lg container">
                 </div>
             </div>
         </div>
@@ -382,4 +361,11 @@
         </script>
     </form>
 </body>
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.11';
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 </html>
