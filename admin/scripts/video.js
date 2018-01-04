@@ -36,10 +36,10 @@ function eliminarVideo(id) {
         success: function (data) {
             var resultado = data.d;
             if (resultado == -1) {
-                console.log("Error al eliminar");
-                alert("Hubo un error al eliminar el video");
+                mensajeConfirmacion("Error", "Error al Eliminar el Video", "error");
                 return;
             }
+            mensajeConfirmacion("Bien!", "Video Eliminado", "success");
             var linkEliminar = $('.eliminarFilaVideo' + resultado);
             var trActualizado = linkEliminar.parent().parent();
             trActualizado.remove();
@@ -108,12 +108,13 @@ function guardarVideo() {
                 var linkActualizar = $('.actualizarFilaVideo' + objVideo.IdVideo);
                 var trActualizado = linkActualizar.parent().parent();
                 var tr =
-                    '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaVideo' + objVideo.IdVideo + '" href="javascript:actualizarVideo(' + objVideo.IdVideo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-social-icon btn-danger actualizarFilaVideo' + objVideo.IdVideo + '" href="javascript:eliminarVideo(' + objVideo.IdVideo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-info actualizarFilaVideo' + objVideo.IdVideo + '" href="javascript:actualizarVideo(' + objVideo.IdVideo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger actualizarFilaVideo' + objVideo.IdVideo + '" href="javascript:eliminarVideo(' + objVideo.IdVideo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objVideo.URL + '</td>' +
                     '<td>' + objVideo.Descripcion + '</td>' +
                     '<td>' + objVideo.Modulo + '</td>'
                 trActualizado.html(tr);
+                mensajeConfirmacion("Bien!", "Video Actualizado", "success");
                 $('#ContentPlaceHolder1_hdnIdVideo').val('');
                 $("#newVideo").slideUp(500, function () {
                     $("#listVideo").slideDown(500);
@@ -140,14 +141,15 @@ function guardarVideo() {
             success: function (data) {
                 var objVideo = data.d;
                 var tr = '<tr>' +
-                    '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaVideo' + objVideo.IdVideo + '" href="javascript:actualizarVideo(' + objVideo.IdVideo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-social-icon btn-danger actualizarFilaVideo' + objVideo.IdVideo + '" href="javascript:eliminarVideo(' + objVideo.IdVideo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-info actualizarFilaVideo' + objVideo.IdVideo + '" href="javascript:actualizarVideo(' + objVideo.IdVideo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger actualizarFilaVideo' + objVideo.IdVideo + '" href="javascript:eliminarVideo(' + objVideo.IdVideo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objVideo.URL + '</td>' +
                     '<td>' + objVideo.Descripcion + '</td>' +
                     '<td>' + objVideo.Modulo + '</td>' +
                     '</tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');
                 table.find('tbody').append(tr);
+                mensajeConfirmacion("Bien!", "Video Creado", "success");
                 $("#newVideo").slideUp(500, function () {
                     $("#listVideo").slideDown(500);
                 });

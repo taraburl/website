@@ -26,7 +26,7 @@ public class OrdenCompraBLL
     {
         OrdenCompraDSTableAdapters.tbl_ordenCompraTableAdapter adapter = new OrdenCompraDSTableAdapters.tbl_ordenCompraTableAdapter();
         OrdenCompraDS.tbl_ordenCompraDataTable table = adapter.InsertWithReturn(Convert.ToInt32(idEstadoCompra),
-            Convert.ToInt32(idTipoPago), Convert.ToInt32(idUsuario), Convert.ToDouble(total), 0);
+            Convert.ToInt32(idTipoPago), Convert.ToInt32(idUsuario), Convert.ToDouble(total), 0, DateTime.Now, TimeSpan.Parse(DateTime.Now.ToString("hh:mm:ss")));
         if (table.Rows.Count == 0)
         {
             return null;
@@ -43,6 +43,11 @@ public class OrdenCompraBLL
         }
         return RowToDto(table[0]);
     }
+    public static void UpdateOrden(string estado, string idOrden)
+    {
+        OrdenCompraDSTableAdapters.tbl_ordenCompraTableAdapter adapter = new OrdenCompraDSTableAdapters.tbl_ordenCompraTableAdapter();
+        adapter.UpdateOrden(Convert.ToInt32(estado), Convert.ToInt32(idOrden));
+    }
     private static OrdenCompra RowToDto(OrdenCompraDS.tbl_ordenCompraRow row)
     {
         OrdenCompra objOrdenCompra = new OrdenCompra();
@@ -52,6 +57,8 @@ public class OrdenCompraBLL
         objOrdenCompra.IdUsuario = row.idUsuario;
         objOrdenCompra.Total = row.total;
         objOrdenCompra.Eliminado = row.eliminado;
+        objOrdenCompra.Fecha = row.fecha;
+        objOrdenCompra.Hora = row.hora;
         return objOrdenCompra;
     }
 }

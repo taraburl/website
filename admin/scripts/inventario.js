@@ -28,8 +28,8 @@ function newInventario() {
         success: function (data) {
             var objInventario = data.d;
             var tr = '<tr>' +
-                '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaInventario' + objInventario.IdInventario + '" href="javascript:actualizarInventario(' + objInventario.IdInventario + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                '<td><a class="btn btn-block btn-social-icon btn-danger actualizarFilaInventario' + objInventario.IdInventario + '" href="javascript:eliminarInventario(' + objInventario.IdInventario + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                '<td><a class="btn btn-block btn-info actualizarFilaInventario' + objInventario.IdInventario + '" href="javascript:actualizarInventario(' + objInventario.IdInventario + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                '<td><a class="btn btn-block btn-danger eliminarFilaInventario' + objInventario.IdInventario + '" href="javascript:eliminarInventario(' + objInventario.IdInventario + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                 '<td>' + objInventario.IdInventario + '</td>' +
                 '<td>' + objInventario.Tipo + '</td>' +
                 '<td>' + objInventario.Usuario.Username + '</td>' +
@@ -104,14 +104,20 @@ function eliminarInventario(id) {
 }
 
 function guardarInventario() {
+    var si = true;
     var glosa = $("#Glosa").val();
     var Tipo = $("#TipoInventario").val();
     var idInventario = $("#ContentPlaceHolder1_hdnIdInventario").val();
+    if (Tipo == "Egreso") {
+        if (!validarEgreso()) {
+            return mensajeConfirmacion("Advertencia!", "Las cantidades que desea Egresar deben ser Menor o Igual al stock Actual del Producto", "warning");
+        }
+    }
     $(".CantProd").parent('td').parent("tr").find("td:first-child").each(function () {
-        var idProcucto = $(this).html()
+        var idProcucto = $(this).html();
         var cantidad = $("#Pro" + idProcucto).val();
         cantidad = parseInt(cantidad);
-        if (cantidad > 0) {
+        if ((cantidad > 0) && si) {
             var parametros = {
                 idInventario: idInventario,
                 idProducto: idProcucto,
@@ -126,6 +132,9 @@ function guardarInventario() {
                 data: JSON.stringify(parametros),
                 success: function (data) {
                     var objInventario = data.d;
+                    if (objInventario.IdInventario == -100) {
+                        si = false;
+                    }
                 }
             });
         }
@@ -148,7 +157,7 @@ function guardarInventario() {
             var trActualizado = linkActualizar.parent().parent();
             var tr =
                 '<td></td>' +
-                '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaInventario' + objInventario.IdInventario + '" href="javascript:eliminarInventario(' + objInventario.idInventario + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                '<td><a class="btn btn-block btn-danger eliminarFilaInventario' + objInventario.IdInventario + '" href="javascript:eliminarInventario(' + objInventario.idInventario + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                 '<td>' + objInventario.IdInventario + '</td>' +
                 '<td>' + objInventario.Tipo + '</td>' +
                 '<td>' + objInventario.Usuario.Username + '</td>' +
@@ -160,6 +169,22 @@ function guardarInventario() {
             $("#newInventario").slideUp(500, function () {
                 $("#listInventario").slideDown(500);
             });
+            location.reload();
         }
     });
+}
+
+function validarEgreso() {
+    var bool = true;
+    $(".CantProd").parent('td').parent("tr").find("td:first-child").each(function () {
+        var idProcucto = $(this).html();
+        var cantidad = $("#Pro" + idProcucto).val();
+        var stockActual = $("#stock" + idProcucto).val();
+        if (stockActual >= cantidad) {
+            bool = true;
+        } else {
+            bool = false;
+        }
+    });
+    return bool;
 }

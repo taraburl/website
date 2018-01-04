@@ -21,19 +21,19 @@
                 <Columns>
                     <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-info actualizarFilaSponsor<%# Eval("id") %>" href="javascript:actualizarSponsor(<%# Eval("id")%>)">
+                            <a class="btn btn-block btn-info actualizarFilaSponsor<%# Eval("id") %>" href="javascript:actualizarSponsor(<%# Eval("id")%>)">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Eliminar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-danger eliminarFilaSponsor<%# Eval("id")%>" href="javascript:eliminarSponsor(<%# Eval("id") %>)">
+                            <a class="btn btn-block  btn-danger eliminarFilaSponsor<%# Eval("id")%>" href="javascript:eliminarSponsor(<%# Eval("id") %>)">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Subir Foto">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-warning" href="SubirFotoSponsor.aspx?ID=<%# Eval("id")%>">
+                            <a class="btn btn-block btn-warning" href="SubirFotoSponsor.aspx?ID=<%# Eval("id")%>">
                                 <i class="fa  fa-file-photo-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -66,7 +66,7 @@
             <div class="col-xs-12 col-lg-6 col-md-6">
                 <label for="Nombre">Nombre:</label>
                 <div class=" input-group">
-                    <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
                     <input class="form-control" placeholder="Insertar Nombre" id="Nombre" type="text" />
                 </div>
             </div>

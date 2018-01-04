@@ -53,10 +53,10 @@ function eliminarProducto(id) {
         success: function (data) {
             var resultado = data.d;
             if (resultado == -1) {
-                console.log("Error al eliminar");
-                alert("Hubo un error al eliminar el Producto");
+                mensajeConfirmacion("Error", "Error al Eliminar Producto", "error");
                 return;
             }
+            mensajeConfirmacion("Bien!", "Producto Eliminado", "success");
             var linkEliminar = $('.eliminarFilaProducto' + resultado);
             var trActualizado = linkEliminar.parent().parent();
             trActualizado.remove();
@@ -148,15 +148,16 @@ function guardarProducto() {
                 var linkActualizar = $('.actualizarFilaProducto' + objProducto.IdProducto);
                 var trActualizado = linkActualizar.parent().parent();
                 var tr =
-                    '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:actualizarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-social-icon btn-danger actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:eliminarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-social-icon btn-warning" href="SubirImagenProducto.aspx?ID=' + objProducto.IdProducto + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-info actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:actualizarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:eliminarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-warning" href="SubirImagenProducto.aspx?ID=' + objProducto.IdProducto + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objProducto.Nombre + '</td>' +
                     '<td>' + objProducto.PrecioVenta + '</td>' +
                     '<td>' + objProducto.Categoria.Nombre + '</td>' +
                     '<td>' + objProducto.Medida + '</td>'
                 trActualizado.html(tr);
                 $('#ContentPlaceHolder1_hdnIdProducto').val('');
+                mensajeConfirmacion("Bien!", "Producto Actualizado", "success");
                 $("#newProducto").slideUp(500, function () {
                     $("#listProducto").slideDown(500);
                 });
@@ -189,9 +190,9 @@ function guardarProducto() {
             success: function (data) {
                 var objProducto = data.d;
                 var tr = '<tr>' +
-                    '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:actualizarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-social-icon btn-danger actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:eliminarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-social-icon btn-warning" href="SubirImagenProducto.aspx?ID=' + objProducto.IdProducto + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-info actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:actualizarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:eliminarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-warning" href="SubirImagenProducto.aspx?ID=' + objProducto.IdProducto + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objProducto.Nombre + '</td>' +
                     '<td>' + objProducto.PrecioVenta + '</td>' +
                     '<td>' + objProducto.Categoria.Nombre + '</td>' +
@@ -199,6 +200,7 @@ function guardarProducto() {
                 '   </tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');
                 table.find('tbody').append(tr);
+                mensajeConfirmacion("Bien!", "Producto Creado", "success");
                 $("#newProducto").slideUp(500, function () {
                     $("#listProducto").slideDown(500);
                 });

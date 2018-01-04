@@ -20,13 +20,13 @@
                 <Columns>
                     <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-info actualizarFilaVideo<%# Eval("id") %>" href="javascript:actualizarVideo(<%# Eval("id")%>)">
+                            <a class="btn btn-block btn-info actualizarFilaVideo<%# Eval("id") %>" href="javascript:actualizarVideo(<%# Eval("id")%>)">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Eliminar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-danger eliminarFilaVideo<%# Eval("id")%>" href="javascript:eliminarVideo(<%# Eval("id") %>)">
+                            <a class="btn btn-block btn-danger eliminarFilaVideo<%# Eval("id")%>" href="javascript:eliminarVideo(<%# Eval("id") %>)">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>

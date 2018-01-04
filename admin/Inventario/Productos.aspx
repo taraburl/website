@@ -20,19 +20,19 @@
                 <Columns>
                     <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-info actualizarFilaProducto<%# Eval("IdProducto") %>" href="javascript:actualizarProducto(<%# Eval("IdProducto")%>)">
+                            <a class="btn btn-block btn-info actualizarFilaProducto<%# Eval("IdProducto") %>" href="javascript:actualizarProducto(<%# Eval("IdProducto")%>)">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Eliminar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-danger eliminarFilaProducto<%# Eval("IdProducto")%>" href="javascript:eliminarProducto(<%# Eval("IdProducto") %>)">
+                            <a class="btn btn-block btn-danger eliminarFilaProducto<%# Eval("IdProducto")%>" href="javascript:eliminarProducto(<%# Eval("IdProducto") %>)">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Subir Fotos">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-warning" href="SubirImagenProducto.aspx?ID=<%# Eval("IdProducto")%>">
+                            <a class="btn btn-block btn-warning" href="SubirImagenProducto.aspx?ID=<%# Eval("IdProducto")%>">
                                 <i class="fa  fa-file-photo-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -89,7 +89,7 @@
                 <label for="PrecioVenta">Precio de Venta:</label>
                 <div class=" input-group">
                     <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
-                    <input class="form-control" placeholder="Insertar el Precio de Venta" id="PrecioVenta" type="text" />
+                    <input class="form-control" min="0" id="PrecioVenta" type="number" onkeypress="return NumCheck(event, this)"/>
                 </div>
             </div>
             <div class="col-xs-12 col-lg-6 col-md-6">
@@ -104,7 +104,7 @@
                 <div class=" input-group">
                     <asp:HiddenField ID="Stock" runat="server" />
                     <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                    <input class="form-control" placeholder="Insertar el Costo del Producto" id="Costo" type="text" />
+                    <input class="form-control" min="0" id="Costo" type="number" onkeypress="return NumCheck(event, this)"/>
                 </div>
             </div>
         </div>

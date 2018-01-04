@@ -34,10 +34,10 @@ function eliminarCategoria(id) {
         success: function (data) {
             var resultado = data.d;
             if (resultado == -1) {
-                console.log("Error al eliminar");
-                alert("Hubo un error al eliminar la categoria");
+                mensajeConfirmacion("Error", "Error al ELiminar la Categoria", "error");;
                 return;
             }
+            mensajeConfirmacion("Bien!", "Categoria Eliminada", "success");
             var linkEliminar = $('.eliminarFilaCategoria' + resultado);
             var trActualizado = linkEliminar.parent().parent();
             trActualizado.remove();
@@ -95,11 +95,12 @@ function guardarCategoria() {
                 var linkActualizar = $('.actualizarFilaCategoria' + objCategoria.IdCategoria);
                 var trActualizado = linkActualizar.parent().parent();
                 var tr =
-                    '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaCategoria' + objCategoria.IdCategoria + '" href="javascript:actualizarCategoria(' + objCategoria.IdCategoria + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaCategoria' + objCategoria.IdCategoria + '" href="javascript:eliminarCategoria(' + objCategoria.IdCategoria + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-info actualizarFilaCategoria' + objCategoria.IdCategoria + '" href="javascript:actualizarCategoria(' + objCategoria.IdCategoria + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger eliminarFilaCategoria' + objCategoria.IdCategoria + '" href="javascript:eliminarCategoria(' + objCategoria.IdCategoria + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objCategoria.Nombre + '</td>';
                 trActualizado.html(tr);
                 $('#ContentPlaceHolder1_hdnIdCategoria').val('');
+                mensajeConfirmacion("Bien!", "Categoria Actualizada", "success");
                 $("#newCategoria").slideUp(500, function () {
                     $("#listCategoria").slideDown(500);
                 });
@@ -128,6 +129,7 @@ function guardarCategoria() {
                     '</tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');
                 table.find('tbody').append(tr);
+                mensajeConfirmacion("Bien!", "Categoria Creada", "success");
                 $("#newCategoria").slideUp(500, function () {
                     $("#listCategoria").slideDown(500);
                 });

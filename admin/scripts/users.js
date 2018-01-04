@@ -4,18 +4,6 @@
     }
 });
 
-function isNumberKey(evt) {
-    var charCode = (evt.which) ? evt.which : event.keyCode
-    if (charCode > 31 && (charCode < 48 || charCode > 57))
-        return false;
-    return true;
-}
-
-function valEmail(valor) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(valor);
-}
-
 function nuewuser() {
     $(".input-group").removeClass('has-error');
     $('#Nombre').val('');
@@ -97,15 +85,14 @@ function eliminarUsuario(id) {
         success: function (data) {
             var resultado = data.d;
             if (resultado == -1) {
-                console.log("Error al eliminar");
-                alert("Hubo un error al eliminar el transporte");
+                mensajeConfirmacion("Error", "Error al eliminar el usuario", "error");
                 return;
             }
             var linkEliminar = $('.eliminarFilaUsuario' + resultado);
             var trActualizado = linkEliminar.parent().parent();
             trActualizado.remove();
-            $("#transporteViaje option[value='" + id + "']").remove();
-
+            mensajeConfirmacion("Bien!", "Usuario Eliminado", "success");
+            //$("#transporteViaje option[value='" + id + "']").remove();
         }
     });
 }
@@ -181,6 +168,7 @@ function guardarUsuario() {
                     '<td>' + objUsuario.Username + '</td>' +
                     '<td>' + objUsuario.TipoCliente + '</td>';
                 trActualizado.html(tr);
+                mensajeConfirmacion("Bien!", "Usuario Actualizado", "success");
                 $('#ContentPlaceHolder1_hdnIdUser').val('');
                 $("#nuevouser").slideUp(500, function () {
                     $("#listauser").slideDown(500);
@@ -224,6 +212,7 @@ function guardarUsuario() {
                     '</tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');
                 table.find('tbody').append(tr);
+                mensajeConfirmacion("Bien!", "Usuario Creado", "success");
                 $("#nuevouser").slideUp(500, function () {
                     $("#listauser").slideDown(500);
                 });

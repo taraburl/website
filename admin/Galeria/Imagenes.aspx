@@ -22,19 +22,19 @@
                 <Columns>
                     <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-info actualizarFilaImagen<%# Eval("id") %>" href="javascript:actualizarImagen(<%# Eval("id")%>)">
+                            <a class="btn btn-block btn-info actualizarFilaImagen<%# Eval("id") %>" href="javascript:actualizarImagen(<%# Eval("id")%>)">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Eliminar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-danger eliminarFilaImagen<%# Eval("id")%>" href="javascript:eliminarImagen(<%# Eval("id") %>)">
+                            <a class="btn btn-block btn-danger eliminarFilaImagen<%# Eval("id")%>" href="javascript:eliminarImagen(<%# Eval("id") %>)">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Subir Foto">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-warning" href="SubirFotoImagen.aspx?ID=<%# Eval("id")%>">
+                            <a class="btn btn-block btn-warning" href="SubirFotoImagen.aspx?ID=<%# Eval("id")%>">
                                 <i class="fa  fa-file-photo-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>

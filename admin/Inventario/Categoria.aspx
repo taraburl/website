@@ -21,13 +21,13 @@
                 <Columns>
                     <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-info actualizarFilaCategoria<%# Eval("id") %>" href="javascript:actualizarCategoria(<%# Eval("id")%>)">
+                            <a class="btn btn-block btn-info actualizarFilaCategoria<%# Eval("id") %>" href="javascript:actualizarCategoria(<%# Eval("id")%>)">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Eliminar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-danger eliminarFilaCategoria<%# Eval("id")%>" href="javascript:eliminarCategoria(<%# Eval("id") %>)">
+                            <a class="btn btn-block btn-danger eliminarFilaCategoria<%# Eval("id")%>" href="javascript:eliminarCategoria(<%# Eval("id") %>)">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>

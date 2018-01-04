@@ -19,13 +19,13 @@
                 <Columns>
                     <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-info actualizarFilaTipoPago<%# Eval("IdTipoPago") %>" href="javascript:actualizarTipoPago(<%# Eval("IdTipoPago")%>)">
+                            <a class="btn btn-block   btn-info actualizarFilaTipoPago<%# Eval("IdTipoPago") %>" href="javascript:actualizarTipoPago(<%# Eval("IdTipoPago")%>)">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Eliminar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-danger eliminarFilaTipoPago<%# Eval("IdTipoPago")%>" href="javascript:eliminarTipoPago(<%# Eval("IdTipoPago") %>)">
+                            <a class="btn btn-block   btn-danger eliminarFilaTipoPago<%# Eval("IdTipoPago")%>" href="javascript:eliminarTipoPago(<%# Eval("IdTipoPago") %>)">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>

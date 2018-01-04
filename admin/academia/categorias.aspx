@@ -19,13 +19,13 @@
                 <Columns>
                     <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-info actualizarFilaCategoria<%# Eval("IdCategoriaAcademia") %>" href="javascript:actualizarCategoria(<%# Eval("IdCategoriaAcademia")%>)">
+                            <a class="btn btn-block btn-info actualizarFilaCategoria<%# Eval("IdCategoriaAcademia") %>" href="javascript:actualizarCategoria(<%# Eval("IdCategoriaAcademia")%>)">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Eliminar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-danger eliminarFilaCategoria<%# Eval("IdCategoriaAcademia")%>" href="javascript:eliminarCategoria(<%# Eval("IdCategoriaAcademia") %>)">
+                            <a class="btn btn-block btn-danger eliminarFilaCategoria<%# Eval("IdCategoriaAcademia")%>" href="javascript:eliminarCategoria(<%# Eval("IdCategoriaAcademia") %>)">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -67,7 +67,7 @@
                 <label for="Precio">Precio:</label>
                 <div class=" input-group">
                     <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                    <input class="form-control" placeholder="Insertar Precio" id="Precio" type="text" />
+                    <input class="form-control" min="0" id="Precio" type="number" onkeypress="return NumCheck(event, this)"/>
                 </div>
             </div>
             <div class="col-xs-12">

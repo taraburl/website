@@ -23,7 +23,8 @@ public class CategoriaAcademiaBLL
     public static CategoriaAcademia InsertWithReturn(string nombre, string descripcion, string precio)
     {
         CategoriaAcademiaDSTableAdapters.tbl_categoriaAcademiaTableAdapter adapter = new CategoriaAcademiaDSTableAdapters.tbl_categoriaAcademiaTableAdapter();
-        CategoriaAcademiaDS.tbl_categoriaAcademiaDataTable table = adapter.InsertWithReturn(nombre, descripcion, Convert.ToDouble(precio), 0);
+        CategoriaAcademiaDS.tbl_categoriaAcademiaDataTable table
+            = adapter.InsertWithReturn(nombre, descripcion, Convert.ToDouble(precio), 0);
         if (table.Rows.Count == 0)
         {
             return null;
@@ -43,7 +44,8 @@ public class CategoriaAcademiaBLL
     public static void Update(string nombre, string descripcion, string precio, int id)
     {
         CategoriaAcademiaDSTableAdapters.tbl_categoriaAcademiaTableAdapter adapter = new CategoriaAcademiaDSTableAdapters.tbl_categoriaAcademiaTableAdapter();
-        adapter.UpdateRow(nombre, descripcion, Convert.ToDouble(precio), 0, id, id);
+        adapter.UpdateRow(nombre, descripcion, 
+            Convert.ToDouble(precio), 0, id, id);
     }
     public static void Delete(int id)
     {

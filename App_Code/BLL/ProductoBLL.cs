@@ -48,6 +48,16 @@ public class ProductoBLL
         }
         return RowToDto(table[0]);
     }
+    public static Producto SelectByNombre(string nombre)
+    {
+        ProductoDSTableAdapters.tbl_productoTableAdapter adapter = new ProductoDSTableAdapters.tbl_productoTableAdapter();
+        ProductoDS.tbl_productoDataTable table = adapter.SelectByNombre(nombre);
+        if (table.Rows.Count == 0)
+        {
+            return null;
+        }
+        return RowToDto(table[0]);
+    }
     public static void Update(string descripcion, string nombre, string precio,
         string medida, string idcategoria, string id, string costo, string stock)
     {

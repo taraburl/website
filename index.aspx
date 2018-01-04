@@ -58,7 +58,13 @@
                             <li>
                                 <a class="drop" href="#">Eventos</a>
                                 <ul>
-                                    <li><a href="servicios/EventosDeportivos.aspx">Eventos</a></li>
+                                    <asp:Repeater runat="server" ID="Repeater2" DataSourceID="ObjectDataSource2">
+                                        <ItemTemplate>
+                                            <li><a href="carrito/Evento.aspx?ID=<%# Eval("IdEvento") %>"><%# Eval("Nombre")%></a></li>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                    <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="SelectActuales" TypeName="EventoBLL"></asp:ObjectDataSource>
+                                    <li><a href="servicios/EventosDeportivos.aspx">Información</a></li>
                                 </ul>
                             </li>
                             <li>

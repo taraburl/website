@@ -3,6 +3,9 @@
 @import url("fontawesome-4.6.3.min.css");
 @import url("framework.css");
 
+#mainav li li a:hover {
+    color: white !important;
+}
 /* Rows
 --------------------------------------------------------------------------------------------------------------- */
 .row0, .row0 a {

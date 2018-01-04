@@ -86,12 +86,13 @@ function guardarSponsor() {
                 var linkActualizar = $('.actualizarFilaSponsor' + objSponsor.IdSponsor);
                 var trActualizado = linkActualizar.parent().parent();
                 var tr =
-                    '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaSponsor' + objSponsor.IdSponsor + '" href="javascript:actualizarSponsor(' + objSponsor.IdSponsor + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-social-icon btn-danger actualizarFilaSponsor' + objSponsor.IdSponsor + '" href="javascript:eliminarSponsor(' + objSponsor.IdSponsor + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-social-icon btn-warning" href="SubirFotoSponsor.aspx?ID=' + objSponsor.IdSponsor + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-info actualizarFilaSponsor' + objSponsor.IdSponsor + '" href="javascript:actualizarSponsor(' + objSponsor.IdSponsor + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger actualizarFilaSponsor' + objSponsor.IdSponsor + '" href="javascript:eliminarSponsor(' + objSponsor.IdSponsor + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-warning" href="SubirFotoSponsor.aspx?ID=' + objSponsor.IdSponsor + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objSponsor.Nombre + '</td>' +
                     '<td>' + objSponsor.Modulo + '</td>'
                 trActualizado.html(tr);
+                mensajeConfirmacion("Bien!", "Sponsor Actualizado", "success");
                 $('#ContentPlaceHolder1_hdnIdSponsor').val('');
                 $("#newsponsor").slideUp(500, function () {
                     $("#listsponsors").slideDown(500);
@@ -116,13 +117,14 @@ function guardarSponsor() {
             success: function (data) {
                 var objSponsor = data.d;
                 var tr = '<tr>' +
-                    '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaSponsor' + objSponsor.IdSponsor + '" href="javascript:actualizarSponsor(' + objSponsor.IdSponsor + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-social-icon btn-danger actualizarFilaSponsor' + objSponsor.IdSponsor + '" href="javascript:eliminarSponsor(' + objSponsor.IdSponsor + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-social-icon btn-warning" href="SubirFotoSponsor.aspx?ID=' + objSponsor.IdSponsor + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-info actualizarFilaSponsor' + objSponsor.IdSponsor + '" href="javascript:actualizarSponsor(' + objSponsor.IdSponsor + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger actualizarFilaSponsor' + objSponsor.IdSponsor + '" href="javascript:eliminarSponsor(' + objSponsor.IdSponsor + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-warning" href="SubirFotoSponsor.aspx?ID=' + objSponsor.IdSponsor + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objSponsor.Nombre + '</td>' +
                     '<td>' + objSponsor.Modulo + '</td>' +
                     '</tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');
+                mensajeConfirmacion("Bien!", "Sponsor Creado", "success");
                 table.find('tbody').append(tr);
                 $("#newsponsor").slideUp(500, function () {
                     $("#listsponsors").slideDown(500);
@@ -148,10 +150,10 @@ function eliminarSponsor(id) {
         success: function (data) {
             var resultado = data.d;
             if (resultado == -1) {
-                console.log("Error al eliminar");
-                alert("Hubo un error al eliminar el transporte");
+                mensajeConfirmacion("Error", "Error al Eliminar Sponsor", "error");
                 return;
             }
+            mensajeConfirmacion("Bien!", "Sponsor Eliminado", "success");
             var linkEliminar = $('.eliminarFilaSponsor' + resultado);
             var trActualizado = linkEliminar.parent().parent();
             trActualizado.remove();

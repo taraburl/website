@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Carrito.master.cs" Inherits="carrito_Carrito" %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -34,7 +35,7 @@
                         <span class="sub-menu-toggle"></span>
                     </span>
                     <ul class="offcanvas-submenu">
-                        <li><a href="inicio.aspx">Catalogo de Productos</a></li>
+                        <li><a href="inicio.aspx">Catálogo de Productos</a></li>
                     </ul>
                 </li>
                 <li class="has-children">
@@ -47,6 +48,23 @@
                             <a href="Inscripciones.aspx">Formulario de Inscripcion</a>
                         </li>
                     </ul>
+                </li>
+                <li class="has-children">
+                    <span>
+                        <a href="#">Eventos</a>
+                        <span class="sub-menu-toggle"></span>
+                    </span>
+                    <ul class="offcanvas-submenu">
+                        <asp:Repeater runat="server" ID="Repeater3" DataSourceID="ObjectDataSource1">
+                            <ItemTemplate>
+                                <li><a href="Evento.aspx?ID=<%# Eval("IdEvento") %>"><%# Eval("Nombre")%></a></li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="SelectActuales" TypeName="EventoBLL"></asp:ObjectDataSource>
+                    </ul>
+                </li>
+                <li>
+                    <span><a href="noticias.aspx"><span>Noticias</span></a><span class="sub-menu-toggle"></span></span>
                 </li>
             </ul>
         </nav>
@@ -65,6 +83,12 @@
             <ul class="menu">
                 <li><a href="Inscripciones.aspx">Inscriciones: Academia SEA</a></li>
                 <li><a href="inicio.aspx">Catalogo de Productos</a></li>
+                <asp:Repeater runat="server" ID="Repeater2" DataSourceID="ObjectDataSource1">
+                    <ItemTemplate>
+                        <li><a href="Evento.aspx?ID=<%# Eval("IdEvento") %>"><%# Eval("Nombre")%></a></li>
+                    </ItemTemplate>
+                </asp:Repeater>
+                <li><a href="noticias.aspx"><span>Noticias</span></a></li>
             </ul>
         </nav>
     </div>
@@ -118,7 +142,17 @@
                             <h6 class="mt-3">Inscripciones a la Academia de Fútbol SEA</h6>
                         </a></li>
                     </ul>
-                    <
+                </li>
+                <li><a href="#"><span>Eventos</span></a>
+                    <ul class="sub-menu">
+                        <asp:Repeater runat="server" ID="Repeater1" DataSourceID="ObjectDataSource1">
+                            <ItemTemplate>
+                                <li><a href="Evento.aspx?ID=<%# Eval("IdEvento") %>"><%# Eval("Nombre")%></a></li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </ul>
+                </li>
+                <li><a href="noticias.aspx"><span>Noticias</span></a>
                 </li>
             </ul>
         </nav>
@@ -131,7 +165,7 @@
                         <ul class="toolbar-dropdown">
                             <li class="sub-menu-user">
                                 <div class="user-ava">
-                                    <img src="" alt="perfil" class="imgPerfil"/>
+                                    <img src="" alt="perfil" class="imgPerfil" />
                                 </div>
                                 <div class="user-info">
                                     <h6 class="user-name"></h6>
@@ -198,8 +232,8 @@
                     <div class="col-lg-3 col-md-6">
                         <!-- Mobile App Buttons-->
                         <section class="widget widget-light-skin">
-                            <h3 class="widget-title">Descaraga Nuestra 
-                                aplicación
+                            <h3 class="widget-title">Descarga Nuestra 
+                                Aplicación
                             </h3>
                             <a class="market-button apple-button mb-light-skin" href="#">
                                 <span class="mb-subtitle">Descargar en la </span>

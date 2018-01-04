@@ -36,4 +36,20 @@ public class OrdenCompra
             return TipoPagoBLL.SelectById(IdTipoPago);
         }
     }
+    public DateTime Fecha { get; set; }
+    public TimeSpan Hora { get; set; }
+    public string FechaForDisplay
+    {
+        get
+        {
+            return Fecha.ToString("dd/MM/yyyy");
+        }
+    }
+    public string HoraForDisplay
+    {
+        get
+        {
+            return Hora.ToString();
+        }
+    }
 }

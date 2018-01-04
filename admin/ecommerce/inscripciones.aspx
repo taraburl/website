@@ -20,12 +20,13 @@
                     <asp:TemplateField HeaderText="Consolidar">
                         <ItemTemplate>
                             <%#Eval("Estado").ToString() == "0" ?
-                                    String.Format("<a class='btn btn-block btn-social-icon btn-info actualizarFilaInscripcion{0}' href='javascript:actualizarInscripcion({0})'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>", Eval("IdInscripcion")):"" %>
+                                    String.Format("<a class='btn btn-block btn-info actualizarFilaInscripcion{0}' href='javascript:actualizarInscripcion({0})'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>", Eval("IdInscripcion")):
+                                    "" %>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Eliminar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-danger eliminarFilaInscripcion<%# Eval("IdInscripcion")%>" href="javascript:eliminarInscripcion(<%# Eval("IdInscripcion") %>)">
+                            <a class="btn btn-block btn-danger eliminarFilaInscripcion<%# Eval("IdInscripcion")%>" href="javascript:eliminarInscripcion(<%# Eval("IdInscripcion") %>)">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -65,11 +66,18 @@
         </div>
         <div class="box-body">
             <asp:HiddenField runat="server" ID="hdnIdInscripcion" />
-            <div class="col-xs-12">
+            <div class="col-xs-11">
                 <label>Seleccione Cliente:</label>
                 <asp:DropDownList runat="server" CssClass="form-control select2" Style="width: 100%;" ID="IdUsuario" DataSourceID="ObjectDataSource2" DataTextField="nombre" DataValueField="id">
                 </asp:DropDownList>
                 <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="selectUsersNormal" TypeName="UsuarioDSTableAdapters.tbl_usuariosTableAdapter"></asp:ObjectDataSource>
+            </div>
+            <div class="col-xs-1" style="padding: 0px !important;">
+                <a href="#" class="btn btn-app pull-left"
+                    data-toggle="modal" data-target="#nuevoCliente">
+                    <i aria-hidden="true" class="fa fa-plus-square"></i>
+                    Nuevo
+                </a>
             </div>
             <div class="col-xs-12 col-lg-6 col-md-6">
                 <label>Seleccione la Categoria:</label>
@@ -81,19 +89,20 @@
                 <label for="Precio">Precio:</label>
                 <div class=" input-group">
                     <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                    <input class="form-control" placeholder="" id="Precio" type="text" disabled />
+                    <input class="form-control" placeholder="" id="Precio" type="text" disabled="disabled" />
                 </div>
             </div>
             <div class="col-xs-12">
                 <label for="Nombre">Nombre del Inscrito:</label>
                 <div class=" input-group">
                     <span class="input-group-addon"><i class="fa fa-file-image-o"></i></span>
-                    <input class="form-control" placeholder="Insertar Nombre del Inscrito" id="Nombre" type="text" />
+                    <input class="form-control" placeholder="Insertar Nombre del Inscrito" id="Inscrito" type="text" />
                 </div>
             </div>
             <div class="col-xs-12">
                 <div class="form-group">
-                    <label>Metodo de Pago</label>
+                    <label>Metodo de Pago:</label>
+                    <br />
                     <asp:Repeater runat="server" ID="RepeaterFormaPago" DataSourceID="ObjectDataSource4">
                         <ItemTemplate>
                             <label class="custom-control custom-radio">
@@ -114,6 +123,117 @@
         <div class="box-footer">
             <a class="btn btn-success btn-lg" href="javascript:guardarInscripcion()"><i class="fa fa-floppy-o" aria-hidden="true"></i>Guardar</a>
             <a class="btn btn-default pull-right btn-lg" href="javascript:cancelnewInscripcion()"><i class="fa fa-times" aria-hidden="true"></i>Cancelar</a>
+        </div>
+    </div>
+    <div class="modal fade" id="nuevoCliente" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Insertar Usurio</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-xs-12 col-lg-6 col-md-6">
+                        <label for="Nombre">Nombre:</label>
+                        <div class=" input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input class="form-control" placeholder="Insertar Nombre" id="Nombre" type="text" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-lg-6 col-md-6">
+                        <label for="Apellidos">Apellidos:</label>
+                        <div class=" input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input class="form-control" placeholder="Insertar Apellidos" id="Apellidos" type="text" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <label for="Email">Email:</label>
+                        <div class=" input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                            <input class="form-control" placeholder="Insertar Email" id="Email" type="text" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-lg-6 col-md-6">
+                        <label for="Telefono">Telefono:</label>
+                        <div class=" input-group">
+                            <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                            <input class="form-control" min="0" id="Telefono" type="number" onkeypress="return isNumberKey(this);" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-lg-6 col-md-6">
+                        <label for="Celular">Celular:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-mobile-phone"></i></span>
+                            <input class="form-control" min="0" id="Celular" type="number" onkeypress="return isNumberKey(this);" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <label for="Direccion">Direccion:</label>
+                        <div class=" input-group">
+                            <span class="input-group-addon"><i class="fa fa-location-arrow"></i></span>
+                            <input class="form-control" placeholder="Insertar Direccion" id="Direccion" type="text" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-lg-6 col-md-6">
+                        <label for="UserName">Nombre de Usuario:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input class="form-control" placeholder="Insertar Nombre de Usuario" id="UserName" type="text" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-lg-6 col-md-6">
+                        <label for="Password">Contraseña:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                            <input class="form-control" placeholder="Insertar Contraseña" id="Password" type="password" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                    <a href="javascript:guardarUsuario()" class="btn btn-primary">Guardar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modalTigo">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Proceso de Cobro Tigo Money</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-xs-12">
+                        <label for="Telefono">Total:</label>
+                        <div class=" input-group">
+                            <span class="input-group-addon"><i class="fa fa-circle"></i></span>
+                            <input class="form-control" disabled="disabled" min="0" id="PrecioTigo" type="number" onkeypress="return isNumberKey(this);" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <label for="Telefono">Nro. de Orden:</label>
+                        <div class=" input-group">
+                            <span class="input-group-addon"><i class="fa fa-circle"></i></span>
+                            <input class="form-control" disabled="disabled" min="0" id="OrdenTigo" type="number" onkeypress="return isNumberKey(this);" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <label for="Telefono">Nro. de Telefono:</label>
+                        <div class=" input-group">
+                            <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                            <input class="form-control" min="0" id="TelefonoTigo" type="number" onkeypress="return isNumberKey(this);" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                    <a href="javascript:RealizarPago()" class="btn btn-primary">Finalizar</a>
+                </div>
+            </div>
         </div>
     </div>
     <script src="../scripts/inscipcion.js"></script>

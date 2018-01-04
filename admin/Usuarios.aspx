@@ -19,13 +19,13 @@
                 <Columns>
                     <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-info actualizarFilaUsuario<%# Eval("id") %>" href="javascript:actualizarUser(<%# Eval("id")%>)">
+                            <a class="btn btn-block btn-info actualizarFilaUsuario<%# Eval("id") %>" href="javascript:actualizarUser(<%# Eval("id")%>)">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Eliminar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-social-icon btn-danger eliminarFilaUsuario<%# Eval("id")%>" href="javascript:eliminarUsuario(<%# Eval("id") %>)">
+                            <a class="btn btn-block btn-danger eliminarFilaUsuario<%# Eval("id")%>" href="javascript:eliminarUsuario(<%# Eval("id") %>)">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -65,14 +65,14 @@
             <div class="col-xs-12 col-lg-6 col-md-6">
                 <label for="Nombre">Nombre:</label>
                 <div class=" input-group">
-                    <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
                     <input class="form-control" placeholder="Insertar Nombre" id="Nombre" type="text" />
                 </div>
             </div>
             <div class="col-xs-12 col-lg-6 col-md-6">
                 <label for="Apellidos">Apellidos:</label>
                 <div class=" input-group">
-                    <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
                     <input class="form-control" placeholder="Insertar Apellidos" id="Apellidos" type="text" />
                 </div>
             </div>
@@ -87,14 +87,14 @@
                 <label for="Telefono">Telefono:</label>
                 <div class=" input-group">
                     <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                    <input class="form-control" placeholder="Insertar Nro. de Telefono" id="Telefono" type="text" onkeypress="return isNumberKey(this);" />
+                    <input class="form-control" min="0" id="Telefono" type="number" onkeypress="return isNumberKey(this);" />
                 </div>
             </div>
             <div class="col-xs-12 col-lg-6 col-md-6">
                 <label for="Celular">Celular:</label>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-mobile-phone"></i></span>
-                    <input class="form-control" placeholder="Insertar Nro. de Celular" id="Celular" type="text" onkeypress="return isNumberKey(this);" />
+                    <input class="form-control" min="0" id="Celular" type="number" onkeypress="return isNumberKey(this);" />
                 </div>
             </div>
             <div class="col-xs-12">
