@@ -8,7 +8,7 @@ public class NoticiaBLL
 {
     public NoticiaBLL()
     {
-        
+
     }
     public static List<Noticia> SelectAll()
     {
@@ -22,12 +22,24 @@ public class NoticiaBLL
         }
         return listNoticia;
     }
-    public static Noticia InsertWithReturn(string titulo, string descripcion, string fecha)
+    public static List<Noticia> SelectByEvento(string id)
+    {
+        NoticiaDSTableAdapters.tbl_noticiasTableAdapter adapter =
+            new NoticiaDSTableAdapters.tbl_noticiasTableAdapter();
+        NoticiaDS.tbl_noticiasDataTable table = adapter.SelectByEvento(Convert.ToInt32(id));
+        List<Noticia> listNoticia = new List<Noticia>();
+        foreach (NoticiaDS.tbl_noticiasRow row in table)
+        {
+            listNoticia.Add(RowToDto(row));
+        }
+        return listNoticia;
+    }
+    public static Noticia InsertWithReturn(string titulo, string descripcion, string fecha, int idEvento)
     {
         NoticiaDSTableAdapters.tbl_noticiasTableAdapter adapter =
             new NoticiaDSTableAdapters.tbl_noticiasTableAdapter();
         NoticiaDS.tbl_noticiasDataTable table =
-            adapter.InsertWithReturn(titulo, descripcion, Convert.ToDateTime(fecha), 0);
+            adapter.InsertWithReturn(titulo, descripcion, Convert.ToDateTime(fecha), 0, idEvento);
         if (table.Rows.Count == 0)
         {
             return null;
@@ -45,11 +57,11 @@ public class NoticiaBLL
         }
         return RowToDto(table[0]);
     }
-    public static void Update(string titulo, string descripcion,string fecha, int id)
+    public static void Update(string titulo, string descripcion, string fecha, int id, int idEvento)
     {
         NoticiaDSTableAdapters.tbl_noticiasTableAdapter adapter =
             new NoticiaDSTableAdapters.tbl_noticiasTableAdapter();
-        adapter.UpdateNoticia(titulo, descripcion, Convert.ToDateTime(fecha), 0, id, id);
+        adapter.UpdateNoticia(titulo, descripcion, Convert.ToDateTime(fecha), 0, id, id, idEvento);
     }
     public static void Delete(int id)
     {
@@ -64,6 +76,7 @@ public class NoticiaBLL
         objNoticia.Titulo = row.titulo;
         objNoticia.Descripcion = row.descripcion;
         objNoticia.Fecha = row.fecha;
+        objNoticia.idEvento = row.idEvento;
         objNoticia.Eliminado = row.eliminado;
         return objNoticia;
     }

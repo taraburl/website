@@ -14,35 +14,35 @@
             </a>
         </div>
         <div class="box-body table-responsive">
-            <asp:GridView ID="GridView1" runat="server" DataSourceID="SponsorsDS" 
+            <asp:GridView ID="GridView1" runat="server" DataSourceID="SponsorsDS"
                 AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id"
-                 CssClass="table text-center table-striped table-bordered table-hover table-sm " CellPadding="4" ForeColor="#333333" GridLines="None"
-                >
+                CssClass="table text-center table-striped table-bordered table-hover table-sm " CellPadding="4" ForeColor="#333333" GridLines="None" AllowCustomPaging="True" AllowPaging="True">
                 <Columns>
+                    <asp:BoundField DataField="nombre" HeaderText="Nombre" SortExpression="nombre" />
+                    <asp:BoundField DataField="modulo" HeaderText="Modulo" SortExpression="modulo" />
                     <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-info actualizarFilaSponsor<%# Eval("id") %>" href="javascript:actualizarSponsor(<%# Eval("id")%>)">
+                            <a class="btn btn-block btn-info btn-circle actualizarFilaSponsor<%# Eval("id") %>" href="javascript:actualizarSponsor(<%# Eval("id")%>)">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Eliminar">
                         <ItemTemplate>
-                            <a class="btn btn-block  btn-danger eliminarFilaSponsor<%# Eval("id")%>" href="javascript:eliminarSponsor(<%# Eval("id") %>)">
+                            <a class="btn btn-block  btn-danger btn-circle eliminarFilaSponsor<%# Eval("id")%>" href="javascript:eliminarSponsor(<%# Eval("id") %>)">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Subir Foto">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-warning" href="SubirFotoSponsor.aspx?ID=<%# Eval("id")%>">
+                            <a class="btn btn-block btn-warning btn-circle" href="SubirFotoSponsor.aspx?ID=<%# Eval("id")%>">
                                 <i class="fa  fa-file-photo-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="nombre" HeaderText="Nombre" SortExpression="nombre" />
-                    <asp:BoundField DataField="modulo" HeaderText="Modulo" SortExpression="modulo" />
                 </Columns>
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
                 <HeaderStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
+                <PagerSettings Mode="NumericFirstLast" />
                 <PagerStyle BackColor="#47AEC5" ForeColor="White" HorizontalAlign="Center" />
                 <RowStyle BackColor="#EFF3FB" />
                 <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
@@ -74,7 +74,8 @@
                 <div class="form-group">
                     <label>Modulo:</label>
                     <select class="form-control select2" id="Modulo" style="width: 100%;">
-                        <option value="Eventos" selected="selected">Eventos</option>
+                        <option value="Inicio" selected="selected">Inicio</option>
+                        <option value="Eventos">Eventos</option>
                         <option value="Marketing Deportivo">Marketing Deportivo</option>
                         <option value="Club Atlético Juniors">Club Atlético Juniors</option>
                         <option value="Academia de Fútbol">Academia de Fútbol</option>

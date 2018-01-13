@@ -57,30 +57,6 @@
             </div>
         </main>
     </div>
-    <!--<div class="wrapper row3">
-        <div class=" container clear">
-            <div class="content">
-                <div class="group btmspace-50 demo " id="">
-                    <div class="cbp-item one_half first" style="margin: 0px !important;">
-                        <a href="#" class="cbp-caption cbp-singlePage" rel="">
-                            <div class=""
-                                style="background-image: url(/images/background2.jpg); height: 250px; background-attachment: fixed; background-size: cover; margin-right: -50px;">
-                            </div>
-                        </a>
-                        <a href="#" class="cbp-l-grid-work-title" rel="">Catalogo de Productos</a>
-                    </div>
-                    <div class="cbp-item one_half" style="margin: 0px !important;">
-                        <a href="#" class="cbp-caption cbp-singlePage" rel="">
-                            <div class=""
-                                style="background-image: url(/images/background3.jpg); height: 250px; background-attachment: fixed; background-size: cover; margin-right: -50px;">
-                            </div>
-                        </a>
-                        <a href="#" class="cbp-l-grid-work-title " rel="">Inscripciones</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
     <div class="wrapper row3">
         <div class="group">
             <div class="content-lg container">
@@ -105,32 +81,8 @@
                     </div>
                 </div>
             </div>
-            <!--<div-- class="content">
-                <div class="bgimg-1 one_half first" style="background-image: url(/images/background2.jpg) !important;">
-                    <div class="caption">
-                        <span class="border">
-                            <a href="/carrito/inicio.aspx" class="boton-pi">PRODUCTOS</a>
-                        </span>
-                    </div>
-                </div>
-                <div class="bgimg-1 one_half" style="background-image: url(/images/background3.jpg) !important;">
-                    <div class="caption" style="color: #48AEC5 !important;">
-                        <span class="border">
-                            <a href="/carrito/Inscripciones.aspx" class="boton-pi">INSCRIPCIONES</a>
-                        </span>
-                    </div>
-                </div>
-            </div-->
         </div>
     </div>
-    <!--<div class="wrapper row5">
-        <div class="bgimg-1">
-            <div class="caption">
-                <span class="border">
-                    <img src="/images/logo.png" alt="logosea" style="width: 50px !important;" />IMAGENES</span>
-            </div>
-        </div>
-    </div>-->
     <div class="wrapper row5" style="margin: 0px 0 20px 0;">
         <div id="" class="hoc clear">
             <div class="caption2 caption">
@@ -168,14 +120,6 @@
             </div>
         </div>
     </div>
-    <!--<div class="wrapper row5">
-        <div class="bgimg-1">
-            <div class="caption">
-                <span class="border">
-                    <img src="../images/logo.png" alt="logosea" style="width: 50px !important;" />VIDEOS</span>
-            </div>
-        </div>
-    </div>-->
     <div class="wrapper row5" style="margin: 0px 0 20px 0; margin-top: 100px;">
         <div id="" class="hoc clear">
             <div class="caption2 caption">

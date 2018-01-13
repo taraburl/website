@@ -34,15 +34,15 @@ function actualizarVenta(id) {
             var linkActualizar = $('.actualizarFilaVenta' + objVenta.IdOrdenCompra);
             var trActualizado = linkActualizar.parent().parent();
             var tr =
-                '<td></td>' +
-                '<td><a class="btn btn-block btn-danger eliminarFilaVenta' + objVenta.IdOrdenCompra + '" href="javascript:eliminarVenta(' + objVenta.IdOrdenCompra + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                 '<td>' + objVenta.IdOrdenCompra + '</td>' +
                 '<td>' + objVenta.Estado.Nombre + '</td>' +
                 '<td>' + objVenta.TipoPago.Nombre + '</td>' +
                 '<td>' + objVenta.Usuario.Nombre + '' + objVenta.Usuario.Apellido + '</td>' +
                 '<td>' + objVenta.Total + '</td>' +
                 '<td>' + objVenta.FechaForDisplay + '</td>' +
-                '<td>' + objVenta.HoraForDisplay + '</td>';
+                '<td>' + objVenta.HoraForDisplay + '</td>' + 
+                '<td></td>' +
+                '<td><a class="btn btn-block btn-danger btn-circle eliminarFilaVenta' + objVenta.IdOrdenCompra + '" href="javascript:eliminarVenta(' + objVenta.IdOrdenCompra + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>';
             trActualizado.html(tr);
         },
         error: function () {

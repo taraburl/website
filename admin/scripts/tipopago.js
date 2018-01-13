@@ -95,10 +95,10 @@ function guardarTipoPago() {
                 var linkActualizar = $('.actualizarFilaTipoPago' + objTipoPago.IdTipoPago);
                 var trActualizado = linkActualizar.parent().parent();
                 var tr =
-                    '<td><a class="btn btn-block   btn-info actualizarFilaTipoPago' + objTipoPago.IdTipoPago + '" href="javascript:actualizarTipoPago(' + objTipoPago.IdTipoPago + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block   btn-danger eliminarFilaTipoPago' + objTipoPago.IdTipoPago + '" href="javascript:eliminarTipoPago(' + objTipoPago.IdTipoPago + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objTipoPago.IdTipoPago + '</td>' +
-                    '<td>' + objTipoPago.Nombre + '</td>';
+                    '<td>' + objTipoPago.Nombre + '</td>' +
+                    '<td><a class="btn btn-block btn-info btn-circle actualizarFilaTipoPago' + objTipoPago.IdTipoPago + '" href="javascript:actualizarTipoPago(' + objTipoPago.IdTipoPago + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger btn-circle eliminarFilaTipoPago' + objTipoPago.IdTipoPago + '" href="javascript:eliminarTipoPago(' + objTipoPago.IdTipoPago + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>';
                 trActualizado.html(tr);
                 $('#ContentPlaceHolder1_hdnIdTipoPago').val('');
                 mensajeConfirmacion("Bien!", "Tipo de Pago Actualizado", "success");
@@ -124,10 +124,10 @@ function guardarTipoPago() {
             success: function (data) {
                 var objTipoPago = data.d;
                 var tr = '<tr>' +
-                    '<td><a class="btn btn-block   btn-info actualizarFilaTipoPago' + objTipoPago.IdTipoPago + '" href="javascript:actualizarTipoPago(' + objTipoPago.IdTipoPago + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block   btn-danger actualizarFilaTipoPago' + objTipoPago.IdTipoPago + '" href="javascript:eliminarTipoPago(' + objTipoPago.IdTipoPago + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objTipoPago.IdTipoPago + '</td>' +
                     '<td>' + objTipoPago.Nombre + '</td>' +
+                    '<td><a class="btn btn-block btn-info btn-circle actualizarFilaTipoPago' + objTipoPago.IdTipoPago + '" href="javascript:actualizarTipoPago(' + objTipoPago.IdTipoPago + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger btn-circle actualizarFilaTipoPago' + objTipoPago.IdTipoPago + '" href="javascript:eliminarTipoPago(' + objTipoPago.IdTipoPago + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '</tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');
                 table.find('tbody').append(tr);

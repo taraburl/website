@@ -16,27 +16,28 @@
         <div class="box-body table-responsive">
             <asp:GridView runat="server" ID="GridView1" DataSourceID="ObjectDataSource1"
                 AutoGenerateColumns="False" DataKeyNames="id"
-                CssClass="table text-center table-striped table-bordered table-hover table-sm ">
+                CssClass="table text-center table-striped table-bordered table-hover table-sm " AllowCustomPaging="True" AllowPaging="True">
                 <Columns>
+                    <asp:BoundField DataField="url" HeaderText="URL" SortExpression="url" />
+                    <asp:BoundField DataField="descripcion" HeaderText="Descripción" SortExpression="descripcion" />
+                    <asp:BoundField DataField="modulo" HeaderText="Modulo" SortExpression="modulo" />
                     <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-info actualizarFilaVideo<%# Eval("id") %>" href="javascript:actualizarVideo(<%# Eval("id")%>)">
+                            <a class="btn btn-block btn-info btn-circle actualizarFilaVideo<%# Eval("id") %>" href="javascript:actualizarVideo(<%# Eval("id")%>)">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Eliminar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-danger eliminarFilaVideo<%# Eval("id")%>" href="javascript:eliminarVideo(<%# Eval("id") %>)">
+                            <a class="btn btn-block btn-danger btn-circle eliminarFilaVideo<%# Eval("id")%>" href="javascript:eliminarVideo(<%# Eval("id") %>)">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="url" HeaderText="URL" SortExpression="url" />
-                    <asp:BoundField DataField="descripcion" HeaderText="Descripción" SortExpression="descripcion" />
-                    <asp:BoundField DataField="modulo" HeaderText="Modulo" SortExpression="modulo" />
                 </Columns>
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
                 <HeaderStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
+                <PagerSettings Mode="NumericFirstLast" />
                 <PagerStyle BackColor="#47AEC5" ForeColor="White" HorizontalAlign="Center" />
                 <RowStyle BackColor="#EFF3FB" />
                 <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />

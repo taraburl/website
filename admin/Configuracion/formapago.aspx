@@ -14,27 +14,37 @@
             </a>
         </div>
         <div class="box-body table-responsive">
-            <asp:GridView runat="server" ID="GridView1"
-                CssClass="table text-center table-striped table-bordered table-hover table-sm " AutoGenerateColumns="False" DataSourceID="ObjectDataSource1">
+            <asp:GridView
+                runat="server"
+                ID="GridView1"
+                DataSourceID="ObjectDataSource1"
+                AllowPaging="True"
+                AllowSorting="False"
+                AutoGenerateColumns="False"
+                DataKeyNames="IdTipoPago"
+                CssClass="table table-striped table-bordered table-hover table-sm "
+                CellPadding="4" ForeColor="#333333" GridLines="None">
+                <AlternatingRowStyle BackColor="White" />
                 <Columns>
+                    <asp:BoundField DataField="IdTipoPago" HeaderText="Codigo" SortExpression="IdTipoPago" />
+                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                     <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
-                            <a class="btn btn-block   btn-info actualizarFilaTipoPago<%# Eval("IdTipoPago") %>" href="javascript:actualizarTipoPago(<%# Eval("IdTipoPago")%>)">
+                            <a class="btn btn-block btn-info btn-circle actualizarFilaTipoPago<%# Eval("IdTipoPago") %>" href="javascript:actualizarTipoPago(<%# Eval("IdTipoPago")%>)">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Eliminar">
                         <ItemTemplate>
-                            <a class="btn btn-block   btn-danger eliminarFilaTipoPago<%# Eval("IdTipoPago")%>" href="javascript:eliminarTipoPago(<%# Eval("IdTipoPago") %>)">
+                            <a class="btn btn-block btn-danger btn-circle eliminarFilaTipoPago<%# Eval("IdTipoPago")%>" href="javascript:eliminarTipoPago(<%# Eval("IdTipoPago") %>)">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="IdTipoPago" HeaderText="Codigo" SortExpression="IdTipoPago" />
-                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                 </Columns>
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
                 <HeaderStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
+                <PagerSettings Mode="NumericFirstLast" />
                 <PagerStyle BackColor="#47AEC5" ForeColor="White" HorizontalAlign="Center" />
                 <RowStyle BackColor="#EFF3FB" />
                 <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />

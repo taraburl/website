@@ -49,31 +49,29 @@
                 </SelectParameters>
             </asp:ObjectDataSource>
         </div>
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Nombre del Jugador</th>
-                        <th>Posicion</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <asp:Repeater runat="server" ID="RepeaterJugadores" DataSourceID="ObjectDataSource2">
-                        <ItemTemplate>
-                            <tr>
-                                <td><%# Eval("Nombre") %></td>
-                                <td><%# Eval("Posicion") %></td>
-                            </tr>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                    <asp:ObjectDataSource ID="ObjectDataSource2" runat="server"
-                        SelectMethod="SelectByTipo" TypeName="JugadorEquipoBLL">
-                        <SelectParameters>
-                            <asp:QueryStringParameter Name="id" QueryStringField="ID" Type="Int32" />
-                        </SelectParameters>
-                    </asp:ObjectDataSource>
-                </tbody>
-            </table>
+        <br />
+        <div class="row">
+            <asp:Repeater runat="server" ID="RepeaterJugadores" DataSourceID="ObjectDataSource2">
+                <ItemTemplate>
+                    <div class="col-sm-2 mb-1">
+                        <div class="d-table">
+                            <img class="d-block w-150 mx-auto img-thumbnail
+                                 rounded-circle d-table-cell align-middle" 
+                                src="../images/galeria/11.jpg" alt="<%# Eval("Nombre") %>">
+                            <div class="pl-3 d-table-cell align-middle">
+                                <h6><%# Eval("Nombre") %></h6>
+                                <p class="text-muted mb-2">Posicion: <%# Eval("Posicion") %></p>
+                            </div>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+            <asp:ObjectDataSource ID="ObjectDataSource2" runat="server"
+                SelectMethod="SelectByTipo" TypeName="JugadorEquipoBLL">
+                <SelectParameters>
+                    <asp:QueryStringParameter Name="id" QueryStringField="ID" Type="Int32" />
+                </SelectParameters>
+            </asp:ObjectDataSource>
         </div>
     </div>
 </asp:Content>

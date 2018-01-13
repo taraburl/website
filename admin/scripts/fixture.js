@@ -95,13 +95,14 @@ function nuevoEquipo() {
         success: function (data) {
             var objJugadorEquipo = data.d;
             var tr = '<tr>' +
-                //'<td><a class="btn btn-block btn-social-icon btn-info href="javascript:agregarArbitros(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>' +
-                '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaJugadorEquipo' + objJugadorEquipo.IdFixture + '" href="javascript:eliminarPartido(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>' +
                  '<td>' + objJugadorEquipo.Equipo.Nombre + '</td>' +
                  '<td>' + objJugadorEquipo.Rival.Nombre + '</td>' +
                  '<td>' + objJugadorEquipo.Cancha.Nombre + '</td>' +
                  '<td>' + objJugadorEquipo.FechaForDisplay + '</td>' +
                  '<td>' + objJugadorEquipo.HoraForDisplay + '</td>' +
+                 '<td><a class="btn btn-block btn-social-icon btn-warning href="javascript:agregarArbitros(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-plus" aria-hidden="true"></i></a></td>' +
+                 '<td><a class="btn btn-block btn-social-icon btn-info href=""><i class="fa fa-pencil" aria-hidden="true"></i></a></td>' +
+                 '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaJugadorEquipo' + objJugadorEquipo.IdFixture + '" href="javascript:eliminarPartido(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>' +
                  '</tr>';
             $("#partidos").append(tr);
             mensajeConfirmacion("Bien!", "Partido Agregado", "success");
@@ -127,13 +128,14 @@ function cargarPartidos(id) {
             var objgrup = data.d;
             objgrup.forEach(function (objJugadorEquipo) {
                 var tr = '<tr>' +
-                    //boooooo'<td><a class="btn btn-block btn-social-icon btn-info href="javascript:agregarArbitros(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaJugadorEquipo' + objJugadorEquipo.IdFixture + '" href="javascript:eliminarPartido(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>' +
                      '<td>' + objJugadorEquipo.Equipo.Nombre + '</td>' +
                      '<td>' + objJugadorEquipo.Rival.Nombre + '</td>' +
                      '<td>' + objJugadorEquipo.Cancha.Nombre + '</td>' +
                      '<td>' + objJugadorEquipo.FechaForDisplay + '</td>' +
                      '<td>' + objJugadorEquipo.HoraForDisplay + '</td>' +
+                     '<td><a class="btn btn-block btn-social-icon btn-warning href="javascript:agregarArbitros(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-plus" aria-hidden="true"></i></a></td>' +
+                     '<td><a class="btn btn-block btn-social-icon btn-info href=""><i class="fa fa-pencil" aria-hidden="true"></i></a></td>' +
+                     '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaJugadorEquipo' + objJugadorEquipo.IdFixture + '" href="javascript:eliminarPartido(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>' +
                      '</tr>';
                 $("#partidos").append(tr);
             });

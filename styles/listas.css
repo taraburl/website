@@ -30,3 +30,121 @@
 .slick-next:before {
     color: black;
 }
+
+.index-news {
+}
+
+#masleidas {
+    text-align: left;
+    border-radius: 0px;
+    overflow: hidden;
+}
+
+    #masleidas .titulo {
+        padding: 8px 3%;
+        display: block;
+        background: #09c;
+        margin: 0 0 1px;
+        text-transform: uppercase;
+        color: #fff;
+        text-align: center;
+        font-size: 20px;
+        letter-spacing: -1px;
+    }
+
+    #masleidas .window {
+        max-height: 600px !important;
+        overflow-y: scroll !important;
+        padding-right: 0px !important;
+        background: white;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+
+.masleida {
+    float: left;
+    width: 50%;
+    height: 300px;
+    position: relative;
+    margin: 0 0 0 .76%;
+    border-radius: 0px;
+    overflow: hidden;
+    background: black;
+}
+
+    .masleida.nomargin {
+        margin-left: 0;
+    }
+
+    .masleida .orden {
+        position: absolute;
+        background: rgba(4,187,223,.5);
+        color: #fff;
+        font: bold 150%/100% 'Gotham';
+        text-align: center;
+        display: block;
+        width: 100%;
+        height: 35px;
+        cursor: default;
+        padding: 6px;
+        border-radius: 0px;
+    }
+
+    .masleida .foto {
+        display: block;
+    }
+
+    .masleida img {
+        display: block;
+        min-width: 100%;
+        width: auto;
+        min-height: 100%;
+        position: absolute;
+        top: 0;
+        transition: all 1s;
+        opacity: 1;
+        -moz-opacity: 1;
+        -webkit-opacity: 1;
+        -o-opacity: 1;
+        -ms-opacity: 1;
+    }
+
+    .masleida:hover img {
+        -moz-transform: scale(1.15);
+        transform: scale(1.15);
+        -webkit-transform: none;
+        opacity: .8;
+        -moz-opacity: .8;
+        -webkit-opacity: .8;
+        -o-opacity: .8;
+        -ms-opacity: .8;
+    }
+
+    .masleida h2 {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        min-height: 100px;
+        max-height: 200px;
+    }
+
+        .masleida h2 a {
+            display: block;
+            color: #fff;
+            width: 100%;
+            padding: 15px 4%;
+            text-shadow: 1px 1px 10px #000;
+            text-align: left;
+            text-transform: capitalize;
+            font-size: 20px;
+        }
+
+.ajax:hover {
+    color: white !important;
+}
+
+.yottie-widget-video-info-title,  .yottie-widget-nav-list-item a{
+    color: rgb(26, 137, 222) !important;
+}

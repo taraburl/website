@@ -111,12 +111,12 @@ function guardarImagen() {
                 var linkActualizar = $('.actualizarFilaImagen' + objImagen.IdImagen);
                 var trActualizado = linkActualizar.parent().parent();
                 var tr =
-                    '<td><a class="btn btn-block btn-info actualizarFilaImagen' + objImagen.IdImagen + '" href="javascript:actualizarImagen(' + objImagen.IdImagen + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger actualizarFilaImagen' + objImagen.IdImagen + '" href="javascript:eliminarImagen(' + objImagen.IdImagen + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-warning" href="SubirFotoImagen.aspx?ID=' + objImagen.IdImagen + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '<td><img class="profile-user-img img-responsive" alt="SEA-IMG" src="/images/galeria/' + objImagen.IdImagen + '.jpg"/></td>' +
                     '<td>' + objImagen.Descripcion + '</td>' +
-                    '<td>' + objImagen.Modulo + '</td>'
+                    '<td>' + objImagen.Modulo + '</td>' +
+                    '<td><a class="btn btn-block btn-info btn-circle actualizarFilaImagen' + objImagen.IdImagen + '" href="javascript:actualizarImagen(' + objImagen.IdImagen + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger btn-circle actualizarFilaImagen' + objImagen.IdImagen + '" href="javascript:eliminarImagen(' + objImagen.IdImagen + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-warning btn-circle" href="SubirFotoImagen.aspx?ID=' + objImagen.IdImagen + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>';
                 trActualizado.html(tr);
                 $('#ContentPlaceHolder1_hdnIdImagen').val('');
                 mensajeConfirmacion("Bien!", "Imagen Actualizada", "success");
@@ -143,12 +143,12 @@ function guardarImagen() {
             success: function (data) {
                 var objImagen = data.d;
                 var tr = '<tr>' +
-                    '<td><a class="btn btn-block btn-info actualizarFilaImagen' + objImagen.IdImagen + '" href="javascript:actualizarImagen(' + objImagen.IdImagen + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger actualizarFilaImagen' + objImagen.IdImagen + '" href="javascript:eliminarImagen(' + objImagen.IdImagen + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-warning" href="SubirFotoImagen.aspx?ID=' + objImagen.IdImagen + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '<td><img class="profile-user-img img-responsive" alt="SEA-IMG" src="/images/galeria/' + objImagen.IdImagen + '.jpg"/></td>' +
                     '<td>' + objImagen.Descripcion + '</td>' +
                     '<td>' + objImagen.Modulo + '</td>' +
+                    '<td><a class="btn btn-block btn-info actualizarFilaImagen' + objImagen.IdImagen + '" href="javascript:actualizarImagen(' + objImagen.IdImagen + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger actualizarFilaImagen' + objImagen.IdImagen + '" href="javascript:eliminarImagen(' + objImagen.IdImagen + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-warning" href="SubirFotoImagen.aspx?ID=' + objImagen.IdImagen + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '</tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');
                 table.find('tbody').append(tr);

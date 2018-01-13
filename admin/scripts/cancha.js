@@ -94,14 +94,14 @@ function guardarCancha() {
                 var objCancha = data.d;
                 var linkActualizar = $('.actualizarFilaCancha' + objCancha.IdCancha);
                 var trActualizado = linkActualizar.parent().parent();
-                var tr =
-                    '<td><a class="btn btn-block   btn-info actualizarFilaCancha' + objCancha.IdCancha + '" href="javascript:actualizarCancha(' + objCancha.IdCancha + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block   btn-danger eliminarFilaCancha' + objCancha.IdCancha + '" href="javascript:eliminarCancha(' + objCancha.IdCancha + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                var tr =                    
                     '<td>' + objCancha.Nombre + '</td>' +
-                    '<td>' + objCancha.Descripcion + '</td>';
+                    '<td>' + objCancha.Descripcion + '</td>' +
+                    '<td><a class="btn btn-block btn-info btn-circle actualizarFilaCancha' + objCancha.IdCancha + '" href="javascript:actualizarCancha(' + objCancha.IdCancha + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger btn-circle eliminarFilaCancha' + objCancha.IdCancha + '" href="javascript:eliminarCancha(' + objCancha.IdCancha + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>';
                 trActualizado.html(tr);
                 $('#ContentPlaceHolder1_hdnIdCancha').val('');
-                mensajeConfirmacion("Bien!", "CCancha Actualizada", "success");
+                mensajeConfirmacion("Bien!", "Cancha Actualizada", "success");
                 $("#newCancha").slideUp(500, function () {
                     $("#listCancha").slideDown(500);
                 });
@@ -126,10 +126,10 @@ function guardarCancha() {
             success: function (data) {
                 var objCancha = data.d;
                 var tr = '<tr>' +
-                    '<td><a class="btn btn-block   btn-info actualizarFilaCancha' + objCancha.IdCancha + '" href="javascript:actualizarCancha(' + objCancha.IdCancha + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block   btn-danger actualizarFilaCancha' + objCancha.IdCancha + '" href="javascript:eliminarCancha(' + objCancha.IdCancha + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objCancha.Nombre + '</td>' +
                     '<td>' + objCancha.Descripcion + '</td>' +
+                    '<td><a class="btn btn-block btn-info btn-circle actualizarFilaCancha' + objCancha.IdCancha + '" href="javascript:actualizarCancha(' + objCancha.IdCancha + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger btn-circle actualizarFilaCancha' + objCancha.IdCancha + '" href="javascript:eliminarCancha(' + objCancha.IdCancha + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '</tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');
                 table.find('tbody').append(tr);

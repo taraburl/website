@@ -18,8 +18,6 @@
     <link href="styles/slick/slick-theme.css" rel="stylesheet" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="styles/listas.css" rel="stylesheet" />
-    <!--<link href="/Content/styles-menu.css" rel="stylesheet" />
-    <link href="/Content/youmax.css" rel="stylesheet" />-->
 </head>
 <body id="top">
     <form id="form1" runat="server">
@@ -63,8 +61,8 @@
                                             <li><a href="carrito/Evento.aspx?ID=<%# Eval("IdEvento") %>"><%# Eval("Nombre")%></a></li>
                                         </ItemTemplate>
                                     </asp:Repeater>
-                                    <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="SelectActuales" TypeName="EventoBLL"></asp:ObjectDataSource>
-                                    <li><a href="servicios/EventosDeportivos.aspx">Información</a></li>
+                                    <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="SelectAll" TypeName="EventoBLL"></asp:ObjectDataSource>
+                                    <%--<li><a href="servicios/EventosDeportivos.aspx">Información</a></li>--%>
                                 </ul>
                             </li>
                             <li>
@@ -122,26 +120,19 @@
                 </article>
             </div>
         </div>
+        <!--AUSPICIADORES-->
         <div class="wrapper clear" style="top: 20%;">
             <div class="auspiciadores-title">
                 <p>CON EL APOYO DE:</p>
             </div>
             <section class="center2 slider" id="conocenos">
-                <div>
-                    <img src="images/sponsors2/alianza.png" alt="alianza" />
-                </div>
-                <div>
-                    <img src="images/sponsors2/cuartito.png" alt="cuartito" />
-                </div>
-                <div>
-                    <img src="images/sponsors2/maltareal.png" alt="maltareal" />
-                </div>
-                <div>
-                    <img src="images/sponsors2/sante.png" alt="sante" />
-                </div>
-                <div>
-                    <img src="images/sponsors2/terbonova.png" alt="terbonova" />
-                </div>
+                <asp:Repeater runat="server" DataSourceID="objSponsorDS" ID="Repeater1">
+                    <ItemTemplate>
+                        <div class="wow rotateIn" data-wow-delay="0.8s">
+                            <img class="ausp" src="/images/sponsors/<%# Eval("ID") %>.png" alt="<%# Eval("Nombre") %>" />
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
             </section>
         </div>
         <div class="wrapper row3" style="top: 20%;">
@@ -150,7 +141,7 @@
                     <div class="masonry-grid row">
                         <div class="card masonry-grid-item col-xs-12 col-sm-9 col-md-9 sm-margin-b-30">
                             <div class="card-block masonry-grid">
-                                <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-6 sm-margin-b-30">
+                                <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-6 sm-margin-b-30 wow fadeInUp" data-wow-duration=".3">
                                     <div class="margin-b-60">
                                         <h2>MISIÓN</h2>
                                         <p>
@@ -158,22 +149,22 @@
                                         con ética profesional mediante el Marketing Deportivo.
                                         </p>
                                     </div>
-                                    <img class="full-width img-responsive wow fadeInUp"
-                                        src="images/mision.jpg" alt="Misión" data-wow-duration=".3"
+                                    <img class="full-width img-responsive "
+                                        src="images/mision.jpg" alt="Misión"
                                         data-wow-delay=".2s"
                                         style="border-top: 10px solid #47AEC5;" />
                                 </div>
-                                <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-6">
+                                <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-6 wow fadeInUp" data-wow-duration=".3">
                                     <div class="margin-b-60">
-                                        <img class="full-width img-responsive wow fadeInUp"
-                                            src="images/vision.jpg" alt="Visión" data-wow-duration=".3"
+                                        <img class="full-width img-responsive"
+                                            src="images/vision.jpg" alt="Visión"
                                             data-wow-delay=".3s"
                                             style="border-bottom: 10px solid #47AEC5;" />
                                     </div>
                                     <h2>VISIÓN</h2>
                                     <p>
                                         Ser una corporación deportiva líder y de referencia a nivel nacional,
-                                   mediante nuestras unidades de negocios buscamos fomentar la práctica del deporte sano, el respeto mutuo y el trabajo en equipo.
+                                        mediante nuestras unidades de negocios buscamos fomentar la práctica del deporte sano, el respeto mutuo y el trabajo en equipo.
                                     </p>
                                 </div>
                             </div>
@@ -193,12 +184,34 @@
         </div>
         <div class="wrapper row3">
             <div class="group">
-                <div class="content-lg container">
-                </div>
+                <article class="col-xs-12 col-sm-6 col-md-6 index-news wow fadeInUp" id="masleidas" data-wow-duration=".3">
+                    <h3 class="titulo">NOTICIAS</h3>
+                    <div class="window">
+                        <asp:Repeater runat="server" ID="repeterNoticias" DataSourceID="ObjectDataSource3">
+                            <ItemTemplate>
+                                <div class="masleida nomargin">
+                                    <a class="foto ajax" href="carrito/noticiadetallada.aspx?ID=<%# Eval("IdNoticia") %>">
+                                        <img class="lz" src="images/noticia/<%# Eval("IdNoticia")  %>.png" alt="<%# Eval("Descripcion") %>" />
+                                    </a>
+                                    <h2>
+                                        <a class="ajax" href="carrito/noticiadetallada.aspx?ID=<%# Eval("IdNoticia") %>">
+                                            <strong style="border-bottom: 1px solid #47AEC5;">
+                                                <%# Eval("Titulo") %></strong>
+                                            <br />
+                                            <%# Eval("Descripcion") %>
+                                        </a>
+                                    </h2>
+                                </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                        <asp:ObjectDataSource ID="ObjectDataSource3" runat="server" SelectMethod="SelectAll" TypeName="NoticiaBLL"></asp:ObjectDataSource>
+                    </div>
+                </article>
+                <article class="col-xs-12 col-sm-6 col-md-6">
+                </article>
             </div>
         </div>
         <div class="wrapper row4 bgded overlay">
-            <!--<div id="youmax"></div>-->
             <div data-yt
                 data-yt-channel="https://www.youtube.com/channel/UCxqs4wK9T-dvoK235ZNsAPg"
                 data-yt-lang="es"
@@ -340,14 +353,20 @@
                 <p class="sponsor-title">Con el Apoyo de</p>
                 <p style="border-bottom: 3px solid white;"></p>
                 <div class="auspiciadores">
-                    <asp:Repeater runat="server" ID="repaterSponsors" DataSourceID="ObjectDataSource1">
+                    <asp:Repeater runat="server" DataSourceID="objSponsorDS" ID="repaterSponsors">
                         <ItemTemplate>
                             <div class="wow rotateIn" data-wow-delay="0.8s">
                                 <img class="ausp" src="/images/sponsors/<%# Eval("ID") %>.png" alt="<%# Eval("Nombre") %>" />
                             </div>
                         </ItemTemplate>
                     </asp:Repeater>
-                    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="SelectAll" TypeName="SponsorDSTableAdapters.tbl_sponsorsTableAdapter"></asp:ObjectDataSource>
+                    <asp:ObjectDataSource ID="objSponsorDS"
+                        runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="selectByModulo"
+                        TypeName="SponsorDSTableAdapters.tbl_sponsorsTableAdapter">
+                        <SelectParameters>
+                            <asp:SessionParameter DefaultValue="" Name="modulo" SessionField="modulo" Type="String" />
+                        </SelectParameters>
+                    </asp:ObjectDataSource>
                 </div>
             </div>
         </div>
@@ -359,8 +378,6 @@
         <script src="scripts/wow.min.js"></script>
         <script src="styles/slick/slick.js"></script>
         <script src="scripts/jquery.yottie.bundled.js"></script>
-        <!--<script src="scripts/youmax.min.js"></script>
-        <script src="scripts/script-menu.js"></script>-->
         <script src="scripts/js.js"></script>
         <script type="text/javascript">
             new WOW().init();

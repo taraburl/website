@@ -116,11 +116,11 @@ function guardarCategoria() {
                 var linkActualizar = $('.actualizarFilaCategoria' + objCategoria.IdCategoriaAcademia);
                 var trActualizado = linkActualizar.parent().parent();
                 var tr =
-                    '<td><a class="btn btn-block btn-info actualizarFilaCategoria' + objCategoria.IdCategoriaAcademia + '" href="javascript:actualizarCategoria(' + objCategoria.IdCategoriaAcademia + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger eliminarFilaCategoria' + objCategoria.IdCategoriaAcademia + '" href="javascript:eliminarCategoria(' + objCategoria.IdCategoriaAcademia + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objCategoria.Nombre + '</td>' +
                     '<td>' + objCategoria.Descripcion + '</td>' +
-                    '<td>' + objCategoria.PrecioVenta + '</td>';
+                    '<td>' + objCategoria.PrecioVenta + '</td>' +
+                    '<td><a class="btn btn-block btn-info btn-circle actualizarFilaCategoria' + objCategoria.IdCategoriaAcademia + '" href="javascript:actualizarCategoria(' + objCategoria.IdCategoriaAcademia + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger btn-circle eliminarFilaCategoria' + objCategoria.IdCategoriaAcademia + '" href="javascript:eliminarCategoria(' + objCategoria.IdCategoriaAcademia + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>';
                 trActualizado.html(tr);
                 mensajeConfirmacion("Bien!", "Categoria Actualizada", "success");
                 $('#ContentPlaceHolder1_hdnIdCategoria').val('');
@@ -148,11 +148,11 @@ function guardarCategoria() {
             success: function (data) {
                 var objCategoria = data.d;
                 var tr = '<tr>' +
-                    '<td><a class="btn btn-block btn-info actualizarFilaCategoria' + objCategoria.IdCategoriaAcademia + '" href="javascript:actualizarCategoria(' + objCategoria.IdCategoriaAcademia + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger actualizarFilaCategoria' + objCategoria.IdCategoriaAcademia + '" href="javascript:eliminarCategoria(' + objCategoria.IdCategoriaAcademia + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objCategoria.Nombre + '</td>' +
                     '<td>' + objCategoria.Descripcion + '</td>' +
                     '<td>' + objCategoria.PrecioVenta + '</td>' +
+                    '<td><a class="btn btn-block btn-info btn-circle actualizarFilaCategoria' + objCategoria.IdCategoriaAcademia + '" href="javascript:actualizarCategoria(' + objCategoria.IdCategoriaAcademia + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger btn-circle actualizarFilaCategoria' + objCategoria.IdCategoriaAcademia + '" href="javascript:eliminarCategoria(' + objCategoria.IdCategoriaAcademia + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '</tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');
                 table.find('tbody').append(tr);

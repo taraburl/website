@@ -171,16 +171,16 @@ function guardarEvento() {
                 var linkActualizar = $('.actualizarFilaEvento' + objEvento.IdEvento);
                 var trActualizado = linkActualizar.parent().parent();
                 var tr =
-                    '<td><a class="btn btn-block btn-info actualizarFilaEvento' + objEvento.IdEvento + '" href="javascript:actualizarEvento(' + objEvento.IdEvento + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger eliminarFilaEvento' + objEvento.IdEvento + '" href="javascript:eliminarEvento(' + objEvento.IdEvento + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-warning" href="SubirImagenEvento.aspx?ID=' + objEvento.IdEvento + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objEvento.Nombre + '</td>' +
                     '<td>' + objEvento.Categoria + '</td>' +
                     '<td>' + objEvento.FechaInicioForDisplay + '</td>' +
                     '<td>' + objEvento.FechaFinForDisplay + '</td>' +
                     '<td>' + objEvento.CantidadGrupos + '</td>' +
                     '<td>' + objEvento.CantidadEquipos + '</td>' +
-                    '<td>' + objEvento.CantidadJugadoresPorEquipo + '</td>';
+                    '<td>' + objEvento.CantidadJugadoresPorEquipo + '</td>' +
+                    '<td><a class="btn btn-block btn-info btn-circle actualizarFilaEvento' + objEvento.IdEvento + '" href="javascript:actualizarEvento(' + objEvento.IdEvento + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger btn-circle eliminarFilaEvento' + objEvento.IdEvento + '" href="javascript:eliminarEvento(' + objEvento.IdEvento + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-warning btn-circle" href="SubirImagenEvento.aspx?ID=' + objEvento.IdEvento + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>';
                 trActualizado.html(tr);
                 $('#ContentPlaceHolder1_hdnIdEvento').val('');
                 mensajeConfirmacion("Bien!", "Evento Actualizado", "success");
@@ -213,9 +213,6 @@ function guardarEvento() {
             success: function (data) {
                 var objEvento = data.d;
                 var tr = '<tr>' +
-                    '<td><a class="btn btn-block btn-info actualizarFilaEvento' + objEvento.IdEvento + '" href="javascript:actualizarEvento(' + objEvento.IdEvento + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger eliminarFilaEvento' + objEvento.IdEvento + '" href="javascript:eliminarEvento(' + objEvento.IdEvento + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-warning" href="SubirImagenEvento.aspx?ID=' + objEvento.IdEvento + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objEvento.Nombre + '</td>' +
                     '<td>' + objEvento.Categoria + '</td>' +
                     '<td>' + objEvento.FechaInicioForDisplay + '</td>' +
@@ -223,6 +220,9 @@ function guardarEvento() {
                     '<td>' + objEvento.CantidadGrupos + '</td>' +
                     '<td>' + objEvento.CantidadEquipos + '</td>' +
                     '<td>' + objEvento.CantidadJugadoresPorEquipo + '</td>' +
+                    '<td><a class="btn btn-block btn-info btn-circle actualizarFilaEvento' + objEvento.IdEvento + '" href="javascript:actualizarEvento(' + objEvento.IdEvento + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger btn-circle eliminarFilaEvento' + objEvento.IdEvento + '" href="javascript:eliminarEvento(' + objEvento.IdEvento + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-warning btn-circle" href="SubirImagenEvento.aspx?ID=' + objEvento.IdEvento + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                 '</tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');
                 table.find('tbody').append(tr);

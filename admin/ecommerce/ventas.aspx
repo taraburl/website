@@ -16,20 +16,8 @@
         <div class="box-body table-responsive">
             <asp:GridView runat="server" ID="GridView1"
                 CssClass="table text-center table-striped table-bordered table-hover table-sm "
-                AutoGenerateColumns="False" DataSourceID="ObjectDataSource1">
+                AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" AllowCustomPaging="True" AllowPaging="True">
                 <Columns>
-                    <asp:TemplateField HeaderText="Finalizar">
-                        <ItemTemplate>
-                            <%#Eval("IdEstadoCompra").ToString() == "2" ?
-                                    String.Format("<a class='btn btn-block btn-info actualizarFilaVenta{0}' href='javascript:actualizarVenta({0})'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>", Eval("IdOrdenCompra"))
-                                    :"" %>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Eliminar">
-                        <ItemTemplate>
-                            <a class='btn btn-block btn-danger actualizarFilaVenta<%# Eval("IdOrdenCompra") %>' href="javascript:eliminarVenta(<%# Eval("IdOrdenCompra") %>)"><i class='fa fa-trash' aria-hidden='true'></i></a>
-                        </ItemTemplate>
-                    </asp:TemplateField>
                     <asp:BoundField DataField="IdOrdenCompra" HeaderText="Codigo" SortExpression="IdOrdenCompra" />
                     <asp:BoundField DataField="Estado.Nombre" HeaderText="Estado" SortExpression="Estado.Nombre" />
                     <asp:BoundField DataField="TipoPago.Nombre" HeaderText="Tipo de Pago" SortExpression="TipoPago.Nombre" />
@@ -41,6 +29,18 @@
                     <asp:BoundField DataField="Total" HeaderText="Total" SortExpression="Total" />
                     <asp:BoundField DataField="FechaForDisplay" HeaderText="Fecha" SortExpression="FechaForDisplay" />
                     <asp:BoundField DataField="HoraForDisplay" HeaderText="Hora" SortExpression="HoraForDisplay" />
+                    <asp:TemplateField HeaderText="Finalizar">
+                        <ItemTemplate>
+                            <%#Eval("IdEstadoCompra").ToString() == "2" ?
+                                    String.Format("<a class='btn btn-block btn-info btn-circle actualizarFilaVenta{0}' href='javascript:actualizarVenta({0})'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>", Eval("IdOrdenCompra"))
+                                    :"" %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Eliminar">
+                        <ItemTemplate>
+                            <a class='btn btn-block btn-danger btn-circle actualizarFilaVenta<%# Eval("IdOrdenCompra") %>' href="javascript:eliminarVenta(<%# Eval("IdOrdenCompra") %>)"><i class='fa fa-trash' aria-hidden='true'></i></a>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />

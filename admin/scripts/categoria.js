@@ -95,9 +95,9 @@ function guardarCategoria() {
                 var linkActualizar = $('.actualizarFilaCategoria' + objCategoria.IdCategoria);
                 var trActualizado = linkActualizar.parent().parent();
                 var tr =
-                    '<td><a class="btn btn-block btn-info actualizarFilaCategoria' + objCategoria.IdCategoria + '" href="javascript:actualizarCategoria(' + objCategoria.IdCategoria + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger eliminarFilaCategoria' + objCategoria.IdCategoria + '" href="javascript:eliminarCategoria(' + objCategoria.IdCategoria + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td>' + objCategoria.Nombre + '</td>';
+                    '<td>' + objCategoria.Nombre + '</td>' +
+                    '<td><a class="btn btn-block btn-info btn-circle actualizarFilaCategoria' + objCategoria.IdCategoria + '" href="javascript:actualizarCategoria(' + objCategoria.IdCategoria + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger btn-circle eliminarFilaCategoria' + objCategoria.IdCategoria + '" href="javascript:eliminarCategoria(' + objCategoria.IdCategoria + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>';
                 trActualizado.html(tr);
                 $('#ContentPlaceHolder1_hdnIdCategoria').val('');
                 mensajeConfirmacion("Bien!", "Categoria Actualizada", "success");
@@ -123,9 +123,9 @@ function guardarCategoria() {
             success: function (data) {
                 var objCategoria = data.d;
                 var tr = '<tr>' +
-                    '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaCategoria' + objCategoria.IdCategoria + '" href="javascript:actualizarCategoria(' + objCategoria.IdCategoria + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-social-icon btn-danger actualizarFilaCategoria' + objCategoria.IdCategoria + '" href="javascript:eliminarCategoria(' + objCategoria.IdCategoria + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objCategoria.Nombre + '</td>' +
+                    '<td><a class="btn btn-block btn-social-icon btn-info btn-circle actualizarFilaCategoria' + objCategoria.IdCategoria + '" href="javascript:actualizarCategoria(' + objCategoria.IdCategoria + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-social-icon btn-danger btn-circle actualizarFilaCategoria' + objCategoria.IdCategoria + '" href="javascript:eliminarCategoria(' + objCategoria.IdCategoria + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '</tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');
                 table.find('tbody').append(tr);

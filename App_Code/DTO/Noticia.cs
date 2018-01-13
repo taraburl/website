@@ -13,12 +13,20 @@ public class Noticia
     public String Titulo { get; set; }
     public String Descripcion { get; set; }
     public DateTime Fecha { get; set; }
+    public int idEvento { get; set; }
     public int Eliminado { get; set; }
     public string FechaForDisplay
     {
         get
         {
             return Fecha.ToString("dd/MM/yyyy");
+        }
+    }
+    public Evento Evento
+    {
+        get
+        {
+            return EventoBLL.SelectById(idEvento);
         }
     }
 }

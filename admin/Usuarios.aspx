@@ -12,23 +12,16 @@
             <a class="btn btn-success btn-lg" href="javascript:nuewuser();"><i class="fa fa-plus" aria-hidden="true"></i>NUEVO USUARIO</a>
         </div>
         <div class="box-body table-responsive">
-            <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True"
-                AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="odsUsuarios"
-                CssClass="table table-striped table-bordered table-hover table-sm " CellPadding="4" ForeColor="#333333" GridLines="None">
+            <asp:GridView ID="GridView1"
+                runat="server" AllowPaging="True"
+                AllowSorting="True"
+                AutoGenerateColumns="False"
+                DataKeyNames="id"
+                DataSourceID="odsUsuarios"
+                CssClass="table table-striped table-bordered table-hover table-sm "
+                CellPadding="4" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
-                    <asp:TemplateField HeaderText="Actualizar">
-                        <ItemTemplate>
-                            <a class="btn btn-block btn-info actualizarFilaUsuario<%# Eval("id") %>" href="javascript:actualizarUser(<%# Eval("id")%>)">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Eliminar">
-                        <ItemTemplate>
-                            <a class="btn btn-block btn-danger eliminarFilaUsuario<%# Eval("id")%>" href="javascript:eliminarUsuario(<%# Eval("id") %>)">
-                                <i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                        </ItemTemplate>
-                    </asp:TemplateField>
                     <asp:BoundField DataField="nombre" HeaderText="Nombre" SortExpression="nombre" />
                     <asp:BoundField DataField="apellidos" HeaderText="Apellidos" SortExpression="apellidos" />
                     <asp:BoundField DataField="email" HeaderText="E-Mail" SortExpression="email" />
@@ -36,12 +29,24 @@
                     <asp:BoundField DataField="direccion" HeaderText="Direccion" SortExpression="direccion" />
                     <asp:BoundField DataField="username" HeaderText="Nombre de Usuario" SortExpression="username" />
                     <asp:BoundField DataField="tipo" HeaderText="Tipo de Usuario" SortExpression="tipo" />
-
+                    <asp:TemplateField HeaderText="Actualizar">
+                        <ItemTemplate>
+                            <a class="btn btn-block btn-info btn-circle actualizarFilaUsuario<%# Eval("id") %>" href="javascript:actualizarUser(<%# Eval("id")%>)">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Eliminar">
+                        <ItemTemplate>
+                            <a class="btn btn-block btn-danger btn-circle eliminarFilaUsuario<%# Eval("id")%>" href="javascript:eliminarUsuario(<%# Eval("id") %>)">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
                 <HeaderStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
-                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                <PagerSettings Mode="NumericFirstLast" />
+                <PagerStyle BackColor="#47AEC5" ForeColor="White" HorizontalAlign="Center" />
                 <RowStyle BackColor="#EFF3FB" />
                 <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                 <SortedAscendingCellStyle BackColor="#F5F7FB" />
@@ -49,8 +54,12 @@
                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                 <SortedDescendingHeaderStyle BackColor="#081A28" />
             </asp:GridView>
-            <asp:ObjectDataSource ID="odsUsuarios" runat="server" OldValuesParameterFormatString="original_{0}"
-                SelectMethod="selectNoEliminados" TypeName="UsuarioDSTableAdapters.tbl_usuariosTableAdapter"></asp:ObjectDataSource>
+            <asp:ObjectDataSource 
+                ID="odsUsuarios" 
+                runat="server"
+                OldValuesParameterFormatString="original_{0}"
+                SelectMethod="selectNoEliminados"
+                TypeName="UsuarioDSTableAdapters.tbl_usuariosTableAdapter"></asp:ObjectDataSource>
         </div>
     </div>
     <div class="box box-warning" id="nuevouser" style="display: none;">

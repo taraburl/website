@@ -92,7 +92,6 @@ function eliminarUsuario(id) {
             var trActualizado = linkEliminar.parent().parent();
             trActualizado.remove();
             mensajeConfirmacion("Bien!", "Usuario Eliminado", "success");
-            //$("#transporteViaje option[value='" + id + "']").remove();
         }
     });
 }
@@ -158,15 +157,15 @@ function guardarUsuario() {
                 var objUsuario = data.d;
                 var linkActualizar = $('.actualizarFilaUsuario' + objUsuario.IdUsuario);
                 var trActualizado = linkActualizar.parent().parent();
-                var tr = '<td><a class="btn btn-block btn-info actualizarFilaUsuario' + objUsuario.IdUsuario + '" href="javascript:actualizarUser(' + objUsuario.IdUsuario + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger eliminarFilaTransporte' + objUsuario.IdUsuario + '" href="javascript:eliminarUsuario(' + objUsuario.IdUsuario + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td>' + objUsuario.Nombre + '</td>' +
+                var tr = '<td>' + objUsuario.Nombre + '</td>' +
                     '<td>' + objUsuario.Apellido + '</td>' +
                     '<td>' + objUsuario.Email + '</td>' +
                     '<td>' + objUsuario.Celular + '</td>' +
                     '<td>' + objUsuario.Direccion + '</td>' +
                     '<td>' + objUsuario.Username + '</td>' +
-                    '<td>' + objUsuario.TipoCliente + '</td>';
+                    '<td>' + objUsuario.TipoCliente + '</td>' +
+                    '<td><a class="btn btn-block btn-info btn-circle actualizarFilaUsuario' + objUsuario.IdUsuario + '" href="javascript:actualizarUser(' + objUsuario.IdUsuario + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger btn-circle eliminarFilaTransporte' + objUsuario.IdUsuario + '" href="javascript:eliminarUsuario(' + objUsuario.IdUsuario + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>';
                 trActualizado.html(tr);
                 mensajeConfirmacion("Bien!", "Usuario Actualizado", "success");
                 $('#ContentPlaceHolder1_hdnIdUser').val('');
@@ -200,8 +199,6 @@ function guardarUsuario() {
             success: function (data) {
                 var objUsuario = data.d;
                 var tr = '<tr>' +
-                    '<td><a class="btn btn-block btn-info actualizarFilaUsuario' + objUsuario.Id + '" href="javascript:actualizarUser(' + objUsuario.Id + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger eliminarFilaTransporte' + objUsuario.Id + '" href="javascript:eliminarUsuario(' + objUsuario.Id + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objUsuario.Nombre + '</td>' +
                     '<td>' + objUsuario.Apellido + '</td>' +
                     '<td>' + objUsuario.Email + '</td>' +
@@ -209,6 +206,8 @@ function guardarUsuario() {
                     '<td>' + objUsuario.Direccion + '</td>' +
                     '<td>' + objUsuario.Username + '</td>' +
                     '<td>' + objUsuario.TipoCliente + '</td>' +
+                    '<td><a class="btn btn-block btn-circle btn-info actualizarFilaUsuario' + objUsuario.Id + '" href="javascript:actualizarUser(' + objUsuario.Id + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger btn-circle eliminarFilaTransporte' + objUsuario.Id + '" href="javascript:eliminarUsuario(' + objUsuario.Id + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '</tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');
                 table.find('tbody').append(tr);

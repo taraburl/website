@@ -15,40 +15,41 @@
         </div>
         <div class="box-body table-responsive">
             <asp:GridView ID="GridView1" runat="server"
-                CssClass="table text-center table-striped table-bordered table-hover table-sm " 
+                CssClass="table text-center table-striped table-bordered table-hover table-sm "
                 CellPadding="4" ForeColor="#333333" GridLines="None"
-                 AllowSorting="True" AutoGenerateColumns="False" 
-                DataKeyNames="id" DataSourceID="ObjectDataSource1">
+                AllowSorting="True" AutoGenerateColumns="False"
+                DataKeyNames="id" DataSourceID="ObjectDataSource1" AllowCustomPaging="True" AllowPaging="True">
                 <Columns>
+                    <asp:TemplateField HeaderText="Imagen">
+                        <ItemTemplate>
+                            <img class="profile-user-img img-responsive" alt="SEA-IMG" src="/images/galeria/<%# Eval("id")%>.jpg" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="descripcion" HeaderText="Descripcion" SortExpression="descripcion" />
+                    <asp:BoundField DataField="modulo" HeaderText="Modulo" SortExpression="modulo" />
                     <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-info actualizarFilaImagen<%# Eval("id") %>" href="javascript:actualizarImagen(<%# Eval("id")%>)">
+                            <a class="btn btn-block btn-info btn-circle actualizarFilaImagen<%# Eval("id") %>" href="javascript:actualizarImagen(<%# Eval("id")%>)">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Eliminar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-danger eliminarFilaImagen<%# Eval("id")%>" href="javascript:eliminarImagen(<%# Eval("id") %>)">
+                            <a class="btn btn-block btn-danger btn-circle eliminarFilaImagen<%# Eval("id")%>" href="javascript:eliminarImagen(<%# Eval("id") %>)">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Subir Foto">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-warning" href="SubirFotoImagen.aspx?ID=<%# Eval("id")%>">
+                            <a class="btn btn-block btn-warning btn-circle" href="SubirFotoImagen.aspx?ID=<%# Eval("id")%>">
                                 <i class="fa  fa-file-photo-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Imagen">
-                        <ItemTemplate>
-                            <img class="profile-user-img img-responsive" alt="SEA-IMG" src="/images/galeria/<%# Eval("id")%>.jpg"/>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:BoundField DataField="descripcion" HeaderText="Descripcion" SortExpression="descripcion" />
-                    <asp:BoundField DataField="modulo" HeaderText="Modulo" SortExpression="modulo" />
                 </Columns>
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
                 <HeaderStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
+                <PagerSettings Mode="NumericFirstLast" />
                 <PagerStyle BackColor="#47AEC5" ForeColor="White" HorizontalAlign="Center" />
                 <RowStyle BackColor="#EFF3FB" />
                 <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />

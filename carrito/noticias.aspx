@@ -30,20 +30,26 @@
                             <div class="col-md-3">
                                 <ul class="post-meta">
                                     <li><i class="icon-clock"></i>&nbsp;<%# Eval("FechaForDisplay") %></li>
+                                    <li><i class="icon-paper"></i>&nbsp;<%# Eval("Evento.Nombre") %></li>
                                 </ul>
                             </div>
                             <div class="col-md-9 blog-post">
-                                <a class="post-thumb" href="#">
+                                <a class="post-thumb" href="noticiadetallada.aspx?ID=<%# Eval("IdNoticia") %>">
                                     <img src="../images/noticia/<%# Eval("IdNoticia")  %>.png" alt="Post" /></a>
-                                <h3 class="post-title"><%# Eval("Titulo") %></h3>
+                                <h3 class="post-title"><a href="noticiadetallada.aspx?ID=<%# Eval("IdNoticia") %>"><%# Eval("Titulo") %></a></h3>
                                 <p>
                                     <%# Eval("Descripcion") %>
+                                    <a href='noticiadetallada.aspx?ID=<%# Eval("IdNoticia") %>' class='text-medium'>Ver Noticia</a>
                                 </p>
                             </div>
                         </article>
                     </ItemTemplate>
                 </asp:Repeater>
-                <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="SelectAll" TypeName="NoticiaBLL"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="SelectByEvento" TypeName="NoticiaBLL">
+                    <SelectParameters>
+                        <asp:QueryStringParameter Name="id" QueryStringField="ID" Type="String" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
             </div>
         </div>
     </div>

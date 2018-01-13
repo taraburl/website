@@ -102,10 +102,10 @@ function guardarJugador() {
                 var linkActualizar = $('.actualizarFilaJugador' + objJugador.IdJugador);
                 var trActualizado = linkActualizar.parent().parent();
                 var tr =
-                    '<td><a class="btn btn-block   btn-info actualizarFilaJugador' + objJugador.IdJugador + '" href="javascript:actualizarJugador(' + objJugador.IdJugador + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block   btn-danger eliminarFilaJugador' + objJugador.IdJugador + '" href="javascript:eliminarJugador(' + objJugador.IdJugador + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objJugador.Nombre + '</td>' +
-                    '<td>' + objJugador.Edad + '</td>';
+                    '<td>' + objJugador.Edad + '</td>' +
+                    '<td><a class="btn btn-block btn-info btn-circle actualizarFilaJugador' + objJugador.IdJugador + '" href="javascript:actualizarJugador(' + objJugador.IdJugador + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger btn-circle eliminarFilaJugador' + objJugador.IdJugador + '" href="javascript:eliminarJugador(' + objJugador.IdJugador + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>';
                 trActualizado.html(tr);
                 mensajeConfirmacion("Bien!", "Arbitro Actualizado", "success");
                 $('#ContentPlaceHolder1_hdnIdJugador').val('');
@@ -134,10 +134,10 @@ function guardarJugador() {
             success: function (data) {
                 var objJugador = data.d;
                 var tr = '<tr>' +
-                    '<td><a class="btn btn-block   btn-info actualizarFilaJugador' + objJugador.IdJugador + '" href="javascript:actualizarJugador(' + objJugador.IdJugador + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block   btn-danger actualizarFilaJugador' + objJugador.IdJugador + '" href="javascript:eliminarJugador(' + objJugador.IdJugador + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objJugador.Nombre + '</td>' +
                     '<td>' + objJugador.Edad + '</td>' +
+                    '<td><a class="btn btn-block btn-circle btn-info actualizarFilaJugador' + objJugador.IdJugador + '" href="javascript:actualizarJugador(' + objJugador.IdJugador + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-circle btn-danger actualizarFilaJugador' + objJugador.IdJugador + '" href="javascript:eliminarJugador(' + objJugador.IdJugador + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '</tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');
                 table.find('tbody').append(tr);

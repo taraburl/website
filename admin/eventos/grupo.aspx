@@ -18,28 +18,29 @@
                 CssClass="table text-center table-striped table-bordered table-hover table-sm"
                 AutoGenerateColumns="False" DataSourceID="ObjectDataSource2">
                 <Columns>
+                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
+                    <asp:BoundField DataField="Evento.Nombre" HeaderText="Evento" SortExpression="Evento.Nombre" />
+
                     <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-info actualizarFilaGrupo<%# Eval("IdGrupo") %>" href="javascript:actualizarGrupo(<%# Eval("IdGrupo")%>)">
+                            <a class="btn btn-block btn-info btn-circle actualizarFilaGrupo<%# Eval("IdGrupo") %>" href="javascript:actualizarGrupo(<%# Eval("IdGrupo")%>)">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Eliminar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-danger eliminarFilaGrupo<%# Eval("IdGrupo")%>" href="javascript:eliminarGrupo(<%# Eval("IdGrupo") %>)">
+                            <a class="btn btn-block btn-danger btn-circle eliminarFilaGrupo<%# Eval("IdGrupo")%>" href="javascript:eliminarGrupo(<%# Eval("IdGrupo") %>)">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Agregar Equipos">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-primary"
+                            <a class="btn btn-block btn-primary btn-circle"
                                 href="javascript:agregarEquipo(<%# Eval("IdGrupo")%>)">
                                 <i class="fa  fa-plus" aria-hidden="true"></i>
                             </a>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
-                    <asp:BoundField DataField="Evento.Nombre" HeaderText="Evento" SortExpression="Evento.Nombre" />
                 </Columns>
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
@@ -111,39 +112,46 @@
         </div>
         <script src="../scripts/grupo.js"></script>
     </div>
-    <div class="box box-warning" id="addEquipo" style="display: none;">
-        <div class="box-header with-border">
-            <h3>Agregar Equipos</h3>
-        </div>
-        <div class="box-body">
-            <asp:HiddenField runat="server" ID="hdnEquipo" />
-            <div class="col-xs-12 col-lg-6 col-md-6 margin">
-                <div class="form-group">
-                    <label>Evento en al que pertenece el Grupo:</label>
-                    <asp:DropDownList runat="server" ID="Equipo" CssClass="form-control select2" Style="width: 100%;">
-                    </asp:DropDownList> </div>
-            </div>
-            <div class="col-xs-12 margin">
-                <a class="btn btn-info btn-lg" href="javascript:nuevoEquipo()">Agregar</a>
-            </div>
-            <div class="col-xs-12">
-                <h3>Listado de Equipos</h3>
-            </div>
-            <div class="col-xs-12">
-                <table class="table-responsive table-bordered table-striped" style="width: 100%;">
-                    <thead>
-                        <tr>
-                            <th>ELiminar</th>
-                            <th>Nombre</th>
-                        </tr>
-                    </thead>
-                    <tbody id="body">
-                    </tbody>
-                </table>
+    <div id="addEquipo" style="display: none;">
+        <div class="col-xs-12 col-lg-6 col-md-6">
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3>Agregar Equipos</h3>
+                </div>
+                <div class="box-body">
+                    <asp:HiddenField runat="server" ID="hdnEquipo" />
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label>Evento en al que pertenece el Grupo:</label>
+                            <asp:DropDownList runat="server" ID="Equipo" CssClass="form-control select2" Style="width: 100%;">
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <a class="btn btn-info btn-lg" href="javascript:nuevoEquipo()">Agregar</a>
+                    <a class="btn btn-default pull-right btn-lg" href="javascript:cancelEquipo()"><i class="fa fa-times" aria-hidden="true"></i>Cancelar</a>
+                </div>
             </div>
         </div>
-        <div class="box-footer">
-            <a class="btn btn-default pull-right btn-lg" href="javascript:cancelEquipo()"><i class="fa fa-times" aria-hidden="true"></i>Cancelar</a>
+        <div class="col-xs-12 col-lg-6 col-md-6">
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3>Listado de Equipos</h3>
+                </div>
+                <div class="box-body">
+                    <table class="table-responsive table-bordered table-striped" style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </asp:Content>

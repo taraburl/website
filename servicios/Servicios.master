@@ -19,7 +19,6 @@
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="styles/listas.css" rel="stylesheet" />
     <link href="../styles/cubeportfolio.min.css" rel="stylesheet" />
-    <!--<link href="../Content/youmax.css" rel="stylesheet" />-->
 </head>
 <body id="top" class="inner-page masonry-page">
     <div class="topspacer bgded overlay wb-header" style="background-image: url('../images/eventos/3.jpg');">
@@ -62,8 +61,8 @@
                                         <li><a href="../carrito/Evento.aspx?ID=<%# Eval("IdEvento") %>"><%# Eval("Nombre")%></a></li>
                                     </ItemTemplate>
                                 </asp:Repeater>
-                                <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="SelectActuales" TypeName="EventoBLL"></asp:ObjectDataSource>
-                                <li><a href="EventosDeportivos.aspx">Información</a></li>
+                                <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="SelectAll" TypeName="EventoBLL"></asp:ObjectDataSource>
+                                <%--<li><a href="EventosDeportivos.aspx">Información</a></li>--%>
                             </ul>
                         </li>
                         <li>

@@ -1,13 +1,4 @@
 ﻿$(document).ready(function () {
-    /*$('#youmax').youmax({
-        apiKey: 'AIzaSyCvcRe4dX3rWAQGhz9TFSoqWNcurrspe0A',
-        youTubeChannelURL: "https://www.youtube.com/user/SportsEventsAgency",
-        youmaxDefaultTab: "UPLOADS", //can be UPLOADS or PLAYLISTS or FEATURED
-        youmaxColumns: 6,
-        showVideoInLightbox: false,
-        maxResults: 12,
-        responsiveBreakpoints: [600, 900, 2000, 2500]
-    });*/
     $(".center").slick({
         infinite: true,
         centerMode: true,
@@ -64,8 +55,8 @@
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToShow: $("#CantidadSponsors").val(),
+                    slidesToScroll: $("#CantidadSponsors").val(),
                     infinite: true,
                     dots: false,
                     autoplay: true,

@@ -101,10 +101,11 @@ function guardarGrupo() {
                 var linkActualizar = $('.actualizarFilaGrupo' + objGrupo.IdGrupo);
                 var trActualizado = linkActualizar.parent().parent();
                 var tr =
-                    '<td><a class="btn btn-block btn-info actualizarFilaGrupo' + objGrupo.IdGrupo + '" href="javascript:actualizarGrupo(' + objGrupo.IdGrupo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger eliminarFilaGrupo' + objGrupo.IdGrupo + '" href="javascript:eliminarGrupo(' + objGrupo.IdGrupo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objGrupo.Nombre + '</td>' +
-                    '<td>' + objGrupo.Evento.Nombre + '</td>';
+                    '<td>' + objGrupo.Evento.Nombre + '</td>' +
+                    '<td><a class="btn btn-block btn-info btn-circle actualizarFilaGrupo' + objGrupo.IdGrupo + '" href="javascript:actualizarGrupo(' + objGrupo.IdGrupo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger btn-circle eliminarFilaGrupo' + objGrupo.IdGrupo + '" href="javascript:eliminarGrupo(' + objGrupo.IdGrupo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-primary btn-circle" href="javascript:agregarEquipo(' + objGrupo.IdGrupo + ')"><i class="fa  fa-plus" aria-hidden="true"></i></a></td>';
                 trActualizado.html(tr);
                 $('#ContentPlaceHolder1_hdnIdGrupo').val('');
                 mensajeConfirmacion("Bien!", "Grupo Actualizado", "success");
@@ -134,11 +135,12 @@ function guardarGrupo() {
                     return mensajeConfirmacion("Advertencia!", "No puede crear mas grupos para el evento seleccionado", "warning");
                 }
                 var tr = '<tr>' +
-                    '<td><a class="btn btn-block btn-info actualizarFilaGrupo' + objGrupo.IdGrupo + '" href="javascript:actualizarGrupo(' + objGrupo.IdGrupo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger eliminarFilaGrupo' + objGrupo.IdGrupo + '" href="javascript:eliminarGrupo(' + objGrupo.IdGrupo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objGrupo.Nombre + '</td>' +
                     '<td>' + objGrupo.Evento.Nombre + '</td>' +
-                    '</tr>';
+                    '<td><a class="btn btn-block btn-info btn-circle actualizarFilaGrupo' + objGrupo.IdGrupo + '" href="javascript:actualizarGrupo(' + objGrupo.IdGrupo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger btn-circle eliminarFilaGrupo' + objGrupo.IdGrupo + '" href="javascript:eliminarGrupo(' + objGrupo.IdGrupo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-primary btn-circle" href="javascript:agregarEquipo(' + objGrupo.IdGrupo + ')"><i class="fa  fa-plus" aria-hidden="true"></i></a></td>' +
+                  '</tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');
                 table.find('tbody').append(tr);
                 mensajeConfirmacion("Bien!", "Grupo Creado", "success");
@@ -204,8 +206,8 @@ function cargarEquiposGrupo(idEquipo) {
             var objEquipo = data.d;
             objEquipo.forEach(function (element) {
                 var tr = '<tr>' +
-                       '<td><a class="btn btn-block btn-social-icon btn-danger actualizarFilaJugadorEquipo' + element.Id + '" href="javascript:eliminarEquipoGrupo(' + element.Id + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
                        '<td>' + element.Equipo.Nombre + '</td>' +
+                       '<td><a class="btn btn-block btn-social-icon btn-danger actualizarFilaJugadorEquipo' + element.Id + '" href="javascript:eliminarEquipoGrupo(' + element.Id + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                        '</tr>';
                 $("#body").append(tr);
             });
@@ -231,8 +233,8 @@ function nuevoEquipo() {
         success: function (data) {
             var objJugadorEquipo = data.d;
             var tr = '<tr>' +
-                        '<td><a class="btn btn-block btn-social-icon btn-danger actualizarFilaJugadorEquipo' + objJugadorEquipo.Id + '" href="javascript:eliminarEquipoGrupo(' + objJugadorEquipo.Id + ')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>' +
                         '<td>' + objJugadorEquipo.Equipo.Nombre + '</td>' +
+                        '<td><a class="btn btn-block btn-social-icon btn-danger actualizarFilaJugadorEquipo' + objJugadorEquipo.Id + '" href="javascript:eliminarEquipoGrupo(' + objJugadorEquipo.Id + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                      '</tr>';
             $("#body").append(tr);
             mensajeConfirmacion("Bien!", "Equipo Agregado al Quipo con Exito", "success");
@@ -259,7 +261,7 @@ function eliminarEquipoGrupo(id) {
                 mensajeConfirmacion("Error", "Error al Eliminar el Equipo del Grupo", "error");
                 return;
             }
-            mensajeConfirmacion("Bien!", "Equipo ELiminado del Grupo Correctamente", "success");
+            mensajeConfirmacion("Bien!", "Equipo Eliminado del Grupo Correctamente", "success");
             var linkEliminar = $('.actualizarFilaJugadorEquipo' + resultado);
             var trActualizado = linkEliminar.parent().parent();
             trActualizado.remove();

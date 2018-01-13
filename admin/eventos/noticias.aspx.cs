@@ -13,9 +13,9 @@ public partial class admin_eventos_noticias : System.Web.UI.Page
 
     }
     [WebMethod]
-    public static Noticia InsertarNoticia(string titulo, string descripcion, string fecha)
+    public static Noticia InsertarNoticia(string titulo, string descripcion, string fecha, string idEvento)
     {
-        Noticia objNoticia = NoticiaBLL.InsertWithReturn(titulo, descripcion, fecha);
+        Noticia objNoticia = NoticiaBLL.InsertWithReturn(titulo, descripcion, fecha,Convert.ToInt32(idEvento));
         return objNoticia;
     }
     [WebMethod]
@@ -25,9 +25,9 @@ public partial class admin_eventos_noticias : System.Web.UI.Page
         return objNoticia;
     }
     [WebMethod]
-    public static Noticia ActualizarNoticia(string titulo, string descripcion, string fecha, string id)
+    public static Noticia ActualizarNoticia(string titulo, string descripcion, string fecha, string id, string idEvento)
     {
-        NoticiaBLL.Update(titulo, descripcion, fecha, Convert.ToInt32(id));
+        NoticiaBLL.Update(titulo, descripcion, fecha, Convert.ToInt32(id), Convert.ToInt32(idEvento));
         Noticia objNoticia = NoticiaBLL.SelectById(Convert.ToInt32(id));
         return objNoticia;
     }

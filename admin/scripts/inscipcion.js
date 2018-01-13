@@ -49,15 +49,15 @@ function actualizarInscripcion(id) {
             var linkActualizar = $('.actualizarFilaInscripcion' + objInscripcion.IdInscripcion);
             var trActualizado = linkActualizar.parent().parent();
             var tr =
-                '<td></td>' +
-                '<td><a class="btn btn-block btn-danger eliminarFilaInscripcion' + objInscripcion.IdInscripcion + '" href="javascript:eliminarInscripcion(' + objInscripcion.IdInscripcion + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                 '<td>' + objInscripcion.IdInscripcion + '</td>' +
                 '<td>' + objInscripcion.Categoria.Nombre + '</td>' +
                 '<td>' + objInscripcion.Usuario.Nombre + '</td>' +
                 '<td>' + objInscripcion.Usuario.Apellido + '</td>' +
                 '<td>' + objInscripcion.Inscrito + '</td>' +
                 '<td>' + objInscripcion.TipoPago.Nombre + '</td>' +
-                '<td>Consolidado</td>';
+                '<td>Consolidado</td>' +
+                '<td></td>' +
+                '<td><a class="btn btn-block btn-danger btn-circle eliminarFilaInscripcion' + objInscripcion.IdInscripcion + '" href="javascript:eliminarInscripcion(' + objInscripcion.IdInscripcion + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>';
             trActualizado.html(tr);
         },
         error: function () {
@@ -120,8 +120,6 @@ function guardarInscripcion() {
             } else {
                 mensajeConfirmacion("Bien!", "InscripcionFinalizada", "success");
                 var tr = '<tr>' +
-                            '<td></td>' +
-                            '<td><a class="btn btn-block btn-danger eliminarFilaInscripcion' + objInscripcion.IdInscripcion + '" href="javascript:eliminarInscripcion(' + objInscripcion.IdInscripcion + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                             '<td>' + objInscripcion.IdInscripcion + '</td>' +
                             '<td>' + objInscripcion.Categoria.Nombre + '</td>' +
                             '<td>' + objInscripcion.Usuario.Nombre + '</td>' +
@@ -129,6 +127,8 @@ function guardarInscripcion() {
                             '<td>' + objInscripcion.Inscrito + '</td>' +
                             '<td>' + objInscripcion.TipoPago.Nombre + '</td>' +
                             '<td>Consolidado</td>' +
+                            '<td></td>' +
+                            '<td><a class="btn btn-block btn-danger btn-circle eliminarFilaInscripcion' + objInscripcion.IdInscripcion + '" href="javascript:eliminarInscripcion(' + objInscripcion.IdInscripcion + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                           '</tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');
                 table.find('tbody').append(tr);
@@ -146,7 +146,6 @@ function guardarInscripcion() {
                     contentType: 'application/json; charset=utf-8',
                     data: JSON.stringify(parametros),
                     success: function () {
-
                     },
                     error: function () {
                         mensajeConfirmacion("Error", "Error al Enviar Mail", "error");

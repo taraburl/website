@@ -6,6 +6,10 @@
 });
 
 function cancelEquipo() {
+    $("#NombreJugador").val();
+    $("#Posicion").val();
+    $("#ContentPlaceHolder1_hdnJugadorEquipo").val();
+    $("#ContentPlaceHolder1_hdnEquipo").val();
     $("#newEquipo, #addJugadores").slideUp(500, function () {
         $("#listEquipo").slideDown(500);
     });
@@ -99,12 +103,12 @@ function guardarEquipo() {
                 var linkActualizar = $('.actualizarFilaEquipo' + objEquipo.IdEquipo);
                 var trActualizado = linkActualizar.parent().parent();
                 var tr =
-                    '<td><a class="btn btn-block btn-info actualizarFilaEquipo' + objEquipo.IdEquipo + '" href="javascript:actualizarEquipo(' + objEquipo.IdEquipo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger eliminarFilaEquipo' + objEquipo.IdEquipo + '" href="javascript:eliminarEquipo(' + objEquipo.IdEquipo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-warning" href="SubirImagenEquipo.aspx?ID=' + objEquipo.IdEquipo + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-primary" href="javascript:agregarJugador(' + objEquipo.IdEquipo + ')"> <i class="fa  fa-plus" aria-hidden="true"></i> </a></td>' +
                     '<td>' + objEquipo.Nombre + '</td>' +
-                    '<td>' + objEquipo.Evento.Nombre + '</td>';
+                    '<td>' + objEquipo.Evento.Nombre + '</td>' +
+                    '<td><a class="btn btn-block btn-info btn-circle actualizarFilaEquipo' + objEquipo.IdEquipo + '" href="javascript:actualizarEquipo(' + objEquipo.IdEquipo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger btn-circle eliminarFilaEquipo' + objEquipo.IdEquipo + '" href="javascript:eliminarEquipo(' + objEquipo.IdEquipo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-warning btn-circle" href="SubirImagenEquipo.aspx?ID=' + objEquipo.IdEquipo + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-primary btn-circle" href="javascript:agregarJugador(' + objEquipo.IdEquipo + ')"> <i class="fa  fa-plus" aria-hidden="true"></i> </a></td>';
                 trActualizado.html(tr);
                 $('#ContentPlaceHolder1_hdnIdEquipo').val('');
                 mensajeConfirmacion("Bien!", "Equipo Actualizado", "success");
@@ -134,12 +138,12 @@ function guardarEquipo() {
                     return mensajeConfirmacion("Advertencia!", "No puede crear mas equipos para el evento seleccionado", "warning");
                 }
                 var tr = '<tr>' +
-                    '<td><a class="btn btn-block btn-info actualizarFilaEquipo' + objEquipo.IdEquipo + '" href="javascript:actualizarEquipo(' + objEquipo.IdEquipo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger eliminarFilaEquipo' + objEquipo.IdEquipo + '" href="javascript:eliminarEquipo(' + objEquipo.IdEquipo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-warning" href="SubirImagenEquipo.aspx?ID=' + objEquipo.IdEquipo + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-primary" href="javascript:agregarJugador(' + objEquipo.IdEquipo + ')"> <i class="fa  fa-plus" aria-hidden="true"></i> </a></td>' +
                     '<td>' + objEquipo.Nombre + '</td>' +
                     '<td>' + objEquipo.Evento.Nombre + '</td>' +
+                    '<td><a class="btn btn-block btn-info btn-circle actualizarFilaEquipo' + objEquipo.IdEquipo + '" href="javascript:actualizarEquipo(' + objEquipo.IdEquipo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger btn-circle eliminarFilaEquipo' + objEquipo.IdEquipo + '" href="javascript:eliminarEquipo(' + objEquipo.IdEquipo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-warning btn-circle" href="SubirImagenEquipo.aspx?ID=' + objEquipo.IdEquipo + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-primary btn-circle" href="javascript:agregarJugador(' + objEquipo.IdEquipo + ')"> <i class="fa  fa-plus" aria-hidden="true"></i> </a></td>' +
                     '</tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');
                 table.find('tbody').append(tr);
@@ -178,10 +182,10 @@ function cargarJugadores(idEquipo) {
             var objEquipo = data.d;
             objEquipo.forEach(function (element) {
                 var tr = '<tr>' +
-                       '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaJugadorEquipo' + element.IdJugadorEquipo + '" href="javascript:actualizarJugadorEquipo(' + element.IdJugadorEquipo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                       '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaJugadorEquipo' + element.IdJugadorEquipo + '" href="javascript:eliminarJugadorEquipo(' + element.IdJugadorEquipo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                        '<td>' + element.Nombre + '</td>' +
                        '<td>' + element.Posicion + '</td>' +
+                       '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaJugadorEquipo' + element.IdJugadorEquipo + '" href="javascript:actualizarJugadorEquipo(' + element.IdJugadorEquipo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                       '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaJugadorEquipo' + element.IdJugadorEquipo + '" href="javascript:eliminarJugadorEquipo(' + element.IdJugadorEquipo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                        '</tr>';
                 $("#body").append(tr);
             });
@@ -227,10 +231,10 @@ function nuevoJugador() {
                 var linkActualizar = $('.actualizarFilaJugadorEquipo' + objJugadorEquipo.IdJugadorEquipo);
                 var trActualizado = linkActualizar.parent().parent();
                 var tr =
-                       '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaJugadorEquipo' + objJugadorEquipo.IdJugadorEquipo + '" href="javascript:actualizarJugadorEquipo(' + objJugadorEquipo.IdJugadorEquipo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                       '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaJugadorEquipo' + objJugadorEquipo.IdJugadorEquipo + '" href="javascript:eliminarJugadorEquipo(' + objJugadorEquipo.IdJugadorEquipo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                        '<td>' + objJugadorEquipo.Nombre + '</td>' +
-                       '<td>' + objJugadorEquipo.Posicion + '</td>';
+                       '<td>' + objJugadorEquipo.Posicion + '</td>' +
+                       '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaJugadorEquipo' + objJugadorEquipo.IdJugadorEquipo + '" href="javascript:actualizarJugadorEquipo(' + objJugadorEquipo.IdJugadorEquipo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                       '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaJugadorEquipo' + objJugadorEquipo.IdJugadorEquipo + '" href="javascript:eliminarJugadorEquipo(' + objJugadorEquipo.IdJugadorEquipo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>';
                 trActualizado.html(tr);
                 mensajeConfirmacion("Bien!", "Jugador Actualizado", "success");
                 $('#ContentPlaceHolder1_hdnJugadorEquipo').val('');
@@ -261,10 +265,10 @@ function nuevoJugador() {
                     return mensajeConfirmacion("Advertencia!", "Alcanzo el maximo de inscritos en el quipo", "warning");
                 }
                 var tr = '<tr>' +
-                       '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaJugadorEquipo' + objJugadorEquipo.IdJugadorEquipo + '" href="javascript:actualizarJugadorEquipo(' + objJugadorEquipo.IdJugadorEquipo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                       '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaJugadorEquipo' + objJugadorEquipo.IdJugadorEquipo + '" href="javascript:eliminarJugadorEquipo(' + objJugadorEquipo.IdJugadorEquipo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                        '<td>' + objJugadorEquipo.Nombre + '</td>' +
                        '<td>' + objJugadorEquipo.Posicion + '</td>' +
+                       '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaJugadorEquipo' + objJugadorEquipo.IdJugadorEquipo + '" href="javascript:actualizarJugadorEquipo(' + objJugadorEquipo.IdJugadorEquipo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                       '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaJugadorEquipo' + objJugadorEquipo.IdJugadorEquipo + '" href="javascript:eliminarJugadorEquipo(' + objJugadorEquipo.IdJugadorEquipo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '</tr>';
                 $("#body").append(tr);
                 mensajeConfirmacion("Bien!", "Jugador Creado", "success");

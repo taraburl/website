@@ -14,24 +14,18 @@
             </a>
         </div>
         <div class="box-body table-responsive">
-            <asp:GridView runat="server" ID="GridView1"
-                CssClass="table text-center table-striped table-bordered table-hover table-sm "
-                AutoGenerateColumns="False" DataSourceID="ObjectDataSource2">
+            <asp:GridView
+                runat="server"
+                ID="GridView1"
+                DataSourceID="ObjectDataSource2"
+                AllowPaging="True"
+                AllowSorting="False"
+                AutoGenerateColumns="False"
+                DataKeyNames="IdInventario"
+                CssClass="table table-striped table-bordered table-hover table-sm"
+                CellPadding="4" ForeColor="#333333" GridLines="None">
+                <AlternatingRowStyle BackColor="White" />
                 <Columns>
-                    <asp:TemplateField HeaderText="Actualizar">
-                        <ItemTemplate>
-                             <%#Eval("EstadoForDisplay").ToString() == "Consolidado" ?
-                                     "" :
-                                     String.Format("<a class='btn btn-block btn-info actualizarFilaInventario{0}' href='javascript:actualizarInventario({0})'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>",
-                                     Eval("IdInventario")) %>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Eliminar">
-                        <ItemTemplate>
-                            <a class="btn btn-block btn-danger eliminarFilaInventario<%# Eval("IdInventario")%>" href="javascript:eliminarInventario(<%# Eval("IdInventario") %>)">
-                                <i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                        </ItemTemplate>
-                    </asp:TemplateField>
                     <asp:BoundField DataField="IdInventario" HeaderText="Codigo" SortExpression="IdInventario" />
                     <asp:BoundField DataField="Tipo" HeaderText="Tipo" SortExpression="Tipo" />
                     <asp:BoundField DataField="Usuario.Username" HeaderText="Usuario" SortExpression="Usuario.Username" />
@@ -39,10 +33,25 @@
                     <asp:BoundField DataField="FechaForDisplay" HeaderText="Fecha" SortExpression="FechaForDisplay" />
                     <asp:BoundField DataField="Hora" HeaderText="Hora" SortExpression="Hora" />
                     <asp:BoundField DataField="EstadoForDisplay" HeaderText="Estado" SortExpression="EstadoForDisplay" />
+                    <asp:TemplateField HeaderText="Actualizar">
+                        <ItemTemplate>
+                            <%#Eval("EstadoForDisplay").ToString() == "Consolidado" ?
+                                     "" :
+                                     String.Format("<a class='btn btn-block btn-info btn-circle actualizarFilaInventario{0}' href='javascript:actualizarInventario({0})'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>",
+                                     Eval("IdInventario")) %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Eliminar">
+                        <ItemTemplate>
+                            <a class="btn btn-block btn-danger btn-circle eliminarFilaInventario<%# Eval("IdInventario")%>" href="javascript:eliminarInventario(<%# Eval("IdInventario") %>)">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
                 <HeaderStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
+                <PagerSettings Mode="NumericFirstLast" />
                 <PagerStyle BackColor="#47AEC5" ForeColor="White" HorizontalAlign="Center" />
                 <RowStyle BackColor="#EFF3FB" />
                 <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
@@ -51,11 +60,16 @@
                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                 <SortedDescendingHeaderStyle BackColor="#081A28" />
             </asp:GridView>
-            <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="SelectAll" TypeName="InventarioBLL"></asp:ObjectDataSource>
+            <asp:ObjectDataSource
+                ID="ObjectDataSource2"
+                runat="server"
+                SelectMethod="SelectAll"
+                OldValuesParameterFormatString="original_{0}"
+                TypeName="InventarioBLL"></asp:ObjectDataSource>
         </div>
     </div>
     <div class="box box-info" id="newInventario" style="display: none;">
-        <asp:HiddenField ID="hdnIdInventario" runat="server"/>
+        <asp:HiddenField ID="hdnIdInventario" runat="server" />
         <div class="box-header with-border" id="new">
             <h3>Nuevo Inventario</h3>
         </div>
@@ -94,8 +108,8 @@
                         <asp:BoundField DataField="Stock" HeaderText="Stock Actual" SortExpression="Stock" />
                         <asp:TemplateField HeaderText="Cantidad">
                             <ItemTemplate>
-                                <input type="hidden" value="<%# Eval("Stock")%>" id="stock<%# Eval("IdProducto")%>" class="stockProducto"/>
-                                <input type="text" id='Pro<%# Eval("IdProducto")%>' value="0" class="CantProd" onkeypress="return isNumberKey(this);"/>
+                                <input type="hidden" value="<%# Eval("Stock")%>" id="stock<%# Eval("IdProducto")%>" class="stockProducto" />
+                                <input type="text" id='Pro<%# Eval("IdProducto")%>' value="0" class="CantProd" onkeypress="return isNumberKey(this);" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

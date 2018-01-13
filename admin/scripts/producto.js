@@ -148,13 +148,13 @@ function guardarProducto() {
                 var linkActualizar = $('.actualizarFilaProducto' + objProducto.IdProducto);
                 var trActualizado = linkActualizar.parent().parent();
                 var tr =
-                    '<td><a class="btn btn-block btn-info actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:actualizarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:eliminarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-warning" href="SubirImagenProducto.aspx?ID=' + objProducto.IdProducto + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objProducto.Nombre + '</td>' +
                     '<td>' + objProducto.PrecioVenta + '</td>' +
                     '<td>' + objProducto.Categoria.Nombre + '</td>' +
-                    '<td>' + objProducto.Medida + '</td>'
+                    '<td>' + objProducto.Medida + '</td>' +
+                    '<td><a class="btn btn-block btn-info btn-circle actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:actualizarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger btn-circle actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:eliminarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-warning btn-circle " href="SubirImagenProducto.aspx?ID=' + objProducto.IdProducto + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>';
                 trActualizado.html(tr);
                 $('#ContentPlaceHolder1_hdnIdProducto').val('');
                 mensajeConfirmacion("Bien!", "Producto Actualizado", "success");
@@ -190,14 +190,14 @@ function guardarProducto() {
             success: function (data) {
                 var objProducto = data.d;
                 var tr = '<tr>' +
-                    '<td><a class="btn btn-block btn-info actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:actualizarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:eliminarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-warning" href="SubirImagenProducto.aspx?ID=' + objProducto.IdProducto + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objProducto.Nombre + '</td>' +
                     '<td>' + objProducto.PrecioVenta + '</td>' +
                     '<td>' + objProducto.Categoria.Nombre + '</td>' +
                     '<td>' + objProducto.Medida + '</td>'
-                '   </tr>';
+                '<td><a class="btn btn-block btn-info btn-circle actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:actualizarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                '<td><a class="btn btn-block btn-danger btn-circle actualizarFilaProducto' + objProducto.IdProducto + '" href="javascript:eliminarProducto(' + objProducto.IdProducto + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                '<td><a class="btn btn-block btn-warning btn-circle " href="SubirImagenProducto.aspx?ID=' + objProducto.IdProducto + '"><i class="fa fa-file-photo-o" aria-hidden="true"></i></a></td>' +
+                '</tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');
                 table.find('tbody').append(tr);
                 mensajeConfirmacion("Bien!", "Producto Creado", "success");

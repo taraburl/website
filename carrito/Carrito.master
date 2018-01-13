@@ -29,6 +29,9 @@
         </div>
         <nav class="offcanvas-menu">
             <ul class="menu">
+                <li>
+                    <span><a href="/index.aspx"><span>Inicio</span></a></span>
+                </li>
                 <li class="has-children">
                     <span>
                         <a href="#">Comprar productos</a>
@@ -60,12 +63,12 @@
                                 <li><a href="Evento.aspx?ID=<%# Eval("IdEvento") %>"><%# Eval("Nombre")%></a></li>
                             </ItemTemplate>
                         </asp:Repeater>
-                        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="SelectActuales" TypeName="EventoBLL"></asp:ObjectDataSource>
+                        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="SelectAll" TypeName="EventoBLL"></asp:ObjectDataSource>
                     </ul>
                 </li>
-                <li>
+                <%--<li>
                     <span><a href="noticias.aspx"><span>Noticias</span></a><span class="sub-menu-toggle"></span></span>
-                </li>
+                </li>--%>
             </ul>
         </nav>
     </div>
@@ -81,6 +84,7 @@
         </a>
         <nav class="offcanvas-menu">
             <ul class="menu">
+                <li><a href="/index.aspx">Inicio</a></li>
                 <li><a href="Inscripciones.aspx">Inscriciones: Academia SEA</a></li>
                 <li><a href="inicio.aspx">Catalogo de Productos</a></li>
                 <asp:Repeater runat="server" ID="Repeater2" DataSourceID="ObjectDataSource1">
@@ -88,7 +92,7 @@
                         <li><a href="Evento.aspx?ID=<%# Eval("IdEvento") %>"><%# Eval("Nombre")%></a></li>
                     </ItemTemplate>
                 </asp:Repeater>
-                <li><a href="noticias.aspx"><span>Noticias</span></a></li>
+                <%--<li><a href="noticias.aspx"><span>Noticias</span></a></li>--%>
             </ul>
         </nav>
     </div>
@@ -126,21 +130,26 @@
         <!-- Main Navigation-->
         <nav class="site-menu">
             <ul>
+                <li><a href="/index.aspx"><span>Inicio</span></a></li>
                 <li class="has-megamenu">
                     <a href="#"><span>Academia de Fútbol</span></a>
                     <ul class="mega-menu">
-                        <li><a class="d-block img-thumbnail text-center navi-link"
-                            href="/carrito/inicio.aspx">
-                            <img alt="Featured Products Slider"
-                                src="../images/background1.jpg" />
-                            <h6 class="mt-3">Catálogo de Productos</h6>
-                        </a></li>
-                        <li><a class="d-block img-thumbnail text-center navi-link"
-                            href="/carrito/inscripciones.aspx">
-                            <img alt="Featured Categories"
-                                src="../images/background1.jpg" />
-                            <h6 class="mt-3">Inscripciones a la Academia de Fútbol SEA</h6>
-                        </a></li>
+                        <li>
+                            <a class="d-block img-thumbnail text-center navi-link"
+                                href="/carrito/inicio.aspx">
+                                <img alt="Featured Products Slider"
+                                    src="../images/catalogo.png" />
+                                <h6 class="mt-3">Catálogo de Productos</h6>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="d-block img-thumbnail text-center navi-link"
+                                href="/carrito/inscripciones.aspx">
+                                <img alt="Featured Categories"
+                                    src="../images/inscripcion.png" />
+                                <h6 class="mt-3">Inscripciones a la Academia de Fútbol SEA</h6>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li><a href="#"><span>Eventos</span></a>
@@ -152,8 +161,7 @@
                         </asp:Repeater>
                     </ul>
                 </li>
-                <li><a href="noticias.aspx"><span>Noticias</span></a>
-                </li>
+                <%--<li><a href="noticias.aspx"><span>Noticias</span></a></li>--%>
             </ul>
         </nav>
         <!-- Toolbar-->
@@ -223,10 +231,10 @@
                             <p class="text-white">Teléfono: +591 347 4704</p>
                             <p class="text-white">Celular: +591 785 57777</p>
                             <p><a class="navi-link-light" href="mailto:info@sea.com.bo">info@sea.comb.bo</a></p>
-                            <a class="social-button shape-circle sb-facebook sb-light-skin" href="#"><i class="socicon-facebook"></i></a>
-                            <a class="social-button shape-circle sb-twitter sb-light-skin" href="#"><i class="socicon-twitter"></i></a>
-                            <a class="social-button shape-circle sb-instagram sb-light-skin" href="#"><i class="socicon-instagram"></i></a>
-                            <a class="social-button shape-circle sb-youtube sb-light-skin" href="#"><i class="socicon-youtube"></i></a>
+                            <a class="social-button shape-circle sb-facebook sb-light-skin" href="https://www.facebook.com/sports.events.agency/" target="_blank"><i class="socicon-facebook"></i></a>
+                            <a class="social-button shape-circle sb-twitter sb-light-skin" href="https://twitter.com/SEA_SRL" target="_blank"><i class="socicon-twitter"></i></a>
+                            <a class="social-button shape-circle sb-instagram sb-light-skin" href="https://www.instagram.com/sea_srl/?hl=es" target="_blank"><i class="socicon-instagram"></i></a>
+                            <a class="social-button shape-circle sb-youtube sb-light-skin" href="https://www.youtube.com/user/SportsEventsAgency" target="_blank"><i class="socicon-youtube"></i></a>
                         </section>
                     </div>
                     <div class="col-lg-3 col-md-6">

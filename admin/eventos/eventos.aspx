@@ -18,24 +18,6 @@
                 CssClass="table text-center table-striped table-bordered table-hover table-sm"
                 AutoGenerateColumns="False" DataSourceID="ObjectDataSource1">
                 <Columns>
-                    <asp:TemplateField HeaderText="Actualizar">
-                        <ItemTemplate>
-                            <a class="btn btn-block btn-info actualizarFilaEvento<%# Eval("IdEvento") %>" href="javascript:actualizarEvento(<%# Eval("IdEvento")%>)">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Eliminar">
-                        <ItemTemplate>
-                            <a class="btn btn-block btn-danger eliminarFilaEvento<%# Eval("IdEvento")%>" href="javascript:eliminarEvento(<%# Eval("IdEvento") %>)">
-                                <i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Subir Fotos">
-                        <ItemTemplate>
-                            <a class="btn btn-block btn-warning" href="SubirImagenEvento.aspx?ID=<%# Eval("IdEvento")%>">
-                                <i class="fa  fa-file-photo-o" aria-hidden="true"></i></a>
-                        </ItemTemplate>
-                    </asp:TemplateField>
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                     <asp:BoundField DataField="Categoria" HeaderText="Categoria" SortExpression="Categoria" />
                     <asp:BoundField DataField="FechaInicioForDisplay" HeaderText="Fecha de Inicio" SortExpression="FechaInicioForDisplay" />
@@ -43,6 +25,25 @@
                     <asp:BoundField DataField="CantidadGrupos" HeaderText="Candidad de Grupos" SortExpression="CantidadGrupos" />
                     <asp:BoundField DataField="CantidadEquipos" HeaderText="Cantidad de Equipos" SortExpression="CantidadEquipos" />
                     <asp:BoundField DataField="CantidadJugadoresPorEquipo" HeaderText="Cantidad de Jugadores Por Equipo" SortExpression="CantidadJugadoresPorEquipo" />
+
+                    <asp:TemplateField HeaderText="Actualizar">
+                        <ItemTemplate>
+                            <a class="btn btn-block btn-info btn-circle actualizarFilaEvento<%# Eval("IdEvento") %>" href="javascript:actualizarEvento(<%# Eval("IdEvento")%>)">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Eliminar">
+                        <ItemTemplate>
+                            <a class="btn btn-block btn-danger btn-circle eliminarFilaEvento<%# Eval("IdEvento")%>" href="javascript:eliminarEvento(<%# Eval("IdEvento") %>)">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Subir Fotos">
+                        <ItemTemplate>
+                            <a class="btn btn-block btn-warning btn-circle" href="SubirImagenEvento.aspx?ID=<%# Eval("IdEvento")%>">
+                                <i class="fa  fa-file-photo-o" aria-hidden="true"></i></a>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
@@ -112,7 +113,7 @@
                 <label for="CantEquipos">Cantidad de Equipos:</label>
                 <div class=" input-group">
                     <span class="input-group-addon"><i class="fa fa-circle-thin"></i></span>
-                    <input class="form-control" id="CantEquipos" min="0" type="number" onkeypress="return isNumberKey(this);"/>
+                    <input class="form-control" id="CantEquipos" min="0" type="number" onkeypress="return isNumberKey(this);" />
                 </div>
             </div>
             <div class="col-xs-12 col-lg-6 col-md-6">
@@ -126,7 +127,7 @@
                 <label for="Maximos">Maximo de inscritos por equipo:</label>
                 <div class=" input-group">
                     <span class="input-group-addon"><i class="fa fa-circle-thin"></i></span>
-                    <input class="form-control" id="Maximos" min="0" type="number" onkeypress="return isNumberKey(this);"/>
+                    <input class="form-control" id="Maximos" min="0" type="number" onkeypress="return isNumberKey(this);" />
                 </div>
             </div>
         </div>
