@@ -11,7 +11,7 @@ function cancelEquipo() {
     $("#ContentPlaceHolder1_hdnJugadorEquipo").val();
     $("#ContentPlaceHolder1_hdnEquipo").val();
     $("#newEquipo, #addJugadores").slideUp(500, function () {
-        $("#listEquipo").slideDown(500);
+        $("#listEquipo, #listJugador").slideDown(500);
     });
 }
 
@@ -159,40 +159,9 @@ function guardarEquipo() {
     }
 }
 
-function agregarJugador(id) {
-    $("#ContentPlaceHolder1_hdnEquipo").val(id);
-    cargarJugadores(id);
-    $("#listEquipo").slideUp(500, function () {
+function agregarJugador() {
+    $("#listJugador").slideUp(500, function () {
         $("#addJugadores").slideDown(500);
-    });
-}
-
-function cargarJugadores(idEquipo) {
-    $("#body").empty();
-    var parametros = {
-        idEquipo: idEquipo
-    };
-    $.ajax({
-        url: 'equipos.aspx/TraerJugadoresEquipo',
-        dataType: 'json',
-        type: 'POST',
-        contentType: 'application/json; charset=utf-8',
-        data: JSON.stringify(parametros),
-        success: function (data) {
-            var objEquipo = data.d;
-            objEquipo.forEach(function (element) {
-                var tr = '<tr>' +
-                       '<td>' + element.Nombre + '</td>' +
-                       '<td>' + element.Posicion + '</td>' +
-                       '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaJugadorEquipo' + element.IdJugadorEquipo + '" href="javascript:actualizarJugadorEquipo(' + element.IdJugadorEquipo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                       '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaJugadorEquipo' + element.IdJugadorEquipo + '" href="javascript:eliminarJugadorEquipo(' + element.IdJugadorEquipo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                       '</tr>';
-                $("#body").append(tr);
-            });
-        },
-        error: function () {
-            alert("Error al cargar los jugadores");
-        }
     });
 }
 
@@ -233,13 +202,17 @@ function nuevoJugador() {
                 var tr =
                        '<td>' + objJugadorEquipo.Nombre + '</td>' +
                        '<td>' + objJugadorEquipo.Posicion + '</td>' +
-                       '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaJugadorEquipo' + objJugadorEquipo.IdJugadorEquipo + '" href="javascript:actualizarJugadorEquipo(' + objJugadorEquipo.IdJugadorEquipo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                       '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaJugadorEquipo' + objJugadorEquipo.IdJugadorEquipo + '" href="javascript:eliminarJugadorEquipo(' + objJugadorEquipo.IdJugadorEquipo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>';
+                       '<td><a class="btn btn-block btn-circle btn-info actualizarFilaJugadorEquipo' + objJugadorEquipo.IdJugadorEquipo + '" href="javascript:actualizarJugadorEquipo(' + objJugadorEquipo.IdJugadorEquipo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                       '<td><a class="btn btn-block btn-circle btn-danger eliminarFilaJugadorEquipo' + objJugadorEquipo.IdJugadorEquipo + '" href="javascript:eliminarJugadorEquipo(' + objJugadorEquipo.IdJugadorEquipo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                       '<td><a class="btn btn-block btn-warning btn-circle" href="SubirImagenJugador.aspx?ID=' + objJugadorEquipo.IdJugadorEquipo + '&Equipo=' + objJugadorEquipo.IdEquipo + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>';
                 trActualizado.html(tr);
                 mensajeConfirmacion("Bien!", "Jugador Actualizado", "success");
                 $('#ContentPlaceHolder1_hdnJugadorEquipo').val('');
                 $("#NombreJugador").val('');
                 $('#Posicion').val('');
+                $("#addJugadores").slideUp(500, function () {
+                    $("#listJugador").slideDown(500);
+                });
             },
             error: function () {
                 $("#NombreJugador").parent().addClass("has-error");
@@ -267,13 +240,18 @@ function nuevoJugador() {
                 var tr = '<tr>' +
                        '<td>' + objJugadorEquipo.Nombre + '</td>' +
                        '<td>' + objJugadorEquipo.Posicion + '</td>' +
-                       '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaJugadorEquipo' + objJugadorEquipo.IdJugadorEquipo + '" href="javascript:actualizarJugadorEquipo(' + objJugadorEquipo.IdJugadorEquipo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                       '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaJugadorEquipo' + objJugadorEquipo.IdJugadorEquipo + '" href="javascript:eliminarJugadorEquipo(' + objJugadorEquipo.IdJugadorEquipo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                       '<td><a class="btn btn-block btn-circle btn-info actualizarFilaJugadorEquipo' + objJugadorEquipo.IdJugadorEquipo + '" href="javascript:actualizarJugadorEquipo(' + objJugadorEquipo.IdJugadorEquipo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                       '<td><a class="btn btn-block btn-circle btn-danger eliminarFilaJugadorEquipo' + objJugadorEquipo.IdJugadorEquipo + '" href="javascript:eliminarJugadorEquipo(' + objJugadorEquipo.IdJugadorEquipo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                       '<td><a class="btn btn-block btn-warning btn-circle" href="SubirImagenJugador.aspx?ID=' + objJugadorEquipo.IdJugadorEquipo + '&Equipo=' + objJugadorEquipo.IdEquipo + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '</tr>';
-                $("#body").append(tr);
+                var table = $('#ContentPlaceHolder1_GridView1');
+                table.find('tbody').append(tr);
                 mensajeConfirmacion("Bien!", "Jugador Creado", "success");
                 $("#NombreJugador").val('');
                 $('#Posicion').val('');
+                $("#addJugadores").slideUp(500, function () {
+                    $("#listJugador").slideDown(500);
+                });
             },
             error: function () {
                 $("#NombreJugador").parent().addClass("has-error");
@@ -284,6 +262,9 @@ function nuevoJugador() {
 }
 
 function actualizarJugadorEquipo(id) {
+    $("#listJugador").slideUp(500, function () {
+        $("#addJugadores").slideDown(500);
+    });
     $(".input-group").removeClass('has-error');
     var parametros = {
         idJugadorEquipo: id
@@ -326,3 +307,20 @@ function eliminarJugadorEquipo(id) {
         }
     });
 }
+
+function atras() {
+    window.location.href = "jugadores.aspx?ID=" + $("#ContentPlaceHolder1_hdnEquipo").val();
+}
+
+jQuery('#ContentPlaceHolder1_uploader').on('change', function (e) {
+    var Lector,
+            oFileInput = this;
+    if (oFileInput.files.length === 0) {
+        return;
+    }
+    Lector = new FileReader();
+    Lector.onloadend = function (e) {
+        jQuery('#ContentPlaceHolder1_imgPrincipal').attr('src', e.target.result);
+    }
+    Lector.readAsDataURL(oFileInput.files[0]);
+});

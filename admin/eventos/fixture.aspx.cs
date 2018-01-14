@@ -14,9 +14,11 @@ public partial class admin_eventos_fixture : System.Web.UI.Page
     }
     [WebMethod]
     public static Fixture InsertarFixture(string idEquipo, string idRival,
-        string idCancha, string fecha, string hora,string idGrupo)
+        string idCancha, string fecha, string hora, string idGrupo,
+        string estado, string scoreEquipo, string scoreRival)
     {
-        Fixture objFixture = FixtureBLL.InsertWithReturn(idEquipo, idRival, idCancha, fecha, hora, idGrupo);
+        Fixture objFixture = FixtureBLL.InsertWithReturn(idEquipo, idRival,
+            idCancha, fecha, hora, idGrupo, estado, scoreEquipo, scoreRival);
         return objFixture;
     }
     [WebMethod]
@@ -25,7 +27,7 @@ public partial class admin_eventos_fixture : System.Web.UI.Page
         List<Fixture> objFixture = FixtureBLL.SelectByGrupo(idGrupo);
         return objFixture;
     }
-     [WebMethod]
+    [WebMethod]
     public static int EliminarPartido(string idPartido)
     {
         try
@@ -38,6 +40,22 @@ public partial class admin_eventos_fixture : System.Web.UI.Page
             return -1;
         }
 
+    }
+    [WebMethod]
+    public static Fixture TraerFixture(string idFixture)
+    {
+        Fixture objFixture = FixtureBLL.SelectById(Convert.ToInt32(idFixture));
+        return objFixture;
+    }
+    [WebMethod]
+    public static Fixture ActualizarFixture(string idEquipo, string idRival,
+        string idCancha, string fecha, string hora, string idGrupo,
+        string estado, string scoreEquipo, string scoreRival, string idFixture)
+    {
+        FixtureBLL.UpdateFixture(idEquipo, idRival, idCancha, fecha, hora, idGrupo,
+            estado, scoreEquipo, scoreRival, idFixture);
+        Fixture objFixture = FixtureBLL.SelectById(Convert.ToInt32(idFixture));
+        return objFixture;
     }
 
 }

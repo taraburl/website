@@ -3,10 +3,10 @@
         return window.location.href = "/Login.aspx";
     }
     $('#FechaInicio').datetimepicker({
-        format: 'YYYY-MM-DD'
+        format: 'DD/MM/YYYY'
     });
     $('#FechaFin').datetimepicker({
-        format: 'YYYY-MM-DD'
+        format: 'DD/MM/YYYY'
     });
 });
 
@@ -106,46 +106,46 @@ function actualizarEvento(id) {
 
 function guardarEvento() {
     if (!$('#Nombre').val() || !$('#Nombre').val().trim().length) {
-        $("#Nombre").parent().addClass("has-error");
-        return false;
+        return $("#Nombre").parent().addClass("has-error");
     } else {
         $("#Nombre").parent().removeClass('has-error');
     }
     if (!$('#Categoria').val() || !$('#Categoria').val().trim().length) {
-        $("#Categoria").parent().addClass("has-error");
-        return false;
+        return $("#Categoria").parent().addClass("has-error");
     } else {
         $("#Categoria").parent().removeClass('has-error');
     }
     if (!$('#FechaInicio input').val() || !$('#FechaInicio input').val().trim().length) {
-        $("#FechaInicio input").parent().addClass("has-error");
-        return false;
+        return $("#FechaInicio input").parent().addClass("has-error");
     } else {
         $("#FechaInicio input").parent().removeClass('has-error');
     }
     if (!$('#FechaFin input').val() || !$('#FechaFin input').val().trim().length) {
-        $("#FechaFin input").parent().addClass("has-error");
-        return false;
+        return $("#FechaFin input").parent().addClass("has-error");
     } else {
         $("#FechaFin input").parent().removeClass('has-error');
     }
     if (!$('#CantEquipos').val() || !$('#CantEquipos').val().trim().length) {
-        $("#CantEquipos").parent().addClass("has-error");
-        return false;
+        return $("#CantEquipos").parent().addClass("has-error");
     } else {
         $("#CantEquipos").parent().removeClass('has-error');
     }
     if (!$('#CantGrupos').val() || !$('#CantGrupos').val().trim().length) {
-        $("#CantGrupos").parent().addClass("has-error");
-        return false;
+        return $("#CantGrupos").parent().addClass("has-error");
     } else {
         $("#CantGrupos").parent().removeClass('has-error');
     }
     if (!$('#Maximos').val() || !$('#Maximos').val().trim().length) {
-        $("#Maximos").parent().addClass("has-error");
-        return false;
+        return $("#Maximos").parent().addClass("has-error");
     } else {
         $("#Maximos").parent().removeClass('has-error');
+    }
+    var fechaInicio = new Date($('#FechaInicio input').val());
+    var fechaFin = new Date($('#FechaFin input').val());
+    if (fechaInicio >= fechaFin) {
+        $("#FechaFin input").parent().addClass("has-error");
+        $("#FechaInicio input").parent().addClass("has-error");
+        return false;
     }
     if ($('#ContentPlaceHolder1_hdnIdEvento').val() != "") {
         //Actualizar

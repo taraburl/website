@@ -18,6 +18,9 @@
                 CssClass="table text-center table-striped table-bordered table-hover table-sm"
                 AutoGenerateColumns="False" DataSourceID="ObjectDataSource1">
                 <Columns>
+                    <asp:BoundField DataField="Titulo" HeaderText="Titulo" SortExpression="Titulo" />
+                    <asp:BoundField DataField="Evento.Nombre" HeaderText="Evento" SortExpression="Evento.Nombre" />
+                    <asp:BoundField DataField="FechaForDisplay" HeaderText="Fecha" SortExpression="FechaForDisplay" />
                     <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
                             <a class="btn btn-block btn-info btn-circle actualizarFilaNoticia<%# Eval("IdNoticia") %>" href="javascript:actualizarNoticia(<%# Eval("IdNoticia")%>)">
@@ -36,9 +39,6 @@
                                 <i class="fa  fa-file-photo-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="Titulo" HeaderText="Titulo" SortExpression="Titulo" />
-                    <asp:BoundField DataField="Evento.Nombre" HeaderText="Evento" SortExpression="Evento.Nombre" />
-                    <asp:BoundField DataField="FechaForDisplay" HeaderText="Fecha" SortExpression="FechaForDisplay" />
                 </Columns>
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />

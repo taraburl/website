@@ -7,7 +7,7 @@
         format: 'hh:mm:ss'
     });
     $('#fecha').datetimepicker({
-        format: 'YYYY-MM-DD'
+        format: 'DD/MM/YYYY'
     });
     $('#ContentPlaceHolder1_SelectGrupo').on('change', function () {
         cargarEquipos();
@@ -78,39 +78,92 @@ function cargarEquipos() {
 }
 
 function nuevoEquipo() {
-    var parametros = {
-        idEquipo: $("#ContentPlaceHolder1_EquipoRival1").val(),
-        idRival: $("#ContentPlaceHolder1_EquipoRival2").val(),
-        idCancha: $("#ContentPlaceHolder1_Cancha").val(),
-        fecha: $("#fecha input").val(),
-        hora: $("#hora input").val(),
-        idGrupo: $("#ContentPlaceHolder1_SelectGrupo").val()
-    }
-    $.ajax({
-        url: 'fixture.aspx/InsertarFixture',
-        dataType: 'json',
-        type: 'POST',
-        contentType: 'application/json; charset=utf-8',
-        data: JSON.stringify(parametros),
-        success: function (data) {
-            var objJugadorEquipo = data.d;
-            var tr = '<tr>' +
-                 '<td>' + objJugadorEquipo.Equipo.Nombre + '</td>' +
-                 '<td>' + objJugadorEquipo.Rival.Nombre + '</td>' +
-                 '<td>' + objJugadorEquipo.Cancha.Nombre + '</td>' +
-                 '<td>' + objJugadorEquipo.FechaForDisplay + '</td>' +
-                 '<td>' + objJugadorEquipo.HoraForDisplay + '</td>' +
-                 '<td><a class="btn btn-block btn-social-icon btn-warning href="javascript:agregarArbitros(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-plus" aria-hidden="true"></i></a></td>' +
-                 '<td><a class="btn btn-block btn-social-icon btn-info href=""><i class="fa fa-pencil" aria-hidden="true"></i></a></td>' +
-                 '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaJugadorEquipo' + objJugadorEquipo.IdFixture + '" href="javascript:eliminarPartido(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>' +
-                 '</tr>';
-            $("#partidos").append(tr);
-            mensajeConfirmacion("Bien!", "Partido Agregado", "success");
-        },
-        error: function () {
-            mensajeConfirmacion("Advertencia!", "Partido Repetido", "warning");
+    if ($("#ContentPlaceHolder1_FixtureID").val() != "null") {
+        //actualizar
+        var parametros = {
+            idEquipo: $("#ContentPlaceHolder1_EquipoRival1").val(),
+            idRival: $("#ContentPlaceHolder1_EquipoRival2").val(),
+            idCancha: $("#ContentPlaceHolder1_Cancha").val(),
+            fecha: $("#fecha input").val(),
+            hora: $("#hora input").val(),
+            idGrupo: $("#ContentPlaceHolder1_SelectGrupo").val(),
+            estado: $("#ContentPlaceHolder1_Estado").val(),
+            scoreEquipo: 0,
+            scoreRival: 0,
+            idFixture: $("#ContentPlaceHolder1_FixtureID").val()
         }
-    });
+        $.ajax({
+            url: 'fixture.aspx/ActualizarFixture',
+            dataType: 'json',
+            type: 'POST',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(parametros),
+            success: function (data) {
+                var objJugadorEquipo = data.d;
+                var estado = etiquetaEstado(objJugadorEquipo.Estado);
+                var linkActualizar = $('.actualizarFilaPartido' + objJugadorEquipo.IdFixture);
+                var trActualizado = linkActualizar.parent().parent();
+                var tr =
+                     '<td>' + objJugadorEquipo.Equipo.Nombre + '</td>' +
+                     '<td>' + objJugadorEquipo.Rival.Nombre + '</td>' +
+                     '<td>' + objJugadorEquipo.Cancha.Nombre + '</td>' +
+                     '<td>' + objJugadorEquipo.FechaForDisplay + '</td>' +
+                     '<td>' + objJugadorEquipo.HoraForDisplay + '</td>' +
+                     '<td>' + estado + '</td>' +
+                     '<td><a class="btn btn-block btn-social-icon btn-warning href="javascript:agregarArbitros(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-plus" aria-hidden="true"></i></a></td>' +
+                     '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaPartido' + objJugadorEquipo.IdFixture + '" href="javascript:actualizarPartido(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>' +
+                     '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaPartido' + objJugadorEquipo.IdFixture + '" href="javascript:eliminarPartido(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>';
+                trActualizado.html(tr);
+                $("#ContentPlaceHolder1_FixtureID").val('');
+                mensajeConfirmacion("Bien!", "Partido Actualizado", "success");
+                $('#cerrarPanel').click();
+            },
+            error: function () {
+                mensajeConfirmacion("Advertencia!", "Partido Repetido", "warning");
+            }
+        });
+    } else {
+        //Nuevo
+        var parametros = {
+            idEquipo: $("#ContentPlaceHolder1_EquipoRival1").val(),
+            idRival: $("#ContentPlaceHolder1_EquipoRival2").val(),
+            idCancha: $("#ContentPlaceHolder1_Cancha").val(),
+            fecha: $("#fecha input").val(),
+            hora: $("#hora input").val(),
+            idGrupo: $("#ContentPlaceHolder1_SelectGrupo").val(),
+            estado: $("#ContentPlaceHolder1_Estado").val(),
+            scoreEquipo: 0,
+            scoreRival: 0
+        }
+        $.ajax({
+            url: 'fixture.aspx/InsertarFixture',
+            dataType: 'json',
+            type: 'POST',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(parametros),
+            success: function (data) {
+                var objJugadorEquipo = data.d;
+                var estado = etiquetaEstado(objJugadorEquipo.Estado);
+                var tr = '<tr>' +
+                     '<td>' + objJugadorEquipo.Equipo.Nombre + '</td>' +
+                     '<td>' + objJugadorEquipo.Rival.Nombre + '</td>' +
+                     '<td>' + objJugadorEquipo.Cancha.Nombre + '</td>' +
+                     '<td>' + objJugadorEquipo.FechaForDisplay + '</td>' +
+                     '<td>' + objJugadorEquipo.HoraForDisplay + '</td>' +
+                     '<td>' + estado + '</td>' +
+                     '<td><a class="btn btn-block btn-social-icon btn-warning href="javascript:agregarArbitros(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-plus" aria-hidden="true"></i></a></td>' +
+                     '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaPartido' + objJugadorEquipo.IdFixture + '" href="javascript:actualizarPartido(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>' +
+                     '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaPartido' + objJugadorEquipo.IdFixture + '" href="javascript:eliminarPartido(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>' +
+                     '</tr>';
+                $("#partidos").append(tr);
+                mensajeConfirmacion("Bien!", "Partido Agregado", "success");
+                $('#cerrarPanel').click();
+            },
+            error: function () {
+                mensajeConfirmacion("Advertencia!", "Partido Repetido", "warning");
+            }
+        });
+    }
 }
 
 function cargarPartidos(id) {
@@ -127,15 +180,17 @@ function cargarPartidos(id) {
         success: function (data) {
             var objgrup = data.d;
             objgrup.forEach(function (objJugadorEquipo) {
+                var estado = etiquetaEstado(objJugadorEquipo.Estado);
                 var tr = '<tr>' +
                      '<td>' + objJugadorEquipo.Equipo.Nombre + '</td>' +
                      '<td>' + objJugadorEquipo.Rival.Nombre + '</td>' +
                      '<td>' + objJugadorEquipo.Cancha.Nombre + '</td>' +
                      '<td>' + objJugadorEquipo.FechaForDisplay + '</td>' +
                      '<td>' + objJugadorEquipo.HoraForDisplay + '</td>' +
+                     '<td>' + estado + '</td>' +
                      '<td><a class="btn btn-block btn-social-icon btn-warning href="javascript:agregarArbitros(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-plus" aria-hidden="true"></i></a></td>' +
-                     '<td><a class="btn btn-block btn-social-icon btn-info href=""><i class="fa fa-pencil" aria-hidden="true"></i></a></td>' +
-                     '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaJugadorEquipo' + objJugadorEquipo.IdFixture + '" href="javascript:eliminarPartido(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>' +
+                     '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaPartido' + objJugadorEquipo.IdFixture + '" href="javascript:actualizarPartido(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>' +
+                     '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaPartido' + objJugadorEquipo.IdFixture + '" href="javascript:eliminarPartido(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>' +
                      '</tr>';
                 $("#partidos").append(tr);
             });
@@ -143,6 +198,18 @@ function cargarPartidos(id) {
         error: function () {
         }
     });
+}
+
+function etiquetaEstado(estado) {
+    if (estado == "Pendiente") {
+        return "<span class='label label-info'>" + estado + "</span>";
+    } else if (estado == "En Curso") {
+        return "<span class='label label-success'>" + estado + "</span>";
+    } else if (estado == "Finalizado") {
+        return "<span class='label label-warning'>" + estado + "</span>";
+    } else if (estado == "Cancelado") {
+        return "<span class='label label-danger'>" + estado + "</span>";
+    }
 }
 
 function eliminarPartido(id) {
@@ -162,9 +229,33 @@ function eliminarPartido(id) {
                 return;
             }
             mensajeConfirmacion("Bien!", "Partido Eliminado", "success");
-            var linkEliminar = $('.eliminarFilaJugadorEquipo' + resultado);
+            var linkEliminar = $('.eliminarFilaPartido' + resultado);
             var trActualizado = linkEliminar.parent().parent();
             trActualizado.remove();
+        }
+    });
+}
+
+function actualizarPartido(id) {
+    var parametros = {
+        idFixture: id
+    };
+    $.ajax({
+        url: 'fixture.aspx/TraerFixture',
+        dataType: 'json',
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(parametros),
+        success: function (data) {
+            var objFixture = data.d;
+            $("#ContentPlaceHolder1_FixtureID").val(objFixture.IdFixture);
+            $("#ContentPlaceHolder1_EquipoRival1").val(objFixture.IdEquipo).trigger('change');
+            $('#ContentPlaceHolder1_EquipoRival2').val(objFixture.IdRival).trigger('change');
+            $("#ContentPlaceHolder1_Cancha").val(objFixture.idCancha).trigger('change');
+            $("#fecha input").val(objFixture.FechaForDisplay);
+            $("#hora input").val(objFixture.HoraForDisplay);
+            $("#ContentPlaceHolder1_Estado").val(objFixture.Estado).trigger('change');
+            $('#cerrarPanel').click(); $('#cerrarPanel').click();
         }
     });
 }

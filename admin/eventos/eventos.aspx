@@ -25,7 +25,6 @@
                     <asp:BoundField DataField="CantidadGrupos" HeaderText="Candidad de Grupos" SortExpression="CantidadGrupos" />
                     <asp:BoundField DataField="CantidadEquipos" HeaderText="Cantidad de Equipos" SortExpression="CantidadEquipos" />
                     <asp:BoundField DataField="CantidadJugadoresPorEquipo" HeaderText="Cantidad de Jugadores Por Equipo" SortExpression="CantidadJugadoresPorEquipo" />
-
                     <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
                             <a class="btn btn-block btn-info btn-circle actualizarFilaEvento<%# Eval("IdEvento") %>" href="javascript:actualizarEvento(<%# Eval("IdEvento")%>)">
@@ -38,7 +37,7 @@
                                 <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Subir Fotos">
+                    <asp:TemplateField HeaderText="Subir Logo">
                         <ItemTemplate>
                             <a class="btn btn-block btn-warning btn-circle" href="SubirImagenEvento.aspx?ID=<%# Eval("IdEvento")%>">
                                 <i class="fa  fa-file-photo-o" aria-hidden="true"></i></a>

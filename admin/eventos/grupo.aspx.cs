@@ -50,7 +50,7 @@ public partial class admin_eventos_grupo : System.Web.UI.Page
         int cantidadActual = objGrupoModelo.IdEvento;
         Evento objEvento = EventoBLL.SelectById(Convert.ToInt32(idEvento));
         int cantidadPermitida = objEvento.CantidadGrupos;
-        if (cantidadActual < cantidadPermitida)
+        if (cantidadActual <= cantidadPermitida)
         {
             GrupoBLL.Update(nombre, idEvento, Convert.ToInt32(id));
             Grupo objGrupo = GrupoBLL.SelectById(Convert.ToInt32(id));

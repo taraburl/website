@@ -240,7 +240,7 @@ function nuevoEquipo() {
             mensajeConfirmacion("Bien!", "Equipo Agregado al Quipo con Exito", "success");
         },
         error: function () {
-            mensajeConfirmacion("Advertencia!", "El Equipo ya esta en el Grupo", "warning");
+            mensajeConfirmacion("Advertencia!", "El Equipo ya esta en el Grupo o Pertenece a otro Grupo", "warning");
         }
     });
 }

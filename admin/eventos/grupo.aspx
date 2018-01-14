@@ -74,7 +74,7 @@
             </div>
             <div class="col-xs-12 col-lg-6 col-md-6">
                 <div class="form-group">
-                    <label>Evento en al que pertenece el Grupo:</label>
+                    <label>Seleccione el equipo:</label>
                     <asp:DropDownList runat="server" ID="IdEvento" CssClass="form-control select2" Style="width: 100%;" DataSourceID="ObjectDataSource1" DataTextField="Nombre" DataValueField="IdEvento">
                     </asp:DropDownList>
                     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="SelectAll" TypeName="EventoBLL"></asp:ObjectDataSource>
@@ -113,43 +113,43 @@
         <script src="../scripts/grupo.js"></script>
     </div>
     <div id="addEquipo" style="display: none;">
-        <div class="col-xs-12 col-lg-6 col-md-6">
-            <div class="box box-warning">
-                <div class="box-header with-border">
-                    <h3>Agregar Equipos</h3>
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <div class="pull-right box-tools">
+                    <a class="btn btn-default btn-sm" href="javascript:cancelEquipo()" data-toggle="tooltip" title="Cancelar"><i class="fa fa-times" aria-hidden="true"></i></a>
                 </div>
-                <div class="box-body">
-                    <asp:HiddenField runat="server" ID="hdnEquipo" />
-                    <div class="col-xs-12">
-                        <div class="form-group">
-                            <label>Evento en al que pertenece el Grupo:</label>
-                            <asp:DropDownList runat="server" ID="Equipo" CssClass="form-control select2" Style="width: 100%;">
-                            </asp:DropDownList>
-                        </div>
+                <h3 class="box-title">Agregar Equipos</h3>
+            </div>
+            <div class="box-body">
+                <asp:HiddenField runat="server" ID="hdnEquipo" />
+                <div class="col-xs-12">
+                    <label>Seleccione el Equipo para Agregar al Equipo</label>
+                    <div class="input-group input-group-sm">
+                        <asp:DropDownList runat="server" ID="Equipo" CssClass="form-control select2" Style="width: 100%;">
+                        </asp:DropDownList>
+                        <span class="input-group-btn">
+                            <a class="btn btn-info btn-flat" href="javascript:nuevoEquipo()">Agregar</a>
+                        </span>
                     </div>
                 </div>
-                <div class="box-footer">
-                    <a class="btn btn-info btn-lg" href="javascript:nuevoEquipo()">Agregar</a>
-                    <a class="btn btn-default pull-right btn-lg" href="javascript:cancelEquipo()"><i class="fa fa-times" aria-hidden="true"></i>Cancelar</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-12 col-lg-6 col-md-6">
-            <div class="box box-warning">
-                <div class="box-header with-border">
-                    <h3>Listado de Equipos</h3>
-                </div>
-                <div class="box-body">
-                    <table class="table-responsive table-bordered table-striped" style="width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Eliminar</th>
-                            </tr>
-                        </thead>
-                        <tbody id="body">
-                        </tbody>
-                    </table>
+                <div class="col-xs-12">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Listado de Equipos del Grupo</h3>
+                        </div>
+                        <div class="box-body">
+                            <table class="table-responsive table-bordered table-striped" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="body">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

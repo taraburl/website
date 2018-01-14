@@ -14,21 +14,23 @@
             </a>
         </div>
         <div class="box-body table-responsive">
-            <asp:GridView ID="GridView1" runat="server"
+            <asp:GridView ID="GridView1"
+                runat="server"
                 CssClass="table text-center table-striped table-bordered table-hover table-sm"
-                AutoGenerateColumns="False" DataSourceID="ObjectDataSource2">
+                AutoGenerateColumns="False"
+                DataSourceID="ObjectDataSource2">
                 <Columns>
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                     <asp:BoundField DataField="Evento.Nombre" HeaderText="Evento" SortExpression="Evento.Nombre" />
                     <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-info btn-circle actualizarFilaEquipo<%# Eval("IdEvento") %>" href="javascript:actualizarEquipo(<%# Eval("IdEquipo")%>)">
+                            <a class="btn btn-block btn-info btn-circle actualizarFilaEquipo<%# Eval("IdEquipo") %>" href="javascript:actualizarEquipo(<%# Eval("IdEquipo")%>)">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Eliminar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-danger btn-circle eliminarFilaEquipo<%# Eval("IdEvento")%>" href="javascript:eliminarEquipo(<%# Eval("IdEquipo") %>)">
+                            <a class="btn btn-block btn-danger btn-circle eliminarFilaEquipo<%# Eval("IdEquipo")%>" href="javascript:eliminarEquipo(<%# Eval("IdEquipo") %>)">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -41,7 +43,7 @@
                     <asp:TemplateField HeaderText="Agregar Jugadores">
                         <ItemTemplate>
                             <a class="btn btn-block btn-primary btn-circle"
-                                href="javascript:agregarJugador(<%# Eval("IdEquipo")%>)">
+                                href="jugadores.aspx?ID=<%# Eval("IdEquipo")%>">
                                 <i class="fa  fa-plus" aria-hidden="true"></i>
                             </a>
                         </ItemTemplate>
@@ -93,31 +95,7 @@
     </div>
     <div id="addJugadores" style="display: none;">
         <div class="col-xs-12 col-lg-6 col-md-6">
-            <div class="box box-warning">
-                <div class="box-header with-border">
-                    <h3>Agregar Jugadores</h3>
-                </div>
-                <div class="box-body">
-                    <asp:HiddenField runat="server" ID="hdnEquipo" />
-                    <asp:HiddenField runat="server" ID="hdnJugadorEquipo" />
-                    <div class="col-xs-12 margin">
-                        <div class=" input-group">
-                            <span class="input-group-addon"><i class="fa fa-circle-thin"></i></span>
-                            <input class="form-control" placeholder="Insertar Nombre del Jugador" id="NombreJugador" type="text" />
-                        </div>
-                    </div>
-                    <div class="col-xs-12 margin">
-                        <div class=" input-group">
-                            <span class="input-group-addon"><i class="fa fa-circle-thin"></i></span>
-                            <input class="form-control" placeholder="Insertar Posicion del Jugador" id="Posicion" type="text" />
-                        </div>
-                    </div>
-                </div>
-                <div class="box-footer">
-                    <a class="btn btn-info btn-lg" href="javascript:nuevoJugador()">Guardar</a>
-                    <a class="btn btn-default pull-right btn-lg" href="javascript:cancelEquipo()"><i class="fa fa-times" aria-hidden="true"></i>Cancelar</a>
-                </div>
-            </div>
+            
         </div>
         <div class="col-xs-12 col-lg-6 col-md-6">
             <div class="box box-warning">
@@ -131,7 +109,7 @@
                                 <th>Nombre</th>
                                 <th>Posicion</th>
                                 <th>Editar</th>
-                                <th>ELiminar</th>
+                                <th>Eliminar</th>
                             </tr>
                         </thead>
                         <tbody id="body">

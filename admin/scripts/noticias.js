@@ -3,7 +3,7 @@
         return window.location.href = "/Login.aspx";
     }
     $('#Fecha').datetimepicker({
-        format: 'YYYY-MM-DD'
+        format: 'DD/MM/YYYY'
     });
     $(".select2").select2();
 });
@@ -132,12 +132,12 @@ function guardarNoticia() {
                 var linkActualizar = $('.actualizarFilaNoticia' + objNoticia.IdNoticia);
                 var trActualizado = linkActualizar.parent().parent();
                 var tr =
-                    '<td><a class="btn btn-block btn-info  btn-circle actualizarFilaNoticia' + objNoticia.IdNoticia + '" href="javascript:actualizarEvento(' + objNoticia.IdNoticia + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger  btn-circle eliminarFilaNoticia' + objNoticia.IdNoticia + '" href="javascript:eliminarEvento(' + objNoticia.IdNoticia + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-warning  btn-circle" href="SubirImagenNoticia.aspx?ID=' + objNoticia.IdNoticia + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objNoticia.Titulo + '</td>' +
                     '<td>' + objNoticia.Evento.Nombre + '</td>' +
-                    '<td>' + objNoticia.FechaForDisplay + '</td>';
+                    '<td>' + objNoticia.FechaForDisplay + '</td>' +
+                    '<td><a class="btn btn-block btn-info  btn-circle actualizarFilaNoticia' + objNoticia.IdNoticia + '" href="javascript:actualizarEvento(' + objNoticia.IdNoticia + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger  btn-circle eliminarFilaNoticia' + objNoticia.IdNoticia + '" href="javascript:eliminarEvento(' + objNoticia.IdNoticia + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-warning  btn-circle" href="SubirImagenNoticia.aspx?ID=' + objNoticia.IdNoticia + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>';
                 trActualizado.html(tr);
                 $('#ContentPlaceHolder1_hdnIdNoticia').val('');
                 mensajeConfirmacion("Bien!", "Noticia Actualizada", "success");
@@ -166,13 +166,13 @@ function guardarNoticia() {
             success: function (data) {
                 var objNoticia = data.d;
                 var tr = '<tr>' +
-                    '<td><a class="btn btn-block btn-info  btn-circle actualizarFilaNoticia' + objNoticia.IdNoticia + '" href="javascript:actualizarEvento(' + objNoticia.IdNoticia + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger  btn-circle eliminarFilaNoticia' + objNoticia.IdNoticia + '" href="javascript:eliminarEvento(' + objNoticia.IdNoticia + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-warning  btn-circle" href="SubirImagenNoticia.aspx?ID=' + objNoticia.IdNoticia + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '<td>' + objNoticia.Titulo + '</td>' +
                     '<td>' + objNoticia.Evento.Nombre + '</td>' +
                     '<td>' + objNoticia.FechaForDisplay + '</td>' +
-                '</tr>';
+                    '<td><a class="btn btn-block btn-info  btn-circle actualizarFilaNoticia' + objNoticia.IdNoticia + '" href="javascript:actualizarEvento(' + objNoticia.IdNoticia + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger  btn-circle eliminarFilaNoticia' + objNoticia.IdNoticia + '" href="javascript:eliminarEvento(' + objNoticia.IdNoticia + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-warning  btn-circle" href="SubirImagenNoticia.aspx?ID=' + objNoticia.IdNoticia + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>' +
+                    '</tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');
                 table.find('tbody').append(tr);
                 mensajeConfirmacion("Bien!", "Noticia Creada", "success");

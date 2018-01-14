@@ -17,6 +17,9 @@ public class Fixture
     public TimeSpan Hora { get; set; }
     public int Eliminado { get; set; }
     public int IdGrupo { get; set; }
+    public string Estado { get; set; }
+    public int ScoreEquipo { get; set; }
+    public int ScoreRival { get; set; }
     public Grupo Grupo
     {
         get
