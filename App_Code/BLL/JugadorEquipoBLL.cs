@@ -21,7 +21,7 @@ public class JugadorEquipoBLL
         }
         return listJugadorEquipo;
     }
-    public static List<JugadorEquipo> SelectByTipo(int id)
+    public static List<JugadorEquipo> SelectByEquipo(int id)
     {
         JugadorEquipoDSTableAdapters.tbl_jugadorEquipoTableAdapter adapter =
             new JugadorEquipoDSTableAdapters.tbl_jugadorEquipoTableAdapter();

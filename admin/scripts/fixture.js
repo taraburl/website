@@ -110,7 +110,7 @@ function nuevoEquipo() {
                      '<td>' + objJugadorEquipo.FechaForDisplay + '</td>' +
                      '<td>' + objJugadorEquipo.HoraForDisplay + '</td>' +
                      '<td>' + estado + '</td>' +
-                     '<td><a class="btn btn-block btn-social-icon btn-warning href="javascript:agregarArbitros(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-plus" aria-hidden="true"></i></a></td>' +
+                     '<td><a class="btn btn-block btn-social-icon btn-warning" href="javascript:agregarArbitros(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-plus" aria-hidden="true"></i></a></td>' +
                      '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaPartido' + objJugadorEquipo.IdFixture + '" href="javascript:actualizarPartido(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>' +
                      '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaPartido' + objJugadorEquipo.IdFixture + '" href="javascript:eliminarPartido(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>';
                 trActualizado.html(tr);
@@ -151,7 +151,7 @@ function nuevoEquipo() {
                      '<td>' + objJugadorEquipo.FechaForDisplay + '</td>' +
                      '<td>' + objJugadorEquipo.HoraForDisplay + '</td>' +
                      '<td>' + estado + '</td>' +
-                     '<td><a class="btn btn-block btn-social-icon btn-warning href="javascript:agregarArbitros(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-plus" aria-hidden="true"></i></a></td>' +
+                     '<td><a class="btn btn-block btn-social-icon btn-warning" href="javascript:agregarArbitros(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-plus" aria-hidden="true"></i></a></td>' +
                      '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaPartido' + objJugadorEquipo.IdFixture + '" href="javascript:actualizarPartido(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>' +
                      '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaPartido' + objJugadorEquipo.IdFixture + '" href="javascript:eliminarPartido(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>' +
                      '</tr>';
@@ -188,7 +188,7 @@ function cargarPartidos(id) {
                      '<td>' + objJugadorEquipo.FechaForDisplay + '</td>' +
                      '<td>' + objJugadorEquipo.HoraForDisplay + '</td>' +
                      '<td>' + estado + '</td>' +
-                     '<td><a class="btn btn-block btn-social-icon btn-warning href="javascript:agregarArbitros(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-plus" aria-hidden="true"></i></a></td>' +
+                     '<td><a class="btn btn-block btn-social-icon btn-warning" href="javascript:agregarArbitros(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-plus" aria-hidden="true"></i></a></td>' +
                      '<td><a class="btn btn-block btn-social-icon btn-info actualizarFilaPartido' + objJugadorEquipo.IdFixture + '" href="javascript:actualizarPartido(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>' +
                      '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaPartido' + objJugadorEquipo.IdFixture + '" href="javascript:eliminarPartido(' + objJugadorEquipo.IdFixture + ')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>' +
                      '</tr>';
@@ -256,6 +256,90 @@ function actualizarPartido(id) {
             $("#hora input").val(objFixture.HoraForDisplay);
             $("#ContentPlaceHolder1_Estado").val(objFixture.Estado).trigger('change');
             $('#cerrarPanel').click(); $('#cerrarPanel').click();
+        }
+    });
+}
+
+function agregarArbitros(id) {
+    $("#ContentPlaceHolder1_hdnIdFixture").val(id);
+    cargarArbitros(id);
+    $("#AddArbitros").modal("show");
+}
+
+function cargarArbitros(id) {
+    $("#tblArbitros").empty();
+    var parametros = {
+        idPartido: id
+    }
+    $.ajax({
+        url: 'fixture.aspx/ListArbitros',
+        dataType: 'json',
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(parametros),
+        success: function (data) {
+            var listArbitros = data.d;
+            listArbitros.forEach(function (objArbitros) {
+                var tr = '<tr>' +
+                     '<td>' + objArbitros.Arbitro.Nombre + '</td>' +
+                     '<td>' + objArbitros.Arbitro.Edad + '</td>' +
+                     '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaArbitroPartido' + objArbitros.IdArbitroPartido + '" href="javascript:eliminarArbitroPartido(' + objArbitros.IdArbitroPartido + ')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>' +
+                     '</tr>';
+                $("#tblArbitros").append(tr);
+            });
+        },
+        error: function () {
+        }
+    });
+}
+
+function guardarArbitro() {
+    var parametros = {
+        idPartido: $("#ContentPlaceHolder1_hdnIdFixture").val(),
+        idArbitro: $("#ContentPlaceHolder1_Arbitro").val()
+    }
+    $.ajax({
+        url: 'fixture.aspx/InsertarArbitro',
+        dataType: 'json',
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(parametros),
+        success: function (data) {
+            var objArbitro = data.d;
+            var tr = '<tr>' +
+                 '<td>' + objArbitro.Arbitro.Nombre + '</td>' +
+                 '<td>' + objArbitro.Arbitro.Edad + '</td>' +
+                 '<td><a class="btn btn-block btn-social-icon btn-danger eliminarFilaArbitroPartido' + objArbitro.IdArbitroPartido + '" href="javascript:eliminarArbitroPartido(' + objArbitro.IdArbitroPartido + ')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>' +
+                 '</tr>';
+            $("#tblArbitros").append(tr);
+            mensajeConfirmacion("Bien!", "Arbitro Agregado al Partido", "success");
+        },
+        error: function () {
+            mensajeConfirmacion("Advertencia!", "El Arbitro ya esta en el Partido", "warning");
+        }
+    });
+}
+
+function eliminarArbitroPartido(id) {
+    var parametros = {
+        idArbitro: id
+    };
+    $.ajax({
+        url: 'fixture.aspx/EliminarArbitro',
+        dataType: 'json',
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(parametros),
+        success: function (data) {
+            var resultado = data.d;
+            if (resultado == -1) {
+                mensajeConfirmacion("Error", "Error al Eliminar Arbtitro", "error");
+                return;
+            }
+            mensajeConfirmacion("Bien!", "Arbitro Eliminado", "success");
+            var linkEliminar = $('.eliminarFilaArbitroPartido' + resultado);
+            var trActualizado = linkEliminar.parent().parent();
+            trActualizado.remove();
         }
     });
 }

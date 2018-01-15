@@ -34,12 +34,11 @@
                                 Grupo: <%# Eval("Grupo.Nombre") %>
                             </ItemTemplate>
                         </asp:Repeater>
-                        <asp:ObjectDataSource ID="ObjectDataSource3" runat="server" SelectMethod="SelectByEquipo" TypeName="GrupoEquipoBLL">
+                        <asp:ObjectDataSource runat="server" ID="ObjectDataSource3" SelectMethod="SelectByEquipo" TypeName="GrupoEquipoBLL">
                             <SelectParameters>
-                                <asp:QueryStringParameter Name="id" QueryStringField="ID" Type="Int32" />
+                                <asp:QueryStringParameter QueryStringField="ID" Name="id" Type="Int32"></asp:QueryStringParameter>
                             </SelectParameters>
                         </asp:ObjectDataSource>
-
                     </p>
                 </ItemTemplate>
             </asp:Repeater>
@@ -56,7 +55,7 @@
                     <div class="col-sm-3 mb-2">
                         <div class="d-table">
                             <img class="d-block w-150 mx-auto img-thumbnail
-                                 rounded-circle d-table-cell align-middle" 
+                                 rounded-circle d-table-cell align-middle"
                                 src="../images/jugadores/<%# Eval("IdJugadorEquipo") %>.png" alt="<%# Eval("Nombre") %>">
                             <div class="pl-3 d-table-cell align-middle">
                                 <h6><%# Eval("Nombre") %></h6>
@@ -67,7 +66,7 @@
                 </ItemTemplate>
             </asp:Repeater>
             <asp:ObjectDataSource ID="ObjectDataSource2" runat="server"
-                SelectMethod="SelectByTipo" TypeName="JugadorEquipoBLL">
+                SelectMethod="SelectByEquipo" TypeName="JugadorEquipoBLL">
                 <SelectParameters>
                     <asp:QueryStringParameter Name="id" QueryStringField="ID" Type="Int32" />
                 </SelectParameters>

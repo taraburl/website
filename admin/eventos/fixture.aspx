@@ -80,7 +80,7 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <asp:HiddenField runat="server" ID="FixtureID"/>
+                            <asp:HiddenField runat="server" ID="FixtureID" />
                             <div class="col-xs-12 col-lg-6 col-md-6">
                                 <div class="form-group">
                                     <label>Seleccione Equipo</label>
@@ -167,6 +167,61 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div id="AddArbitros" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                    </button>
+                    <h4 class="modal-title">Agregar Arbitros</h4>
+                </div>
+                <div class="modal-body">
+                    <asp:HiddenField runat="server" ID="hdnIdFixture" />
+                    <div class="col-xs-12">
+                        <label>Seleccione el Arbitro para el Partido</label>
+                        <div class="input-group input-group-sm">
+                            <asp:DropDownList runat="server" ID="Arbitro" CssClass="form-control select2" Style="width: 100%;" DataSourceID="ObjectDataSource2" DataTextField="Nombre" DataValueField="IdJugador">
+                            </asp:DropDownList>
+                            <asp:ObjectDataSource runat="server" ID="ObjectDataSource2" SelectMethod="SelectByTipo" TypeName="JugadorBLL">
+                                <SelectParameters>
+                                    <asp:Parameter DefaultValue="Arbitro" Name="tipo" Type="String"></asp:Parameter>
+                                </SelectParameters>
+                            </asp:ObjectDataSource>
+                            <span class="input-group-btn">
+                                <a class="btn btn-info btn-flat" href="javascript:guardarArbitro()">Agregar</a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="box box-info">
+                            <div class="box-header">
+                                <h2 class="box-title">Listado de Arbitros del Partido</h2>
+                            </div>
+                            <div class="box-body">
+                                <table class="table table-bordered table-responsive">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Edad</th>
+                                            <th>Eliminar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tblArbitros">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer no-border">
+
+                </div>
+            </div>
+
         </div>
     </div>
     <script src="../scripts/fixture.js"></script>

@@ -21,6 +21,18 @@ public class FixtureBLL
         }
         return listFixture;
     }
+    public static List<Fixture> SelectActuales()
+    {
+        FixtureDSTableAdapters.tbl_fixtureTableAdapter adapter =
+            new FixtureDSTableAdapters.tbl_fixtureTableAdapter();
+        FixtureDS.tbl_fixtureDataTable table = adapter.SelectActuales();
+        List<Fixture> listFixture = new List<Fixture>();
+        foreach (FixtureDS.tbl_fixtureRow row in table)
+        {
+            listFixture.Add(RowToDto(row));
+        }
+        return listFixture;
+    }
     public static List<Fixture> SelectByEvento(string idGrupo)
     {
         FixtureDSTableAdapters.tbl_fixtureTableAdapter adapter =

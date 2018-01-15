@@ -68,7 +68,7 @@
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
-            <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="SelectByEquipo" TypeName="GrupoEquipoBLL">
+            <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="SelectByEvento" TypeName="GrupoEquipoBLL">
                 <SelectParameters>
                     <asp:QueryStringParameter Name="id" QueryStringField="ID" Type="Int32" />
                 </SelectParameters>
@@ -84,42 +84,44 @@
         <div class="row padding-top-1x widget widget-featured-posts">
             <asp:Repeater runat="server" ID="RepeaterJugadores" DataSourceID="ObjectDataSource3">
                 <ItemTemplate>
-                    <div class="col-lg-6 col-md-6 col-sm-12 entry">
-                        <div class="entry-thumb">
-                            <a href="#">
-                                <img src="../images/equipos/<%# Eval("IdEquipo") %>.png" alt="logo evento" class="logo-equipo" />
-                            </a>
-                        </div>
-                        <div class="entry-content" style="width: 25% !important; word-wrap: break-word;">
-                            <h4 class="entry-title"><a href="#"><%# Eval("Equipo.Nombre") %></a></h4>
-                        </div>
-                        <div class="text-center" style="width: 100%; padding-top: .90rem !important;">
-                            <p class="badge badge-primary badge-pill text-center">VS</p>
-                        </div>
-                        <div class="entry-content text-right" style="padding-right: 5px !important;">
-                            <h4 class="entry-title"><a href="#"><%# Eval("Rival.Nombre") %></a></h4>
-                        </div>
-                        <div class="entry-thumb">
-                            <a href="#">
-                                <img src="../images/equipos/<%# Eval("IdRival") %>.png" alt="logo evento" class="logo-equipo" />
-                            </a>
+                    <div class="col-lg-2 text-center">
+                        <img src="../images/equipos/<%# Eval("IdEquipo") %>.png" alt="logo evento" class="logo-equipo d-block w-150 mx-auto img-thumbnail rounded-circle mb-2" />
+                        <h5><%# Eval("Equipo.Nombre") %></h5>
+                    </div>
+                    <div class="col-lg-2 text-center" style="padding-top: .90rem !important;">
+                        <div class="row">
+                            <h3 class="col-lg-4">
+                                <%# Eval("Estado").ToString() != "Pendiente" ? Eval("ScoreEquipo") : ""%>
+                            </h3>
+                            <p class="badge badge-primary badge-pill text-center col-lg-4">VS</p>
+                            <h3 class="col-lg-4">
+                                <%# Eval("Estado").ToString() != "Pendiente" ? Eval("ScoreRival") : ""%>
+                            </h3>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 entry text-center">
-                        <div class="entry-content">
-                            <h5 class="entry-title"><a href="#">Lugar: <%# Eval("Cancha.Nombre") %></a></h5>
-                        </div>
-                        <div class="entry-content">
-                            <h5 class="entry-title"><a href="#"><%# Eval("FechaForDisplay") %>
-                                <%# Eval("HoraForDisplay") %></a></h5>
-                        </div>
-                        <div class="entry-content" style="padding-top: .90rem !important;">
-                            <p class="badge badge-warning badge-pill text-center">ESTADO</p>
-                        </div>
+                    <div class="col-lg-2 text-center">
+                        <img src="../images/equipos/<%# Eval("IdRival") %>.png" alt="logo evento" class="logo-equipo d-block w-150 mx-auto img-thumbnail rounded-circle mb-2" />
+                        <h5><%# Eval("Rival.Nombre") %></h5>
+                    </div>
+                    <div class="col-lg-2 text-center" style="padding-top: .90rem !important;">
+                        <h7 class="entry-title">Lugar: <%# Eval("Cancha.Nombre") %></h7>
+                    </div>
+                    <div class="col-lg-2 text-center" style="padding-top: .90rem !important;">
+                        <h7 class="entry-title"><%# Eval("FechaForDisplay") %>
+                            <%# Eval("HoraForDisplay") %></h7>
+                    </div>
+                    <div class="col-lg-2 text-center" style="padding-top: .90rem !important;">
+                        <p class="badge 
+                                    <%# Eval("Estado").ToString() == "Pendiente" ? "bg-warning"
+                                    : Eval("Estado").ToString() == "En Curso" ? "bg-success"
+                                    : Eval("Estado").ToString() == "Finalizado" ? "bg-primary"
+                                    : Eval("Estado").ToString() == "Cancelado" ? "bg-danger" : "" %> badge-pill  text-center">
+                            <%# Eval("Estado") %>
+                        </p>
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
-            <asp:ObjectDataSource ID="ObjectDataSource3" runat="server" SelectMethod="SelectByGrupo" TypeName="FixtureBLL">
+            <asp:ObjectDataSource ID="ObjectDataSource3" runat="server" SelectMethod="SelectByEvento" TypeName="FixtureBLL">
                 <SelectParameters>
                     <asp:QueryStringParameter Name="idGrupo" QueryStringField="ID" Type="String" />
                 </SelectParameters>

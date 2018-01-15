@@ -10,7 +10,7 @@ public class ArbitroPartido
         
     }
 
-    public int idArbitroPartido { get; set; }
+    public int IdArbitroPartido { get; set; }
     public int IdPartido { get; set; }
     public int IdArbitro { get; set; }
     public int Eliminado { get; set; }
