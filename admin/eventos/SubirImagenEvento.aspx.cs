@@ -25,7 +25,7 @@ public partial class admin_SubirImagenEvento : System.Web.UI.Page
         string pathSitio = Server.MapPath("~/");
         string nombreArchivo = uploader.FileName;
         string extension = nombreArchivo.Substring(nombreArchivo.IndexOf('.') + 1);
-        uploader.SaveAs(pathSitio + "images/evento/" + id + "." + extension);
+        uploader.SaveAs(pathSitio + "images/evento/" + id + ".png");
         Response.Redirect("eventos.aspx");
     }
 }

@@ -20,11 +20,20 @@ public class Fixture
     public string Estado { get; set; }
     public int ScoreEquipo { get; set; }
     public int ScoreRival { get; set; }
+    public int Puntos { get; set; }
     public Grupo Grupo
     {
         get
         {
             return GrupoBLL.SelectById(IdGrupo);
+        }
+    }
+    public Evento Evento
+    {
+        get
+        {
+            Grupo grupo = GrupoBLL.SelectById(IdGrupo);
+            return EventoBLL.SelectById(grupo.IdEvento);
         }
     }
     public Equipos Equipo
@@ -60,6 +69,13 @@ public class Fixture
         get
         {
             return Hora.ToString();
+        }
+    }
+    public string Partido
+    {
+        get
+        {
+            return Equipo.Nombre + "  VS  " + Rival.Nombre;
         }
     }
 }

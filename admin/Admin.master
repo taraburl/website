@@ -164,7 +164,6 @@
                             <li><a href="/admin/eventos/equipos.aspx"><i class="fa fa-users"></i>Equipos</a></li>
                             <li><a href="/admin/eventos/grupo.aspx"><i class="fa fa-users"></i>Grupos</a></li>
                             <li><a href="/admin/eventos/fixture.aspx"><i class="fa fa-list-alt"></i>Fixture</a></li>
-                            <li><a href="/admin/eventos/NoticiasFixture.aspx"><i class="fa fa-newspaper-o"></i>Fixture: Noticias</a></li>
                             <li><a href="/admin/eventos/noticias.aspx"><i class="fa fa-newspaper-o"></i>Noticias</a></li>
                         </ul>
                     </li>

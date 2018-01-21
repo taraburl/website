@@ -15,15 +15,15 @@ public partial class admin_eventos_NoticiasFixture : System.Web.UI.Page
     [WebMethod]
     public static List<JugadorEquipo> TraerJugadoresEquipo(int idEquipo)
     {
-        List<JugadorEquipo> listJugadores = JugadorEquipoBLL.SelectByTipo(idEquipo);
+        List<JugadorEquipo> listJugadores = JugadorEquipoBLL.SelectByEquipo(idEquipo);
         return listJugadores;
     }
     [WebMethod]
-    public static FixtureNoticias InsertarNoticia(string idEquipo, string idJugador,
+    public static FixtureNoticias InsertarNoticia(string idFixture, string idEquipo, string idJugador,
         string tipo, string descripcion, string fecha, string hora)
     {
         FixtureNoticias objFixture = FixtureNoticiaBLL.InsertWithReturn(
-            idEquipo, idJugador, tipo, descripcion, fecha, hora);
+            idFixture, idEquipo, idJugador, tipo, descripcion, fecha, hora);
         return objFixture;
     }
     [WebMethod]
@@ -33,10 +33,10 @@ public partial class admin_eventos_NoticiasFixture : System.Web.UI.Page
         return objEvento;
     }
     [WebMethod]
-    public static FixtureNoticias ActualizarNoticia(string idEquipo, string idJugador,
+    public static FixtureNoticias ActualizarNoticia(string idFixture, string idEquipo, string idJugador,
         string tipo, string descripcion, string fecha, string hora, string id)
     {
-        FixtureNoticiaBLL.Update(idEquipo, idJugador, tipo, descripcion, fecha, hora, Convert.ToInt32(id));
+        FixtureNoticiaBLL.Update(idFixture, idEquipo, idJugador, tipo, descripcion, fecha, hora, Convert.ToInt32(id));
         FixtureNoticias objEvento = FixtureNoticiaBLL.SelectById(Convert.ToInt32(id));
         return objEvento;
     }

@@ -108,7 +108,7 @@ function guardarEquipo() {
                     '<td><a class="btn btn-block btn-info btn-circle actualizarFilaEquipo' + objEquipo.IdEquipo + '" href="javascript:actualizarEquipo(' + objEquipo.IdEquipo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
                     '<td><a class="btn btn-block btn-danger btn-circle eliminarFilaEquipo' + objEquipo.IdEquipo + '" href="javascript:eliminarEquipo(' + objEquipo.IdEquipo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td><a class="btn btn-block btn-warning btn-circle" href="SubirImagenEquipo.aspx?ID=' + objEquipo.IdEquipo + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-primary btn-circle" href="javascript:agregarJugador(' + objEquipo.IdEquipo + ')"> <i class="fa  fa-plus" aria-hidden="true"></i> </a></td>';
+                    '<td><a class="btn btn-block btn-primary btn-circle" href="jugadores.aspx?ID=' + objEquipo.IdEquipo + '"> <i class="fa  fa-plus" aria-hidden="true"></i> </a></td>';
                 trActualizado.html(tr);
                 $('#ContentPlaceHolder1_hdnIdEquipo').val('');
                 mensajeConfirmacion("Bien!", "Equipo Actualizado", "success");
@@ -143,7 +143,7 @@ function guardarEquipo() {
                     '<td><a class="btn btn-block btn-info btn-circle actualizarFilaEquipo' + objEquipo.IdEquipo + '" href="javascript:actualizarEquipo(' + objEquipo.IdEquipo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
                     '<td><a class="btn btn-block btn-danger btn-circle eliminarFilaEquipo' + objEquipo.IdEquipo + '" href="javascript:eliminarEquipo(' + objEquipo.IdEquipo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td><a class="btn btn-block btn-warning btn-circle" href="SubirImagenEquipo.aspx?ID=' + objEquipo.IdEquipo + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-primary btn-circle" href="javascript:agregarJugador(' + objEquipo.IdEquipo + ')"> <i class="fa  fa-plus" aria-hidden="true"></i> </a></td>' +
+                    '<td><a class="btn btn-block btn-primary btn-circle" href="jugadores.aspx?ID=' + objEquipo.IdEquipo + '"> <i class="fa  fa-plus" aria-hidden="true"></i> </a></td>' +
                     '</tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');
                 table.find('tbody').append(tr);
@@ -157,12 +157,6 @@ function guardarEquipo() {
             }
         });
     }
-}
-
-function agregarJugador() {
-    $("#listJugador").slideUp(500, function () {
-        $("#addJugadores").slideDown(500);
-    });
 }
 
 function nuevoJugador() {

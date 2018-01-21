@@ -35,23 +35,22 @@
                             <div class="column">
                                 <div class="meta-link">
                                     <span>Fecha</span>
-                                    <a href="#"><%# Eval("FechaForDisplay") %>&nbsp;</a>
+                                    <%# Eval("FechaForDisplay") %>
                                 </div>
                             </div>
                         </div>
                         <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;loop&quot;: true }">
                             <figure>
                                 <img src="../images/noticia/<%# Eval("IdNoticia")  %>.png" alt="<%# Eval("Titulo") %>"
-                                    style="width: 100% !important;" />
-                                <figcaption class="text-white"><%# Eval("Titulo") %></figcaption>
+                                    style="border-radius: 5px;" />
                             </figure>
                         </div>
-                        <h2 class="padding-top-2x"><%# Eval("Titulo") %></h2>
-                        <p><%# Eval("Descripcion") %></p>
+                        <h2><%# Eval("Titulo") %></h2>
+                        <p class="text-white"><%# Eval("Descripcion") %></p>
                         <div class="single-post-footer">
                             <div class="column">
                                 <div class="entry-share">
-                                    <span class="text-muted">Compartir Noticia:</span>
+                                    <span class="text-white">Compartir Noticia:</span>
                                     <div class="share-links">
                                         <a class="social-button shape-circle sb-facebook"
                                             href="#" data-toggle="tooltip"
@@ -67,7 +66,7 @@
                                             data-via="twitterdev"
                                             data-related="twitterapi,twitter"
                                             data-toggle="tooltip"
-                                            data-placement="top" 
+                                            data-placement="top"
                                             title="Twitter"
                                             target="_blank"><i class="socicon-twitter"></i></a>
                                     </div>
@@ -84,5 +83,6 @@
             </div>
         </div>
     </div>
+    <script src="js/evento.js"></script>
 </asp:Content>
 

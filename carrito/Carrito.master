@@ -12,6 +12,7 @@
     <link href="css/vendor.min.css" rel="stylesheet" />
     <link href="css/styles.min.css" rel="stylesheet" />
     <link href="css/customizer.min.css" rel="stylesheet" />
+    <link href="../Content/animate.css" rel="stylesheet" />
     <script src="js/modernizr.min.js"></script>
     <script src="js/vendor.min.js"></script>
     <script src="js/scripts.min.js"></script>
@@ -168,8 +169,8 @@
         <div class="toolbar">
             <div class="inner">
                 <div class="tools">
-                    <div class="account">
-                        <a href="MiCarrito.aspx"></a><i class="icon-head"></i>
+                    <div class="account" id="UseriIcons">
+                        <a href="MiPerfil.aspx"></a><i class="icon-head"></i>
                         <ul class="toolbar-dropdown">
                             <li class="sub-menu-user">
                                 <div class="user-ava">
@@ -185,7 +186,13 @@
                             <li><a href="javascript:logout();"><i class="icon-unlock"></i>Salir</a></li>
                         </ul>
                     </div>
-                    <div class="cart">
+                    <div class="account" id="loginIcons"  style="display: none;">
+                        <a href="/login.aspx"></a><i class="icon-head"></i>
+                        <ul class="toolbar-dropdown">
+                            <li><a href="/login.aspx"><i class="icon-unlock"></i>Iniciar Sesion</a></li>
+                        </ul>
+                    </div>
+                    <div class="cart" id="CartIcons">
                         <a href="MiCarrito.aspx"></a>
                         <i class="icon-bag"></i>
                         <span class="count" id="cantProductos">0</span>
@@ -274,7 +281,7 @@
                     </div>
                 </div>
                 <!-- Copyright-->
-                <p class="footer-copyright">© Todos los derechos reservado. Desarrollado por &nbsp;<a href="http://www.osbolivia.com/" target="_blank"> &nbsp;OsBolivia</a></p>
+                <p class="footer-copyright">© Todos los derechos reservado. Desarrollado por<a href="http://www.osbolivia.com/" target="_blank"> &nbsp;OsBolivia</a></p>
             </div>
         </footer>
     </div>

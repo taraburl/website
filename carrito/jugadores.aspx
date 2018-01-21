@@ -21,17 +21,17 @@
         </div>
     </div>
     <!-- //breadcrumbs -->
-    <div class="container padding-bottom-2x mb-2">
-        <div class="text-center">
+    <div class="container padding-bottom-2x mb-2 equipos-contenedor margin-bottom-2x">
+        <div class="text-center datos-equipos">
             <asp:Repeater runat="server" ID="RepeaterDatosEquipo" DataSourceID="ObjectDataSource1">
                 <ItemTemplate>
-                    <img class="d-block w-150 mx-auto img-thumbnail rounded-circle mb-2"
+                    <img class="d-block w-150 mx-auto img-thumbnail mb-2 tamano-img"
                         src="../images/equipos/<%# Eval("IdEquipo") %>.png" alt="Equipo" />
                     <h2><%# Eval("Nombre") %></h2>
-                    <p class="text-muted mb-2">
+                    <p class="mb-2">
                         <asp:Repeater runat="server" ID="RepeaterEvento" DataSourceID="ObjectDataSource3">
                             <ItemTemplate>
-                                Grupo: <%# Eval("Grupo.Nombre") %>
+                                <%# Eval("Grupo.Nombre") %>
                             </ItemTemplate>
                         </asp:Repeater>
                         <asp:ObjectDataSource runat="server" ID="ObjectDataSource3" SelectMethod="SelectByEquipo" TypeName="GrupoEquipoBLL">
@@ -48,20 +48,14 @@
                 </SelectParameters>
             </asp:ObjectDataSource>
         </div>
-        <br />
-        <div class="row">
+        <div class="row" style="padding: 20px;">
             <asp:Repeater runat="server" ID="RepeaterJugadores" DataSourceID="ObjectDataSource2">
                 <ItemTemplate>
-                    <div class="col-sm-3 mb-2">
-                        <div class="d-table">
-                            <img class="d-block w-150 mx-auto img-thumbnail
-                                 rounded-circle d-table-cell align-middle"
-                                src="../images/jugadores/<%# Eval("IdJugadorEquipo") %>.png" alt="<%# Eval("Nombre") %>">
-                            <div class="pl-3 d-table-cell align-middle">
-                                <h6><%# Eval("Nombre") %></h6>
-                                <p class="text-muted mb-2">Posicion: <%# Eval("Posicion") %></p>
-                            </div>
-                        </div>
+                    <div class="col-md-3 col-sm-6 col-lg-2 mb-30 text-center">
+                        <img class="d-block w-150 mx-auto img-thumbnail mb-2 tamano-img"
+                            src="../images/jugadores/<%# Eval("IdJugadorEquipo") %>.png" alt="<%# Eval("Nombre") %>">
+                        <h6><%# Eval("Nombre") %></h6>
+                        <p class="text-white mb-2"><%# Eval("Posicion") %></p>
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
@@ -73,5 +67,6 @@
             </asp:ObjectDataSource>
         </div>
     </div>
+    <script src="js/evento.js"></script>
 </asp:Content>
 

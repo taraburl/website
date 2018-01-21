@@ -10,18 +10,19 @@ public class FixtureNoticias
 
     }
     public int Id { get; set; }
-    public int IdPartido { get; set; }
+    public int IdFixture { get; set; }
+    public int IdEquipo { get; set; }
     public int IdJugador { get; set; }
     public string Tipo { get; set; }
     public string Descripcion { get; set; }
     public DateTime Fecha { get; set; }
     public TimeSpan Hora { get; set; }
     public int Eliminado { get; set; }
-    public Equipos Partido
+    public Equipos Equipo
     {
         get
         {
-            return EquipoBLL.SelectById(IdPartido);
+            return EquipoBLL.SelectById(IdEquipo);
         }
     }
     public JugadorEquipo Jugador
@@ -45,5 +46,14 @@ public class FixtureNoticias
             return Hora.ToString();
         }
     }
+
+    public Fixture Partido
+    {
+        get
+        {
+            return FixtureBLL.SelectById(IdFixture);
+        }
+    }
+
 
 }

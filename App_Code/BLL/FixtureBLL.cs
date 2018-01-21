@@ -58,14 +58,14 @@ public class FixtureBLL
     }
     public static Fixture InsertWithReturn(string idEquipo, string idRival,
         string idCancha, string fecha, string hora, string idGrupo,
-        string estado, string scoreEquipo, string scoreRival)
+        string estado, string scoreEquipo, string scoreRival, string puntos)
     {
         FixtureDSTableAdapters.tbl_fixtureTableAdapter adapter =
             new FixtureDSTableAdapters.tbl_fixtureTableAdapter();
         FixtureDS.tbl_fixtureDataTable table = adapter.InsertWithReturn(Convert.ToInt32(idEquipo),
             Convert.ToInt32(idRival), Convert.ToInt32(idCancha),
             TimeSpan.Parse(hora), Convert.ToDateTime(fecha), 0, Convert.ToInt32(idGrupo),
-            estado, Convert.ToInt32(scoreEquipo), Convert.ToInt32(scoreRival));
+            estado, Convert.ToInt32(scoreEquipo), Convert.ToInt32(scoreRival), Convert.ToInt32(puntos));
         if (table.Rows.Count == 0)
         {
             return null;
@@ -74,7 +74,7 @@ public class FixtureBLL
     }
     public static void UpdateFixture(string idEquipo, string idRival,
         string idCancha, string fecha, string hora, string idGrupo,
-        string estado, string scoreEquipo, string scoreRival, string id)
+        string estado, string scoreEquipo, string scoreRival,string puntos,  string id)
     {
         FixtureDSTableAdapters.tbl_fixtureTableAdapter adapter =
             new FixtureDSTableAdapters.tbl_fixtureTableAdapter();
@@ -84,6 +84,7 @@ public class FixtureBLL
             Convert.ToInt32(idGrupo),
             estado, Convert.ToInt32(scoreEquipo),
             Convert.ToInt32(scoreRival),
+            Convert.ToInt32(puntos),
             Convert.ToInt32(id), Convert.ToInt32(id));
     }
     public static void Delete(string id)
@@ -107,6 +108,7 @@ public class FixtureBLL
         objFixture.Estado = row.estado;
         objFixture.ScoreEquipo = row.scoreEquipo;
         objFixture.ScoreRival = row.scoreRival;
+        objFixture.Puntos = row.puntos;
         return objFixture;
     }
 }

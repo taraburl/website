@@ -26,7 +26,7 @@ public partial class admin_eventos_SubirImagenJugador : System.Web.UI.Page
         string pathSitio = Server.MapPath("~/");
         string nombreArchivo = uploader.FileName;
         string extension = nombreArchivo.Substring(nombreArchivo.IndexOf('.') + 1);
-        uploader.SaveAs(pathSitio + "images/jugadores/" + id + "." + extension);
+        uploader.SaveAs(pathSitio + "images/jugadores/" + id + ".png");
         Response.Redirect("jugadores.aspx?ID=" + Request.QueryString["Equipo"]);
     }
 }

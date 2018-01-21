@@ -1,45 +1,52 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/Admin.master" AutoEventWireup="true" CodeFile="NoticiasFixture.aspx.cs" Inherits="admin_eventos_NoticiasFixture" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <title>SEA - Noticias Fixture</title>
+    <title>SEA - Datos Oficiales</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
-    <h1>LISTADO DE Noticias De FIXTURE</h1>
+    <h1>LISTADO DE DATOS OFICIALES DEL EVENTO</h1>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="box box-info" id="listNoticia">
         <div class="box-header with-border">
             <a class="btn btn-success btn-lg" href="javascript:newNoticia();">
-                <i class="fa fa-plus" aria-hidden="true"></i>NUEVA NOTICIA
+                <i class="fa fa-plus" aria-hidden="true"></i>NUEVO DATO OFICIAL
             </a>
         </div>
         <div class="box-body table-responsive">
-            <asp:GridView ID="GridView1" runat="server"
-                CssClass="table text-center table-striped table-bordered table-hover table-sm"
-                AutoGenerateColumns="False" DataSourceID="ObjectDataSource2">
+            <asp:GridView
+                ID="GridView1"
+                runat="server"
+                DataSourceID="ObjectDataSource2"
+                AllowPaging="True"
+                AutoGenerateColumns="False"
+                CssClass="table table-striped table-bordered table-hover table-sm"
+                CellPadding="4" ForeColor="#333333" GridLines="None">
+                <AlternatingRowStyle BackColor="White" />
                 <Columns>
+                    <asp:BoundField DataField="Partido.Partido" HeaderText="Partido" SortExpression="Partido.Partido" />
+                    <asp:BoundField DataField="Equipo.Nombre" HeaderText="Equipo" SortExpression="Equipo.Nombre" />
+                    <asp:BoundField DataField="Jugador.Nombre" HeaderText="Jugador" SortExpression="Jugador.Nombre"></asp:BoundField>
+                    <asp:BoundField DataField="Tipo" HeaderText="Tipo" SortExpression="Tipo"></asp:BoundField>
+                    <asp:BoundField DataField="FechaForDisplay" HeaderText="Fecha" SortExpression="FechaForDisplay"></asp:BoundField>
+                    <asp:BoundField DataField="HoraForDisplay" HeaderText="Hora" SortExpression="HoraForDisplay"></asp:BoundField>
                     <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-info actualizarFilaNoticia<%# Eval("Id") %>" href="javascript:actualizarNoticia(<%# Eval("Id")%>)">
+                            <a class="btn btn-block btn-info btn-circle actualizarFilaNoticia<%# Eval("Id") %>" href="javascript:actualizarNoticia(<%# Eval("Id")%>)">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Eliminar">
                         <ItemTemplate>
-                            <a class="btn btn-block btn-danger eliminarFilaNoticia<%# Eval("Id")%>" href="javascript:eliminarNoticia(<%# Eval("Id") %>)">
+                            <a class="btn btn-block btn-danger btn-circle eliminarFilaNoticia<%# Eval("Id")%>" href="javascript:eliminarNoticia(<%# Eval("Id") %>)">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="Partido.Nombre" HeaderText="Equipo" SortExpression="Partido.Nombre" />
-                    <asp:BoundField DataField="Jugador.Nombre" HeaderText="Jugador" SortExpression="Jugador" />
-                    <asp:BoundField DataField="Tipo" HeaderText="Tipo" SortExpression="Tipo" />
-                    <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" SortExpression="Descripcion" />
-                    <asp:BoundField DataField="FechaForDisplay" HeaderText="Fecha" ReadOnly="True" SortExpression="FechaForDisplay" />
-                    <asp:BoundField DataField="HoraForDisplay" HeaderText="Hora" ReadOnly="True" SortExpression="HoraForDisplay" />
                 </Columns>
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
                 <HeaderStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
+                <PagerSettings Mode="NumericFirstLast" />
                 <PagerStyle BackColor="#47AEC5" ForeColor="White" HorizontalAlign="Center" />
                 <RowStyle BackColor="#EFF3FB" />
                 <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
@@ -48,7 +55,11 @@
                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                 <SortedDescendingHeaderStyle BackColor="#081A28" />
             </asp:GridView>
-            <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="SelectAll" TypeName="FixtureNoticiaBLL"></asp:ObjectDataSource>
+            <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="SelectByEvento" TypeName="FixtureNoticiaBLL" OldValuesParameterFormatString="original_{0}">
+                <SelectParameters>
+                    <asp:QueryStringParameter QueryStringField="ID" Name="idEvento" Type="String"></asp:QueryStringParameter>
+                </SelectParameters>
+            </asp:ObjectDataSource>
         </div>
     </div>
     <div class="box box-warning" id="newNoticia" style="display: none;">
@@ -62,19 +73,41 @@
             <asp:HiddenField runat="server" ID="hdnIdNoticia" />
             <div class="col-xs-12 col-lg-6 col-md-6">
                 <div class="form-group">
-                    <label>Equipo:</label>
-                    <asp:DropDownList runat="server" ID="IdEquipo" CssClass="form-control select2" Style="width: 100%;" DataSourceID="ObjectDataSource1" DataTextField="Nombre" DataValueField="IdEquipo">
+                    <label>Partido:</label>
+                    <asp:DropDownList runat="server" ID="IdPartido" CssClass="form-control select2" Style="width: 100%;" DataSourceID="ObjectDataSource1" DataTextField="Partido" DataValueField="IdFixture">
                     </asp:DropDownList>
-                    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="SelectAll" TypeName="EquipoBLL"></asp:ObjectDataSource>
+                    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="SelectByEvento" TypeName="FixtureBLL">
+                        <SelectParameters>
+                            <asp:QueryStringParameter QueryStringField="ID" Name="idGrupo" Type="String"></asp:QueryStringParameter>
+                        </SelectParameters>
+                    </asp:ObjectDataSource>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-6 col-md-6">
+                <div class="form-group">
+                    <label>Equipo del Partido:</label>
+                    <asp:DropDownList runat="server" ID="IdEquipos" CssClass="form-control select2" Style="width: 100%;">
+                    </asp:DropDownList>
                 </div>
             </div>
             <div class="col-xs-12 col-lg-6 col-md-6">
                 <div class="form-group">
                     <label>Jugadores del Equipo:</label>
-                    <asp:DropDownList runat="server" ID="IDJugador" CssClass="form-control select2" Style="width: 100%;">
+                    <asp:DropDownList runat="server" ID="IdJugador" CssClass="form-control select2" Style="width: 100%;">
                     </asp:DropDownList>
                 </div>
             </div>
+            <div class="col-xs-12 col-lg-6 col-md-6">
+                <div class="form-group">
+                    <label>Tipo:</label>
+                    <asp:DropDownList runat="server" ID="Tipo" CssClass="form-control select2" Style="width: 100%;">
+                        <asp:ListItem Text="Tarjeta Roja" Value="Tarjeta Roja"></asp:ListItem>
+                        <asp:ListItem Text="Tarjeta Amarilla" Value="Tarjeta Amarilla"></asp:ListItem>
+                        <asp:ListItem Text="Gol" Value="Gol"></asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+            </div>
+            <div class="col-xs-12"></div>
             <div class="col-xs-12 col-lg-6 col-md-6">
                 <label for="Nombre">Hora de Partido:</label>
                 <div class='input-group date' id='hora'>
@@ -91,13 +124,6 @@
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
-                </div>
-            </div>
-            <div class="col-xs-12">
-                <label for="Tipo">Tipo:</label>
-                <div class=" input-group">
-                    <span class="input-group-addon"><i class="fa fa-circle-thin"></i></span>
-                    <input class="form-control" placeholder="Insertar Tipo" id="Tipo" type="text" />
                 </div>
             </div>
             <div class="col-xs-12">

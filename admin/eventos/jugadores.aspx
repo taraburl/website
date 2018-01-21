@@ -67,7 +67,7 @@
                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                 <SortedDescendingHeaderStyle BackColor="#081A28" />
             </asp:gridview>
-            <asp:objectdatasource id="ObjectDataSource1" runat="server" selectmethod="SelectByTipo" typename="JugadorEquipoBLL">
+            <asp:objectdatasource id="ObjectDataSource1" runat="server" selectmethod="SelectByEquipo" typename="JugadorEquipoBLL">
                 <SelectParameters>
                     <asp:QueryStringParameter Name="id" QueryStringField="ID" Type="Int32" />
                 </SelectParameters>

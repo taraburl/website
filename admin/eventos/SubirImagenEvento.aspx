@@ -15,15 +15,7 @@
                     <label for="uploader">Seleccione la imagen para el evento:</label>
                     <asp:fileupload id="uploader" runat="server" />
                 </div>
-                <p class="help-block">
-                    La imagen a seleccionar debe ser <strong>.png .PNG</strong>, con fondo transparente.
-                </p>
                 <div class="form-group">
-                    <asp:regularexpressionvalidator id="RegularExpressionValidator1" runat="server"
-                        errormessage="Tipo de archivo no permitido" controltovalidate="uploader"
-                        validationexpression="^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))(.png|.PNG)$"
-                        forecolor="Red" font-bold="true">
-                    </asp:regularexpressionvalidator>
                     <asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server"
                         controltovalidate="uploader" errormessage="Debe seleccionar una imagen"
                         forecolor="Red" font-bold="true"></asp:requiredfieldvalidator>

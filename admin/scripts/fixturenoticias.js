@@ -3,15 +3,19 @@
         return window.location.href = "/Login.aspx";
     }
     $(".select2").select2();
-    $('#ContentPlaceHolder1_IdEquipo').on('change', function () {
+    $('#ContentPlaceHolder1_IdPartido').on('change', function () {
+        cargarEquipo();
+    });
+    $('#ContentPlaceHolder1_IdEquipos').on('change', function () {
         cargarJugadores();
     });
     $('#hora').datetimepicker({
         format: 'hh:mm:ss'
     });
     $('#fecha').datetimepicker({
-        format: 'YYYY-MM-DD'
+        format: 'DD/MM/YYYY'
     });
+    cargarEquipo();
 });
 
 function cancelNoticia() {
@@ -26,33 +30,55 @@ function newNoticia() {
     $('#ContentPlaceHolder1_hdnIdNoticia').val('');
     $("#new").show();
     $("#upd").hide();
-    $('#Tipo').val('');
     $('#Descripcion').val('');
     $('#Fecha input').val('');
-    $('#ContentPlaceHolder1_hdnIdNoticia').val('');
+    $('#Hora input').val('');
     $("#listNoticia").slideUp(500, function () {
         $("#newNoticia").slideDown(500);
     });
-    cargarJugadores();
+}
+
+function cargarEquipo() {
+    $("#ContentPlaceHolder1_IdEquipos").empty();
+    var parametros = {
+        idFixture: $("#ContentPlaceHolder1_IdPartido").val()
+    };
+    $.ajax({
+        url: 'fixture.aspx/TraerFixture',
+        dataType: 'json',
+        type: 'POST',
+        async: false,
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(parametros),
+        success: function (data) {
+            var objFixture = data.d;
+            $("#ContentPlaceHolder1_IdEquipos").append(
+                '<option value="' + objFixture.IdEquipo + '">' + objFixture.Equipo.Nombre + '</option>' +
+                '<option value="' + objFixture.IdRival + '">' + objFixture.Rival.Nombre + '</option>'
+            );
+            cargarJugadores();
+        }
+    });
 }
 
 function cargarJugadores() {
-    $('#ContentPlaceHolder1_IDJugador').empty();
+    $('#ContentPlaceHolder1_IdJugador').empty();
     var parametros = {
-        idEquipo: $('#ContentPlaceHolder1_IdEquipo').val()
+        idEquipo: $('#ContentPlaceHolder1_IdEquipos').val()
     };
     $.ajax({
         async: true,
         url: 'NoticiasFixture.aspx/TraerJugadoresEquipo',
         dataType: 'json',
         type: 'POST',
+        async: false,
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(parametros),
         success: function (data) {
             var objGrupo = data.d;
             objGrupo.forEach(function (element) {
-                $('#ContentPlaceHolder1_IDJugador').append('<option value=' + element.IdJugadorEquipo + ' >'
-                    + element.Nombre + '</option>');
+                $('#ContentPlaceHolder1_IdJugador').append(
+                    '<option value="' + element.IdJugadorEquipo + '">' + element.Nombre + '</option>');
             });
         }
     });
@@ -63,7 +89,7 @@ function eliminarNoticia(id) {
         idNoticia: id
     };
     $.ajax({
-        url: 'NoticiaFixture.aspx/EliminarNoticia',
+        url: 'NoticiasFixture.aspx/EliminarNoticia',
         dataType: 'json',
         type: 'POST',
         contentType: 'application/json; charset=utf-8',
@@ -83,7 +109,7 @@ function eliminarNoticia(id) {
 }
 
 function actualizarNoticia(id) {
-    cargarJugadores();
+    cargarEquipo();
     $("#new").hide();
     $("#upd").show();
     $(".input-group").removeClass('has-error');
@@ -94,6 +120,7 @@ function actualizarNoticia(id) {
         url: 'NoticiasFixture.aspx/TraerNoticia',
         dataType: 'json',
         type: 'POST',
+        async:true,
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(parametros),
         success: function (data) {
@@ -101,24 +128,20 @@ function actualizarNoticia(id) {
             $("#listNoticia").slideUp(500, function () {
                 $("#newNoticia").slideDown(500);
             });
-            $('#Tipo').val(ObjEvento.Tipo);
+            $("#ContentPlaceHolder1_IdPartido").val(ObjEvento.Id).trigger('change');
+            $('#ContentPlaceHolder1_Tipo').val(ObjEvento.Tipo).trigger('change');
             $('#Descripcion').val(ObjEvento.Descripcion);
             $('#fecha input').val(ObjEvento.FechaForDisplay);
             $('#hora input').val(ObjEvento.HoraForDisplay);
             $('#Descripcion').val(ObjEvento.Descripcion);
             $('#ContentPlaceHolder1_hdnIdNoticia').val(ObjEvento.Id);
-            $('#ContentPlaceHolder1_IDJugador').val(ObjEvento.IdJugador).trigger('change');
+            $('#ContentPlaceHolder1_IdJugador').val(ObjEvento.IdJugador).trigger('change');
+            $('#ContentPlaceHolder1_IdEquipos').val(ObjEvento.IdEquipo).trigger('change');
         }
     });
 }
 
 function guardarNoticia() {
-    if (!$('#Tipo').val() || !$('#Tipo').val().trim().length) {
-        $("#Tipo").parent().addClass("has-error");
-        return false;
-    } else {
-        $("#Tipo").parent().removeClass('has-error');
-    }
     if (!$('#fecha input').val() || !$('#fecha input').val().trim().length) {
         $("#fecha input").parent().addClass("has-error");
         return false;
@@ -131,18 +154,13 @@ function guardarNoticia() {
     } else {
         $("#fecha input").parent().removeClass('has-error');
     }
-    if (!$('#Descripcion').val() || !$('#Descripcion').val().trim().length) {
-        $("#Descripcion").parent().addClass("has-error");
-        return false;
-    } else {
-        $("#Descripcion").parent().removeClass('has-error');
-    }
     if ($('#ContentPlaceHolder1_hdnIdNoticia').val() != "") {
         //Actualizar
         var parametros = {
-            idEquipo: $('#ContentPlaceHolder1_IdEquipo').val(),
-            idJugador: $('#ContentPlaceHolder1_IDJugador').val(),
-            tipo: $("#Tipo").val(),
+            idFixture: $('#ContentPlaceHolder1_IdPartido').val(),
+            idEquipo: $('#ContentPlaceHolder1_IdEquipos').val(),
+            idJugador: $('#ContentPlaceHolder1_IdJugador').val(),
+            tipo:  $('#ContentPlaceHolder1_Tipo').val(),
             descripcion: $("#Descripcion").val(),
             fecha: $("#fecha input").val(),
             hora: $("#hora input").val(),
@@ -159,14 +177,14 @@ function guardarNoticia() {
                 var linkActualizar = $('.actualizarFilaNoticia' + objNoticia.Id);
                 var trActualizado = linkActualizar.parent().parent();
                 var tr =
-                    '<td><a class="btn btn-block btn-info actualizarFilaNoticia' + objNoticia.Id + '" href="javascript:actualizarNoticia(' + objNoticia.Id + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger eliminarFilaNoticia' + objNoticia.Id + '" href="javascript:eliminarNoticia(' + objNoticia.Id + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td>' + objNoticia.Partido.Nombre + '</td>' +
+                    '<td>' + objNoticia.Partido.Partido + '</td>' +
+                    '<td>' + objNoticia.Equipo.Nombre + '</td>' +
                     '<td>' + objNoticia.Jugador.Nombre + '</td>' +
                     '<td>' + objNoticia.Tipo + '</td>' +
-                    '<td>' + objNoticia.Descripcion + '</td>' +
                     '<td>' + objNoticia.FechaForDisplay + '</td>' +
-                    '<td>' + objNoticia.HoraForDisplay + '</td>';
+                    '<td>' + objNoticia.HoraForDisplay + '</td>' +
+                    '<td><a class="btn btn-circle btn-info actualizarFilaNoticia' + objNoticia.Id + '" href="javascript:actualizarNoticia(' + objNoticia.Id + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-circle btn-danger eliminarFilaNoticia' + objNoticia.Id + '" href="javascript:eliminarNoticia(' + objNoticia.Id + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>';
                 trActualizado.html(tr);
                 $('#ContentPlaceHolder1_hdnIdNoticia').val('');
                 mensajeConfirmacion("Bien!", "Noticia Actualizada", "success");
@@ -181,9 +199,10 @@ function guardarNoticia() {
     } else {
         //Insertar
         var parametros = {
-            idEquipo: $('#ContentPlaceHolder1_IdEquipo').val(),
-            idJugador: $('#ContentPlaceHolder1_IDJugador').val(),
-            tipo: $("#Tipo").val(),
+            idFixture: $('#ContentPlaceHolder1_IdPartido').val(),
+            idEquipo: $('#ContentPlaceHolder1_IdEquipos').val(),
+            idJugador: $('#ContentPlaceHolder1_IdJugador').val(),
+            tipo: $('#ContentPlaceHolder1_Tipo').val(),
             descripcion: $("#Descripcion").val(),
             fecha: $("#fecha input").val(),
             hora: $("#hora input").val()
@@ -197,14 +216,14 @@ function guardarNoticia() {
             success: function (data) {
                 var objNoticia = data.d;
                 var tr = '<tr>' +
-                    '<td><a class="btn btn-block btn-info actualizarFilaNoticia' + objNoticia.Id + '" href="javascript:actualizarNoticia(' + objNoticia.Id + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger eliminarFilaNoticia' + objNoticia.Id + '" href="javascript:eliminarNoticia(' + objNoticia.Id + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td>' + objNoticia.Partido.Nombre + '</td>' +
+                    '<td>' + objNoticia.Partido.Partido + '</td>' +
+                    '<td>' + objNoticia.Equipo.Nombre + '</td>' +
                     '<td>' + objNoticia.Jugador.Nombre + '</td>' +
                     '<td>' + objNoticia.Tipo + '</td>' +
-                    '<td>' + objNoticia.Descripcion + '</td>' +
                     '<td>' + objNoticia.FechaForDisplay + '</td>' +
                     '<td>' + objNoticia.HoraForDisplay + '</td>' +
+                    '<td><a class="btn btn-circle btn-info actualizarFilaNoticia' + objNoticia.Id + '" href="javascript:actualizarNoticia(' + objNoticia.Id + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-circle btn-danger eliminarFilaNoticia' + objNoticia.Id + '" href="javascript:eliminarNoticia(' + objNoticia.Id + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                 '</tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');
                 table.find('tbody').append(tr);

@@ -75,7 +75,7 @@ public partial class admin_eventos_equipos : System.Web.UI.Page
     [WebMethod]
     public static List<JugadorEquipo> TraerJugadoresEquipo(int idEquipo)
     {
-        List<JugadorEquipo> listJugadores = JugadorEquipoBLL.SelectByTipo(idEquipo);
+        List<JugadorEquipo> listJugadores = JugadorEquipoBLL.SelectByEquipo(idEquipo);
         return listJugadores;
     }
     [WebMethod]

@@ -28,15 +28,15 @@
                     <ItemTemplate>
                         <article class="row">
                             <div class="col-md-3">
-                                <ul class="post-meta">
+                                <ul class="post-meta text-white">
                                     <li><i class="icon-clock"></i>&nbsp;<%# Eval("FechaForDisplay") %></li>
                                     <li><i class="icon-paper"></i>&nbsp;<%# Eval("Evento.Nombre") %></li>
                                 </ul>
                             </div>
-                            <div class="col-md-9 blog-post">
+                            <div class="col-md-9 blog-post text-white">
                                 <a class="post-thumb" href="noticiadetallada.aspx?ID=<%# Eval("IdNoticia") %>">
                                     <img src="../images/noticia/<%# Eval("IdNoticia")  %>.png" alt="Post" /></a>
-                                <h3 class="post-title"><a href="noticiadetallada.aspx?ID=<%# Eval("IdNoticia") %>"><%# Eval("Titulo") %></a></h3>
+                                <h3 class="post-title text-white"><a href="noticiadetallada.aspx?ID=<%# Eval("IdNoticia") %>"><%# Eval("Titulo") %></a></h3>
                                 <p>
                                     <%# Eval("Descripcion") %>
                                     <a href='noticiadetallada.aspx?ID=<%# Eval("IdNoticia") %>' class='text-medium'>Ver Noticia</a>
@@ -53,5 +53,6 @@
             </div>
         </div>
     </div>
+    <script src="js/evento.js"></script>
 </asp:Content>
 

@@ -16,9 +16,14 @@
         <div class="box-body table-responsive">
             <asp:GridView ID="GridView1"
                 runat="server"
-                CssClass="table text-center table-striped table-bordered table-hover table-sm"
+                DataSourceID="ObjectDataSource2"
+                AllowPaging="True"
+                AllowSorting="False"
                 AutoGenerateColumns="False"
-                DataSourceID="ObjectDataSource2">
+                DataKeyNames="IdEquipo"
+                CssClass="table table-striped table-bordered table-hover table-sm"
+                CellPadding="4" ForeColor="#333333" GridLines="None">
+                <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                     <asp:BoundField DataField="Evento.Nombre" HeaderText="Evento" SortExpression="Evento.Nombre" />
@@ -52,6 +57,7 @@
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
                 <HeaderStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
+                <PagerSettings Mode="NumericFirstLast" />
                 <PagerStyle BackColor="#47AEC5" ForeColor="White" HorizontalAlign="Center" />
                 <RowStyle BackColor="#EFF3FB" />
                 <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />

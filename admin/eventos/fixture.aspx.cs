@@ -16,10 +16,10 @@ public partial class admin_eventos_fixture : System.Web.UI.Page
     [WebMethod]
     public static Fixture InsertarFixture(string idEquipo, string idRival,
         string idCancha, string fecha, string hora, string idGrupo,
-        string estado, string scoreEquipo, string scoreRival)
+        string estado, string scoreEquipo, string scoreRival, string puntos)
     {
         Fixture objFixture = FixtureBLL.InsertWithReturn(idEquipo, idRival,
-            idCancha, fecha, hora, idGrupo, estado, scoreEquipo, scoreRival);
+            idCancha, fecha, hora, idGrupo, estado, scoreEquipo, scoreRival, puntos);
         return objFixture;
     }
     [WebMethod]
@@ -51,10 +51,10 @@ public partial class admin_eventos_fixture : System.Web.UI.Page
     [WebMethod]
     public static Fixture ActualizarFixture(string idEquipo, string idRival,
         string idCancha, string fecha, string hora, string idGrupo,
-        string estado, string scoreEquipo, string scoreRival, string idFixture)
+        string estado, string scoreEquipo, string scoreRival, string puntos, string idFixture)
     {
         FixtureBLL.UpdateFixture(idEquipo, idRival, idCancha, fecha, hora, idGrupo,
-            estado, scoreEquipo, scoreRival, idFixture);
+            estado, scoreEquipo, scoreRival, puntos, idFixture);
         Fixture objFixture = FixtureBLL.SelectById(Convert.ToInt32(idFixture));
         return objFixture;
     }

@@ -25,7 +25,7 @@ public partial class admin_eventos_SubirImagenEquipo : System.Web.UI.Page
         string pathSitio = Server.MapPath("~/");
         string nombreArchivo = uploader.FileName;
         string extension = nombreArchivo.Substring(nombreArchivo.IndexOf('.') + 1);
-        uploader.SaveAs(pathSitio + "images/equipos/" + id + "." + extension);
+        uploader.SaveAs(pathSitio + "images/equipos/" + id + ".png");
         Response.Redirect("equipos.aspx");
     }
 }
