@@ -135,7 +135,7 @@
                                                 </h5>
                                             </div>
                                             <div class="col-lg-2 text-center" style="padding-top: .90rem !important;">
-                                                <a class="btn btn-primary btn-sea" href="#">Estadisticas</a>
+                                                <a class="btn btn-primary btn-sea" href="estadisticas.aspx?ID=<%# Eval("IdFixture") %>">Estadisticas</a>
                                             </div>
                                         </div>
                                     </ItemTemplate>
@@ -196,6 +196,6 @@
             </div>
         </div>
     </div>
-    <script src="js/evento.js"></script>
+    <script src="../carrito/js/evento.js"></script>
 </asp:Content>
 

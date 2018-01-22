@@ -55,7 +55,7 @@ function actualizarInscripcion(id) {
                 '<td>' + objInscripcion.Usuario.Apellido + '</td>' +
                 '<td>' + objInscripcion.Inscrito + '</td>' +
                 '<td>' + objInscripcion.TipoPago.Nombre + '</td>' +
-                '<td>Consolidado</td>' +
+                '<td><span class="label label-success">Consolidado<span></td>' +
                 '<td></td>' +
                 '<td><a class="btn btn-block btn-danger btn-circle eliminarFilaInscripcion' + objInscripcion.IdInscripcion + '" href="javascript:eliminarInscripcion(' + objInscripcion.IdInscripcion + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>';
             trActualizado.html(tr);
@@ -165,7 +165,7 @@ function cargarPrecio() {
         idCategoria: IdCategoria
     };
     $.ajax({
-        url: '/admin/academia/categorias.aspx/TraerCategoria',
+        url: '../academia/categorias.aspx/TraerCategoria',
         dataType: 'json',
         type: 'POST',
         contentType: 'application/json; charset=utf-8',

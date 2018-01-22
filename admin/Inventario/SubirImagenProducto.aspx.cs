@@ -27,7 +27,7 @@ public partial class admin_Inventario_SubirImagenProducto : System.Web.UI.Page
         string pathSitio = Server.MapPath("~/");
         string nombreArchivo = uploader.FileName;
         string extension = nombreArchivo.Substring(nombreArchivo.IndexOf('.') + 1);
-        uploader.SaveAs(pathSitio + "images/productos/" + id + "." + extension);
+        uploader.SaveAs(pathSitio + "images/productos/" + id + ".jpg");
         Response.Redirect("Productos.aspx");
     }
 }

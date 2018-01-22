@@ -83,6 +83,6 @@
             </div>
         </div>
     </div>
-    <script src="js/evento.js"></script>
+    <script src="/carrito/js/evento.js"></script>
 </asp:Content>
 

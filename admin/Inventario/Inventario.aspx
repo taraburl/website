@@ -32,7 +32,13 @@
                     <asp:BoundField DataField="Glosa" HeaderText="Glosa" SortExpression="Glosa" />
                     <asp:BoundField DataField="FechaForDisplay" HeaderText="Fecha" SortExpression="FechaForDisplay" />
                     <asp:BoundField DataField="Hora" HeaderText="Hora" SortExpression="Hora" />
-                    <asp:BoundField DataField="EstadoForDisplay" HeaderText="Estado" SortExpression="EstadoForDisplay" />
+                    <asp:TemplateField HeaderText="Estado">
+                        <ItemTemplate>
+                            <%# Eval("EstadoForDisplay").ToString() == "Guardado" ? 
+                                    "<span class='label label-info'>Guardado</span>" : 
+                                    "<span class='label label-success'>Consolidado</span>" %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
                             <%#Eval("EstadoForDisplay").ToString() == "Consolidado" ?

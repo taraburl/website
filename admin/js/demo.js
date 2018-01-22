@@ -349,12 +349,12 @@ $(document).ready(function () {
     if (!sessionStorage.getItem("idUsuario")) {
         window.location.href = "../index.aspx";
     } else {
-        $("#usernamelog").text(sessionStorage.getItem('fullName'));
-        $("#usernamelog2").text(sessionStorage.getItem('fullName'));
         $("#usernamelog3").text(sessionStorage.getItem('fullName'));
-        $("#userimglog").text(sessionStorage.getItem('imagen'));
-        $("#userimglog2").text(sessionStorage.getItem('imagen'));
-        $("#userimglog3").text(sessionStorage.getItem('imagen'));
+        $("#usernamelog2").text(sessionStorage.getItem('fullName'));
+        $("#usernamelog").text(sessionStorage.getItem('fullName'));
+        document.getElementById("userimglog3").src = "/images/usuarios/" + sessionStorage.getItem('idUsuario') + ".png";
+        document.getElementById("userimglog2").src = "/images/usuarios/" + sessionStorage.getItem('idUsuario') + ".png";
+        document.getElementById("userimglog").src = "/images/usuarios/" + sessionStorage.getItem('idUsuario') + ".png";
     }
     if (sessionStorage.getItem("tipouser") != "Administrador") {
         window.location.href = "../login.aspx";

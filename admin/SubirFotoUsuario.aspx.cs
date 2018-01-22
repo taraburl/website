@@ -5,17 +5,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class admin_Galeria_SubirFotoImagen : System.Web.UI.Page
+public partial class admin_SubirFotoUsuario : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        imgPrincipal.ImageUrl = "~/images/galeria/" + Request.QueryString["ID"] + ".jpg";
+        imgPrincipal.ImageUrl = "~/images/usuarios/" + Request.QueryString["ID"] + ".png";
     }
-    protected void btnCancelar_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("Imagenes.aspx");
-    }
-
     protected void btnGuardarImagen_Click(object sender, EventArgs e)
     {
         if (!uploader.HasFile)
@@ -26,7 +21,7 @@ public partial class admin_Galeria_SubirFotoImagen : System.Web.UI.Page
         string pathSitio = Server.MapPath("~/");
         string nombreArchivo = uploader.FileName;
         string extension = nombreArchivo.Substring(nombreArchivo.IndexOf('.') + 1);
-        uploader.SaveAs(pathSitio + "images/galeria/" + id + ".png");
-        Response.Redirect("Imagenes.aspx");
+        uploader.SaveAs(pathSitio + "images/usuarios/" + id + ".png");
+        Response.Redirect("MyProfile.aspx");
     }
 }

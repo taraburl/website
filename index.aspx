@@ -58,7 +58,7 @@
                                 <ul>
                                     <asp:Repeater runat="server" ID="Repeater2" DataSourceID="ObjectDataSource2">
                                         <ItemTemplate>
-                                            <li><a href="carrito/Evento.aspx?ID=<%# Eval("IdEvento") %>"><%# Eval("Nombre")%></a></li>
+                                            <li><a href="evento/Evento.aspx?ID=<%# Eval("IdEvento") %>"><%# Eval("Nombre")%></a></li>
                                         </ItemTemplate>
                                     </asp:Repeater>
                                     <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="SelectAll" TypeName="EventoBLL"></asp:ObjectDataSource>
@@ -194,7 +194,7 @@
                                         <img class="lz" src="images/noticia/<%# Eval("IdNoticia")  %>.png" alt="<%# Eval("Descripcion") %>" />
                                     </a>
                                     <h2>
-                                        <a class="ajax" href="carrito/noticiadetallada.aspx?ID=<%# Eval("IdNoticia") %>">
+                                        <a class="ajax" href="evento/noticiadetallada.aspx?ID=<%# Eval("IdNoticia") %>">
                                             <strong><%# Eval("Titulo") %></strong>
                                         </a>
                                     </h2>

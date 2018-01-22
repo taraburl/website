@@ -20,7 +20,13 @@ function cargar() {
             $('#telefonop').text(objUser.Telefono);
             $('#celularp').text(objUser.Celular);
             $("#usernamep").text(objUser.Username);
-            document.getElementById("imagenp").src = "../" + sessionStorage.getItem('imagen');
+            $("#usernamelog3").text(objUser.Nombre + " " + objUser.Apellido);
+            $("#usernamelog2").text(objUser.Nombre + " " + objUser.Apellido);
+            $("#usernamelog").text(objUser.Nombre + " " + objUser.Apellido);
+            document.getElementById("imagenp").src = "/images/usuarios/" + sessionStorage.getItem('idUsuario') + ".png";
+            document.getElementById("userimglog3").src = "/images/usuarios/" + sessionStorage.getItem('idUsuario') + ".png";
+            document.getElementById("userimglog2").src = "/images/usuarios/" + sessionStorage.getItem('idUsuario') + ".png";
+            document.getElementById("userimglog").src = "/images/usuarios/" + sessionStorage.getItem('idUsuario') + ".png";
         }
     });
 }
@@ -118,6 +124,7 @@ function guardarUsuario() {
     if ($('#Password2').val() !== $('#Password').val()) {
         $("#Password2").parent().addClass("has-error");
         $("#Password").parent().addClass("has-error");
+        return false;
     } else {
         $("#Password2").parent().removeClass('has-error');
         $("#Password").parent().removeClass('has-error');
@@ -163,4 +170,21 @@ function guardarUsuario() {
 function valEmail(valor) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(valor);
+}
+
+jQuery('#ContentPlaceHolder1_uploader').on('change', function (e) {
+    var Lector,
+            oFileInput = this;
+    if (oFileInput.files.length === 0) {
+        return;
+    }
+    Lector = new FileReader();
+    Lector.onloadend = function (e) {
+        jQuery('#ContentPlaceHolder1_imgPrincipal').attr('src', e.target.result);
+    }
+    Lector.readAsDataURL(oFileInput.files[0]);
+});
+
+function subirFoto() {
+    window.location.href = "SubirFotoUsuario.aspx?ID=" + sessionStorage.getItem("idUsuario");
 }

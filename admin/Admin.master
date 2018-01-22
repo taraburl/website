@@ -72,7 +72,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="../servicios/MyProfile.aspx" class="btn btn-default btn-flat">Perfil</a>
+                                        <a href="/admin/MyProfile.aspx" class="btn btn-default btn-flat">Perfil</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="javascript:logout();" class="btn btn-default btn-flat">Cerrar Sesion</a>
@@ -113,7 +113,7 @@
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="/admin/academia/categorias.aspx"><i class="fa fa-caret-up"></i>Categorias</a></li>
-                            <li><a href="/admin/ecommerce/inscripciones.aspx"><i class="fa fa-bookmark-o"></i>Inscripciones</a></li>
+                            <li><a href="/admin/academia/inscripciones.aspx"><i class="fa fa-bookmark-o"></i>Inscripciones</a></li>
                         </ul>
                     </li>
                     <li class="treeview">

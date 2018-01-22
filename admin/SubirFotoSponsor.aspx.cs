@@ -27,7 +27,7 @@ public partial class admin_SubirFotoSponsor : System.Web.UI.Page
         string pathSitio = Server.MapPath("~/");
         string nombreArchivo = uploader.FileName;
         string extension = nombreArchivo.Substring(nombreArchivo.IndexOf('.') + 1);
-        uploader.SaveAs(pathSitio + "images/sponsors/" + id + "." + extension);
+        uploader.SaveAs(pathSitio + "images/sponsors/" + id + ".png");
         Response.Redirect("Sponsors.aspx");
     }
 }

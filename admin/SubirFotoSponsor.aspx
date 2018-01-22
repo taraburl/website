@@ -23,11 +23,6 @@
                     La imagen se mostrara sobre un fondo en el cual estara visible a los usuarios.
                 </p>
                 <div class="form-group">
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
-                        ErrorMessage="Tipo de archivo no permitido" ControlToValidate="uploader"
-                        ValidationExpression="^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))(.png|.PNG)$"
-                        ForeColor="Red" Font-Bold="true">
-                    </asp:RegularExpressionValidator>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                         ControlToValidate="uploader" ErrorMessage="Debe seleccionar una imagen"
                         ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator>

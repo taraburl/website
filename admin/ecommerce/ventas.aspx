@@ -19,7 +19,19 @@
                 AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" AllowCustomPaging="True" AllowPaging="True">
                 <Columns>
                     <asp:BoundField DataField="IdOrdenCompra" HeaderText="Codigo" SortExpression="IdOrdenCompra" />
-                    <asp:BoundField DataField="Estado.Nombre" HeaderText="Estado" SortExpression="Estado.Nombre" />
+                    <asp:TemplateField HeaderText="Estado">
+                        <ItemTemplate>
+                            <%# Eval("IdEstadoCompra").ToString() == "1" ? 
+                                    "<span class='label label-info'>"+Eval("Estado.Nombre")+"</span>" : 
+                                    Eval("IdEstadoCompra").ToString() == "2" ?
+                                    "<span class='label label-warning'>"+Eval("Estado.Nombre")+"</span>" : 
+                                    Eval("IdEstadoCompra").ToString() == "3" ?
+                                    "<span class='label label-success'>"+Eval("Estado.Nombre")+"</span>" : 
+                                    Eval("IdEstadoCompra").ToString() == "4" ?
+                                    "<span class='label label-danger'>"+Eval("Estado.Nombre")+"</span>": 
+                                    "<span class='label label-danger'>"+Eval("Estado.Nombre")+"</span>"%>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:BoundField DataField="TipoPago.Nombre" HeaderText="Tipo de Pago" SortExpression="TipoPago.Nombre" />
                     <asp:TemplateField HeaderText="Usuario">
                         <ItemTemplate>
