@@ -170,7 +170,7 @@ ORDER BY tbl_fixture.fecha, tbl_fixture.hora ASC</CommandText>
               </DbSource>
               <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="SelectPosiciones" GetMethodModifier="Public" GetMethodName="SelectPosiciones" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="SelectPosiciones" UserSourceName="SelectPosiciones">
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT ROW_NUMBER() OVER (ORDER BY puntos DESC) AS id, partidosJugados.idEquipo, sum(partidosJugados.partidosJugados) AS idRival, sum(goles.golesFavor) AS idCancha, sum(goles.golesContra) AS idGrupo, sum(puntos.puntos) 
 AS eliminado
 FROM     (SELECT tbl_fixture.idEquipo, count(*) AS partidosJugados
