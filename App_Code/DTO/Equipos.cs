@@ -12,6 +12,7 @@ public class Equipos
     public int IdEquipo { get; set; }
     public String Nombre { get; set; }
     public int IdEvento { get; set; }
+    //public string Color { get; set; }
     public int Eliminado { get; set; }
     public Evento Evento
     {

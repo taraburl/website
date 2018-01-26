@@ -1675,7 +1675,7 @@ kbd {
 .form-control {
     padding: 0 18px 3px;
     border: 1px solid #dbe2e8;
-    border-radius: 22px;
+    border-radius: 5px;
     background-color: #fff;
     color: #606975;
     font-family: "Maven Pro",Helvetica,Arial,sans-serif;
@@ -2069,7 +2069,7 @@ select.form-control.form-control-sm:not([size]):not([multiple]) {
     }
 
 .thead-inverse th {
-    background-color: #374250;
+    background-color: #48AEC5;
 }
 
 .thead-default th {
@@ -2127,7 +2127,7 @@ select.form-control.form-control-sm:not([size]):not([multiple]) {
     border-radius: 5px;
     background-color: transparent;
     background-image: none;
-    color: #606975;
+    color: #fff;
     font-family: sans-serif;
     font-size: 14px;
     font-style: normal;
@@ -2155,7 +2155,7 @@ select.form-control.form-control-sm:not([size]):not([multiple]) {
     }
 
     .btn:hover {
-        color: #606975;
+        color: #081A28;
     }
 
     .btn > i {
@@ -2207,6 +2207,7 @@ button:focus {
 .btn-secondary {
     background-color: #f5f5f5;
     border-color: #e1e7ec;
+    color: #081A28 !important;
 }
 
     .btn-secondary:hover {
@@ -2974,8 +2975,8 @@ button:focus {
     border-right: 1px solid #48AEC5;
     border-bottom: 1px solid #48AEC5;
     border-left: 1px solid #48AEC5;
-    /*border-bottom-left-radius: 7px;
-    border-bottom-right-radius: 7px;*/
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     overflow: hidden;
     background-color: rgba(71,174,197,0.3);
 }
@@ -3119,7 +3120,7 @@ button:focus {
     }
 
 .card-header, .card-footer {
-    background-color: #f5f5f5;
+    background-color: rgba(255,255,255,0.3);
 }
 
 .card-footer {
@@ -3731,11 +3732,11 @@ button:focus {
 
 a.list-group-item, .list-group-item-action {
     transition: all .25s;
-    color: #606975;
+    color: #fff;
     font-weight: 500;
 }
 
-    /*a.list-group-item:hover, a.list-group-item:focus, a.list-group-item:active, .list-group-item-action:hover, .list-group-item-action:focus, .list-group-item-action:active {
+/*a.list-group-item:hover, a.list-group-item:focus, a.list-group-item:active, .list-group-item-action:hover, .list-group-item-action:focus, .list-group-item-action:active {
         background-color: #f5f5f5;
         color: #606975;
     }*/
@@ -3789,8 +3790,8 @@ a.list-group-item {
     }
 
 .list-group-item.active {
-    border-color: #0da9ef;
-    background-color: #0da9ef;
+    border-color: #48AEC5;
+    background-color: #48AEC5;
     color: #fff;
     cursor: default;
     pointer-events: none;
@@ -4161,7 +4162,7 @@ a.list-group-item {
 .owl-carousel {
     display: none;
     position: relative;
-    width: 100%;
+    /*width: 100%;*/
     z-index: 1;
     -webkit-tap-highlight-color: transparent;
 }
@@ -4380,7 +4381,7 @@ a.list-group-item {
             margin: 0 6px;
             transition: opacity .25s;
             border-radius: 50%;
-            background-color: #606975;
+            background-color: #fff;
             opacity: .3;
         }
 
@@ -4751,7 +4752,7 @@ video {
     margin-bottom: 20px;
     padding-bottom: 12px;
     border-bottom: 1px solid #e1e7ec;
-    color: #9da9b9;
+    color: #fff;
     font-size: 14px;
     font-weight: 500;
     text-transform: uppercase;
@@ -4814,14 +4815,14 @@ video {
         .widget-categories ul > li > a, .widget-links ul > li > a {
             display: inline-block;
             transition: color .3s;
-            color: #606975;
+            color: #fff;
             font-size: 14px;
             font-weight: 500;
             text-decoration: none;
         }
 
             .widget-categories ul > li > a:hover, .widget-links ul > li > a:hover {
-                color: #0da9ef;
+                color: #48AEC5;
             }
 
         .widget-categories ul > li.active > a, .widget-links ul > li.active > a {
@@ -5877,7 +5878,7 @@ video {
         }
 
         .site-menu ul > li.active > a {
-            color: #0da9ef;
+            color: #48AEC5;
         }
 
     .site-menu > ul {
@@ -6211,7 +6212,7 @@ video {
         display: table-cell;
     }
 
-    .site-menu, .offcanvas-toggle.cats-toggle, .toolbar .account, .toolbar-dropdown {
+    .site-menu, .offcanvas-toggle.cats-toggle, .toolbar .account, .toolbar-dropdown, .nombre-team-estadisticas {
         display: none !important;
     }
 }
@@ -6335,8 +6336,9 @@ video {
     background-image: url(../../images/footer.jpg);
     z-index: 10;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center center;
     background-attachment: fixed;
+    background-size: cover;
 }
 
 .offcanvas-container {
@@ -6648,9 +6650,8 @@ video {
     position: relative;
     width: 100%;
     padding: 18px;
-    border: 1px solid #e1e7ec;
-    border-radius: 7px;
-    background-color: #fff;
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.1);
 }
 
     .product-card .product-thumb {
@@ -6662,6 +6663,9 @@ video {
         .product-card .product-thumb > img {
             display: block;
             width: 100%;
+            object-fit: contain;
+            width: 100%;
+            height: 132px;
         }
 
     .product-card .product-title {
@@ -6673,17 +6677,17 @@ video {
 
         .product-card .product-title > a {
             transition: color .3s;
-            color: #374250;
+            color: #fff;
             text-decoration: none;
         }
 
             .product-card .product-title > a:hover {
-                color: #0da9ef;
+                color: #081A28;
             }
 
     .product-card .product-price {
         margin-bottom: 10px;
-        color: #606975;
+        color: #fff;
         font-size: 16px;
         font-weight: 500;
         text-align: center;
@@ -7028,13 +7032,13 @@ video {
 
     .shopping-cart .product-item .product-title > a, .wishlist-table .product-item .product-title > a, .order-table .product-item .product-title > a {
         transition: color .3s;
-        color: #374250;
+        color: #48AEC5;
         line-height: 1.5;
         text-decoration: none;
     }
 
         .shopping-cart .product-item .product-title > a:hover, .wishlist-table .product-item .product-title > a:hover, .order-table .product-item .product-title > a:hover {
-            color: #0da9ef;
+            color: #fff;
         }
 
     .shopping-cart .product-item .product-title small, .wishlist-table .product-item .product-title small, .order-table .product-item .product-title small {
@@ -7154,22 +7158,22 @@ video {
             }
 
         .checkout-steps > a:hover {
-            color: #0da9ef;
+            color: #48AEC5;
         }
 
         .checkout-steps > a.active {
-            background-color: #0da9ef;
+            background-color: #48AEC5;
             color: #fff;
             cursor: default;
             pointer-events: none;
         }
 
             .checkout-steps > a.active > .angle::after {
-                border-left-color: #0da9ef;
+                border-left-color: #48AEC5;
             }
 
             .checkout-steps > a.active + a > .angle {
-                background-color: #0da9ef;
+                background-color: #48AEC5;
             }
 
         .checkout-steps > a.completed > .step-indicator {
@@ -7265,12 +7269,12 @@ video {
 
 .product-gallery {
     position: relative;
-    padding-top: 74px;
+    padding-top: 15px;
     padding-right: 15px;
     padding-bottom: 15px;
     padding-left: 15px;
-    border: 1px solid #e1e7ec;
-    border-radius: 7px;
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.1);
 }
 
     .product-gallery .gallery-item {
@@ -7667,6 +7671,7 @@ video {
     border-radius: 7px !important;
     background: rgba(255,255,255,0) !important;
     border: 1px solid #48AEC5;
+    margin-left: -10px !important;
 }
 
     .btn-sea:hover {
@@ -7741,12 +7746,11 @@ video {
 .estadisticas-title {
     background-color: #48AEC5 !important;
     border-color: #48AEC5 !important;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .equipos-score {
     margin: 0 auto;
-    width: 1220px;
 }
 
     .equipos-score img {
@@ -7760,7 +7764,18 @@ video {
     height: 200px !important;
 }
 
-.pswp__img{
+.pswp__img {
     object-fit: cover !important;
     margin: auto !important;
 }
+
+.form-group label {
+    color: white;
+}
+
+
+.card-std {
+    background-color: rgba(72,174,197, 0.3) !important;
+    border: hidden !important;
+}
+

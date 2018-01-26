@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/carrito/Carrito.master" AutoEventWireup="true" CodeFile="CambiarPassword.aspx.cs" Inherits="carrito_CambiarPassword" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/carrito/Carrito.master" AutoEventWireup="true" CodeFile="SubirFotoPerfil.aspx.cs" Inherits="carrito_SubirFotoPerfil" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <title>SEA - Cambiar Contraseña</title>
+    <title>SEA - Mi Perfil</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="page-title">
@@ -11,9 +11,8 @@
             </div>
             <div class="column">
                 <ul class="breadcrumbs">
-                    <li><a href="../index.aspx">Inicio</a></li>
-                    <li class="separator">&nbsp;</li>
-                    <li><a href="MiPerfil.aspx">Mi Perfil</a></li>
+                    <li><a href="../index.aspx">Inicio</a>
+                    </li>
                     <li class="separator">&nbsp;</li>
                     <li>Mi Perfil</li>
                 </ul>
@@ -40,13 +39,13 @@
                     <a class="list-group-item" href="MiPerfil.aspx">
                         <i class="icon-head"></i>Mi Perfil
                     </a>
-                    <a class="list-group-item" href="SubirFotoPerfil.aspx">
+                    <a class="list-group-item active" href="#">
                         <i class="icon-camera"></i>Foto de Perfil
                     </a>
                     <a class="list-group-item" href="#">
                         <i class="pe-7s-cart"></i>Mis Compras
                     </a>
-                    <a class="list-group-item active" href="#">
+                    <a class="list-group-item" href="CambiarPassword.aspx">
                         <i class="pe-7s-lock"></i>Cambiar Contraseña
                     </a>
                 </nav>
@@ -54,25 +53,21 @@
             <div class="col-lg-8">
                 <div class="padding-top-2x mt-2 hidden-lg-up"></div>
                 <div class="row">
-                    <input type="hidden" id="Password" />
-                    <input type="hidden" id="IdUsuario" />
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="form-group">
-                            <label for="Nombre">Contraseña Actual:</label>
-                            <input class="form-control" type="password" id="PasswordActual" />
+                            <label for="Nombre">Seleccione la Imagen de Perfil:</label>
+                            <br />
+                            <asp:FileUpload ID="uploader" runat="server" CssClass="text-white" />
+                        </div>
+                        <div class="form-group">
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                ControlToValidate="uploader" ErrorMessage="Debe seleccionar una imagen"
+                                ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator>
                         </div>
                     </div>
-                    <div class="col-md-6"></div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="Apellido">Nueva Contraseña: </label>
-                            <input class="form-control" type="password" id="NewPassword" />
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="Email">Repita la Nueva Contraseña:</label>
-                            <input class="form-control" type="password" id="NewPassword2" />
+                    <div class="cl-md-12">
+                        <div class="col-md-12">
+                            <asp:Image ImageUrl="~/images/profile.png" CssClass="img-responsive imgPerfil" ID="imgPrincipal" runat="server" AlternateText="imagen-perfil" Width="300" />
                         </div>
                     </div>
                     <div class="col-12">
@@ -80,9 +75,10 @@
                         <div class="d-flex flex-wrap justify-content-between align-items-center">
                             <label class="custom-control custom-checkbox d-block">
                             </label>
-                            <a class="btn btn-primary margin-right-none" href="javascript:actualizarPassword()">Actualizar Contraseña</a>
+                            <asp:LinkButton ID="btnGuardarImagen" Text="Guardar Imagen" runat="server" CssClass="btn btn-primary margin-right-none" OnClick="btnGuardarImagen_Click"><i class="fa fa-floppy-o" aria-hidden="true"></i>GUARDAR</asp:LinkButton>
                         </div>
                     </div>
+                    <input type="hidden" id="IdUsuario" runat="server" />
                 </div>
             </div>
         </div>

@@ -26,11 +26,10 @@
                         <th>Producto</th>
                         <th class="text-center">Cantidad</th>
                         <th class="text-center">Subtotal</th>
-                        <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="javascript:limpiarCarrito()">
-                            Limpiar Carrito</a></th>
+                        <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="javascript:limpiarCarrito()">Limpiar Carrito</a></th>
                     </tr>
                 </thead>
-                <tbody id="detalle">
+                <tbody id="detalle" class="text-white">
                 </tbody>
             </table>
             <div class="shopping-cart-footer">

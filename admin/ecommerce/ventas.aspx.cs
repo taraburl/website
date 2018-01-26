@@ -19,9 +19,4 @@ public partial class admin_ecommerce_ventas : System.Web.UI.Page
         OrdenCompra objOrdenCompra = OrdenCompraBLL.SelectById(Convert.ToInt32(idVenta));
         return objOrdenCompra;
     }
-
-    protected void Unnamed1_Click(object sender, EventArgs e)
-    {
-        BusquedaDeProductos.DataBind();
-    }
 }

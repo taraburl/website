@@ -16,6 +16,8 @@ public class JugadorEquipo
     public string Posicion { get; set; }
     public int IdEquipo { get; set; }
     public int Eliminado { get; set; }
+    public int NumeroCamiseta { get; set; }
+    public string Tipo { get; set; }
     public Equipos Equipo
     {
         get

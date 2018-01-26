@@ -93,6 +93,14 @@
                     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="SelectAll" TypeName="EventoBLL"></asp:ObjectDataSource>
                 </div>
             </div>
+           <%-- <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="Color">Seleccione el color de la camiseta del Equipo:</label>
+                    <div class="input-group ">
+                        <input id="Color" class="jscolor form-control" value="ab2567" />
+                    </div>
+                </div>
+            </div>--%>
         </div>
         <div class="box-footer">
             <a class="btn btn-success btn-lg" href="javascript:guardarEquipo()"><i class="fa fa-floppy-o" aria-hidden="true"></i>Guardar</a>
@@ -101,7 +109,6 @@
     </div>
     <div id="addJugadores" style="display: none;">
         <div class="col-xs-12 col-lg-6 col-md-6">
-            
         </div>
         <div class="col-xs-12 col-lg-6 col-md-6">
             <div class="box box-warning">

@@ -4,16 +4,16 @@
     <title>SEA - Gestionar Jugadores del Equipo</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
-    <asp:repeater runat="server" id="RepeaterTitle" datasourceid="ObjectDataSource2">
+    <asp:Repeater runat="server" ID="RepeaterTitle" DataSourceID="ObjectDataSource2">
         <ItemTemplate>
             <h1>LISTADO DE JUGADORES: <%# Eval("Nombre") %></h1>
         </ItemTemplate>
-    </asp:repeater>
-    <asp:objectdatasource id="ObjectDataSource2" runat="server" selectmethod="SelectById" typename="EquipoBLL">
+    </asp:Repeater>
+    <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="SelectById" TypeName="EquipoBLL">
         <SelectParameters>
             <asp:QueryStringParameter Name="id" QueryStringField="ID" Type="Int32" />
         </SelectParameters>
-    </asp:objectdatasource>
+    </asp:ObjectDataSource>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="box box-info" id="listJugador">
@@ -24,18 +24,20 @@
             <a class="btn btn-default pull-right btn-lg" href="equipos.aspx"><i class="fa fa-times" aria-hidden="true"></i>Atras</a>
         </div>
         <div class="box-body table-responsive">
-            <asp:gridview
+            <asp:GridView
                 runat="server"
-                id="GridView1"
-                datasourceid="ObjectDataSource1"
-                allowpaging="True"
-                autogeneratecolumns="False"
-                cssclass="table table-striped table-bordered table-hover table-sm"
-                cellpadding="4" forecolor="#333333" gridlines="None" EmptyDataText="No se encuentran Registros">
+                ID="GridView1"
+                DataSourceID="ObjectDataSource1"
+                AllowPaging="True"
+                AutoGenerateColumns="False"
+                CssClass="table table-striped table-bordered table-hover table-sm"
+                CellPadding="4" ForeColor="#333333" GridLines="None" EmptyDataText="No se encuentran Registros">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                     <asp:BoundField DataField="Posicion" HeaderText="Posicion" SortExpression="Posicion" />
+                    <asp:BoundField DataField="NumeroCamiseta" HeaderText="Numero de Camiseta" SortExpression="NumeroCamiseta"/>
+                    <asp:BoundField DataField="Tipo" HeaderText="Tipo" SortExpression="Tipo" />
                     <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
                             <a class="btn btn-block btn-info btn-circle actualizarFilaJugadorEquipo<%# Eval("IdJugadorEquipo") %>" href="javascript:actualizarJugadorEquipo(<%# Eval("IdJugadorEquipo")%>)">
@@ -66,12 +68,12 @@
                 <SortedAscendingHeaderStyle BackColor="#081A28" />
                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                 <SortedDescendingHeaderStyle BackColor="#081A28" />
-            </asp:gridview>
-            <asp:objectdatasource id="ObjectDataSource1" runat="server" selectmethod="SelectByEquipo" typename="JugadorEquipoBLL">
+            </asp:GridView>
+            <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="SelectByEquipo" TypeName="JugadorEquipoBLL">
                 <SelectParameters>
                     <asp:QueryStringParameter Name="id" QueryStringField="ID" Type="Int32" />
                 </SelectParameters>
-            </asp:objectdatasource>
+            </asp:ObjectDataSource>
         </div>
     </div>
     <div class="box box-warning" id="addJugadores" style="display: none;">
@@ -79,19 +81,35 @@
             <h3>Agregar Jugadores</h3>
         </div>
         <div class="box-body">
-            <asp:hiddenfield runat="server" id="hdnEquipo" />
-            <asp:hiddenfield runat="server" id="hdnJugadorEquipo" />
-            <div class="col-xs-12 margin">
+            <asp:HiddenField runat="server" ID="hdnEquipo" />
+            <asp:HiddenField runat="server" ID="hdnJugadorEquipo" />
+            <div class="col-xs-12 col-md-6 col-lg-16">
+                <label for="NombreJugador">Nombre:</label>
                 <div class=" input-group">
-                    <span class="input-group-addon"><i class="fa fa-circle-thin"></i></span>
+                    <span class="input-group-addon"><i class="fa fa-trophy"></i></span>
                     <input class="form-control" placeholder="Insertar Nombre del Jugador" id="NombreJugador" type="text" />
                 </div>
             </div>
-            <div class="col-xs-12 margin">
+            <div class="col-xs-12 col-md-6 col-lg-16">
+                <label for="Posicion">Posicion:</label>
                 <div class=" input-group">
-                    <span class="input-group-addon"><i class="fa fa-circle-thin"></i></span>
+                    <span class="input-group-addon"><i class="fa fa-chevron-circle-up"></i></span>
                     <input class="form-control" placeholder="Insertar Posicion del Jugador" id="Posicion" type="text" />
                 </div>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-16">
+                <label for="Posicion">Numero de Camiseta:</label>
+                <div class=" input-group">
+                    <span class="input-group-addon"><i class="fa fa-shirtsinbulk"></i></span>
+                    <input class="form-control" placeholder="Insertar Posicion del Jugador" id="NroCamiseta" type="text" onkeypress="return isNumberKey(this);"/>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-16">
+                <label for="Posicion">Tipo:</label>
+                <asp:DropDownList runat="server" ID="Tipo" CssClass="form-control select2" Style="width: 100%;">
+                    <asp:ListItem Text="Titular" Value="Titular"></asp:ListItem>
+                    <asp:ListItem Text="Suplente" Value="Suplente"></asp:ListItem>
+                </asp:DropDownList>
             </div>
         </div>
         <div class="box-footer">

@@ -49,4 +49,12 @@ public partial class admin_Usuarios : System.Web.UI.Page
         Usuario objUsuario = UsuarioBLL.SelectById(Convert.ToInt32(idUser));
         return objUsuario;
     }
+    [WebMethod]
+    public static Usuario ActualizarPassword(string password, string idUser)
+    {
+        UsuarioBLL.UpdatePassword(password, idUser);
+        Usuario objUsuario = UsuarioBLL.SelectById(Convert.ToInt32(idUser));
+        return objUsuario;
+
+    }
 }

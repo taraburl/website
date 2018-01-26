@@ -79,7 +79,7 @@ public partial class admin_eventos_equipos : System.Web.UI.Page
         return listJugadores;
     }
     [WebMethod]
-    public static JugadorEquipo InsertarJugadorEquipo(string nombre,string posicion, string idEquipo)
+    public static JugadorEquipo InsertarJugadorEquipo(string nombre, string posicion, string idEquipo, string nroCamiseta, string tipo)
     {
         Equipos objEquipo = EquipoBLL.SelectById(Convert.ToInt32(idEquipo));
         int idEvento = objEquipo.IdEvento;
@@ -89,7 +89,7 @@ public partial class admin_eventos_equipos : System.Web.UI.Page
         int cantidadPermitida = objEvento.CantidadJugadoresPorEquipo;
         if (cantidadActual < cantidadPermitida)
         {
-            JugadorEquipo objJugadorEquipo = JugadorEquipoBLL.InsertWithReturn(nombre, posicion, Convert.ToInt32(idEquipo));
+            JugadorEquipo objJugadorEquipo = JugadorEquipoBLL.InsertWithReturn(nombre, posicion, Convert.ToInt32(idEquipo), Convert.ToInt32(nroCamiseta), tipo);
             return objJugadorEquipo;
         }
         else
@@ -106,7 +106,8 @@ public partial class admin_eventos_equipos : System.Web.UI.Page
         return objJugadorEquipo;
     }
     [WebMethod]
-    public static JugadorEquipo ActualizarJugadorEquipo(string nombre, string posicion, string idEquipo, string id)
+    public static JugadorEquipo ActualizarJugadorEquipo(string nombre, string posicion, string idEquipo, string id,
+        string nroCamiseta, string tipo)
     {
         Equipos objEquipo = EquipoBLL.SelectById(Convert.ToInt32(idEquipo));
         int idEvento = objEquipo.IdEvento;
@@ -116,7 +117,7 @@ public partial class admin_eventos_equipos : System.Web.UI.Page
         int cantidadPermitida = objEvento.CantidadJugadoresPorEquipo;
         if (cantidadActual <= cantidadPermitida)
         {
-            JugadorEquipoBLL.Update(nombre,posicion, Convert.ToInt32(idEquipo), Convert.ToInt32(id));
+            JugadorEquipoBLL.Update(nombre, posicion, Convert.ToInt32(idEquipo), Convert.ToInt32(nroCamiseta), tipo, Convert.ToInt32(id));
             JugadorEquipo objJugadorEquipo = JugadorEquipoBLL.SelectById(Convert.ToInt32(id));
             return objJugadorEquipo;
         }

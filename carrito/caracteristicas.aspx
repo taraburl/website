@@ -37,10 +37,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 text-white">
                         <h2 class="padding-top-1x text-normal"><%# Eval("Nombre") %></h2>
                         <span class="h2 d-block">Bs. <%# Eval("PrecioVenta") %></span>
-                        <p><%# Eval("Descripcion") %></p>
+                        <p class="text-white"><%# Eval("Descripcion") %></p>
                         <div class="row margin-top-1x">
                             <div class="col-sm-3">
                                 <div class="form-group">
@@ -55,17 +55,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="padding-bottom-1x mb-2">
-                            <span class="text-medium">Talla/Tamaño:&nbsp;</span>
-                            <a class="navi-link" href="#"><%# Eval("medida") %></a>
+                        <div class="padding-bottom-1x mb-2 ">
+                            <span class="text-medium">Talla/Tamaño:&nbsp;</span> <%# Eval("medida") %>
                         </div>
                         <div class="padding-bottom-1x mb-2">
-                            <span class="text-medium">Cantidad Disponible:&nbsp;</span>
-                            <a class="navi-link" href="#"><%# Eval("stock") %></a>
+                            <span class="text-medium">Cantidad Disponible:&nbsp;</span><%# Eval("stock") %>
                         </div>
                         <div class="padding-bottom-1x mb-2">
                             <span class="text-medium">Categoria:&nbsp;</span>
-                            <a class="navi-link" href="productos.aspx?ID=<%# Eval("Categoria.IdCategoria") %>"><%# Eval("Categoria.Nombre") %></a>
+                            <a class="navi-link text-white" href="productos.aspx?ID=<%# Eval("Categoria.IdCategoria") %>"><%# Eval("Categoria.Nombre") %></a>
                         </div>
                         <hr class="mb-3">
                         <div class="d-flex flex-wrap justify-content-between">

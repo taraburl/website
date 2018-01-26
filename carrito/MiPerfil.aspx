@@ -23,21 +23,24 @@
         <div class="row">
             <div class="col-lg-4">
                 <aside class="user-info-wrapper">
-                    <div class="user-cover" style="background-image: url(../images/footer.jpg);">
+                    <div class="user-cover" style="background-image: url(../images/background1.jpg);">
                     </div>
                     <div class="user-info">
                         <div class="user-avatar">
                             <a class="edit-avatar" href="#"></a>
-                            <img src="" alt="User" class="imgPerfil"/>
+                            <img src="" alt="User" class="imgPerfil" />
                         </div>
                         <div class="user-data">
-                            <h4 class="user-name"></h4>
+                            <h4 class="user-name" id="nombre-completo"></h4>
                         </div>
                     </div>
                 </aside>
                 <nav class="list-group">
                     <a class="list-group-item active" href="#">
                         <i class="icon-head"></i>Mi Perfil
+                    </a>
+                    <a class="list-group-item" href="SubirFotoPerfil.aspx">
+                        <i class="icon-camera"></i>Foto de Perfil
                     </a>
                     <a class="list-group-item" href="#">
                         <i class="pe-7s-cart"></i>Mis Compras
@@ -65,25 +68,39 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="Email">E-Mail</label>
-                            <input class="form-control" type="email" id="Email" disabled />
+                            <input class="form-control" type="email" id="Email" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="Telefono">Telefono</label>
-                            <input class="form-control" type="text" id="Telefono" />
+                            <input class="form-control" type="number" min="0" id="Telefono" onkeypress="return isNumberKey(this);"/>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="Celular">Celular</label>
-                            <input class="form-control" type="text" id="Celular" />
+                            <input class="form-control" type="number" min="0" id="Celular" onkeypress="return isNumberKey(this);"/>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="Direccion">Direccion</label>
+                            <label for="Direccion">Direccion:</label>
                             <input class="form-control" type="text" id="Direccion" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="UserName">Nombre de Usario:</label>
+                            <input class="form-control" type="text" id="UserName" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="Ciudad">Ciudad:</label>
+                            <select id="Ciudad" class="form-control form-control-pill">
+                                <option value="1">Santa Cruz</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-12">
@@ -91,9 +108,12 @@
                         <div class="d-flex flex-wrap justify-content-between align-items-center">
                             <label class="custom-control custom-checkbox d-block">
                             </label>
-                            <a class="btn btn-primary margin-right-none" href="#">Actualizar Perfil</a>
+                            <a class="btn btn-primary margin-right-none" href="javascript:actualizarPerfil()">Actualizar Perfil</a>
                         </div>
                     </div>
+                    <input type="hidden" id="IdUsuario" />
+                    <input type="hidden" id="Password" />
+                    <input type="hidden" id="TipoCliente" />
                 </div>
             </div>
         </div>

@@ -42,7 +42,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="shopping-cart-footer">
+                <div class="shopping-cart-footer text-white">
                     <div class="column"></div>
                     <div class="column text-lg">Total: <span class="text-medium" id="totalCartDet"></span></div>
                 </div>

@@ -104,6 +104,7 @@
                         <asp:ListItem Text="Tarjeta Roja" Value="Tarjeta Roja"></asp:ListItem>
                         <asp:ListItem Text="Tarjeta Amarilla" Value="Tarjeta Amarilla"></asp:ListItem>
                         <asp:ListItem Text="Gol" Value="Gol"></asp:ListItem>
+                        <asp:ListItem Text="Comentario" Value="Comentario"></asp:ListItem>
                     </asp:DropDownList>
                 </div>
             </div>

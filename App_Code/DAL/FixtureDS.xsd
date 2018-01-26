@@ -168,40 +168,47 @@ ORDER BY tbl_fixture.fecha, tbl_fixture.hora ASC</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="SelectPosiciones" GetMethodModifier="Public" GetMethodName="SelectPosiciones" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="SelectPosiciones" UserSourceName="SelectPosiciones">
+              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="SelectPosiciones" GetMethodModifier="Public" GetMethodName="SelectPosiciones" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="SelectPosiciones" UserSourceName="SelectPosiciones">
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT
-tbl_equipo.nombre as estado,
-sum(partidos.cantidad) as eliminado,
-partidos.idequipo as idEquipo,
-sum(partidos.goles)  as scoreEquipo,
-sum(partidos.puntos) as puntos
-FROM (
-select
-count(*) as cantidad,
-tf.idEquipo as idequipo,
-sum(tf.scoreEquipo) as goles,
-sum(tf.puntos) as puntos
-from tbl_fixture tf
-	inner join tbl_grupo tg
-	on tg.id = tf.idGrupo
-	and tg.idEvento = @idEvento
-group by tf.idEquipo
-union all
-select
-count(*) as cantidad,
-tf.idRival as idequipo,
-sum(tf.scoreRival) as goles,
-sum(tf.puntos) as puntos
-from tbl_fixture tf
-	inner join tbl_grupo tg
-	on tg.id = tf.idGrupo
-	and tg.idEvento = @idEvento
-group by tf.idRival) partidos
-inner join tbl_equipo on tbl_equipo.id = partidos.idequipo
-group by idequipo, nombre
-order by puntos desc</CommandText>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ROW_NUMBER() OVER (ORDER BY puntos DESC) AS id, partidosJugados.idEquipo, sum(partidosJugados.partidosJugados) AS idRival, sum(goles.golesFavor) AS idCancha, sum(goles.golesContra) AS idGrupo, sum(puntos.puntos) 
+AS eliminado
+FROM     (SELECT tbl_fixture.idEquipo, count(*) AS partidosJugados
+                  FROM      tbl_fixture INNER JOIN
+                                    tbl_grupo tg ON tg.id = tbl_fixture.idGrupo AND tg.idEvento = @idEvento
+                  WHERE   tbl_fixture.fecha &lt;= CURRENT_TIMESTAMP AND tbl_fixture.eliminado = 0
+                  GROUP BY tbl_fixture.idEquipo
+                  UNION ALL
+                  SELECT tbl_fixture.idRival, count(*) AS partidosJugados
+                  FROM     tbl_fixture INNER JOIN
+                                    tbl_grupo tg ON tg.id = tbl_fixture.idGrupo AND tg.idEvento = @idEvento
+                  WHERE  tbl_fixture.fecha &lt;= CURRENT_TIMESTAMP AND tbl_fixture.eliminado = 0
+                  GROUP BY tbl_fixture.idRival) partidosJugados,
+                      (SELECT tbl_fixture.idEquipo, sum(tbl_fixture.scoreEquipo) AS golesFavor, sum(tbl_fixture.scoreRival) AS golesContra
+                       FROM      tbl_fixture INNER JOIN
+                                         tbl_grupo tg ON tg.id = tbl_fixture.idGrupo AND tg.idEvento = @idEvento
+                       WHERE   tbl_fixture.fecha &lt;= CURRENT_TIMESTAMP AND tbl_fixture.eliminado = 0
+                       GROUP BY tbl_fixture.idEquipo
+                       UNION ALL
+                       SELECT tbl_fixture.idRival, sum(tbl_fixture.scoreRival) AS golesFavor, sum(tbl_fixture.scoreEquipo) AS golesContra
+                       FROM     tbl_fixture INNER JOIN
+                                         tbl_grupo tg ON tg.id = tbl_fixture.idGrupo AND tg.idEvento = @idEvento
+                       WHERE  tbl_fixture.fecha &lt;= CURRENT_TIMESTAMP AND tbl_fixture.eliminado = 0
+                       GROUP BY tbl_fixture.idRival) goles,
+                      (SELECT tbl_fixture.idEquipo, sum(tbl_fixture.puntos) AS puntos
+                       FROM      tbl_fixture INNER JOIN
+                                         tbl_grupo tg ON tg.id = tbl_fixture.idGrupo AND tg.idEvento = @idEvento
+                       WHERE   tbl_fixture.scoreEquipo &gt;= tbl_fixture.scoreRival AND tbl_fixture.fecha &lt;= CURRENT_TIMESTAMP AND tbl_fixture.eliminado = 0
+                       GROUP BY tbl_fixture.idEquipo
+                       UNION ALL
+                       SELECT tbl_fixture.idRival, sum(tbl_fixture.puntos) AS puntos
+                       FROM     tbl_fixture INNER JOIN
+                                         tbl_grupo tg ON tg.id = tbl_fixture.idGrupo AND tg.idEvento = @idEvento
+                       WHERE  tbl_fixture.scoreEquipo &lt;= tbl_fixture.scoreRival AND tbl_fixture.fecha &lt;= CURRENT_TIMESTAMP AND tbl_fixture.eliminado = 0
+                       GROUP BY tbl_fixture.idRival) puntos
+WHERE  partidosJugados.idEquipo = goles.idEquipo AND goles.idEquipo = puntos.idEquipo
+GROUP BY partidosJugados.idEquipo, puntos
+ORDER BY puntos DESC</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="idEvento" ColumnName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idEvento" Precision="0" Scale="0" Size="4" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -241,7 +248,7 @@ order by puntos desc</CommandText>
   <xs:element name="FixtureDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="FixtureDS" msprop:Generator_UserDSName="FixtureDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="tbl_fixture" msprop:Generator_TableClassName="tbl_fixtureDataTable" msprop:Generator_TableVarName="tabletbl_fixture" msprop:Generator_TablePropName="tbl_fixture" msprop:Generator_RowDeletingName="tbl_fixtureRowDeleting" msprop:Generator_RowChangingName="tbl_fixtureRowChanging" msprop:Generator_RowEvHandlerName="tbl_fixtureRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_fixtureRowDeleted" msprop:Generator_UserTableName="tbl_fixture" msprop:Generator_RowChangedName="tbl_fixtureRowChanged" msprop:Generator_RowEvArgName="tbl_fixtureRowChangeEvent" msprop:Generator_RowClassName="tbl_fixtureRow">
+        <xs:element name="tbl_fixture" msprop:Generator_TableClassName="tbl_fixtureDataTable" msprop:Generator_TableVarName="tabletbl_fixture" msprop:Generator_RowChangedName="tbl_fixtureRowChanged" msprop:Generator_TablePropName="tbl_fixture" msprop:Generator_RowDeletingName="tbl_fixtureRowDeleting" msprop:Generator_RowChangingName="tbl_fixtureRowChanging" msprop:Generator_RowEvHandlerName="tbl_fixtureRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_fixtureRowDeleted" msprop:Generator_RowClassName="tbl_fixtureRow" msprop:Generator_UserTableName="tbl_fixture" msprop:Generator_RowEvArgName="tbl_fixtureRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />

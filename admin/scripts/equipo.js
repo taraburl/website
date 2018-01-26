@@ -71,6 +71,7 @@ function actualizarEquipo(id) {
             $('#Nombre').val(ObjEquipo.Nombre);
             $('#ContentPlaceHolder1_IdEvento').val(ObjEquipo.IdEvento).trigger('change');
             $('#ContentPlaceHolder1_hdnIdEquipo').val(ObjEquipo.IdEquipo);
+            //$("#Color").val(ObjEquipo.Color);
         }
     });
 }
@@ -87,6 +88,7 @@ function guardarEquipo() {
         var parametros = {
             nombre: $('#Nombre').val(),
             idEvento: $('#ContentPlaceHolder1_IdEvento').val(),
+            //color: $("#Color").val(),
             id: $('#ContentPlaceHolder1_hdnIdEquipo').val()
         };
         $.ajax({
@@ -124,7 +126,8 @@ function guardarEquipo() {
         //Insertar
         var parametros = {
             nombre: $('#Nombre').val(),
-            idEvento: $('#ContentPlaceHolder1_IdEvento').val()
+            idEvento: $('#ContentPlaceHolder1_IdEvento').val(),
+            //color: $("#Color").val()
         };
         $.ajax({
             url: 'equipos.aspx/InsertarEquipo',
@@ -178,6 +181,8 @@ function nuevoJugador() {
             nombre: $('#NombreJugador').val(),
             posicion: $('#Posicion').val(),
             idEquipo: $('#ContentPlaceHolder1_hdnEquipo').val(),
+            nroCamiseta: $("#NroCamiseta").val(),
+            tipo: $("#ContentPlaceHolder1_Tipo").val(),
             id: $('#ContentPlaceHolder1_hdnJugadorEquipo').val()
         };
         $.ajax({
@@ -196,6 +201,8 @@ function nuevoJugador() {
                 var tr =
                        '<td>' + objJugadorEquipo.Nombre + '</td>' +
                        '<td>' + objJugadorEquipo.Posicion + '</td>' +
+                       '<td>' + objJugadorEquipo.NumeroCamiseta + '</td>' +
+                       '<td>' + objJugadorEquipo.Tipo + '</td>' +
                        '<td><a class="btn btn-block btn-circle btn-info actualizarFilaJugadorEquipo' + objJugadorEquipo.IdJugadorEquipo + '" href="javascript:actualizarJugadorEquipo(' + objJugadorEquipo.IdJugadorEquipo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
                        '<td><a class="btn btn-block btn-circle btn-danger eliminarFilaJugadorEquipo' + objJugadorEquipo.IdJugadorEquipo + '" href="javascript:eliminarJugadorEquipo(' + objJugadorEquipo.IdJugadorEquipo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                        '<td><a class="btn btn-block btn-warning btn-circle" href="SubirImagenJugador.aspx?ID=' + objJugadorEquipo.IdJugadorEquipo + '&Equipo=' + objJugadorEquipo.IdEquipo + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>';
@@ -218,7 +225,9 @@ function nuevoJugador() {
         var parametros = {
             nombre: $('#NombreJugador').val(),
             posicion: $('#Posicion').val(),
-            idEquipo: $('#ContentPlaceHolder1_hdnEquipo').val()
+            idEquipo: $('#ContentPlaceHolder1_hdnEquipo').val(),
+            nroCamiseta: $("#NroCamiseta").val(),
+            tipo: $("#ContentPlaceHolder1_Tipo").val(),
         };
         $.ajax({
             url: 'equipos.aspx/InsertarJugadorEquipo',
@@ -234,6 +243,8 @@ function nuevoJugador() {
                 var tr = '<tr>' +
                        '<td>' + objJugadorEquipo.Nombre + '</td>' +
                        '<td>' + objJugadorEquipo.Posicion + '</td>' +
+                       '<td>' + objJugadorEquipo.NumeroCamiseta + '</td>' +
+                       '<td>' + objJugadorEquipo.Tipo + '</td>' +
                        '<td><a class="btn btn-block btn-circle btn-info actualizarFilaJugadorEquipo' + objJugadorEquipo.IdJugadorEquipo + '" href="javascript:actualizarJugadorEquipo(' + objJugadorEquipo.IdJugadorEquipo + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
                        '<td><a class="btn btn-block btn-circle btn-danger eliminarFilaJugadorEquipo' + objJugadorEquipo.IdJugadorEquipo + '" href="javascript:eliminarJugadorEquipo(' + objJugadorEquipo.IdJugadorEquipo + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                        '<td><a class="btn btn-block btn-warning btn-circle" href="SubirImagenJugador.aspx?ID=' + objJugadorEquipo.IdJugadorEquipo + '&Equipo=' + objJugadorEquipo.IdEquipo + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>' +
@@ -273,6 +284,8 @@ function actualizarJugadorEquipo(id) {
             var ObjEquipo = data.d;
             $('#NombreJugador').val(ObjEquipo.Nombre);
             $('#Posicion').val(ObjEquipo.Posicion);
+            $("#NroCamiseta").val(ObjEquipo.NumeroCamiseta);
+            $("ContentPlaceHolder1_Tipo").val(ObjEquipo.Tipo).change("trigger");
             $('#ContentPlaceHolder1_hdnJugadorEquipo').val(ObjEquipo.IdJugadorEquipo);
         }
     });
@@ -304,6 +317,17 @@ function eliminarJugadorEquipo(id) {
 
 function atras() {
     window.location.href = "jugadores.aspx?ID=" + $("#ContentPlaceHolder1_hdnEquipo").val();
+}
+
+function agregarJugador() {
+    $("#NombreJugador").val();
+    $("#Posicion").val();
+    $("#NroCamiseta").val('');
+    $("#ContentPlaceHolder1_hdnJugadorEquipo").val();
+    $("#ContentPlaceHolder1_hdnEquipo").val();
+    $("#listJugador").slideUp(500, function () {
+        $("#addJugadores").slideDown(500);
+    });
 }
 
 jQuery('#ContentPlaceHolder1_uploader').on('change', function (e) {

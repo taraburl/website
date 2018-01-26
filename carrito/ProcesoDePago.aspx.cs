@@ -9,6 +9,7 @@ public partial class carrito_ProcesoDePago : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Session["modulo"] = "Academia de Fútbol";
         String form = Request.QueryString["Total"];
         Total.Value = form;
         String form2 = Request.QueryString["Nro"];

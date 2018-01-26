@@ -51,7 +51,7 @@
         <div class="row" style="padding: 20px;">
             <asp:Repeater runat="server" ID="RepeaterJugadores" DataSourceID="ObjectDataSource2">
                 <ItemTemplate>
-                    <div class="col-md-3 col-sm-6 col-lg-2 mb-30 text-center">
+                    <div class="col-md-3 col-sm-6 col-lg-2 mb-30 col-6 text-center ">
                         <img class="d-block w-150 mx-auto img-thumbnail mb-2 tamano-img"
                             src="../images/jugadores/<%# Eval("IdJugadorEquipo") %>.png" alt="<%# Eval("Nombre") %>">
                         <h6><%# Eval("Nombre") %></h6>

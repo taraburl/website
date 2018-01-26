@@ -34,18 +34,18 @@
                 </div>
             </div>
         </div>
-        <div class="card text-center">
+        <div class=" text-center">
             <div class="card-block padding-top-2x">
                 <h3 class="card-title">Muchas Gracias por Comprar!</h3>
-                <p class="card-text">
+                <p class="card-text text-white">
                     Tu Codigo de compra es 
                     <asp:Label ID="COD" runat="server" Text="" CssClass="text-medium"></asp:Label>
                 </p>
-                <p class="card-text">
+                <p class="card-text text-white">
                     Recibiras un mail con un comprobante de compras.
                 </p>
                 <div class="padding-top-1x padding-bottom-1x">
-                    <a href="../index.aspx" class="btn btn-outline-primary">
+                    <a href="../index.aspx" class="btn btn-primary">
                         <i class="pe-7s-back"></i>&nbsp;Volver al Inicio</a>
                 </div>
             </div>

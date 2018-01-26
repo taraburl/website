@@ -33,6 +33,17 @@ public class FixtureNoticiaBLL
         }
         return listNoticia;
     }
+    public static FixtureNoticias SelectByTipo(string tipo, string idFixture)
+    {
+        FixtureNoticiaDSTableAdapters.tbl_fixtureNoticiaTableAdapter adapter =
+             new FixtureNoticiaDSTableAdapters.tbl_fixtureNoticiaTableAdapter();
+        FixtureNoticiaDS.tbl_fixtureNoticiaDataTable table = adapter.SelectByTipos(tipo, Convert.ToInt32(idFixture));
+        if (table.Rows.Count == 0)
+        {
+            return null;
+        }
+        return RowToDto(table[0]);
+    }
     public static FixtureNoticias InsertWithReturn(string idFixture, string idEquipo,
         string idJugador, string tipo, string descripcion, string fecha, string hora)
     {

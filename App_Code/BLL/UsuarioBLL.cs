@@ -26,7 +26,12 @@ public class UsuarioBLL
         string imagen, int idciudad, int idUser)
     {
         UsuarioDSTableAdapters.tbl_usuariosTableAdapter adapter = new UsuarioDSTableAdapters.tbl_usuariosTableAdapter();
-        adapter.UpdateById(nombre, apellidos, email, telefono, celular, direccion, username, password, tipo, imagen, idciudad, 0,idUser,idUser);
+        adapter.UpdateById(nombre, apellidos, email, telefono, celular, direccion, username, password, tipo, imagen, idciudad, 0, idUser, idUser);
+    }
+    public static void UpdatePassword(string password, string idUser)
+    {
+        UsuarioDSTableAdapters.tbl_usuariosTableAdapter adapter = new UsuarioDSTableAdapters.tbl_usuariosTableAdapter();
+        adapter.UpdatePassword(password, Convert.ToInt32(idUser));
     }
     public static void Delete(int id)
     {

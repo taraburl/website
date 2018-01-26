@@ -74,7 +74,7 @@ public class FixtureBLL
     }
     public static void UpdateFixture(string idEquipo, string idRival,
         string idCancha, string fecha, string hora, string idGrupo,
-        string estado, string scoreEquipo, string scoreRival,string puntos,  string id)
+        string estado, string scoreEquipo, string scoreRival, string puntos, string id)
     {
         FixtureDSTableAdapters.tbl_fixtureTableAdapter adapter =
             new FixtureDSTableAdapters.tbl_fixtureTableAdapter();

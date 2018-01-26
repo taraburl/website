@@ -3,11 +3,15 @@
         (localStorage.setItem("carrito", "{}"));
     }
     if (!sessionStorage.getItem("fullName")) {
+        $("#UseriIcons").hide();
+        $("#loginIcons").show();
         $(".user-name").text("Mi Perfil");
         $(".imgPerfil").attr("src", "../images/profile.png");
     } else {
         $(".user-name").text(sessionStorage.getItem("fullName"));
-        $(".imgPerfil").attr("src", "../" + sessionStorage.getItem("imagen"));
+        $("#nombre-perfil-carrito").text(sessionStorage.getItem("fullName"));
+        $("#nombre-carrito-user").text(sessionStorage.getItem("fullName"));
+        $(".imgPerfil").attr("src", "/images/usuarios/" + sessionStorage.getItem("idUsuario") + ".png");
     }
     loadCart();
     cargarMiCarrito();
@@ -156,4 +160,36 @@ function loadCartPay() {
               "</tr>"
             );
     }
+}
+
+
+
+function isNumberKey(evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
+
+function NumCheck(e, field) {
+    key = e.keyCode ? e.keyCode : e.which
+    // backspace
+    if (key == 8)
+        return true
+    // 0-9
+    if (key > 47 && key < 58) {
+        if (field.value == "")
+            return true
+        regexp = /.[0-9]{10}$/
+        return !(regexp.test(field.value))
+    }
+    // .
+    if (key == 44) {
+        if (field.value == "")
+            return false
+        regexp = /^[0-9]+$/
+        return regexp.test(field.value)
+    }
+    // other key
+    return false
 }

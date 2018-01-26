@@ -9,6 +9,7 @@
     }
 });
 
+
 function cargarGrupo(id) {
     var parametros = {
         idEvento: id
@@ -26,8 +27,8 @@ function cargarGrupo(id) {
                 $("#accordionGrupos").append(
                     '<div class="card">' +
                          '<div class="card-header gruposheader" role="tab">' +
-                            '<h4>'+
-                                '<a class="collapsed" href="#collapse' + grupo.IdGrupo + '" data-toggle="collapse" data-parent="#accordionGrupos">' + grupo.Nombre + '</a>' +
+                            '<h4>' +
+                                '<a class="collapsed"  href="#collapse' + grupo.IdGrupo + '" data-toggle="collapse" data-parent="#accordionGrupos">' + grupo.Nombre + '</a>' +
                             '</h4>' +
                          '</div>' +
                          '<div class="collapse" id="collapse' + grupo.IdGrupo + '" role="tabpanel">' +
@@ -58,7 +59,7 @@ function cargarEquipos(idGrupo) {
             var objEquipo = data.d;
             objEquipo.forEach(function (equipo) {
                 $("#bodycollapse" + idGrupo).append(
-                         '<div class="col-lg-2 col-md-4 col-sm-6 mb-3 text-center">' +
+                         '<div class="col-lg-2 col-md-4 col-sm-6 col-6 mb-3 text-center">' +
                             '<img class="d-block w-150 mx-auto img-thumbnail mb-2 tamano-img"' +
                                   'src="../images/equipos/' + equipo.IdEquipo + '.png" alt="Equipo" />' +
                             '<h6 class="text-sea-color">' + equipo.Equipo.Nombre + '</h6>' +

@@ -44,12 +44,12 @@
                                         <h4 class="product-price">
                                             <%# Eval("precio") %> Bs.
                                         </h4>
-                                        <span class="text-normal">Talla/Tamaño: <%# Eval("medida") %></span>
-                                        <span class="text-normal align-content-center">Cantidad Disponible: <%# Eval("stock") %></span>
-                                        
+                                        <span class="text-normal text-white">Talla/Tamaño: <%# Eval("medida") %></span>
+                                        <span class="text-normal align-content-center text-white">Cantidad Disponible: <%# Eval("stock") %></span>
+
                                         <div class="product-buttons">
                                             <a href="javascript:agregarProducto(<%# Eval("id") %>)"
-                                                class="btn btn-outline-primary btn-sm">Agregar
+                                                class="btn btn-primary">Agregar
                                             </a>
                                         </div>
                                     </div>

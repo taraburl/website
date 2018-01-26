@@ -75,7 +75,7 @@
                                 <a class="drop" href="#">Club Atlético Juniors</a>
                                 <ul>
                                     <li><a href="servicios/ClubAtletico.aspx">Club Atletico Juniors</a></li>
-                                    <li><a href="servicios/SoccerAcademy.aspx">Academia de Fútbol</a></li>
+                                    <li><a href="academia/academia.aspx">Academia de Fútbol</a></li>
                                 </ul>
                             </li>
                             <li>

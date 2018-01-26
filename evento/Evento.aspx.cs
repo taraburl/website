@@ -10,7 +10,7 @@ public partial class carrito_Evento : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-      
+        Session["modulo"] = "Eventos";
     }
     [WebMethod]
     public static List<Grupo> ListarGrupos(int idEvento)

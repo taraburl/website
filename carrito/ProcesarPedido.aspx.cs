@@ -10,7 +10,7 @@ public partial class carrito_ProcesarPedido : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Session["modulo"] = "Academia de Fútbol";
     }
     [WebMethod]
     public static OrdenCompra InsertarOrdenCompra(string estado,
