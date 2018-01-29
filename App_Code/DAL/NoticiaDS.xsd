@@ -126,6 +126,17 @@ WHERE  (id = @id)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
+              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="sea.dbo.tbl_noticias" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="selectTop5" GetMethodModifier="Public" GetMethodName="selectTop5" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="selectTop5" UserSourceName="selectTop5">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT TOP (5) id, titulo, descripcion, fecha, idEvento, eliminado
+FROM     tbl_noticias
+WHERE  (eliminado = 0)
+ORDER BY fecha DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="sea.dbo.sp_noticiaUpdate" DbObjectType="StoredProcedure" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="UpdateNoticia" GetMethodModifier="Public" GetMethodName="UpdateNoticia" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="UpdateNoticia" UserSourceName="UpdateNoticia">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
@@ -153,7 +164,7 @@ WHERE  (id = @id)</CommandText>
   <xs:element name="NoticiaDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="NoticiaDS" msprop:Generator_UserDSName="NoticiaDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="tbl_noticias" msprop:Generator_TableClassName="tbl_noticiasDataTable" msprop:Generator_TableVarName="tabletbl_noticias" msprop:Generator_RowChangedName="tbl_noticiasRowChanged" msprop:Generator_TablePropName="tbl_noticias" msprop:Generator_RowDeletingName="tbl_noticiasRowDeleting" msprop:Generator_RowChangingName="tbl_noticiasRowChanging" msprop:Generator_RowEvHandlerName="tbl_noticiasRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_noticiasRowDeleted" msprop:Generator_RowClassName="tbl_noticiasRow" msprop:Generator_UserTableName="tbl_noticias" msprop:Generator_RowEvArgName="tbl_noticiasRowChangeEvent">
+        <xs:element name="tbl_noticias" msprop:Generator_TableClassName="tbl_noticiasDataTable" msprop:Generator_TableVarName="tabletbl_noticias" msprop:Generator_TablePropName="tbl_noticias" msprop:Generator_RowDeletingName="tbl_noticiasRowDeleting" msprop:Generator_RowChangingName="tbl_noticiasRowChanging" msprop:Generator_RowEvHandlerName="tbl_noticiasRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_noticiasRowDeleted" msprop:Generator_UserTableName="tbl_noticias" msprop:Generator_RowChangedName="tbl_noticiasRowChanged" msprop:Generator_RowEvArgName="tbl_noticiasRowChangeEvent" msprop:Generator_RowClassName="tbl_noticiasRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />

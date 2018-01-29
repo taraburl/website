@@ -89,13 +89,16 @@
             </div>
             <div class="col-lg-3 col-md-4 order-md-1">
                 <div class="padding-top-3x hidden-md-up"></div>
-                <section class="promo-box" style="background-image: url(/images/background1.jpg);">
-                    <span class="overlay-dark" style="opacity: .4;"></span>
-                    <div class="promo-box-content text-center padding-top-2x padding-bottom-2x">
-                        <h3 class="text-bold text-light text-shadow">Catálogo de Productos</h3>
-                        <a class="btn btn-primary" href="../carrito/inicio.aspx">Compra Ahora</a>
-                    </div>
-                </section>
+                <img src="../images/atletico.png" alt="atletico" class="" />
+                <div class="padding-top-1x"></div>
+                <h6 class="text-normal text-uppercase text-center">Acerca de la Academia</h6>
+                <hr class="margin-bottom-1x" />
+                <div class="text-white text-justify">
+                    Academia de fútbol basada en una metodología de superación personal en la cual los niños y jóvenes son los protagonistas.
+                        Santa Cruz Juniors Soccer Academy, afiliada a la academia JCJSA www.jcjsa.org en Estados Unidos.
+                        Oportunidad de conseguir intercambios deportivos a colegios de USA.
+                        Oportunidad de poder estudiar y jugar fútbol en universidades de USA mediante becas deportivas universitarias.
+                </div>
                 <div class="padding-top-1x"></div>
                 <section class="promo-box" style="background-image: url(/images/background2.jpg);">
                     <span class="overlay-dark" style="opacity: .4;"></span>
@@ -104,8 +107,19 @@
                         <a class="btn btn-primary" href="../carrito/Inscripciones.aspx">Inscribete Ahora</a>
                     </div>
                 </section>
+                <div class="padding-top-1x"></div>
+                <section class="promo-box" style="background-image: url(/images/background1.jpg);">
+                    <span class="overlay-dark" style="opacity: .4;"></span>
+                    <div class="promo-box-content text-center padding-top-2x padding-bottom-2x">
+                        <h3 class="text-bold text-light text-shadow">Catálogo de Productos</h3>
+                        <a class="btn btn-primary" href="../carrito/inicio.aspx">Compra Ahora</a>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        $("#CartIcons").hide();
+    </script>
 </asp:Content>
 

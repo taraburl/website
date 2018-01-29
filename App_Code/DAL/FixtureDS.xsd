@@ -121,7 +121,10 @@
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT id, idEquipo, idRival, idCancha, hora, fecha, eliminado, idGrupo, estado, scoreEquipo, scoreRival,  puntos
 FROM     tbl_fixture
-WHERE  (eliminado = 0) AND (estado = 'En Curso')</CommandText>
+WHERE  (eliminado = 0) AND ((estado &lt;&gt; 'Finalizado') OR (estado &lt;&gt; 'Suspendido'))
+AND fecha = CAST(GETDATE() AS date)
+AND CAST(GETDATE() AS TIME) BETWEEN CAST(hora AS TIME) AND CAST(DATEADD(minute,90,hora) AS TIME)
+</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -171,44 +174,55 @@ ORDER BY tbl_fixture.fecha, tbl_fixture.hora ASC</CommandText>
               <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="SelectPosiciones" GetMethodModifier="Public" GetMethodName="SelectPosiciones" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="SelectPosiciones" UserSourceName="SelectPosiciones">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT ROW_NUMBER() OVER (ORDER BY puntos DESC) AS id, partidosJugados.idEquipo, sum(partidosJugados.partidosJugados) AS idRival, sum(goles.golesFavor) AS idCancha, sum(goles.golesContra) AS idGrupo, sum(puntos.puntos) 
-AS eliminado
+                    <CommandText>SELECT 
+ ROW_NUMBER() OVER (ORDER BY puntos DESC) AS id,
+ partidosJugados.idEquipo,
+ sum(partidosJugados.partidosJugados) AS idRival,
+ sum(goles.golesFavor) AS idCancha, 
+ sum(goles.golesContra) AS idGrupo, 
+ sum(puntos.puntos) AS eliminado,
+ GETDATE() as fecha,
+ '' as estado,
+ 0 as scoreEquipo,
+ 0 scoreRival,
+ 0 as puntos,
+ cast(getdate() as time) as hora
 FROM     (SELECT tbl_fixture.idEquipo, count(*) AS partidosJugados
                   FROM      tbl_fixture INNER JOIN
                                     tbl_grupo tg ON tg.id = tbl_fixture.idGrupo AND tg.idEvento = @idEvento
-                  WHERE   tbl_fixture.fecha &lt;= CURRENT_TIMESTAMP AND tbl_fixture.eliminado = 0
+                  WHERE tbl_fixture.eliminado = 0
                   GROUP BY tbl_fixture.idEquipo
                   UNION ALL
                   SELECT tbl_fixture.idRival, count(*) AS partidosJugados
                   FROM     tbl_fixture INNER JOIN
                                     tbl_grupo tg ON tg.id = tbl_fixture.idGrupo AND tg.idEvento = @idEvento
-                  WHERE  tbl_fixture.fecha &lt;= CURRENT_TIMESTAMP AND tbl_fixture.eliminado = 0
+                  WHERE tbl_fixture.eliminado = 0
                   GROUP BY tbl_fixture.idRival) partidosJugados,
                       (SELECT tbl_fixture.idEquipo, sum(tbl_fixture.scoreEquipo) AS golesFavor, sum(tbl_fixture.scoreRival) AS golesContra
                        FROM      tbl_fixture INNER JOIN
                                          tbl_grupo tg ON tg.id = tbl_fixture.idGrupo AND tg.idEvento = @idEvento
-                       WHERE   tbl_fixture.fecha &lt;= CURRENT_TIMESTAMP AND tbl_fixture.eliminado = 0
+                       WHERE tbl_fixture.eliminado = 0
                        GROUP BY tbl_fixture.idEquipo
                        UNION ALL
                        SELECT tbl_fixture.idRival, sum(tbl_fixture.scoreRival) AS golesFavor, sum(tbl_fixture.scoreEquipo) AS golesContra
                        FROM     tbl_fixture INNER JOIN
                                          tbl_grupo tg ON tg.id = tbl_fixture.idGrupo AND tg.idEvento = @idEvento
-                       WHERE  tbl_fixture.fecha &lt;= CURRENT_TIMESTAMP AND tbl_fixture.eliminado = 0
+                       WHERE tbl_fixture.eliminado = 0
                        GROUP BY tbl_fixture.idRival) goles,
                       (SELECT tbl_fixture.idEquipo, sum(tbl_fixture.puntos) AS puntos
                        FROM      tbl_fixture INNER JOIN
                                          tbl_grupo tg ON tg.id = tbl_fixture.idGrupo AND tg.idEvento = @idEvento
-                       WHERE   tbl_fixture.scoreEquipo &gt;= tbl_fixture.scoreRival AND tbl_fixture.fecha &lt;= CURRENT_TIMESTAMP AND tbl_fixture.eliminado = 0
+                       WHERE   tbl_fixture.scoreEquipo &gt;= tbl_fixture.scoreRival AND tbl_fixture.eliminado = 0
                        GROUP BY tbl_fixture.idEquipo
                        UNION ALL
                        SELECT tbl_fixture.idRival, sum(tbl_fixture.puntos) AS puntos
                        FROM     tbl_fixture INNER JOIN
                                          tbl_grupo tg ON tg.id = tbl_fixture.idGrupo AND tg.idEvento = @idEvento
-                       WHERE  tbl_fixture.scoreEquipo &lt;= tbl_fixture.scoreRival AND tbl_fixture.fecha &lt;= CURRENT_TIMESTAMP AND tbl_fixture.eliminado = 0
+                       WHERE  tbl_fixture.scoreEquipo &lt;= tbl_fixture.scoreRival AND tbl_fixture.eliminado = 0
                        GROUP BY tbl_fixture.idRival) puntos
 WHERE  partidosJugados.idEquipo = goles.idEquipo AND goles.idEquipo = puntos.idEquipo
 GROUP BY partidosJugados.idEquipo, puntos
-ORDER BY puntos DESC</CommandText>
+ORDER BY eliminado DESC</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="idEvento" ColumnName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idEvento" Precision="0" Scale="0" Size="4" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -238,6 +252,32 @@ ORDER BY puntos DESC</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
+              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateScoreEquipo" Modifier="Public" Name="UpdateScoreEquipo" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="UpdateScoreEquipo">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE tbl_fixture
+SET          scoreEquipo = @scoreEquipo
+WHERE  (id = @id)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="scoreEquipo" ColumnName="scoreEquipo" DataSourceName="sea.dbo.tbl_fixture" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@scoreEquipo" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="scoreEquipo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="id" ColumnName="id" DataSourceName="sea.dbo.tbl_fixture" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateScoreRival" Modifier="Public" Name="UpdateScoreRival" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="UpdateScoreRival">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE tbl_fixture
+SET          scoreRival = @scoreRival
+WHERE  (id = @id)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="scoreRival" ColumnName="scoreRival" DataSourceName="sea.dbo.tbl_fixture" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@scoreRival" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="scoreRival" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="id" ColumnName="id" DataSourceName="sea.dbo.tbl_fixture" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
             </Sources>
           </TableAdapter>
         </Tables>
@@ -248,7 +288,7 @@ ORDER BY puntos DESC</CommandText>
   <xs:element name="FixtureDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="FixtureDS" msprop:Generator_UserDSName="FixtureDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="tbl_fixture" msprop:Generator_TableClassName="tbl_fixtureDataTable" msprop:Generator_TableVarName="tabletbl_fixture" msprop:Generator_RowChangedName="tbl_fixtureRowChanged" msprop:Generator_TablePropName="tbl_fixture" msprop:Generator_RowDeletingName="tbl_fixtureRowDeleting" msprop:Generator_RowChangingName="tbl_fixtureRowChanging" msprop:Generator_RowEvHandlerName="tbl_fixtureRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_fixtureRowDeleted" msprop:Generator_RowClassName="tbl_fixtureRow" msprop:Generator_UserTableName="tbl_fixture" msprop:Generator_RowEvArgName="tbl_fixtureRowChangeEvent">
+        <xs:element name="tbl_fixture" msprop:Generator_TableClassName="tbl_fixtureDataTable" msprop:Generator_TableVarName="tabletbl_fixture" msprop:Generator_TablePropName="tbl_fixture" msprop:Generator_RowDeletingName="tbl_fixtureRowDeleting" msprop:Generator_RowChangingName="tbl_fixtureRowChanging" msprop:Generator_RowEvHandlerName="tbl_fixtureRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_fixtureRowDeleted" msprop:Generator_UserTableName="tbl_fixture" msprop:Generator_RowChangedName="tbl_fixtureRowChanged" msprop:Generator_RowEvArgName="tbl_fixtureRowChangeEvent" msprop:Generator_RowClassName="tbl_fixtureRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />

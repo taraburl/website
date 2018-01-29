@@ -141,6 +141,17 @@ AND (idFixture = @idFixture) </CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
+              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="sea.dbo.tbl_fixtureNoticia" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="SelectNoComentarios" GetMethodModifier="Public" GetMethodName="SelectNoComentarios" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="SelectNoComentarios" UserSourceName="SelectNoComentarios">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT id, idFixture, idEquipo, idJugador, tipo, descripcion, fecha, hora, eliminado
+FROM     tbl_fixtureNoticia
+WHERE tipo &lt;&gt; 'Comentario'
+AND eliminado = 0</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="sea.dbo.tbl_fixtureNoticia" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="SelectNoEliminados" GetMethodModifier="Public" GetMethodName="SelectNoEliminados" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="SelectNoEliminados" UserSourceName="SelectNoEliminados">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
@@ -179,7 +190,7 @@ WHERE  (eliminado = 0)</CommandText>
   <xs:element name="FixtureNoticiaDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="FixtureNoticiaDS" msprop:Generator_UserDSName="FixtureNoticiaDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="tbl_fixtureNoticia" msprop:Generator_TableClassName="tbl_fixtureNoticiaDataTable" msprop:Generator_TableVarName="tabletbl_fixtureNoticia" msprop:Generator_RowChangedName="tbl_fixtureNoticiaRowChanged" msprop:Generator_TablePropName="tbl_fixtureNoticia" msprop:Generator_RowDeletingName="tbl_fixtureNoticiaRowDeleting" msprop:Generator_RowChangingName="tbl_fixtureNoticiaRowChanging" msprop:Generator_RowEvHandlerName="tbl_fixtureNoticiaRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_fixtureNoticiaRowDeleted" msprop:Generator_RowClassName="tbl_fixtureNoticiaRow" msprop:Generator_UserTableName="tbl_fixtureNoticia" msprop:Generator_RowEvArgName="tbl_fixtureNoticiaRowChangeEvent">
+        <xs:element name="tbl_fixtureNoticia" msprop:Generator_TableClassName="tbl_fixtureNoticiaDataTable" msprop:Generator_TableVarName="tabletbl_fixtureNoticia" msprop:Generator_TablePropName="tbl_fixtureNoticia" msprop:Generator_RowDeletingName="tbl_fixtureNoticiaRowDeleting" msprop:Generator_RowChangingName="tbl_fixtureNoticiaRowChanging" msprop:Generator_RowEvHandlerName="tbl_fixtureNoticiaRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_fixtureNoticiaRowDeleted" msprop:Generator_UserTableName="tbl_fixtureNoticia" msprop:Generator_RowChangedName="tbl_fixtureNoticiaRowChanged" msprop:Generator_RowEvArgName="tbl_fixtureNoticiaRowChangeEvent" msprop:Generator_RowClassName="tbl_fixtureNoticiaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />

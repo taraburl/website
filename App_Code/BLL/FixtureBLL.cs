@@ -21,6 +21,18 @@ public class FixtureBLL
         }
         return listFixture;
     }
+    public static List<Fixture> SelectPosiciones(string idEvento)
+    {
+        FixtureDSTableAdapters.tbl_fixtureTableAdapter adapter =
+           new FixtureDSTableAdapters.tbl_fixtureTableAdapter();
+        FixtureDS.tbl_fixtureDataTable table = adapter.SelectPosiciones(Convert.ToInt32(idEvento));
+        List<Fixture> listFixture = new List<Fixture>();
+        foreach (FixtureDS.tbl_fixtureRow row in table)
+        {
+            listFixture.Add(RowToDto(row));
+        }
+        return listFixture;
+    }
     public static List<Fixture> SelectActuales()
     {
         FixtureDSTableAdapters.tbl_fixtureTableAdapter adapter =
@@ -94,6 +106,18 @@ public class FixtureBLL
         adapter.DeleteFixture(Convert.ToInt32(id));
     }
 
+    public static void UpdateScoreEquipo(int scoreEquipo, string id)
+    {
+        FixtureDSTableAdapters.tbl_fixtureTableAdapter adapter =
+            new FixtureDSTableAdapters.tbl_fixtureTableAdapter();
+        adapter.UpdateScoreEquipo(scoreEquipo, Convert.ToInt32(id));
+    }
+    public static void UpdateScoreRival(int scoreRival, string id)
+    {
+        FixtureDSTableAdapters.tbl_fixtureTableAdapter adapter =
+            new FixtureDSTableAdapters.tbl_fixtureTableAdapter();
+        adapter.UpdateScoreRival(scoreRival, Convert.ToInt32(id));
+    }
     private static Fixture RowToDto(FixtureDS.tbl_fixtureRow row)
     {
         Fixture objFixture = new Fixture();

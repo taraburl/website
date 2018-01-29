@@ -36,6 +36,24 @@ public partial class admin_Inventario_Inventario : System.Web.UI.Page
         try
         {
             InventarioBLL.Delete(idInventario);
+            Inventario objInventario = InventarioBLL.SelectById(idInventario);
+            string tipo = objInventario.Tipo;
+            List<DetalleInventario> listDetalle = DetalleInventarioBLL.SelectByInventario(idInventario);
+            foreach (DetalleInventario detalle in listDetalle)
+            {
+                Producto objProducto = ProductoBLL.SelectById(detalle.IdProducto);
+                int stock = objProducto.Stock;
+                int cant = detalle.Cantidad;
+                if (tipo == "Ingreso")
+                {
+                    stock = stock - cant;
+                }
+                else
+                {
+                    stock = stock + cant;
+                }
+                ProductoBLL.UpdateStock(Convert.ToString(objProducto.IdProducto), stock);
+            }
             return idInventario;
         }
         catch (Exception)
@@ -48,7 +66,7 @@ public partial class admin_Inventario_Inventario : System.Web.UI.Page
     [WebMethod]
     public static DetalleInventario InsertarDetalle(string idProducto, string cantidad, string idInventario, string tipo)
     {
-        DetalleInventario objDetalleInventario = 
+        DetalleInventario objDetalleInventario =
         DetalleInventarioBLL.InsertWithReturn(idProducto, cantidad, idInventario);
         Producto objProducto = ProductoBLL.SelectById(Convert.ToInt32(idProducto));
         int stock = objProducto.Stock;

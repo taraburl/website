@@ -1,428 +1,699 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="inicio" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>SEA - Sport Event Agency</title>
-    <meta charset="utf-8" />
     <link rel="shortcut icon" type="image/x-icon" href="/images/logo.png" />
+    <title>SEA - Sport Event Agency</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" />
-    <link href="Content/font-awesome.min.css" rel="stylesheet" />
-    <link href="styles/layout.css" rel="stylesheet" />
-    <link href="Content/animate.css" rel="stylesheet" />
-    <link href="styles/slick/slick.css" rel="stylesheet" />
-    <link href="styles/slick/slick-theme.css" rel="stylesheet" />
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <meta name="keywords" content="SEA - SPORT EVENT AGENCY" />
     <link href="styles/listas.css" rel="stylesheet" />
+    <link href="carrito/css/vendor.min.css" rel="stylesheet" />
+    <link href="carrito/css/styles.min.css" rel="stylesheet" />
+    <link href="carrito/css/customizer.min.css" rel="stylesheet" />
+    <link href="Content/animate.css" rel="stylesheet" />
+    <script src="carrito/js/modernizr.min.js"></script>
+    <script src="carrito/js/vendor.min.js"></script>
+    <script src="carrito/js/scripts.min.js"></script>
+    <script src="carrito/css/customizer.min.js"></script>
+    <script src="scripts/jquery-1.9.1.min.js"></script>
+    <script src="carrito/js/main.js"></script>
+    <script src="scripts/jquery.yottie.bundled.js"></script>
+    <script src="scripts/smoothScroll.js"></script>
+    <script src="scripts/wow.min.js"></script>
+    <script src="styles/slick/slick.js"></script>
+    <script src="scripts/js.js"></script>
+    <script type="text/javascript">
+        new WOW().init();
+    </script>
 </head>
-<body id="top">
-    <form id="form1" runat="server">
-        <div class="topspacer bgded overlay" style="background-image: url('images/background1.jpg');">
-            <div class="wrapper row0">
-                <div id="topbar" class="clear">
-                    <div class="fl_left">
-                        <ul class="nospace">
-                            <li><i class="fa fa-phone"></i>+591 347-4704</li>
-                            <li><i class="fa fa-envelope-o"></i>info@sea.com.bo</li>
+<body>
+    <noscript>
+      <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-T4DJFPZ" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+    </noscript>
+    <div class="offcanvas-container" id="shop-categories">
+        <div class="offcanvas-header">
+            <h3 class="offcanvas-title">MENU</h3>
+        </div>
+        <nav class="offcanvas-menu">
+            <ul class="menu">
+                <li>
+                    <span><a href="/index.aspx"><span>Inicio</span></a></span>
+                </li>
+                <li class="has-children">
+                    <span>
+                        <a href="#">Club Atlético Juniors</a>
+                        <span class="sub-menu-toggle"></span>
+                    </span>
+                    <ul class="offcanvas-submenu">
+                        <li>
+                            <a href="#">Club Atlético Juniors</a>
+                        </li>
+                        <li>
+                            <a href="academia/academia.aspx">Academia de Futbol - SEA</a>
+                        </li>
+                        <li>
+                            <a href="carrito/Inscripciones.aspx">Formulario de Inscripcion</a>
+                        </li>
+                        <li>
+                            <a href="carrito/inicio.aspx">Catálogo de Productos</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-children">
+                    <span>
+                        <a href="#">Eventos</a>
+                        <span class="sub-menu-toggle"></span>
+                    </span>
+                    <ul class="offcanvas-submenu">
+                        <asp:Repeater runat="server" ID="Repeater3" DataSourceID="ObjectDataSource1">
+                            <ItemTemplate>
+                                <li><a href="evento/Evento.aspx?ID=<%# Eval("IdEvento") %>"><%# Eval("Nombre")%></a></li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="SelectAll" TypeName="EventoBLL"></asp:ObjectDataSource>
+                        <li><a href="evento/listanoticias.aspx">Noticias</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <span><a href="#"><span>Marketing Deportivo</span></a></span>
+                </li>
+                <li>
+                    <span><a href="#">Marketing Deportivo</a></span></li>
+                <li>
+                    <span><a href="#">Complejo Deportivo</a></span></li>
+                <li>
+                    <span><a href="#">Students & Athletics</a></span></li>
+                <li>
+                    <span><a href="#">SEA TV</a></span></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Menu Celulares -->
+    <div class="offcanvas-container" id="mobile-menu">
+        <a class="account-link" href="/carrito/MiPerfil.aspx">
+            <div class="user-ava">
+                <img src="" alt="foto-perfil" class="imgPerfil" />
+            </div>
+            <div class="user-info">
+                <h6 class="user-name" id="nombre-perfil-carrito"></h6>
+            </div>
+        </a>
+        <nav class="offcanvas-menu">
+            <ul class="menu">
+                <li><a href="#">Inicio</a></li>
+                <li id="admincell"><a href="admin/index.aspx">Panel Administrador</a></li>
+                <li><a href="academia/academia.aspx">Academia de Futbol - SEA</a></li>
+                <li><a href="carrito/Inscripciones.aspx">Inscriciones: Academia SEA</a></li>
+                <li><a href="carrito/inicio.aspx">Catalogo de Productos</a></li>
+                <asp:Repeater runat="server" ID="Repeater2" DataSourceID="ObjectDataSource1">
+                    <ItemTemplate>
+                        <li><a href="evento/Evento.aspx?ID=<%# Eval("IdEvento") %>"><%# Eval("Nombre")%></a></li>
+                    </ItemTemplate>
+                </asp:Repeater>
+                <li><a href="evento/listanoticias.aspx">Noticias</a></li>
+                <li><a href="#">Marketing Deportivo</a></li>
+                <li><a href="#">Marketing Deportivo</></a></li>
+                <li><a href="#">Complejo Deportivo</a></li>
+                <li><a href="#">Students & Athletics</a></li>
+                <li><a href="#">SEA TV</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Topbar-->
+    <div class="topbar">
+        <div class="topbar-column">
+            <a class="hidden-md-down" href="mailto:info@sea.com.bo">
+                <i class="icon-mail"></i>&nbsp; info@sea.com.bo</a>
+            <a class="hidden-md-down" href="tel:00331697720">
+                <i class="icon-bell"></i>&nbsp; +591 347-4704</a>
+            <a class="social-button sb-facebook shape-none sb-dark" href="https://www.facebook.com/sports.events.agency/" target="_blank">
+                <i class="socicon-facebook"></i></a>
+            <a class="social-button sb-twitter shape-none sb-dark" href="https://twitter.com/SEA_SRL" target="_blank">
+                <i class="socicon-twitter"></i></a>
+            <a class="social-button sb-instagram shape-none sb-dark" href="https://www.instagram.com/sea_srl/?hl=es" target="_blank">
+                <i class="socicon-instagram"></i></a>
+            <a class="social-button sb-youtube shape-none sb-dark" href="https://www.youtube.com/user/SportsEventsAgency" target="_blank">
+                <i class="socicon-youtube"></i></a>
+        </div>
+    </div>
+    <header class="navbar navbar-sticky">
+        <div class="site-branding">
+            <div class="inner">
+                <!-- Off-Canvas Toggle (#shop-categories)-->
+                <a class="offcanvas-toggle cats-toggle" href="#shop-categories"
+                    data-toggle="offcanvas"></a>
+                <!-- Off-Canvas Toggle (#mobile-menu)-->
+                <a class="offcanvas-toggle menu-toggle" href="#mobile-menu"
+                    data-toggle="offcanvas"></a>
+                <!-- Site Logo-->
+                <a class="site-logo" href="#">
+                    <img src="/images/logo.png" alt="SEA-logo" style="width: 50px !important;" /></a>
+            </div>
+        </div>
+        <!-- Main Navigation-->
+        <nav class="site-menu">
+            <ul>
+                <li><a href="#"><span>Inicio</span></a></li>
+                <li class="has-megamenu">
+                    <a href="#"><span>Club Atlético Juniors</span></a>
+                    <ul class="mega-menu">
+                        <li>
+                            <a class="d-block img-thumbnail text-center navi-link"
+                                href="#">
+                                <img alt="club-atletico-juniors"
+                                    src="images/pronto.png" />
+                                <h6 class="mt-3">Club Atlético Juniors</h6>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="d-block img-thumbnail text-center navi-link"
+                                href="academia/academia.aspx">
+                                <img alt="academia-futbol-sea"
+                                    src="images/academia.png" />
+                                <h6 class="mt-3">Academia de Fútbol SEA</h6>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="d-block img-thumbnail text-center navi-link"
+                                href="carrito/inicio.aspx">
+                                <img alt="catalogo-productos"
+                                    src="images/catalogo.png" />
+                                <h6 class="mt-3">Catálogo de Productos</h6>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="d-block img-thumbnail text-center navi-link"
+                                href="carrito/inscripciones.aspx">
+                                <img alt="inscripciones-sea"
+                                    src="images/inscripcion.png" />
+                                <h6 class="mt-3">Inscripciones</h6>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#"><span>Eventos</span></a>
+                    <ul class="sub-menu">
+                        <asp:Repeater runat="server" ID="Repeater1" DataSourceID="ObjectDataSource1">
+                            <ItemTemplate>
+                                <li><a href="evento/Evento.aspx?ID=<%# Eval("IdEvento") %>"><%# Eval("Nombre")%></a></li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                        <li><a href="evento/listanoticias.aspx">Noticias</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><span>Marketing Deportivo</span></a></li>
+                <li><a href="#"><span>Complejo Deportivo</span></a></li>
+                <li><a href="#"><span>Students & Athletics</span></a></li>
+                <li><a href="#"><span>SEA TV</span></a></li>
+            </ul>
+        </nav>
+        <!-- Toolbar-->
+        <div class="toolbar">
+            <div class="inner">
+                <div class="tools">
+                    <div class="cart" id="UseriIcons">
+                        <a href="/carrito/MiPerfil.aspx"></a><i class="icon-head"></i>
+                        <ul class="toolbar-dropdown">
+                            <li class="sub-menu-user">
+                                <div class="user-ava">
+                                    <img src="" alt="perfil" class="imgPerfil" />
+                                </div>
+                                <div class="user-info">
+                                    <h6 class="user-name" style="color: #081A28;" id="nombre-carrito-user"></h6>
+                                </div>
+                            </li>
+                            <li><a href="/carrito/MiPerfil.aspx">Mi Perfil</a></li>
+                            <li id="admin"><a href="/admin/index.aspx">Panel Administrador</a></li>
+                            <li class="sub-menu-separator"></li>
+                            <li><a href="javascript:logout();"><i class="icon-unlock"></i>Salir</a></li>
                         </ul>
                     </div>
-                    <div class="fl_right">
-                        <ul class="nospace">
-                            <li><a href="index.aspx"><i class="fa fa-lg fa-home"></i></a></li>
-                            <li id="login"><a href="login.aspx?form=login" runat="server">Iniciar Sesión</a></li>
-                            <li id="signup"><a href="login.aspx?form=signup" runat="server">Registrarse</a></li>
-                            <li id="miperfil">
-                                <img src="images/profile.png" id="imagenperfil" alt="img-perfil" style="width: 10px; height: 10px; border-radius: 50%;" />
-                                <a href="~/carrito/MiPerfil.aspx" runat="server"></a></li>
-                            <li id="pnladmin" style="display: none;"><a href="admin/index.aspx" runat="server">Panel Adm.</a></li>
-                            <li id="logout"><a href="javascript:logout();"><i class="fa fa-sign-out" aria-hidden="true"></i>Salir</a></li>
+                    <div class="cart" id="loginIcons" style="display: none;">
+                        <a href="login.aspx"></a><i class="icon-head"></i>
+                        <ul class="toolbar-dropdown">
+                            <li><a href="/login.aspx"><i class="icon-unlock"></i>Iniciar Sesion</a></li>
                         </ul>
+                    </div>
+                    <div class="cart" id="CartIcons">
+                        <a href="/carrito/MiCarrito.aspx"></a>
+                        <i class="icon-bag"></i>
+                        <span class="count" id="cantProductos">0</span>
+                        <span class="subtotal" id="Total">0</span>
+                        <div class="toolbar-dropdown">
+                            <div id="detallePedido"></div>
+                            <div class="toolbar-dropdown-group">
+                                <div class="column">
+                                    <span class="text-lg">Total:</span>
+                                </div>
+                                <div class="column text-right">
+                                    <span class="text-lg text-medium" id="TotalDetalle"></span>
+                                </div>
+                            </div>
+                            <div class="toolbar-dropdown-group">
+                                <div class="column text-black">
+                                    <a class="btn btn-sm btn-rounded btn-block btn-secondary" href="carrito/MiCarrito.aspx">Ver Carrito</a>
+                                </div>
+                                <div class="column">
+                                    <a class="btn btn-sm btn-rounded btn-block btn-success" href="javascript:finalizar()">Finalizar</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="wrapper row1">
-                <header id="header" class="clear">
-                    <div id="logo" class="fl_left">
-                        <h1><a href="index.aspx">
-                            <img src="images/logo.png" alt="sea" style="width: 60px;" /></a></h1>
-                    </div>
-                    <nav id="mainav" class="fl_right">
-                        <ul class="clear">
-                            <li class="active"><a href="index.aspx">Inicio</a></li>
-                            <li>
-                                <a class="drop" href="#">Eventos</a>
-                                <ul>
-                                    <asp:Repeater runat="server" ID="Repeater2" DataSourceID="ObjectDataSource2">
-                                        <ItemTemplate>
-                                            <li><a href="evento/Evento.aspx?ID=<%# Eval("IdEvento") %>"><%# Eval("Nombre")%></a></li>
-                                        </ItemTemplate>
-                                    </asp:Repeater>
-                                    <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="SelectAll" TypeName="EventoBLL"></asp:ObjectDataSource>
-                                    <%--<li><a href="servicios/EventosDeportivos.aspx">Información</a></li>--%>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="drop" href="#">Marketing Deportivo</a>
-                                <ul>
-                                    <li><a href="servicios/Marketing.aspx">Marketing Deportivo</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="drop" href="#">Club Atlético Juniors</a>
-                                <ul>
-                                    <li><a href="servicios/ClubAtletico.aspx">Club Atletico Juniors</a></li>
-                                    <li><a href="academia/academia.aspx">Academia de Fútbol</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="drop" href="#">Complejo Deportivo</a>
-                                <ul>
-                                    <li><a href="servicios/ComplejoDeportivo.aspx">Complejo Deportivo</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="drop" href="#">Students & Athletics</a>
-                                <ul>
-                                    <li><a href="servicios/StudentsAthletics.aspx">Students & Athletics</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="drop" href="#">Sea TV</a>
-                                <ul>
-                                    <li><a href="#">SEA TV</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-                </header>
-            </div>
-            <div id="pageintro" class="hoc clear">
-                <article class="col-xs-12 col-sm-6 col-md-6">
-                    <h2 class="heading wow zoomIn" data-wow-delay="0.6s">
-                        <img src="images/logo.png" alt="sea" style="width: 150px;" />
-                    </h2>
-                    <p class="wow zoomIn" data-wow-delay="0.6s">SEA SRL nace en Bolivia el año 2013 bajo la motivación de nuestros directores de poder aportar y apoyar al deporte en nuestro país.</p>
-                    <footer>
-                        <ul class="nospace inline pushright scroll">
-                            <li><a class="btn wow zoomIn" data-wow-delay="0.6s" href="#conocenos">Conócenos</a></li>
-                            <li><a class="btn inverse wow zoomIn" data-wow-delay="0.6s" href="#comments">Contáctenos</a></li>
-                        </ul>
-                    </footer>
-                </article>
-                <article class="col-xs-12 col-sm-6 col-md-6">
-                    <a class="twitter-timeline" data-lang="es" data-height="300" target="_blank"
-                        href="https://twitter.com/SEA_SRL?ref_src=twsrc%5Etfw">Tweets by SEA_SRL</a>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                </article>
-            </div>
         </div>
-        <!--AUSPICIADORES-->
-        <div class="wrapper clear" style="top: 20%;">
-            <div class="auspiciadores-title">
-                <p>CON EL APOYO DE:</p>
-            </div>
-            <section class="center2 slider" id="conocenos">
-                <asp:Repeater runat="server" DataSourceID="objSponsorDS" ID="Repeater1">
-                    <ItemTemplate>
-                        <div class="wow rotateIn" data-wow-delay="0.8s">
-                            <img class="ausp" src="/images/sponsors/<%# Eval("ID") %>.png" alt="<%# Eval("Nombre") %>" />
+    </header>
+    <div class="offcanvas-wrapper">
+        <form id="form1" runat="server">
+            <section class="hero-slider" style="background-image: url(images/slider1.jpg);">
+                <div class="owl-carousel large-controls dots-inside" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: false, &quot;loop&quot;: false, &quot;autoplay&quot;: false, &quot;autoplayTimeout&quot;: 300000 }">
+                    <div class="item">
+                        <div class="container padding-top-3x">
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center">
+                                    <div class="from-bottom">
+                                        <img class="d-inline-block w-150 mb-4 pulse animated infinite" src="images/logo.png" alt="SEA-logo" />
+                                        <div class="h2 text-body text-normal mb-2 pt-1 text-bold text-white">SEA SRL nace en Bolivia el año 2013 bajo la motivación de nuestros directores de poder aportar y apoyar al deporte en nuestro país.</div>
+                                    </div>
+                                    <a class="btn btn-primary scale-up delay-1" href="#">Contactanos</a>
+                                </div>
+                                <div class="col-md-6 padding-bottom-2x mb-3">
+                                    <a class="twitter-timeline" data-lang="es" data-height="400" target="_blank"
+                                        href="https://twitter.com/SEA_SRL?ref_src=twsrc%5Etfw">SEA - Tweets</a>
+                                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                </div>
+                            </div>
                         </div>
-                    </ItemTemplate>
-                </asp:Repeater>
+                    </div>
+                </div>
             </section>
-        </div>
-        <div class="wrapper row3" style="top: 20%;">
-            <div class="group">
-                <div class="">
-                    <div class="masonry-grid row">
-                        <div class="card masonry-grid-item col-xs-12 col-sm-9 col-md-9 sm-margin-b-30">
-                            <div class="card-block masonry-grid">
-                                <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-6 sm-margin-b-30 wow fadeInUp" data-wow-duration=".3">
-                                    <div class="margin-b-60">
-                                        <h2>MISIÓN</h2>
-                                        <p>
+            <section class="bg-white ">
+                <h4 class="text-left sponsors-title">Con el Apoyo de</h4>
+                <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 4000, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:2}, &quot;470&quot;:{&quot;items&quot;:3},&quot;630&quot;:{&quot;items&quot;:4},&quot;991&quot;:{&quot;items&quot;:5},&quot;1200&quot;:{&quot;items&quot;:6}} }">
+                    <asp:Repeater runat="server" DataSourceID="odsSponsorDS" ID="Repeater4">
+                        <ItemTemplate>
+                            <img class="d-block w-110 m-auto" src="images/sponsors/<%# Eval("ID") %>.png" alt="<%# Eval("Nombre") %>" style="object-fit: contain; height: 80px;"/>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
+            </section>
+            <div class="mb-2 padding-top-1x container-index">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 order-md-1">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4 col-lg-4 col-12 pb-2">
+                                <div class="card" style="height: 500px !important;">
+                                    <img class="card-img-top" src="images/mision.jpg" alt="mision" />
+                                    <div class="card-body">
+                                        <h4 class="card-title">Mision</h4>
+                                        <p class="card-text text-white">
                                             Ayudar a la mejora del bienestar de las personas mediante la práctica del deporte,
                                         con ética profesional mediante el Marketing Deportivo.
                                         </p>
                                     </div>
-                                    <img class="full-width img-responsive "
-                                        src="images/mision.jpg" alt="Misión"
-                                        data-wow-delay=".2s"
-                                        style="border-top: 10px solid #47AEC5;" />
-                                </div>
-                                <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-6 wow fadeInUp" data-wow-duration=".3">
-                                    <div class="margin-b-60">
-                                        <img class="full-width img-responsive"
-                                            src="images/vision.jpg" alt="Visión"
-                                            data-wow-delay=".3s"
-                                            style="border-bottom: 10px solid #47AEC5;" />
-                                    </div>
-                                    <h2>VISIÓN</h2>
-                                    <p>
-                                        Ser una corporación deportiva líder y de referencia a nivel nacional,
-                                        mediante nuestras unidades de negocios buscamos fomentar la práctica del deporte sano, el respeto mutuo y el trabajo en equipo.
-                                    </p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card masonry-grid-item col-xs-12 col-sm-3 col-md-3">
-                            <div class="fb-page card-block" data-href="https://www.facebook.com/sports.events.agency/"
-                                data-tabs="timeline,events,messages"
-                                data-small-header="true"
-                                data-width="500"
-                                data-adapt-container-width="true"
-                                data-hide-cover="false" data-show-facepile="true">
+                            <div class="col-sm-12 col-md-4 col-lg-4 col-12 pb-2">
+                                <div class="card" style="height: 500px !important;">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Vision</h4>
+                                        <p class="card-text text-white">
+                                            Ser una corporación deportiva líder y de referencia a nivel nacional,
+                                        mediante nuestras unidades de negocios buscamos fomentar la práctica del deporte sano, el respeto mutuo y el trabajo en equipo.
+                                        </p>
+                                    </div>
+                                    <img class="card-img-bottom" src="images/vision.jpg" alt="vision" />
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-4 col-12 pb-2">
+                                <div class="fb-page card-block" data-href="https://www.facebook.com/sports.events.agency/"
+                                    data-tabs="timeline,events,messages"
+                                    data-small-header="true"
+                                    data-width="500"
+                                    data-adapt-container-width="true"
+                                    data-hide-cover="false" data-show-facepile="true">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="wrapper row3" style="margin-top: 20px; margin-bottom: 20px;">
-            <div class="group">
-                <article class="col-xs-12 col-sm-6 col-md-6 index-news wow fadeInUp" id="masleidas" data-wow-duration=".3">
-                    <h3 class="titulo">NOTICIAS</h3>
-                    <div class="window">
-                        <asp:Repeater runat="server" ID="repeterNoticias" DataSourceID="ObjectDataSource3">
-                            <ItemTemplate>
-                                <div class="masleida nomargin">
-                                    <a class="foto ajax" href="carrito/noticiadetallada.aspx?ID=<%# Eval("IdNoticia") %>">
-                                        <img class="lz" src="images/noticia/<%# Eval("IdNoticia")  %>.png" alt="<%# Eval("Descripcion") %>" />
-                                    </a>
-                                    <h2>
-                                        <a class="ajax" href="evento/noticiadetallada.aspx?ID=<%# Eval("IdNoticia") %>">
-                                            <strong><%# Eval("Titulo") %></strong>
-                                        </a>
-                                    </h2>
-                                </div>
-                            </ItemTemplate>
-                        </asp:Repeater>
-                        <asp:ObjectDataSource ID="ObjectDataSource3" runat="server" SelectMethod="SelectAll" TypeName="NoticiaBLL"></asp:ObjectDataSource>
-                    </div>
-                </article>
-                <article class="col-xs-12 col-sm-6 col-md-6 wow fadeInUp" data-wow-duration=".3">
-                    <h3 class="partidos">DATOS OFICIALES</h3>
-                    <div style="max-height: 600px !important; overflow-y: scroll !important;">
-                        <asp:Repeater runat="server" ID="RepeaterPartidos" DataSourceID="odsPartidosActuales">
-                            <ItemTemplate>
-                                <div class="row text-center window" style="margin: 10px 0px 10px 0px; border: 1px solid gray; border-radius: 6px; padding: 15px 0px 0px 0px;">
-                                    <div class="col-lg-3 text-center">
-                                        <img src="/images/equipos/<%# Eval("IdEquipo") %>.png" alt="logo evento" class="img-rounded img-responsive" style="width: 50px !important; margin: auto; height: 50px !important; object-fit: contain;" />
-                                        <h7><%# Eval("Equipo.Nombre") %></h7>
-                                    </div>
-                                    <div class="col-lg-3 text-center">
-                                        <div class="row">
-                                            <h3 class="col-lg-3">
-                                                <%# Eval("Estado").ToString() != "Pendiente" ? Eval("ScoreEquipo") : ""%>
-                                            </h3>
-                                            <div class="col-lg-5" style="padding-top: 2.5rem !important;">
-                                                <p class="badge bg-info text-center" style="background-color: #09c !important;">VS</p>
+            <div class="padding-bottom-1x mb-2 container-index">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-6 col-12 pb-2" id="masleidas">
+                        <h3 class="text-muted text-normal text-uppercase padding-top-2x text-bold text-white">NOTICIAS</h3>
+                        <hr class="margin-bottom-1x" />
+                        <div class="window row">
+                            <asp:Repeater runat="server" ID="repeterNoticias" DataSourceID="ObjectDataSource3">
+                                <ItemTemplate>
+                                    <div class="col-lg-6 col-sm-6 col-12 padding-right-none padding-left-none">
+                                        <section class="promo-box" style="background-image: url(images/noticia/<%# Eval("IdNoticia")  %>.png); height: 200px !important;">
+                                            <div class="promo-box-content text-center padding-top-3x padding-bottom-2x">
+                                                <h4 class="text-bold text-light text-shadow"><%# Eval("Titulo") %></h4>
+                                                <a class="btn btn-sm btn-primary btn-rounded" href="evento/noticiadetallada.aspx?ID=<%# Eval("IdNoticia") %>">Ver Noticia</a>
                                             </div>
-                                            <h3 class="col-lg-4">
-                                                <%# Eval("Estado").ToString() != "Pendiente" ? Eval("ScoreRival") : ""%>
-                                            </h3>
-                                            <div class="col-lg-12">
-                                                <h7 class="entry-title"><%# Eval("Cancha.Nombre") %></h7>
-                                                <p>
-                                                    <%# Eval("FechaForDisplay") %>
-                                                    <%# Eval("HoraForDisplay") %>
-                                                </p>
+                                        </section>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                            <asp:ObjectDataSource ID="ObjectDataSource3" runat="server" SelectMethod="SelectTop5" TypeName="NoticiaBLL"></asp:ObjectDataSource>
+                            <div class="col-lg-6 col-sm-6 col-12 padding-right-none padding-left-none">
+                                <section class="promo-box" style="background-image: url(images/background1.jpg); height: 200px !important;">
+                                    <span class="overlay-dark" style="opacity: .45;"></span>
+                                    <div class="promo-box-content text-center padding-top-3x padding-bottom-2x">
+                                        <h4 class="text-bold text-light text-shadow">VER TODAS LAS NOTICIAS</h4>
+                                        <a class="btn btn-sm btn-primary btn-rounded" href="evento/listanoticias.aspx">NOTICIAS</a>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-6 col-12 pb-2">
+                        <h3 class="text-muted text-normal text-uppercase padding-top-2x text-bold text-white">datos oficiales</h3>
+                        <hr class="margin-bottom-1x" />
+                        <div class="card-group">
+                            <div style="max-height: 610px !important; overflow-y: scroll !important; width: 100%;">
+                                <asp:Repeater runat="server" ID="RepeaterPartidos" DataSourceID="odsPartidosActuales">
+                                    <ItemTemplate>
+                                        <div class="row text-center window text-white" style="margin: 0px 0px 10px 0px; border: 1px solid white; border-radius: 5px; padding: 15px 0px 0px 0px;">
+                                            <div class="col-lg-3 col-3 text-center">
+                                                <img src="/images/equipos/<%# Eval("IdEquipo") %>.png" alt="logo evento" class="img-rounded img-responsive" style="width: 50px !important; margin: auto; height: 50px !important; object-fit: contain;" />
+                                                <p><%# Eval("Equipo.Nombre") %></p>
+                                            </div>
+                                            <div class="col-lg-3 col-6 text-center">
+                                                <div class="row">
+                                                    <h3 class="col-lg-3 col-3">
+                                                        <%# Eval("ScoreEquipo")%>
+                                                    </h3>
+                                                    <div class="col-lg-6 col-6">
+                                                        <p class="badge bg-danger text-center flash animated infinite">VS</p>
+                                                    </div>
+                                                    <h3 class="col-lg-3 col-3">
+                                                        <%# Eval("ScoreRival")%>
+                                                    </h3>
+                                                    <div class="col-lg-12 col-12">
+                                                        <h7 class="entry-title"><%# Eval("Cancha.Nombre") %></h7>
+                                                        <p>
+                                                            <%# Eval("FechaForDisplay") %>
+                                                            <%# Eval("HoraForDisplay") %>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-3 text-center">
+                                                <img src="/images/equipos/<%# Eval("IdRival") %>.png" alt="logo evento" class="img-rounded img-responsive" style="width: 50px !important; margin: auto; height: 50px !important; object-fit: contain;" />
+                                                <p><%# Eval("Rival.Nombre") %></p>
+                                            </div>
+                                            <div class="col-lg-3 col-12 text-center">
+                                                <img src="/images/evento/<%# Eval("Evento.IdEvento") %>.png" alt="logo evento" class="img-rounded img-responsive" style="width: 50px !important; margin: auto;" />
+                                                <p style="font-size: 13px;"><%# Eval("Evento.Nombre") %></p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-3 text-center">
-                                        <img src="/images/equipos/<%# Eval("IdRival") %>.png" alt="logo evento" class="img-rounded img-responsive" style="width: 50px !important; margin: auto; height: 50px !important; object-fit: contain;" />
-                                        <h7><%# Eval("Rival.Nombre") %></h7>
-                                    </div>
-                                    <div class="col-lg-3 text-center">
-                                        <img src="/images/evento/<%# Eval("Evento.IdEvento") %>.png" alt="logo evento" class="img-rounded img-responsive" style="width: 50px !important; margin: auto;" />
-                                        <p style="font-size: 13px;"><%# Eval("Evento.Nombre") %></p>
+                                        <div class="divider"></div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                                <asp:ObjectDataSource runat="server" ID="odsPartidosActuales" SelectMethod="SelectActuales" TypeName="FixtureBLL"></asp:ObjectDataSource>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="padding-bottom-1x mb-2 container-index">
+                <div data-yt
+                    data-yt-channel="https://www.youtube.com/channel/UCxqs4wK9T-dvoK235ZNsAPg"
+                    data-yt-lang="es"
+                    data-yt-header-layout="minimal"
+                    data-yt-video-layout="classic"
+                    data-yt-header-channel-name=" "
+                    data-yt-header-channel-logo="images/logo.png"
+                    data-yt-content-columns="4"
+                    data-yt-content-rows="2"
+                    data-yt-content-auto-pause-on-hover="true"
+                    data-yt-content-responsive="%7B%22480%22%3A%7B%22columns%22%3A%221%22%2C%22rows%22%3A%222%22%2C%22gutter%22%3A%2220%22%7D%2C%22600%22%3A%7B%22columns%22%3A%222%22%2C%22rows%22%3A%222%22%2C%22gutter%22%3A%2220%22%7D%2C%22800%22%3A%7B%22columns%22%3A%223%22%2C%22rows%22%3A%222%22%2C%22gutter%22%3A%2220%22%7D%2C%221000%22%3A%7B%22columns%22%3A%224%22%2C%22rows%22%3A%222%22%2C%22gutter%22%3A%2220%22%7D%7D">
+                </div>
+            </div>
+            <div class="container-index padding-bottom-2x" style="background-image: url(images/contactenos.jpg); background-size: cover; background-position: center center;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <h4 class="text-muted text-normal text-uppercase padding-top-2x text-bold text-white">CONTACTANOS</h4>
+                            <hr class="margin-bottom-1x" />
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name">Nombre <span>*</span></label>
+                                        <asp:TextBox runat="server" ID="name" CssClass="form-control form-control-rounded"></asp:TextBox>
+                                        <div class="form-control-feedback">
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                                ControlToValidate="name" ErrorMessage="Debe Ingresar su nombre"
+                                                ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="divider"></div>
-                            </ItemTemplate>
-                        </asp:Repeater>
-                        <asp:ObjectDataSource runat="server" ID="odsPartidosActuales" SelectMethod="SelectActuales" TypeName="FixtureBLL"></asp:ObjectDataSource>
-                    </div>
-                </article>
-            </div>
-        </div>
-        <div class="wrapper row4 bgded overlay">
-            <div data-yt
-                data-yt-channel="https://www.youtube.com/channel/UCxqs4wK9T-dvoK235ZNsAPg"
-                data-yt-lang="es"
-                data-yt-header-layout="minimal"
-                data-yt-video-layout="classic"
-                data-yt-header-channel-name=" "
-                data-yt-header-channel-logo="images/logo.png"
-                data-yt-content-columns="4"
-                data-yt-content-rows="2"
-                data-yt-content-auto-pause-on-hover="true"
-                data-yt-content-responsive="%7B%22480%22%3A%7B%22columns%22%3A%221%22%2C%22rows%22%3A%222%22%2C%22gutter%22%3A%2220%22%7D%2C%22600%22%3A%7B%22columns%22%3A%222%22%2C%22rows%22%3A%222%22%2C%22gutter%22%3A%2220%22%7D%2C%22800%22%3A%7B%22columns%22%3A%223%22%2C%22rows%22%3A%222%22%2C%22gutter%22%3A%2220%22%7D%2C%221000%22%3A%7B%22columns%22%3A%224%22%2C%22rows%22%3A%222%22%2C%22gutter%22%3A%2220%22%7D%7D">
-            </div>
-        </div>
-        <div class="wrapper row4 bgded overlay" style="background-image: url('images/contactenos.jpg'); z-index: 0; background-position: center center;">
-            <footer id="footer" class="hoc clear">
-                <div class="one_half first  wow fadeInUp" data-wow-delay="0.9s" id="comments">
-                    <h6 class="heading">Contáctenos</h6>
-                    <label for="name">Nombre <span>*</span></label>
-                    <asp:TextBox runat="server" ID="name"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-                        ControlToValidate="name" ErrorMessage="Inserte Nombre"
-                        ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator><br />
-                    <label for="email">E-Mail <span>*</span></label>
-                    <asp:TextBox runat="server" ID="email" TextMode="Email"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
-                        ControlToValidate="email" ErrorMessage="Inserte Email"
-                        ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator><br />
-                    <label for="url">Asunto <span>*</span></label>
-                    <asp:TextBox runat="server" ID="asunto"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
-                        ControlToValidate="asunto" ErrorMessage="Inserte Email"
-                        ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator><br />
-                    <div class="block clear">
-                        <label for="comment">Comentario <span>*</span></label>
-                        <asp:TextBox runat="server" ID="comment" TextMode="MultiLine" Columns="5"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
-                            ControlToValidate="comment" ErrorMessage="Inserte Email"
-                            ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator><br />
-                    </div>
-                    <div>
-                        <asp:Button CssClass="btn emailsend" Text="Enviar" runat="server" OnClick="EnviarMail"
-                            OnClientClick="return false;"></asp:Button>
-                    </div>
-                </div>
-                <div class="one_half">
-                    <div class="block  wow fadeInUp" data-wow-delay="0.9s">
-                        <h6 class="heading">Donde Estamos</h6>
-                        <ul class="nospace linklist contact">
-                            <li><i class="fa fa-map-marker"></i>
-                                <address>
-                                    Av. Paragua 4to anillo Santa Cruz de la Sierra
-                                </address>
-                            </li>
-                            <li><i class="fa fa-phone"></i>+59178557777</li>
-                            <li><i class="fa fa-fax"></i>+591 347-4704</li>
-                            <li><i class="fa fa-envelope-o"></i>info@sea.com.bo</li>
-                        </ul>
-                        <div class="block">
-                            <p>Siguenos en nuestras redes sociales</p>
-                            <ul class="faico clear">
-                                <li><a class="faicon-facebook" href="https://www.facebook.com/sports.events.agency/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="faicon-twitter" href="https://twitter.com/SEA_SRL" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="faicon-youtube" href="https://www.youtube.com/user/SportsEventsAgency" target="_blank"><i class="fa fa-youtube"></i></a></li>
-                                <li><a class="faicon-instagram" href="https://www.instagram.com/sea_srl/?hl=es" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </div>
-        <div class="wrapper row5">
-            <div id="copyright" class="hoc clear">
-                <p class="fl_left">Copyright &copy; 2017 - SEA - <a href="http://sea.com.bo/">www.sea.com.bo</a></p>
-                <p class="fl_right">Desarrollado por <a target="_blank" href="http://osbolivia.com/" title="OSBolivia">OSBolivia</a></p>
-            </div>
-        </div>
-        <div class="wrapper row2">
-            <div class="hoc container clear">
-                <div class="group">
-                    <div class="one_half first">
-                        <div class="one_third first">
-                            <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
-                                <img alt="logo" src="images/logo.png" style="height: 50px;" />
-                            </h6>
-                            <ul class="nospace linklist contact serv">
-                                <li class="wow bounceIn" data-wow-delay="0.8s"><a href="servicios/EventosDeportivos.aspx">Eventos Deportivos</a></li>
-                            </ul>
-                        </div>
-                        <div class="one_third">
-                            <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
-                                <img alt="logo" src="images/logo.png" style="height: 50px;" />
-                            </h6>
-                            <ul class="nospace linklist contact serv">
-                                <li class="wow bounceIn" data-wow-delay="0.8s"><a href="servicios/Marketing.aspx">Marketing Deportivo</a></li>
-                            </ul>
-                        </div>
-                        <div class="one_third">
-                            <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
-                                <img alt="logo" src="images/atletico.png" style="height: 50px;" />
-                            </h6>
-                            <ul class="nospace linklist contact serv">
-                                <li class="wow bounceIn" data-wow-delay="0.8s"><a href="servicios/ClubAtletico.aspx">Club Atletico Juniors</a></li>
-                                <li class="wow bounceIn" data-wow-delay="0.8s"><a href="servicios/SoccerAcademy.aspx">Academia de Fútbol</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="one_half">
-                        <div class="one_third first">
-                            <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
-                                <img alt="logo" src="images/logo.png" style="height: 50px;" />
-                            </h6>
-                            <ul class="nospace linklist contact serv">
-                                <li class="wow bounceIn" data-wow-delay="0.8s"><a href="servicios/ComplejoDeportivo.aspx">Complejo Deportivo SEA</a></li>
-                            </ul>
-                        </div>
-                        <div class="one_third">
-                            <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
-                                <img alt="logo" src="images/S&A.png" style="height: 50px;" />
-                            </h6>
-                            <ul class="nospace linklist contact serv">
-                                <li class="wow bounceIn" data-wow-delay="0.8s"><a href="servicios/StudentsAthletics.aspx">Students & Athletics</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="one_third wow ">
-                            <h6 class="heading titulo wow lightSpeedIn" data-wow-delay="0.6s">
-                                <img alt="logo" src="images/seatv.png" style="height: 50px;" />
-                            </h6>
-                            <ul class="nospace linklist contact serv">
-                                <li class="wow bounceIn" data-wow-delay="0.8s"><a href="servicios/ClubAtletico.aspx">Sea TV</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="wrapper row5">
-            <div class="hoc container clear">
-                <p class="sponsor-title">Con el Apoyo de</p>
-                <p style="border-bottom: 3px solid white;"></p>
-                <div class="auspiciadores">
-                    <asp:Repeater runat="server" DataSourceID="objSponsorDS" ID="repaterSponsors">
-                        <ItemTemplate>
-                            <div class="wow rotateIn" data-wow-delay="0.8s">
-                                <img class="ausp" src="/images/sponsors/<%# Eval("ID") %>.png" alt="<%# Eval("Nombre") %>" />
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="email">E-Mail <span>*</span></label>
+                                        <asp:TextBox runat="server" ID="email" TextMode="Email" CssClass="form-control form-control-rounded"></asp:TextBox>
+                                        <div class="form-control-feedback">
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                                                ControlToValidate="email" ErrorMessage="Debe Ingresar su E-mail"
+                                                ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="url">Asunto <span>*</span></label>
+                                        <asp:TextBox runat="server" ID="asunto" CssClass="form-control form-control-rounded"></asp:TextBox>
+                                        <div class="form-control-feedback">
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
+                                                ControlToValidate="asunto" ErrorMessage="Debe Ingresar el Asunto de la Consulta"
+                                                ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="comment">Comentario <span>*</span></label>
+                                        <asp:TextBox runat="server" ID="comment" TextMode="MultiLine" Columns="8" CssClass="form-control"></asp:TextBox>
+                                        <div class="form-control-feedback">
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
+                                                ControlToValidate="comment" ErrorMessage="Debe Ingresar el Comentario"
+                                                ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-right">
+                                    <div class="form-group">
+                                        <asp:LinkButton ID="btnGuardarImagen" Text="Enviar" runat="server" CssClass="btn btn-primary scale-up delay-1"
+                                            OnClick="EnviarMail" OnClientClick="return false;"></asp:LinkButton>
+                                    </div>
+                                </div>
                             </div>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                    <asp:ObjectDataSource ID="objSponsorDS"
-                        runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="selectByModulo"
-                        TypeName="SponsorDSTableAdapters.tbl_sponsorsTableAdapter">
-                        <SelectParameters>
-                            <asp:SessionParameter DefaultValue="" Name="modulo" SessionField="modulo" Type="String" />
-                        </SelectParameters>
-                    </asp:ObjectDataSource>
+                        </div>
+                        <div class="col-md-5">
+                            <h4 class="text-muted text-normal text-uppercase padding-top-2x text-bold text-white">DONDE ESTAMOS</h4>
+                            <hr class="margin-bottom-1x" />
+                            <ul class="list-icon text-white">
+                                <li><i class="icon-map"></i>Av. Paragua 4to anillo Santa Cruz de la Sierra</li>
+                                <li><i class="icon-mail"></i><a class="hidden-md-down text-decoration-none text-white" href="mailto:info@sea.com.bo">info@sea.com.bo</a></li>
+                                <li><i class="icon-bell"></i>+59178557777</li>
+                                <li><i class="icon-globe"></i>+591 347-4704</li>
+                            </ul>
+                            <h4 class="text-muted text-normal text-uppercase padding-top-2x text-bold text-white">SIGUENOS EN NUESTRAS REDES SOCIALES</h4>
+                            <hr class="margin-bottom-1x" />
+                            <a class="social-button shape-circle sb-facebook sb-light-skin" href="https://www.facebook.com/sports.events.agency/" target="_blank"><i class="socicon-facebook"></i></a>
+                            <a class="social-button shape-circle sb-twitter sb-light-skin" href="https://twitter.com/SEA_SRL" target="_blank"><i class="socicon-twitter"></i></a>
+                            <a class="social-button shape-circle sb-instagram sb-light-skin" href="https://www.instagram.com/sea_srl/?hl=es" target="_blank"><i class="socicon-instagram"></i></a>
+                            <a class="social-button shape-circle sb-youtube sb-light-skin" href="https://www.youtube.com/user/SportsEventsAgency" target="_blank"><i class="socicon-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row margin-bottom-2x text-justify">
+                    <div class="col-lg-2 col-md-3 margin-bottom-1x">
+                        <div class="text-center">
+                            <img alt="logo" src="images/atletico.png" style="height: 50px;" class="margin-bottom-1x" />
+                        </div>
+                        <section class="widget widget-links widget-light-skin">
+                            <h3 class="widget-title"></h3>
+                            <ul>
+                                <li><a href="#">Club Atletico Juniors</a></li>
+                                <li><a href="academia/academia.aspx">Academia de Futbol</a></li>
+                                <li><a href="carrito/inicio.aspx">Catalogo de Productos</a></li>
+                                <li><a href="carrito/Inscripciones.aspx">Inscripciones</a></li>
+                            </ul>
+                        </section>
+                    </div>
+                    <div class="col-lg-2 col-md-3 margin-bottom-1x">
+                        <div class="text-center">
+                            <img alt="logo" src="images/logo.png" style="height: 50px;" class="margin-bottom-1x" />
+                        </div>
+                        <section class="widget widget-links widget-light-skin">
+                            <h3 class="widget-title"></h3>
+                            <ul>
+                                <asp:Repeater runat="server" ID="RepeaterEventos" DataSourceID="ObjectDataSource1">
+                                    <ItemTemplate>
+                                        <li><a href="evento/Evento.aspx?ID=<%# Eval("IdEvento") %>"><%# Eval("Nombre")%></a></li>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </ul>
+                        </section>
+                    </div>
+                    <div class="col-lg-2 col-md-3 margin-bottom-1x">
+                        <div class="text-center">
+                            <img alt="logo" src="images/logo.png" style="height: 50px;" class="margin-bottom-1x" />
+                        </div>
+                        <section class="widget widget-links widget-light-skin">
+                            <h3 class="widget-title"></h3>
+                            <ul>
+                                <li><a href="#">Marketing Deportivo</a></li>
+                            </ul>
+                        </section>
+                    </div>
+                    <div class="col-lg-2 col-md-3 margin-bottom-1x">
+                        <div class="text-center">
+                            <img alt="logo" src="images/logo.png" style="height: 50px;" class="margin-bottom-1x" />
+                        </div>
+                        <section class="widget widget-links widget-light-skin">
+                            <h3 class="widget-title"></h3>
+                            <ul>
+                                <li><a href="#">Complejo Deportivo</a></li>
+                            </ul>
+                        </section>
+                    </div>
+                    <div class="col-lg-2 col-md-3 margin-bottom-1x">
+                        <div class="text-center">
+                            <img alt="logo" src="images/S&A.png" style="height: 50px;" class="margin-bottom-1x" />
+                        </div>
+                        <section class="widget widget-links widget-light-skin">
+                            <h3 class="widget-title"></h3>
+                            <ul>
+                                <li><a href="#">Students & Athletics</a></li>
+                            </ul>
+                        </section>
+                    </div>
+                    <div class="col-lg-2 col-md-3 margin-bottom-1x">
+                        <div class="text-center">
+                            <img alt="logo" src="images/seatv.png" style="height: 50px;" class="margin-bottom-1x" />
+                        </div>
+                        <section class="widget widget-links widget-light-skin">
+                            <h3 class="widget-title"></h3>
+                            <ul>
+                                <li><a href="#">SEA - TV</a></li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4">
+                        <!-- Contact Info-->
+                        <section class="widget widget-light-skin">
+                            <h3 class="widget-title">Contáctanos</h3>
+                            <p class="text-white">Teléfono: +591 347 4704</p>
+                            <p class="text-white">Celular: +591 785 57777</p>
+                            <p><a class="navi-link-light" href="mailto:info@sea.com.bo">info@sea.comb.bo</a></p>
+                            <a class="social-button shape-circle sb-facebook sb-light-skin" href="https://www.facebook.com/sports.events.agency/" target="_blank"><i class="socicon-facebook"></i></a>
+                            <a class="social-button shape-circle sb-twitter sb-light-skin" href="https://twitter.com/SEA_SRL" target="_blank"><i class="socicon-twitter"></i></a>
+                            <a class="social-button shape-circle sb-instagram sb-light-skin" href="https://www.instagram.com/sea_srl/?hl=es" target="_blank"><i class="socicon-instagram"></i></a>
+                            <a class="social-button shape-circle sb-youtube sb-light-skin" href="https://www.youtube.com/user/SportsEventsAgency" target="_blank"><i class="socicon-youtube"></i></a>
+                        </section>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <!-- Mobile App Buttons-->
+                        <section class="widget widget-light-skin">
+                            <h3 class="widget-title">Descarga Nuestra 
+                                Aplicación
+                            </h3>
+                            <a class="market-button apple-button mb-light-skin" href="#">
+                                <span class="mb-subtitle">Descargar en la </span>
+                                <span class="mb-title">App Store</span>
+                            </a>
+                            <a class="market-button google-button mb-light-skin" href="#">
+                                <span class="mb-subtitle">Descargarla en </span>
+                                <span class="mb-title">Google Play</span>
+                            </a>
+                        </section>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <!-- About Us-->
+                        <section class="widget widget-links widget-light-skin">
+                            <h3 class="widget-title">Acerca de Nosotros</h3>
+                            <ul>
+                                <li><a href="#">Inicio</a></li>
+                                <li><a href="carrito/MiPerfil.aspx">Mi Perfil</a></li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+                <h6 class="margin-top-1x">Con el Apoyo de:</h6>
+                <hr class="hr-light mt-2 margin-bottom-1x" />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="margin-bottom-1 row">
+                            <asp:Repeater runat="server" DataSourceID="odsSponsorDS" ID="repaterSponsors">
+                                <ItemTemplate>
+                                    <img class="col-6 col-lg-2 col-md-3 col-sm-6"
+                                        src="/images/sponsors/<%# Eval("ID") %>.png" alt="<%# Eval("Nombre") %>" style="margin: auto; width: 200px; object-fit: contain; height: 100px;" />
+                                </ItemTemplate>
+                            </asp:Repeater>
+                            <asp:ObjectDataSource ID="odsSponsorDS"
+                                runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="selectByModulo"
+                                TypeName="SponsorDSTableAdapters.tbl_sponsorsTableAdapter">
+                                <SelectParameters>
+                                    <asp:SessionParameter DefaultValue="" Name="modulo" SessionField="modulo" Type="String" />
+                                </SelectParameters>
+                            </asp:ObjectDataSource>
+                        </div>
+                    </div>
+                    <!-- Copyright-->
+                    <p class="footer-copyright">© Todos los derechos reservado. Desarrollado por<a href="http://www.osbolivia.com/" target="_blank"> &nbsp;OsBolivia</a></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
                 </div>
             </div>
         </div>
-        <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
-        <script src="scripts/jquery-1.9.1.min.js"></script>
-        <script src="scripts/jquery.backtotop.js"></script>
-        <script src="scripts/jquery.mobilemenu.js"></script>
-        <script src="scripts/smoothScroll.js"></script>
-        <script src="scripts/wow.min.js"></script>
-        <script src="styles/slick/slick.js"></script>
-        <script src="scripts/jquery.yottie.bundled.js"></script>
-        <script src="scripts/js.js"></script>
-        <script type="text/javascript">
-            new WOW().init();
-        </script>
-    </form>
+    </div>
+    <a class="scroll-to-top-btn" href="#"><i class="icon-arrow-up"></i></a>
+    <div class="site-backdrop"></div>
 </body>
 <script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];

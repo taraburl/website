@@ -4520,7 +4520,7 @@ a.list-group-item {
             padding: 10px 22px 14px;
             border-top-left-radius: 7px;
             border-top-right-radius: 7px;
-            background-color: #606975;
+            background-color: #081A28;
         }
 
         .hero-slider > .owl-carousel .owl-prev, .hero-slider > .owl-carousel .owl-next {
@@ -7779,3 +7779,62 @@ video {
     border: hidden !important;
 }
 
+.sponsors-title {
+    background-color: #48AEC5 !important;
+}
+
+.container-index {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+#yottie_1 .yottie-widget-nav {
+    background-color: rgba(255, 255, 255,0) !important;
+}
+
+.yottie-widget-feed-section-search-form-input {
+    color: white !important;
+    border: 1px solid white !important;
+}
+
+#yottie_1 .yottie-widget-nav-list-item.yottie-active:hover::after, #yottie_1 .yottie-widget-nav-list-item.yottie-active::after {
+    background: #081A28 !important;
+}
+
+#yottie_1 .yottie-widget-header {
+    background: rgba(255,255,255,0) !important;
+}
+
+#yottie_1 .yottie-widget-video {
+    background-color: rgba(8,26,40,0.5) !important;
+}
+
+#yottie_1 .yottie-widget-video-info-passed-time, #yottie_1 .yottie-widget-video-info-caption, #yottie_1 .yottie-widget-video-info-properties-item {
+    color: white !important;
+}
+
+span.yottie-widget-feed-section-pagination-bullet:hover, #yottie_1 .yottie-widget-feed-section-arrow:hover span::before, #yottie_1 .yottie-widget-feed-section-arrow:hover span::after, #yottie_1 .yottie-widget-feed-section-arrow:hover::before, span.yottie-widget-feed-section-pagination-bullet-more:hover::after, span.yottie-widget-feed-section-pagination-bullet-more:hover::before {
+    color: #081A28 !important;
+}
+
+span.yottie-widget-video-preview-play, #yottie_1 .yottie-widget-video-preview-play {
+    border-color: transparent transparent transparent rgba(72,174,197,.5) !important;
+}
+
+#yottie_1 .yottie-widget-video:hover .yottie-widget-video-preview-play {
+    border-color: transparent transparent transparent rgba(72,174,197,.8) !important;
+}
+
+.hero-slider::after {
+    color: inherit;
+    background-color: rgba(39,39,39,.65);
+}
+
+
+.pswp__share--download{
+    display: none !important;
+}
+
+.pswp__img{
+    object-fit: contain !important;
+}

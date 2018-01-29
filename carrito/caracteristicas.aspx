@@ -41,7 +41,7 @@
                         <h2 class="padding-top-1x text-normal"><%# Eval("Nombre") %></h2>
                         <span class="h2 d-block">Bs. <%# Eval("PrecioVenta") %></span>
                         <p class="text-white"><%# Eval("Descripcion") %></p>
-                        <div class="row margin-top-1x">
+                        <%--<div class="row margin-top-1x">
                             <div class="col-sm-3">
                                 <div class="form-group">
                                     <label for="quantity">Cantidad:</label>
@@ -54,7 +54,7 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                        </div>--%>
                         <div class="padding-bottom-1x mb-2 ">
                             <span class="text-medium">Talla/Tamaño:&nbsp;</span> <%# Eval("medida") %>
                         </div>

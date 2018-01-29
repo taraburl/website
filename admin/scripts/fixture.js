@@ -4,7 +4,7 @@
     }
     $(".select2").select2();
     $('#hora').datetimepicker({
-        format: 'hh:mm:ss'
+        format: 'HH:mm:ss'
     });
     $('#fecha').datetimepicker({
         format: 'DD/MM/YYYY'

@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+    $("#CartIcons").hide();
     if (!sessionStorage.getItem("idUsuario")) {
         return window.location.href = "/Login.aspx";
     }

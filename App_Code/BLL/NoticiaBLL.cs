@@ -22,6 +22,18 @@ public class NoticiaBLL
         }
         return listNoticia;
     }
+    public static List<Noticia> SelectTop5()
+    {
+        NoticiaDSTableAdapters.tbl_noticiasTableAdapter adapter =
+            new NoticiaDSTableAdapters.tbl_noticiasTableAdapter();
+        NoticiaDS.tbl_noticiasDataTable table = adapter.selectTop5();
+        List<Noticia> listNoticia = new List<Noticia>();
+        foreach (NoticiaDS.tbl_noticiasRow row in table)
+        {
+            listNoticia.Add(RowToDto(row));
+        }
+        return listNoticia;
+    }
     public static List<Noticia> SelectByEvento(string id)
     {
         NoticiaDSTableAdapters.tbl_noticiasTableAdapter adapter =

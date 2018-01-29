@@ -21,6 +21,18 @@ public class FixtureNoticiaBLL
         }
         return listNoticia;
     }
+    public static List<FixtureNoticias> SelectNoComentarios()
+    {
+        FixtureNoticiaDSTableAdapters.tbl_fixtureNoticiaTableAdapter adapter =
+             new FixtureNoticiaDSTableAdapters.tbl_fixtureNoticiaTableAdapter();
+        FixtureNoticiaDS.tbl_fixtureNoticiaDataTable table = adapter.SelectNoEliminados();
+        List<FixtureNoticias> listNoticia = new List<FixtureNoticias>();
+        foreach (FixtureNoticiaDS.tbl_fixtureNoticiaRow row in table)
+        {
+            listNoticia.Add(RowToDto(row));
+        }
+        return listNoticia;
+    }
     public static List<FixtureNoticias> SelectByEvento(string idEvento)
     {
         FixtureNoticiaDSTableAdapters.tbl_fixtureNoticiaTableAdapter adapter =

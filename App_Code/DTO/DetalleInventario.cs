@@ -14,5 +14,12 @@ public class DetalleInventario
     public int IdProducto { get; set; }
     public int IdInventario { get; set; }
     public int Cantidad { get; set; }
+    public Producto Producto
+    {
+        get
+        {
+            return ProductoBLL.SelectById(IdProducto);
+        }
+    }
 
 }

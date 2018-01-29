@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <!-- Page Title-->
-    <div class="page-title estadisticas-title">
+    <div class="page-title estadisticas-title navbar-sticky">
         <div class="equipos-score container">
             <div class="row">
                 <asp:Repeater runat="server" ID="repeaterEquiposVersus" DataSourceID="odsDatosPartido">
@@ -157,6 +157,49 @@
                 </asp:ObjectDataSource>
             </div>
             <div class="col-xl-6 col-lg-6 order-lg-2">
+                <h6 class="text-normal text-bold text-uppercase">Datos Oficiales</h6>
+                <hr class="padding-top-1x" />
+                <nav class="list-group">
+                    <asp:Repeater runat="server" ID="repeater1" DataSourceID="odsGol">
+                        <ItemTemplate>
+                            <a class="list-group-item" href="#">
+                                <img src="../images/gol.png" alt="gol" style="width: 20px !important; height: 20px !important; object-fit: contain;"/>
+                                <span><%# Eval("Jugador.Nombre") %></span>   <%# Eval("Descripcion") %></a>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                    <asp:ObjectDataSource runat="server" ID="odsGol" SelectMethod="SelectByTipo" TypeName="FixtureNoticiaBLL" OldValuesParameterFormatString="original_{0}">
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="Gol" Name="tipo" Type="String"></asp:Parameter>
+                            <asp:QueryStringParameter QueryStringField="ID" DefaultValue="" Name="idFixture" Type="String"></asp:QueryStringParameter>
+                        </SelectParameters>
+                    </asp:ObjectDataSource>
+                    <asp:Repeater runat="server" ID="repeater2" DataSourceID="odsRojas">
+                        <ItemTemplate>
+                            <a class="list-group-item" href="#">
+                                <img src="../images/roja.png" alt="gol" style="width: 20px !important; height: 20px !important; object-fit: contain;"/>
+                                <span><%# Eval("Jugador.Nombre") %></span>  <%# Eval("Descripcion") %></a>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                    <asp:ObjectDataSource runat="server" ID="odsRojas" SelectMethod="SelectByTipo" TypeName="FixtureNoticiaBLL" OldValuesParameterFormatString="original_{0}">
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="Tarjeta Roja" Name="tipo" Type="String"></asp:Parameter>
+                            <asp:QueryStringParameter QueryStringField="ID" DefaultValue="" Name="idFixture" Type="String"></asp:QueryStringParameter>
+                        </SelectParameters>
+                    </asp:ObjectDataSource>
+                    <asp:Repeater runat="server" ID="repeater3" DataSourceID="odsAmarilla">
+                        <ItemTemplate>
+                            <a class="list-group-item" href="#">
+                                <img src="../images/amarilla.png" alt="gol" style="width: 20px !important; height: 20px !important; object-fit: contain;"/>
+                                <span><%# Eval("Jugador.Nombre") %></span>   <%# Eval("Descripcion") %></a>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                    <asp:ObjectDataSource runat="server" ID="odsAmarilla" SelectMethod="SelectByTipo" TypeName="FixtureNoticiaBLL" OldValuesParameterFormatString="original_{0}">
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="Tarjeta Amarilla" Name="tipo" Type="String"></asp:Parameter>
+                            <asp:QueryStringParameter QueryStringField="ID" DefaultValue="" Name="idFixture" Type="String"></asp:QueryStringParameter>
+                        </SelectParameters>
+                    </asp:ObjectDataSource>
+                </nav>
                 <h6 class="text-normal text-bold text-uppercase">En Vivo</h6>
                 <hr class="padding-top-1x" />
                 <div class="embed-responsive embed-responsive-16by9">
@@ -183,59 +226,34 @@
                 <h6 class="text-normal text-bold text-uppercase">Tabla de Posiciones</h6>
                 <hr class="margin-bottom-1x" />
                 <div class="card card-std table-responsive">
-                    <%--<table class="table">
-                        <thead class="thead-inverse">
-                            <tr>
-                                <th>Pos.</th>
-                                <th>Equipo</th>
-                                <th>PJ</th>
-                                <th>Dif.</th>
-                                <th>Pts</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <th>Equipo1</th>
-                                <th>5</th>
-                                <th>10</th>
-                                <th>15</th>
-                            </tr>
-                        </tbody>
-                    </table>--%>
                     <asp:GridView
                         runat="server"
                         ID="gvPosiciones"
                         AutoGenerateColumns="False"
-                        DataKeyNames="id"
+                        DataKeyNames="IdEquipo"
                         DataSourceID="odsTablaPosiciones"
                         CssClass="table">
                         <Columns>
-                            <asp:BoundField DataField="id" HeaderText="Pos." SortExpression="id"></asp:BoundField>
                             <asp:TemplateField HeaderText="Equipo">
                                 <ItemTemplate>
-                                    <img src="../images/equipos/<%# Eval("idEquipo") %>.png" alt="logo evento" class="d-block w-150 mx-auto mb-2 logo-tabla-equipo" />
+                                    <%# Eval("Equipo.Nombre") %>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="idRival" HeaderText="P.J." SortExpression="idRival"></asp:BoundField>
+                            <asp:BoundField DataField="IdRival" HeaderText="P.J." SortExpression="IdRival"></asp:BoundField>
                             <asp:TemplateField HeaderText="Dif.">
                                 <ItemTemplate>
-                                    <%# Convert.ToInt32(Eval("idCancha")) - Convert.ToInt32(Eval("idGrupo")) %>
+                                    <%# Convert.ToInt32(Eval("IdCancha")) - Convert.ToInt32(Eval("IdGrupo")) %>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="eliminado" HeaderText="Pts." SortExpression="eliminado"></asp:BoundField>
+                            <asp:BoundField DataField="Eliminado" HeaderText="Pts." SortExpression="Eliminado"></asp:BoundField>
                         </Columns>
                         <HeaderStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
                     </asp:GridView>
-                    <asp:ObjectDataSource runat="server" ID="odsTablaPosiciones" OldValuesParameterFormatString="original_{0}" SelectMethod="SelectPosiciones" TypeName="FixtureDSTableAdapters.tbl_fixtureTableAdapter">
+                    <asp:ObjectDataSource runat="server" ID="odsTablaPosiciones" OldValuesParameterFormatString="original_{0}" SelectMethod="SelectPosiciones" TypeName="FixtureBLL">
                         <SelectParameters>
-                            <asp:SessionParameter SessionField="evento" Name="idEvento" Type="Int32"></asp:SessionParameter>
-
+                            <asp:SessionParameter SessionField="evento" Name="idEvento" Type="String"></asp:SessionParameter>
                         </SelectParameters>
                     </asp:ObjectDataSource>
-                    <%-- <div class="card-footer text-center">
-                        <a class="btn btn-primary" href="#">Ver Tabla</a>
-                    </div>--%>
                 </div>
                 <h6 class="text-normal text-bold text-uppercase margin-top-1x">Imagenes de Nuestro Evento</h6>
                 <hr class="margin-bottom-1x" />

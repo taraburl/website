@@ -1,7 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/carrito/Carrito.master" AutoEventWireup="true" CodeFile="noticias.aspx.cs" Inherits="carrito_noticias" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/carrito/Carrito.master" AutoEventWireup="true" CodeFile="listanoticias.aspx.cs" Inherits="evento_listanoticias" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <title>SEA - Noticias</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="page-title">
@@ -24,7 +23,7 @@
             <!-- Blog Posts-->
             <div class="col-xl-9 col-lg-8">
                 <!-- Post-->
-                <asp:Repeater runat="server" ID="RepeaterNoticias" DataSourceID="ObjectDataSource1">
+                <asp:repeater runat="server" id="RepeaterNoticias" datasourceid="odsNoticias">
                     <ItemTemplate>
                         <article class="row">
                             <div class="col-md-3">
@@ -44,12 +43,9 @@
                             </div>
                         </article>
                     </ItemTemplate>
-                </asp:Repeater>
-                <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="SelectByEvento" TypeName="NoticiaBLL">
-                    <SelectParameters>
-                        <asp:QueryStringParameter Name="id" QueryStringField="ID" Type="String" />
-                    </SelectParameters>
-                </asp:ObjectDataSource>
+                </asp:repeater>
+                <asp:objectdatasource id="odsNoticias" runat="server" selectmethod="SelectAll" typename="NoticiaBLL">
+                </asp:objectdatasource>
             </div>
             <div class="col-xl-3 col-lg-4">
                 <aside class="sidebar">
@@ -58,18 +54,17 @@
                         <h3 class="widget-title">Eventos</h3>
                         <ul>
                             <li><a href="listanoticias.aspx">Ver todos </a></li>
-                            <asp:Repeater runat="server" ID="repeaterEventos" DataSourceID="odsEventos">
+                            <asp:repeater runat="server" id="repeaterEventos" datasourceid="odsEventos">
                                 <ItemTemplate>
                                     <li><a href="noticias.aspx?ID=<%# Eval("IdEvento") %>"><%# Eval("Nombre")%></a></li>
                                 </ItemTemplate>
-                            </asp:Repeater>
+                            </asp:repeater>
                         </ul>
-                        <asp:ObjectDataSource ID="odsEventos" runat="server" SelectMethod="SelectAll" TypeName="EventoBLL"></asp:ObjectDataSource>
+                        <asp:objectdatasource id="odsEventos" runat="server" selectmethod="SelectAll" typename="EventoBLL"></asp:objectdatasource>
                     </section>
                 </aside>
             </div>
         </div>
     </div>
-    <script src="../carrito/js/evento.js"></script>
 </asp:Content>
 

@@ -135,8 +135,8 @@ function guardarNoticia() {
                     '<td>' + objNoticia.Titulo + '</td>' +
                     '<td>' + objNoticia.Evento.Nombre + '</td>' +
                     '<td>' + objNoticia.FechaForDisplay + '</td>' +
-                    '<td><a class="btn btn-block btn-info  btn-circle actualizarFilaNoticia' + objNoticia.IdNoticia + '" href="javascript:actualizarEvento(' + objNoticia.IdNoticia + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger  btn-circle eliminarFilaNoticia' + objNoticia.IdNoticia + '" href="javascript:eliminarEvento(' + objNoticia.IdNoticia + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-info  btn-circle actualizarFilaNoticia' + objNoticia.IdNoticia + '" href="javascript:actualizarNoticia(' + objNoticia.IdNoticia + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger  btn-circle eliminarFilaNoticia' + objNoticia.IdNoticia + '" href="javascript:eliminarNoticia(' + objNoticia.IdNoticia + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td><a class="btn btn-block btn-warning  btn-circle" href="SubirImagenNoticia.aspx?ID=' + objNoticia.IdNoticia + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>';
                 trActualizado.html(tr);
                 $('#ContentPlaceHolder1_hdnIdNoticia').val('');
@@ -169,8 +169,8 @@ function guardarNoticia() {
                     '<td>' + objNoticia.Titulo + '</td>' +
                     '<td>' + objNoticia.Evento.Nombre + '</td>' +
                     '<td>' + objNoticia.FechaForDisplay + '</td>' +
-                    '<td><a class="btn btn-block btn-info  btn-circle actualizarFilaNoticia' + objNoticia.IdNoticia + '" href="javascript:actualizarEvento(' + objNoticia.IdNoticia + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-danger  btn-circle eliminarFilaNoticia' + objNoticia.IdNoticia + '" href="javascript:eliminarEvento(' + objNoticia.IdNoticia + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-info  btn-circle actualizarFilaNoticia' + objNoticia.IdNoticia + '" href="javascript:actualizarNoticia(' + objNoticia.IdNoticia + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                    '<td><a class="btn btn-block btn-danger  btn-circle eliminarFilaNoticia' + objNoticia.IdNoticia + '" href="javascript:eliminarNoticia(' + objNoticia.IdNoticia + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td><a class="btn btn-block btn-warning  btn-circle" href="SubirImagenNoticia.aspx?ID=' + objNoticia.IdNoticia + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '</tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');

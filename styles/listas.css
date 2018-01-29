@@ -1,11 +1,4 @@
-﻿a {
-    color: white !important;
-}
-
-    a:hover {
-        color: #47AEC5 !important;
-        text-decoration: none;
-    }
+﻿
 
 .btn.inverse:hover {
     color: white !important;
@@ -40,7 +33,7 @@
     overflow: hidden;
 }
 
-    #masleidas .titulo, .partidos{
+    #masleidas .titulo, .partidos {
         border-radius: 6px;
         padding: 8px 3%;
         display: block;
@@ -55,10 +48,9 @@
     }
 
     #masleidas .window {
-        max-height: 600px !important;
-        overflow-y: scroll !important;
+        max-height: 610px !important;
+        /*overflow-y: scroll !important;*/
         padding-right: 0px !important;
-        background: white;
         margin: 0 auto;
         border-radius: 6px;
         overflow: hidden;
@@ -124,7 +116,7 @@
         -ms-opacity: .8;
     }
 
-    .masleida h2 {
+    .masleida h4 {
         position: absolute;
         left: 0;
         bottom: 0;
@@ -133,7 +125,7 @@
         max-height: 200px;
     }
 
-        .masleida h2 a {
+        .masleida h4 a {
             display: block;
             color: #fff;
             width: 100%;
@@ -142,12 +134,13 @@
             text-align: left;
             text-transform: capitalize;
             font-size: 20px;
+            text-decoration: none;
         }
 
 .ajax:hover {
     color: white !important;
 }
 
-.yottie-widget-video-info-title,  .yottie-widget-nav-list-item a{
-    color: rgb(26, 137, 222) !important;
+.yottie-widget-video-info-title, .yottie-widget-nav-list-item a {
+    color: rgb(72, 174, 197) !important;
 }

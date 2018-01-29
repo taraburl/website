@@ -22,9 +22,24 @@ public partial class admin_eventos_NoticiasFixture : System.Web.UI.Page
     public static FixtureNoticias InsertarNoticia(string idFixture, string idEquipo, string idJugador,
         string tipo, string descripcion, string fecha, string hora)
     {
-        FixtureNoticias objFixture = FixtureNoticiaBLL.InsertWithReturn(
+        FixtureNoticias objFixtureNoticia = FixtureNoticiaBLL.InsertWithReturn(
             idFixture, idEquipo, idJugador, tipo, descripcion, fecha, hora);
-        return objFixture;
+        if (tipo == "Gol")
+        {
+            Fixture objFixture = FixtureBLL.SelectById(Convert.ToInt32(idFixture));
+            if (idEquipo == objFixture.IdEquipo.ToString())
+            {
+                int gol = objFixture.ScoreEquipo + 1;
+                FixtureBLL.UpdateScoreEquipo(gol, idFixture);
+            }
+            else
+            {
+                int gol = objFixture.ScoreRival + 1;
+                FixtureBLL.UpdateScoreRival(gol, idFixture);
+            }
+        }
+        return objFixtureNoticia;
+
     }
     [WebMethod]
     public static FixtureNoticias TraerNoticia(string idNoticia)
@@ -37,8 +52,9 @@ public partial class admin_eventos_NoticiasFixture : System.Web.UI.Page
         string tipo, string descripcion, string fecha, string hora, string id)
     {
         FixtureNoticiaBLL.Update(idFixture, idEquipo, idJugador, tipo, descripcion, fecha, hora, Convert.ToInt32(id));
-        FixtureNoticias objEvento = FixtureNoticiaBLL.SelectById(Convert.ToInt32(id));
-        return objEvento;
+        FixtureNoticias objFixtureNoticia = FixtureNoticiaBLL.SelectById(Convert.ToInt32(id));
+        Fixture objFixture = FixtureBLL.SelectById(Convert.ToInt32(idFixture));
+        return objFixtureNoticia;
     }
     [WebMethod]
     public static int EliminarNoticia(string idNoticia)
@@ -46,6 +62,24 @@ public partial class admin_eventos_NoticiasFixture : System.Web.UI.Page
         try
         {
             FixtureNoticiaBLL.Delete(Convert.ToInt32(idNoticia));
+            FixtureNoticias objFixtureNoticia = FixtureNoticiaBLL.SelectById(Convert.ToInt32(idNoticia));
+            string tipo = objFixtureNoticia.Tipo;
+            if (tipo == "Gol")
+            {
+                Fixture objFixture = FixtureBLL.SelectById(objFixtureNoticia.IdFixture);
+                int scoreEquipo = 0;
+                int scoreRival = 0;
+                if (objFixture.ScoreEquipo > 0)
+                {
+                    scoreEquipo = objFixture.ScoreEquipo - 1;
+                }
+                if (objFixture.ScoreRival > 0)
+                {
+                    scoreRival = objFixture.ScoreRival - 1;
+                }
+                FixtureBLL.UpdateScoreEquipo(scoreEquipo, Convert.ToString(objFixtureNoticia.IdFixture));
+                FixtureBLL.UpdateScoreRival(scoreRival, Convert.ToString(objFixtureNoticia.IdFixture));
+            }
             return Convert.ToInt32(idNoticia);
         }
         catch (Exception)

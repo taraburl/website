@@ -4,13 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.Services;
 
-public partial class index : System.Web.UI.Page
+public partial class inicio : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         Session["modulo"] = "Inicio";
+        name.Text = "";
+        email.Text = "";
+        asunto.Text = "";
+        comment.Text = "";
     }
 
     protected void EnviarMail(object sender, EventArgs e)
@@ -19,7 +22,10 @@ public partial class index : System.Web.UI.Page
         String emailde = email.Text;
         String asuntode = asunto.Text;
         String mensajede = comment.Text;
-        new SendEmail(emailde, de, asuntode, mensajede,"luistj103@gmail.com","Luis Taraune");
+        name.Text = "";
+        email.Text = "";
+        asunto.Text = "";
+        comment.Text = "";
+        new SendEmail(emailde, de, asuntode, mensajede, "luistj103@gmail.com", "Luis Taraune");
     }
-
 }

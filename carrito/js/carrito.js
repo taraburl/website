@@ -15,21 +15,37 @@ function agregarProducto(id) {
         success: function (data) {
             var ObjProducto = data.d;
             var id = ObjProducto.IdProducto;
-            var carrito = JSON.parse(localStorage.getItem("carrito"));
-            carrito[id] = {
-                pedidoId: 0,
-                productoId: id,
-                cantidad: 1,
-                nombre: ObjProducto.Nombre,
-                precio: ObjProducto.PrecioVenta,
-                subTotal: (ObjProducto.PrecioVenta * 1)
-            };
-            var json = JSON.parse(localStorage.getItem("carrito"));
-            var obj = json[id];
-            if (typeof obj == "undefined") {
-                localStorage.setItem("carrito", JSON.stringify(carrito));
-                cargarProdcuto(id);
+            var stock = ObjProducto.Stock;
+            if (stock >= 1) {
+                var carrito = JSON.parse(localStorage.getItem("carrito"));
+                carrito[id] = {
+                    pedidoId: 0,
+                    productoId: id,
+                    cantidad: 1,
+                    nombre: ObjProducto.Nombre,
+                    precio: ObjProducto.PrecioVenta,
+                    subTotal: (ObjProducto.PrecioVenta * 1)
+                };
+                var json = JSON.parse(localStorage.getItem("carrito"));
+                var obj = json[id];
+                if (typeof obj == "undefined") {
+                    localStorage.setItem("carrito", JSON.stringify(carrito));
+                    cargarProdcuto(id);
+                }
+                iziToast.show({
+                    title: 'Bien!',
+                    message: 'Producto agregado con exito',
+                    position: 'topRight',
+                    color: 'green'
+                });
+
             } else {
+                iziToast.show({
+                    title: 'Advertencia!',
+                    message: 'No hay stock disponible',
+                    position: 'topRight',
+                    color: 'red'
+                });
 
             }
         }

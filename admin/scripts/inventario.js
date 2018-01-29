@@ -28,16 +28,16 @@ function newInventario() {
         success: function (data) {
             var objInventario = data.d;
             var tr = '<tr>' +
-                '<td><a class="btn btn-block btn-info actualizarFilaInventario' + objInventario.IdInventario + '" href="javascript:actualizarInventario(' + objInventario.IdInventario + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
-                '<td><a class="btn btn-block btn-danger eliminarFilaInventario' + objInventario.IdInventario + '" href="javascript:eliminarInventario(' + objInventario.IdInventario + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                 '<td>' + objInventario.IdInventario + '</td>' +
                 '<td>' + objInventario.Tipo + '</td>' +
                 '<td>' + objInventario.Usuario.Username + '</td>' +
                 '<td>' + objInventario.Glosa + '</td>' +
                 '<td>' + objInventario.FechaForDisplay + '</td>' +
                 '<td>' + objInventario.HoraForDisplay + '</td>' +
-                '<td>' + objInventario.EstadoForDisplay + '</td>'
-            '   </tr>';
+                '<td><span class="label label-info">Guardado</span></td>' +
+                '<td><a class="btn btn-circle btn-info actualizarFilaInventario' + objInventario.IdInventario + '" href="javascript:actualizarInventario(' + objInventario.IdInventario + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
+                '<td><a class="btn btn-circle btn-danger eliminarFilaInventario' + objInventario.IdInventario + '" href="javascript:eliminarInventario(' + objInventario.IdInventario + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                '</tr>';
             var table = $('#ContentPlaceHolder1_GridView1');
             table.find('tbody').append(tr);
             $("#Glosa").val(objInventario.Glosa);
@@ -92,13 +92,12 @@ function eliminarInventario(id) {
         success: function (data) {
             var resultado = data.d;
             if (resultado == -1) {
-                console.log("Error al eliminar");
-                alert("Hubo un error al eliminar el Inventario");
-                return;
+                return ensajeConfirmacion("Advertencia!", "Error al Eliminar el Inventario, intentelo Nuevamente", "warning");
             }
             var linkEliminar = $('.eliminarFilaInventario' + resultado);
             var trActualizado = linkEliminar.parent().parent();
             trActualizado.remove();
+            location.reload();
         }
     });
 }
@@ -156,15 +155,15 @@ function guardarInventario() {
             var linkActualizar = $('.actualizarFilaInventario' + objInventario.IdInventario);
             var trActualizado = linkActualizar.parent().parent();
             var tr =
-                '<td></td>' +
-                '<td><a class="btn btn-block btn-danger eliminarFilaInventario' + objInventario.IdInventario + '" href="javascript:eliminarInventario(' + objInventario.idInventario + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                 '<td>' + objInventario.IdInventario + '</td>' +
                 '<td>' + objInventario.Tipo + '</td>' +
                 '<td>' + objInventario.Usuario.Username + '</td>' +
                 '<td>' + objInventario.Glosa + '</td>' +
                 '<td>' + objInventario.FechaForDisplay + '</td>' +
                 '<td>' + objInventario.HoraForDisplay + '</td>' +
-                '<td>' + objInventario.EstadoForDisplay + '</td>'
+                '<td>' + objInventario.EstadoForDisplay + '</td>' +
+                '<td></td>' +
+                '<td><a class="btn btn-block btn-danger eliminarFilaInventario' + objInventario.IdInventario + '" href="javascript:eliminarInventario(' + objInventario.idInventario + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>';
             trActualizado.html(tr);
             $("#newInventario").slideUp(500, function () {
                 $("#listInventario").slideDown(500);

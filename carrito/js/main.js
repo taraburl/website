@@ -13,6 +13,13 @@
         $("#nombre-carrito-user").text(sessionStorage.getItem("fullName"));
         $(".imgPerfil").attr("src", "/images/usuarios/" + sessionStorage.getItem("idUsuario") + ".png");
     }
+    if (sessionStorage.getItem("tipouser") == "Administrador") {
+        $("#admin").show();
+        $("#admincell").show();
+    } else {
+        $("#admin").hide();
+        $("#admincell").hide();
+    }
     loadCart();
     cargarMiCarrito();
     loadCartPay();
@@ -65,6 +72,12 @@ function eliminar(id) {
     $("#detCart" + id).remove();
     localStorage.setItem("carrito", JSON.stringify(carrito));
     loadTotales();
+    iziToast.show({
+        title: 'Bien!',
+        message: 'Producto eliminado del carrito',
+        position: 'topRight',
+        color: 'green'
+    });
 }
 
 function loadTotales() {
@@ -127,6 +140,12 @@ function limpiarCarrito() {
     $("#detalle").empty();
     $("#detallePedido").empty();
     loadTotales();
+    iziToast.show({
+        title: 'Bien!',
+        message: 'Carrito vaciado correctamente',
+        position: 'topRight',
+        color: 'green'
+    });
 }
 
 function finalizar() {

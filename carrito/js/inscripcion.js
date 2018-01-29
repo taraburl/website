@@ -2,6 +2,7 @@
 var snroOrden;
 
 $(document).ready(function () {
+    $("#CartIcons").hide();
     if (!sessionStorage.getItem("idUsuario")) {
         return window.location.href = "/Login.aspx";
     }
@@ -102,7 +103,7 @@ function inscripcion() {
                     success: function () {
 
                     },
-                    error: function() {
+                    error: function () {
                         alert("Error al Enviar Mail");
                     }
                 });

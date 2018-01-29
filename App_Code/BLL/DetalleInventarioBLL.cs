@@ -8,7 +8,7 @@ public class DetalleInventarioBLL
 {
     public DetalleInventarioBLL()
     {
-        
+
     }
     public static DetalleInventario InsertWithReturn(string idProducto, string cantidad, string idInventario)
     {
@@ -19,6 +19,19 @@ public class DetalleInventarioBLL
             return null;
         }
         return RowToDto(table[0]);
+    }
+    public static List<DetalleInventario> SelectByInventario(int idInventario)
+    {
+        DetalleInventarioDSTableAdapters.tbl_detalleInventarioTableAdapter adapter =
+            new DetalleInventarioDSTableAdapters.tbl_detalleInventarioTableAdapter();
+        DetalleInventarioDS.tbl_detalleInventarioDataTable table =
+            adapter.SelectByInventario(idInventario);
+        List<DetalleInventario> listDetalleInventario = new List<DetalleInventario>();
+        foreach (DetalleInventarioDS.tbl_detalleInventarioRow row in table)
+        {
+            listDetalleInventario.Add(RowToDto(row));
+        }
+        return listDetalleInventario;
     }
     private static DetalleInventario RowToDto(DetalleInventarioDS.tbl_detalleInventarioRow row)
     {

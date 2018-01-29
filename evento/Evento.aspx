@@ -170,31 +170,34 @@
                                     runat="server"
                                     ID="gvPosiciones"
                                     AutoGenerateColumns="False"
-                                    DataKeyNames="id"
                                     DataSourceID="odsTablaPosiciones"
                                     CssClass="table text-center">
                                     <Columns>
-                                        <asp:BoundField DataField="id" HeaderText="Posicion" SortExpression="id"></asp:BoundField>
+                                        <asp:TemplateField HeaderText="Logo">
+                                            <ItemTemplate>
+                                                <img src="../images/equipos/<%# Eval("IdEquipo") %>.png" alt="logo evento" class="d-block w-150 mx-auto mb-2 logo-tabla-equipo" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Equipo">
                                             <ItemTemplate>
-                                                <img src="../images/equipos/<%# Eval("idEquipo") %>.png" alt="logo evento" class="d-block w-150 mx-auto mb-2 logo-tabla-equipo" />
+                                                <%# Eval("Equipo.Nombre") %>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:BoundField DataField="idRival" HeaderText="Partidos Jugados" SortExpression="idRival"></asp:BoundField>
-                                        <asp:BoundField DataField="idCancha" HeaderText="Goles a Favor" SortExpression="idCancha"></asp:BoundField>
-                                        <asp:BoundField DataField="idGrupo" HeaderText="Goles en Contra" SortExpression="idGrupo"></asp:BoundField>
+                                        <asp:BoundField DataField="IdRival" HeaderText="Partidos Jugados" SortExpression="IdRival"></asp:BoundField>
+                                        <asp:BoundField DataField="IdCancha" HeaderText="Goles a Favor" SortExpression="IdCancha"></asp:BoundField>
+                                        <asp:BoundField DataField="IdGrupo" HeaderText="Goles en Contra" SortExpression="IdGrupo"></asp:BoundField>
                                         <asp:TemplateField HeaderText="Diferencia">
                                             <ItemTemplate>
-                                                <%# Convert.ToInt32(Eval("idCancha")) - Convert.ToInt32(Eval("idGrupo")) %>
+                                                <%# Convert.ToInt32(Eval("IdCancha")) - Convert.ToInt32(Eval("IdGrupo")) %>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:BoundField DataField="eliminado" HeaderText="Puntos" SortExpression="eliminado"></asp:BoundField>
+                                        <asp:BoundField DataField="Eliminado" HeaderText="Puntos" SortExpression="Eliminado"></asp:BoundField>
                                     </Columns>
                                     <HeaderStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
                                 </asp:GridView>
-                                <asp:ObjectDataSource runat="server" ID="odsTablaPosiciones" OldValuesParameterFormatString="original_{0}" SelectMethod="SelectPosiciones" TypeName="FixtureDSTableAdapters.tbl_fixtureTableAdapter">
+                                <asp:ObjectDataSource runat="server" ID="odsTablaPosiciones" OldValuesParameterFormatString="original_{0}" SelectMethod="SelectPosiciones" TypeName="FixtureBLL">
                                     <SelectParameters>
-                                        <asp:QueryStringParameter QueryStringField="ID" Name="idEvento" Type="Int32"></asp:QueryStringParameter>
+                                        <asp:QueryStringParameter QueryStringField="ID" Name="idEvento" Type="String"></asp:QueryStringParameter>
                                     </SelectParameters>
                                 </asp:ObjectDataSource>
                             </div>
