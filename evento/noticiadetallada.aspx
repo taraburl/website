@@ -55,7 +55,7 @@
                                         <a class="social-button shape-circle sb-facebook"
                                             href="#" data-toggle="tooltip"
                                             data-placement="top" title="Facebook"><i class="socicon-facebook"
-                                                onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('sport.sea.com.bo/carrito/noticiadetallada.aspx?ID=<%# Eval("IdNoticia") %>'),
+                                                onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('sport.sea.com.bo/evento/noticiadetallada.aspx?ID=<%# Eval("IdNoticia") %>'),
                                             'facebook-share-dialog','width=626,height=436'); return false;"></i></a>
                                         <a class="social-button shape-circle sb-twitter"
                                             href="https://twitter.com/share"

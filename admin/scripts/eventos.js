@@ -23,12 +23,6 @@ jQuery('#ContentPlaceHolder1_uploader').on('change', function (e) {
     Lector.readAsDataURL(oFileInput.files[0]);
 });
 
-function cancelEvento() {
-    $("#newEvento").slideUp(500, function () {
-        $("#listEvento").slideDown(500);
-    });
-}
-
 function newEvento() {
     $(".input-group").removeClass('has-error');
     $('#input-group').val('');
@@ -94,8 +88,8 @@ function actualizarEvento(id) {
             $('#Nombre').val(ObjEvento.Nombre);
             $('#Categoria').val(ObjEvento.Categoria);
             $('#Descripcion').val(ObjEvento.Descripcion);
-            $('#FechaInicio input').val(ObjEvento.FechaInicioForDisplay);
-            $('#FechaFin input').val(ObjEvento.FechaFinForDisplay);
+            $('#FechaInicio input').val(fechaCorrecta(ObjEvento.FechaInicioForDisplay));
+            $('#FechaFin input').val(fechaCorrecta(ObjEvento.FechaFinForDisplay));
             $('#CantEquipos').val(ObjEvento.CantidadEquipos);
             $('#CantGrupos').val(ObjEvento.CantidadGrupos);
             $('#Maximos').val(ObjEvento.CantidadJugadoresPorEquipo);
@@ -140,8 +134,8 @@ function guardarEvento() {
     } else {
         $("#Maximos").parent().removeClass('has-error');
     }
-    var fechaInicio = new Date($('#FechaInicio input').val());
-    var fechaFin = new Date($('#FechaFin input').val());
+    var fechaInicio = new Date(fechaCorrecta($('#FechaInicio input').val()));
+    var fechaFin = new Date(fechaCorrecta$('#FechaFin input').val()));
     if (fechaInicio >= fechaFin) {
         $("#FechaFin input").parent().addClass("has-error");
         $("#FechaInicio input").parent().addClass("has-error");
@@ -153,8 +147,8 @@ function guardarEvento() {
             nombre: $('#Nombre').val(),
             categoria: $('#Categoria').val(),
             descripcion: $('#Descripcion').val(),
-            fechaInicio: $('#FechaInicio input').val(),
-            fechaFin: $('#FechaFin input').val(),
+            fechaInicio: fechaCorrecta($('#FechaInicio input').val()),
+            fechaFin: fechaCorrecta($('#FechaFin input').val()),
             cantidadEquipos: $('#CantEquipos').val(),
             cantidadGrupos: $('#CantGrupos').val(),
             jugadoresPorEquipo: $('#Maximos').val(),
@@ -173,8 +167,8 @@ function guardarEvento() {
                 var tr =
                     '<td>' + objEvento.Nombre + '</td>' +
                     '<td>' + objEvento.Categoria + '</td>' +
-                    '<td>' + objEvento.FechaInicioForDisplay + '</td>' +
-                    '<td>' + objEvento.FechaFinForDisplay + '</td>' +
+                    '<td>' + fechaCorrecta(objEvento.FechaInicioForDisplay) + '</td>' +
+                    '<td>' + fechaCorrecta(objEvento.FechaFinForDisplay) + '</td>' +
                     '<td>' + objEvento.CantidadGrupos + '</td>' +
                     '<td>' + objEvento.CantidadEquipos + '</td>' +
                     '<td>' + objEvento.CantidadJugadoresPorEquipo + '</td>' +
@@ -198,8 +192,8 @@ function guardarEvento() {
             nombre: $('#Nombre').val(),
             categoria: $('#Categoria').val(),
             descripcion: $('#Descripcion').val(),
-            fechaInicio: $('#FechaInicio input').val(),
-            fechaFin: $('#FechaFin input').val(),
+            fechaInicio: fechaCorrecta($('#FechaInicio input').val()),
+            fechaFin: fechaCorrecta($('#FechaFin input').val()),
             cantidadEquipos: $('#CantEquipos').val(),
             cantidadGrupos: $('#CantGrupos').val(),
             jugadoresPorEquipo: $('#Maximos').val()
@@ -215,8 +209,8 @@ function guardarEvento() {
                 var tr = '<tr>' +
                     '<td>' + objEvento.Nombre + '</td>' +
                     '<td>' + objEvento.Categoria + '</td>' +
-                    '<td>' + objEvento.FechaInicioForDisplay + '</td>' +
-                    '<td>' + objEvento.FechaFinForDisplay + '</td>' +
+                    '<td>' + fechaCorrecta(objEvento.FechaInicioForDisplay) + '</td>' +
+                    '<td>' + fechaCorrecta(objEvento.FechaFinForDisplay) + '</td>' +
                     '<td>' + objEvento.CantidadGrupos + '</td>' +
                     '<td>' + objEvento.CantidadEquipos + '</td>' +
                     '<td>' + objEvento.CantidadJugadoresPorEquipo + '</td>' +
@@ -232,7 +226,7 @@ function guardarEvento() {
                 });
             },
             error: function () {
-                $(".input-group").parent().addClass("has-error"); k
+                $(".input-group").parent().addClass("has-error");
             }
         });
     }

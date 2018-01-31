@@ -85,7 +85,7 @@ function actualizarNoticia(id) {
                 $("#newNoticia").slideDown(500);
             });
             $('#Titulo').val(ObjEvento.Titulo);
-            $('#Fecha input').val(ObjEvento.FechaForDisplay);
+            $('#Fecha input').val(fechaCorrecta(ObjEvento.FechaForDisplay));
             $('#Descripcion').val(ObjEvento.Descripcion);
             $('#ContentPlaceHolder1_IdEvento').val(ObjEvento.IdEvento).trigger('change');
             $('#ContentPlaceHolder1_hdnIdNoticia').val(ObjEvento.IdNoticia);
@@ -117,7 +117,7 @@ function guardarNoticia() {
         var parametros = {
             titulo: $('#Titulo').val(),
             descripcion: $('#Descripcion').val(),
-            fecha: $('#Fecha input').val(),
+            fecha: fechaCorrecta($('#Fecha input').val()),
             id: $('#ContentPlaceHolder1_hdnIdNoticia').val(),
             idEvento: $('#ContentPlaceHolder1_IdEvento').val()
         };
@@ -134,7 +134,7 @@ function guardarNoticia() {
                 var tr =
                     '<td>' + objNoticia.Titulo + '</td>' +
                     '<td>' + objNoticia.Evento.Nombre + '</td>' +
-                    '<td>' + objNoticia.FechaForDisplay + '</td>' +
+                    '<td>' + fechaCorrecta(objNoticia.FechaForDisplay) + '</td>' +
                     '<td><a class="btn btn-block btn-info  btn-circle actualizarFilaNoticia' + objNoticia.IdNoticia + '" href="javascript:actualizarNoticia(' + objNoticia.IdNoticia + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
                     '<td><a class="btn btn-block btn-danger  btn-circle eliminarFilaNoticia' + objNoticia.IdNoticia + '" href="javascript:eliminarNoticia(' + objNoticia.IdNoticia + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td><a class="btn btn-block btn-warning  btn-circle" href="SubirImagenNoticia.aspx?ID=' + objNoticia.IdNoticia + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>';
@@ -154,7 +154,7 @@ function guardarNoticia() {
         var parametros = {
             titulo: $('#Titulo').val(),
             descripcion: $('#Descripcion').val(),
-            fecha: $('#Fecha input').val(),
+            fecha: fechaCorrecta($('#Fecha input').val()),
             idEvento: $('#ContentPlaceHolder1_IdEvento').val()
         };
         $.ajax({
@@ -168,7 +168,7 @@ function guardarNoticia() {
                 var tr = '<tr>' +
                     '<td>' + objNoticia.Titulo + '</td>' +
                     '<td>' + objNoticia.Evento.Nombre + '</td>' +
-                    '<td>' + objNoticia.FechaForDisplay + '</td>' +
+                    '<td>' + fechaCorrecta(objNoticia.FechaForDisplay) + '</td>' +
                     '<td><a class="btn btn-block btn-info  btn-circle actualizarFilaNoticia' + objNoticia.IdNoticia + '" href="javascript:actualizarNoticia(' + objNoticia.IdNoticia + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
                     '<td><a class="btn btn-block btn-danger  btn-circle eliminarFilaNoticia' + objNoticia.IdNoticia + '" href="javascript:eliminarNoticia(' + objNoticia.IdNoticia + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
                     '<td><a class="btn btn-block btn-warning  btn-circle" href="SubirImagenNoticia.aspx?ID=' + objNoticia.IdNoticia + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>' +

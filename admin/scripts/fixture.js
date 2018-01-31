@@ -84,7 +84,7 @@ function nuevoEquipo() {
             idEquipo: $("#ContentPlaceHolder1_EquipoRival1").val(),
             idRival: $("#ContentPlaceHolder1_EquipoRival2").val(),
             idCancha: $("#ContentPlaceHolder1_Cancha").val(),
-            fecha: $("#fecha input").val(),
+            fecha: fechaCorrecta($("#fecha input").val()),
             hora: $("#hora input").val(),
             idGrupo: $("#ContentPlaceHolder1_SelectGrupo").val(),
             estado: $("#ContentPlaceHolder1_Estado").val(),
@@ -108,7 +108,7 @@ function nuevoEquipo() {
                      '<td>' + objJugadorEquipo.Equipo.Nombre + '</td>' +
                      '<td>' + objJugadorEquipo.Rival.Nombre + '</td>' +
                      '<td>' + objJugadorEquipo.Cancha.Nombre + '</td>' +
-                     '<td>' + objJugadorEquipo.FechaForDisplay + '</td>' +
+                     '<td>' + fechaCorrecta(objJugadorEquipo.FechaForDisplay) + '</td>' +
                      '<td>' + objJugadorEquipo.HoraForDisplay + '</td>' +
                      '<td>' + estado + '</td>' +
                      '<td>' + objJugadorEquipo.ScoreEquipo + '</td>' +
@@ -131,7 +131,7 @@ function nuevoEquipo() {
             idEquipo: $("#ContentPlaceHolder1_EquipoRival1").val(),
             idRival: $("#ContentPlaceHolder1_EquipoRival2").val(),
             idCancha: $("#ContentPlaceHolder1_Cancha").val(),
-            fecha: $("#fecha input").val(),
+            fecha: fechaCorrecta($("#fecha input").val()),
             hora: $("#hora input").val(),
             idGrupo: $("#ContentPlaceHolder1_SelectGrupo").val(),
             estado: $("#ContentPlaceHolder1_Estado").val(),
@@ -152,7 +152,7 @@ function nuevoEquipo() {
                      '<td>' + objJugadorEquipo.Equipo.Nombre + '</td>' +
                      '<td>' + objJugadorEquipo.Rival.Nombre + '</td>' +
                      '<td>' + objJugadorEquipo.Cancha.Nombre + '</td>' +
-                     '<td>' + objJugadorEquipo.FechaForDisplay + '</td>' +
+                     '<td>' + fechaCorrecta(objJugadorEquipo.FechaForDisplay) + '</td>' +
                      '<td>' + objJugadorEquipo.HoraForDisplay + '</td>' +
                      '<td>' + estado + '</td>' +
                      '<td>' + objJugadorEquipo.ScoreEquipo + '</td>' +
@@ -191,7 +191,7 @@ function cargarPartidos(id) {
                      '<td>' + objJugadorEquipo.Equipo.Nombre + '</td>' +
                      '<td>' + objJugadorEquipo.Rival.Nombre + '</td>' +
                      '<td>' + objJugadorEquipo.Cancha.Nombre + '</td>' +
-                     '<td>' + objJugadorEquipo.FechaForDisplay + '</td>' +
+                     '<td>' + fechaCorrecta(objJugadorEquipo.FechaForDisplay) + '</td>' +
                      '<td>' + objJugadorEquipo.HoraForDisplay + '</td>' +
                      '<td>' + estado + '</td>' +
                      '<td>' + objJugadorEquipo.ScoreEquipo + '</td>' +
@@ -261,7 +261,7 @@ function actualizarPartido(id) {
             $("#ContentPlaceHolder1_EquipoRival1").val(objFixture.IdEquipo).trigger('change');
             $('#ContentPlaceHolder1_EquipoRival2').val(objFixture.IdRival).trigger('change');
             $("#ContentPlaceHolder1_Cancha").val(objFixture.idCancha).trigger('change');
-            $("#fecha input").val(objFixture.FechaForDisplay);
+            $("#fecha input").val(fechaCorrecta(objFixture.FechaForDisplay));
             $("#hora input").val(objFixture.HoraForDisplay);
             $("#ContentPlaceHolder1_Estado").val(objFixture.Estado).trigger('change');
             $("#ScoreEquipo").val(objFixture.ScoreEquipo);

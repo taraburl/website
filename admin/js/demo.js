@@ -485,3 +485,7 @@ function ConsultarEstadoPago() {
 }
 
 
+function fechaCorrecta(fecha) {
+    var date = fecha.split("/");
+    return date[1] + "/" + date[0] + "/" + date[2];
+}
