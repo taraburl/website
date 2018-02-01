@@ -14,7 +14,7 @@
             </a>
         </div>
         <div class="box-body table-responsive">
-            <asp:GridView ID="GridView1" runat="server" DataSourceID="SponsorsDS"
+            <asp:GridView ID="GridView1" runat="server" DataSourceID="SponsorsDS"  ShowHeaderWhenEmpty="true"
                 AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id"
                 CssClass="table text-center table-striped table-bordered table-hover table-sm " CellPadding="4" ForeColor="#333333" GridLines="None" AllowCustomPaging="True" AllowPaging="True">
                 <Columns>

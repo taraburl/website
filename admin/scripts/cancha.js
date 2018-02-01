@@ -5,6 +5,9 @@
 });
 
 function cancelCancha() {
+    $('#Nombre').val('');
+    $('#Descripcion').val('');
+    $('#ContentPlaceHolder1_hdnIdCancha').val('');
     $("#newCancha").slideUp(500, function () {
         $("#listCancha").slideDown(500);
     });
@@ -16,6 +19,9 @@ function newCancha() {
     $('#ContentPlaceHolder1_hdnIdCancha').val('');
     $("#new").show();
     $("#upd").hide();
+    $('#Nombre').val('');
+    $('#Descripcion').val('');
+    $('#ContentPlaceHolder1_hdnIdCancha').val('');
     $("#listCancha").slideUp(500, function () {
         $("#newCancha").slideDown(500);
     });
@@ -105,6 +111,9 @@ function guardarCancha() {
                 $("#newCancha").slideUp(500, function () {
                     $("#listCancha").slideDown(500);
                 });
+                $('#Nombre').val('');
+                $('#Descripcion').val('');
+                $('#ContentPlaceHolder1_hdnIdCancha').val('');
             },
             error: function () {
                 $("#Nombre").parent().addClass("has-error");
@@ -137,6 +146,9 @@ function guardarCancha() {
                 $("#newCancha").slideUp(500, function () {
                     $("#listCancha").slideDown(500);
                 });
+                $('#Nombre').val('');
+                $('#Descripcion').val('');
+                $('#ContentPlaceHolder1_hdnIdCancha').val('');
             },
             error: function () {
                 $("#Nombre").parent().addClass("has-error");

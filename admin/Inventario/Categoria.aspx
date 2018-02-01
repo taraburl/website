@@ -17,7 +17,7 @@
             <asp:GridView runat="server" ID="GridView1"
                 CssClass="table text-center table-striped table-bordered table-hover table-sm "
                 AutoGenerateColumns="False" DataKeyNames="id"
-                DataSourceID="ObjectDataSource1">
+                DataSourceID="ObjectDataSource1"  ShowHeaderWhenEmpty="true">
                 <Columns>
                     <asp:BoundField DataField="nombre" HeaderText="Nombre" SortExpression="nombre" />
                     <asp:TemplateField HeaderText="Actualizar">

@@ -21,6 +21,18 @@ public class GrupoEquipoBLL
         }
         return listGrupoEquipoCL;
     }
+    public static GrupoEquipoCL SelectCantidadActual(int idGrupo)
+    {
+        GrupoEquipoTableAdapters.tbl_grupoEquipoTableAdapter adapter =
+             new GrupoEquipoTableAdapters.tbl_grupoEquipoTableAdapter();
+        GrupoEquipo.tbl_grupoEquipoDataTable table = adapter.SelectCantidadActual(Convert.ToInt32(idGrupo));
+        List<GrupoEquipoCL> listGrupoEquipoCL = new List<GrupoEquipoCL>();
+        if (table.Rows.Count == 0)
+        {
+            return null;
+        }
+        return RowToDto(table[0]);
+    }
     public static List<GrupoEquipoCL> SelectByEvento(int id)
     {
         GrupoEquipoTableAdapters.tbl_grupoEquipoTableAdapter adapter =

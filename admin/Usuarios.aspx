@@ -17,7 +17,7 @@
                 AllowSorting="True"
                 AutoGenerateColumns="False"
                 DataKeyNames="id"
-                DataSourceID="odsUsuarios"
+                DataSourceID="odsUsuarios"  ShowHeaderWhenEmpty="true"
                 CssClass="table table-striped table-bordered table-hover table-sm "
                 CellPadding="4" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" />
@@ -132,8 +132,8 @@
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-file-text"></i></span>
                     <asp:DropDownList runat="server" ID="TipoUser" CssClass="form-control">
-                        <asp:ListItem Text="Administrador" Value="1" />
-                        <asp:ListItem Text="Usuario Normal" Value="0" />
+                        <asp:ListItem Text="Administrador" Value="Administrador" />
+                        <asp:ListItem Text="Usuario Normal" Value="Usuario Normal" />
                     </asp:DropDownList>
                 </div>
             </div>

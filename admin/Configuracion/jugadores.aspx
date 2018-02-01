@@ -22,7 +22,7 @@
                 AutoGenerateColumns="False"
                 DataKeyNames="IdJugador"
                 CssClass="table table-striped table-bordered table-hover table-sm "
-                CellPadding="4" ForeColor="#333333" GridLines="None">
+                CellPadding="4" ForeColor="#333333" GridLines="None"  ShowHeaderWhenEmpty="true">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />

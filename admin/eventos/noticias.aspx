@@ -16,7 +16,7 @@
         <div class="box-body table-responsive">
             <asp:GridView ID="GridView1" runat="server"
                 CssClass="table text-center table-striped table-bordered table-hover table-sm"
-                AutoGenerateColumns="False" DataSourceID="ObjectDataSource1">
+                AutoGenerateColumns="False" DataSourceID="ObjectDataSource1"  ShowHeaderWhenEmpty="true">
                 <Columns>
                     <asp:BoundField DataField="Titulo" HeaderText="Titulo" SortExpression="Titulo" />
                     <asp:BoundField DataField="Evento.Nombre" HeaderText="Evento" SortExpression="Evento.Nombre" />

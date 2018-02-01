@@ -86,6 +86,7 @@ public partial class admin_eventos_grupo : System.Web.UI.Page
     }
 
     [WebMethod]
+    #region GrupoEquipo
     public static List<GrupoEquipoCL> TraerEquiposGrupo(int idGrupo)
     {
         List<GrupoEquipoCL> objEquipo = GrupoEquipoBLL.SelectByGrupo(idGrupo);
@@ -94,8 +95,22 @@ public partial class admin_eventos_grupo : System.Web.UI.Page
     [WebMethod]
     public static GrupoEquipoCL InsertarGrupoEquipo(string idGrupo, string idEquipo)
     {
-        GrupoEquipoCL objGrupoEquipo = GrupoEquipoBLL.InsertWithReturn(idEquipo, idGrupo);
-        return objGrupoEquipo;
+        GrupoEquipoCL objCantidad = GrupoEquipoBLL.SelectCantidadActual(Convert.ToInt32(idGrupo));
+        int cantidad = objCantidad.IdEquipo;
+        int idEvento = GrupoBLL.SelectById(Convert.ToInt32(idGrupo)).IdEvento;
+        int cantidadPermitida = EventoBLL.SelectById(idEvento).CantidadEquipos;
+        if (cantidad <= cantidadPermitida)
+        {
+            GrupoEquipoCL objGrupoEquipo = GrupoEquipoBLL.InsertWithReturn(idEquipo, idGrupo);
+            return objGrupoEquipo;
+        }
+        else
+        {
+            GrupoEquipoCL objgrupoEquipoCL = new GrupoEquipoCL();
+            objgrupoEquipoCL.IdGrupo = 321456;
+            return objgrupoEquipoCL;
+        }
+
     }
     [WebMethod]
     public static int EliminarGrupoEquipo(int idGrupoEquipo)
@@ -110,4 +125,5 @@ public partial class admin_eventos_grupo : System.Web.UI.Page
             return -1;
         }
     }
+    #endregion
 }

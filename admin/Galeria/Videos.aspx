@@ -16,7 +16,7 @@
         <div class="box-body table-responsive">
             <asp:GridView runat="server" ID="GridView1" DataSourceID="ObjectDataSource1"
                 AutoGenerateColumns="False" DataKeyNames="id"
-                CssClass="table text-center table-striped table-bordered table-hover table-sm " AllowCustomPaging="True" AllowPaging="True">
+                CssClass="table text-center table-striped table-bordered table-hover table-sm " AllowCustomPaging="True" AllowPaging="True"  ShowHeaderWhenEmpty="true">
                 <Columns>
                     <asp:BoundField DataField="url" HeaderText="URL" SortExpression="url" />
                     <asp:BoundField DataField="descripcion" HeaderText="Descripción" SortExpression="descripcion" />

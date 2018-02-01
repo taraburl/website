@@ -26,7 +26,7 @@ public partial class admin_Galeria_SubirFotoImagen : System.Web.UI.Page
         string pathSitio = Server.MapPath("~/");
         string nombreArchivo = uploader.FileName;
         string extension = nombreArchivo.Substring(nombreArchivo.IndexOf('.') + 1);
-        uploader.SaveAs(pathSitio + "images/galeria/" + id + ".png");
+        uploader.SaveAs(pathSitio + "images/galeria/" + id + ".jpg");
         Response.Redirect("Imagenes.aspx");
     }
 }

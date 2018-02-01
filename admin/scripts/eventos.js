@@ -60,10 +60,7 @@ function eliminarEvento(id) {
                 return;
             }
             mensajeConfirmacion("Bien!", "Evento Eliminado", "success");
-            var linkEliminar = $('.eliminarFilaEvento' + resultado);
-            var trActualizado = linkEliminar.parent().parent();
-            trActualizado.remove();
-        }
+                    }
     });
 }
 
@@ -135,7 +132,7 @@ function guardarEvento() {
         $("#Maximos").parent().removeClass('has-error');
     }
     var fechaInicio = new Date(fechaCorrecta($('#FechaInicio input').val()));
-    var fechaFin = new Date(fechaCorrecta$('#FechaFin input').val()));
+    var fechaFin = new Date(fechaCorrecta($('#FechaFin input').val()));
     if (fechaInicio >= fechaFin) {
         $("#FechaFin input").parent().addClass("has-error");
         $("#FechaInicio input").parent().addClass("has-error");
@@ -230,4 +227,10 @@ function guardarEvento() {
             }
         });
     }
+}
+
+function cancelEvento() {
+    $("#newEvento").slideUp(500, function () {
+        $("#listEvento").slideDown(500);
+    });
 }

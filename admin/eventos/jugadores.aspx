@@ -31,7 +31,8 @@
                 AllowPaging="True"
                 AutoGenerateColumns="False"
                 CssClass="table table-striped table-bordered table-hover table-sm"
-                CellPadding="4" ForeColor="#333333" GridLines="None" EmptyDataText="No se encuentran Registros">
+                CellPadding="4" ForeColor="#333333" GridLines="None" 
+                ShowHeaderWhenEmpty="true">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
@@ -101,7 +102,7 @@
                 <label for="Posicion">Numero de Camiseta:</label>
                 <div class=" input-group">
                     <span class="input-group-addon"><i class="fa fa-shirtsinbulk"></i></span>
-                    <input class="form-control" placeholder="Insertar Posicion del Jugador" id="NroCamiseta" type="text" onkeypress="return isNumberKey(this);"/>
+                    <input class="form-control" placeholder="Insertar Numero de Camiseta" id="NroCamiseta" type="text" onkeypress="return isNumberKey(this);"/>
                 </div>
             </div>
             <div class="col-xs-12 col-md-6 col-lg-16">

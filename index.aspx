@@ -6,8 +6,8 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="shortcut icon" type="image/x-icon" href="/images/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SEA - Sport Event Agency</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="keywords" content="SEA - SPORT EVENT AGENCY" />
     <link href="styles/listas.css" rel="stylesheet" />
     <link href="carrito/css/vendor.min.css" rel="stylesheet" />
@@ -75,6 +75,7 @@
                         </asp:Repeater>
                         <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="SelectAll" TypeName="EventoBLL"></asp:ObjectDataSource>
                         <li><a href="evento/listanoticias.aspx">Noticias</a></li>
+                        <li><a href="evento/info.aspx">Acerca de Nuestros Eventos</a></li>
                     </ul>
                 </li>
                 <li>
@@ -114,6 +115,7 @@
                     </ItemTemplate>
                 </asp:Repeater>
                 <li><a href="evento/listanoticias.aspx">Noticias</a></li>
+                <li><a href="evento/info.aspx">Acerca de Nuestros Eventos</a></li>
                 <li><a href="#">Marketing Deportivo</a></li>
                 <li><a href="#">Marketing Deportivo</></a></li>
                 <li><a href="#">Complejo Deportivo</a></li>
@@ -202,6 +204,7 @@
                             </ItemTemplate>
                         </asp:Repeater>
                         <li><a href="evento/listanoticias.aspx">Noticias</a></li>
+                        <li><a href="evento/info.aspx">Acerca de Nuestros Eventos</a></li>
                     </ul>
                 </li>
                 <li><a href="#"><span>Marketing Deportivo</span></a></li>
@@ -295,7 +298,7 @@
                 <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 4000, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:2}, &quot;470&quot;:{&quot;items&quot;:3},&quot;630&quot;:{&quot;items&quot;:4},&quot;991&quot;:{&quot;items&quot;:5},&quot;1200&quot;:{&quot;items&quot;:6}} }">
                     <asp:Repeater runat="server" DataSourceID="odsSponsorDS" ID="Repeater4">
                         <ItemTemplate>
-                            <img class="d-block w-110 m-auto" src="images/sponsors/<%# Eval("ID") %>.png" alt="<%# Eval("Nombre") %>" style="object-fit: contain; height: 80px;"/>
+                            <img class="d-block w-110 m-auto" src="images/sponsors/<%# Eval("ID") %>.png" alt="<%# Eval("Nombre") %>" style="object-fit: contain; height: 80px;" />
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>

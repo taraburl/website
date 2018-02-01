@@ -62,11 +62,7 @@ function actualizarUser(id) {
             $("#Direccion").val(objUser.Direccion);
             $("#UserName").val(objUser.Username);
             $("#Password").val(objUser.Password);
-            if (objUser.Tipo == "Administrador") {
-                $('#ContentPlaceHolder1_TipoUser').val("Administrador");
-            } else {
-                $('#ContentPlaceHolder1_TipoUser').val("Usuario Normal");
-            }
+            $('#ContentPlaceHolder1_TipoUser').val(objUser.TipoCliente);
             $('#ContentPlaceHolder1_hdnIdUser').val(objUser.IdUsuario);
         }
     });

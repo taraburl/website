@@ -12,6 +12,9 @@
             <a class="btn btn-success btn-lg" href="javascript:newNoticia();">
                 <i class="fa fa-plus" aria-hidden="true"></i>NUEVO DATO OFICIAL
             </a>
+            <div class="pull-right box-tools">
+                <a class="btn btn-default btn-sm" href="Fixture.aspx" data-toggle="tooltip" title="Cancelar"><i class="fa fa-times" aria-hidden="true"></i></a>
+            </div>
         </div>
         <div class="box-body table-responsive">
             <asp:GridView
@@ -21,7 +24,7 @@
                 AllowPaging="True"
                 AutoGenerateColumns="False"
                 CssClass="table table-striped table-bordered table-hover table-sm"
-                CellPadding="4" ForeColor="#333333" GridLines="None">
+                CellPadding="4" ForeColor="#333333" GridLines="None" ShowHeaderWhenEmpty="true">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="Partido.Partido" HeaderText="Partido" SortExpression="Partido.Partido" />

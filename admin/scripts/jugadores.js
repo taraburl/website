@@ -8,6 +8,9 @@ function cancelJugador() {
     $("#newJugadores").slideUp(500, function () {
         $("#listJugadores").slideDown(500);
     });
+    $('#Nombre').val("");
+    $('#Edad').val("")
+    $('#ContentPlaceHolder1_hdnIdJugador').val("");
 }
 
 function newJugador() {
@@ -19,6 +22,9 @@ function newJugador() {
     $("#listJugadores").slideUp(500, function () {
         $("#newJugadores").slideDown(500);
     });
+
+    $('#Nombre').val("");
+    $('#Edad').val("")
 }
 
 function eliminarJugador(id) {

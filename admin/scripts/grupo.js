@@ -232,12 +232,16 @@ function nuevoEquipo() {
         data: JSON.stringify(parametros),
         success: function (data) {
             var objJugadorEquipo = data.d;
-            var tr = '<tr>' +
-                        '<td>' + objJugadorEquipo.Equipo.Nombre + '</td>' +
-                        '<td><a class="btn btn-block btn-social-icon btn-danger actualizarFilaJugadorEquipo' + objJugadorEquipo.Id + '" href="javascript:eliminarEquipoGrupo(' + objJugadorEquipo.Id + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                     '</tr>';
-            $("#body").append(tr);
-            mensajeConfirmacion("Bien!", "Equipo Agregado al Quipo con Exito", "success");
+            if (objJugadorEquipo.IdGrupo == 321456) {
+                mensajeConfirmacion("Advetencia!", "Llego al maximo de equipos por grupo", "warning");
+            } else {
+                var tr = '<tr>' +
+                            '<td>' + objJugadorEquipo.Equipo.Nombre + '</td>' +
+                            '<td><a class="btn btn-block btn-social-icon btn-danger actualizarFilaJugadorEquipo' + objJugadorEquipo.Id + '" href="javascript:eliminarEquipoGrupo(' + objJugadorEquipo.Id + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
+                         '</tr>';
+                $("#body").append(tr);
+                mensajeConfirmacion("Bien!", "Equipo Agregado al Equipo con Exito", "success");
+            }
         },
         error: function () {
             mensajeConfirmacion("Advertencia!", "El Equipo ya esta en el Grupo o Pertenece a otro Grupo", "warning");

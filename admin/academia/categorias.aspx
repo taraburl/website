@@ -14,7 +14,7 @@
             </a>
         </div>
         <div class="box-body table-responsive">
-            <asp:GridView runat="server" ID="GridView1"
+            <asp:GridView runat="server" ID="GridView1"  ShowHeaderWhenEmpty="true"
                 CssClass="table text-center table-striped table-bordered table-hover table-sm " AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" AllowCustomPaging="True" AllowPaging="True">
                 <Columns>
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />

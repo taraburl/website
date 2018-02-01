@@ -18,7 +18,7 @@
                 CssClass="table text-center table-striped table-bordered table-hover table-sm "
                 CellPadding="4" ForeColor="#333333" GridLines="None"
                 AllowSorting="True" AutoGenerateColumns="False"
-                DataKeyNames="id" DataSourceID="ObjectDataSource1" AllowCustomPaging="True" AllowPaging="True">
+                DataKeyNames="id" DataSourceID="ObjectDataSource1" AllowCustomPaging="True" AllowPaging="True"  ShowHeaderWhenEmpty="true">
                 <Columns>
                     <asp:TemplateField HeaderText="Imagen">
                         <ItemTemplate>
