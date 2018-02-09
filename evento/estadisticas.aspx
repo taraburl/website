@@ -203,7 +203,7 @@
                 <h6 class="text-normal text-bold text-uppercase">En Vivo</h6>
                 <hr class="padding-top-1x" />
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/live_stream?channel=UCkfpfzUBL6IUEYrYpPIvRcg" allowfullscreen></iframe>
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/live_stream?channel=UCxqs4wK9T-dvoK235ZNsAPg" allowfullscreen></iframe>
                 </div>
                 <h6 class="text-normal text-bold text-uppercase">Comentarios</h6>
                 <hr class="padding-top-1x" />

@@ -274,6 +274,7 @@
                             <div class="row right">
                                 <div class="col-lg-12 col-md-6 padding-bottom-2x text-md-right text-right align-text-top">
                                     <div class="from-left  col-12 col-lg-5" style="float: right;">
+                                        <span class="overlay rounded" style="opacity: .35;"></span>
                                         <img class="d-inline-block w-25 mb-4 pulse animated infinite" src="images/logo.png" alt="SEA-logo" />
                                         <div class="h2 text-body text-normal mb-2 pt-1 text-bold text-white">SEA SRL nace en Bolivia el año 2013 bajo la motivación de nuestros directores de poder aportar y apoyar al deporte en nuestro país.</div>
                                     </div>
@@ -283,7 +284,7 @@
                     </div>
                 </div>
             </section>
-            <section class="bg-white ">
+            <section class="bg-white">
                 <h4 class="text-left sponsors-title">Con el Apoyo de</h4>
                 <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 4000, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:2}, &quot;470&quot;:{&quot;items&quot;:3},&quot;630&quot;:{&quot;items&quot;:4},&quot;991&quot;:{&quot;items&quot;:5},&quot;1200&quot;:{&quot;items&quot;:6}} }">
                     <asp:Repeater runat="server" DataSourceID="odsSponsorDS" ID="Repeater4">
@@ -297,7 +298,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 order-md-1">
                         <div class="row">
-                            <div class="col-sm-12 col-md-6 col-lg-6 col-12 pb-2">
+                            <%--<div class="col-sm-12 col-md-4 col-lg-4 col-12 pb-2">
                                 <div class="card card-mv">
                                     <img class="card-img-top" src="images/mision.jpg" alt="mision" />
                                     <div class="card-body">
@@ -308,24 +309,54 @@
                                         </p>
                                     </div>
                                 </div>
+                            </div>--%>
+                            <div class="col-sm-12 col-md-4 col-lg-4 col-12 pb-2  pb-3 zoomIn" data-wow-delay="0.6s">
+                                <a class="twitter-timeline"
+                                    data-lang="es"
+                                    data-height="500"
+                                    target="_blank"
+                                    href="https://twitter.com/SEA_SRL?ref_src=twsrc%5Etfw">SEA - Tweets</a>
+                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                             </div>
-                            <div class="col-sm-12 col-md-6 col-lg-6 col-12 pb-2">
-                                <div class="card card-mv">
+                            <div class="col-sm-12 col-md-4 col-lg-4 col-12 pb-2">
+                                <section style="min-height: 500px !important;">
+                                    <div class="justify-content-center">
+                                        <div class="col-lg-12">
+                                            <div class="fw-section rounded padding-top-1x padding-bottom-1x" style="background-image: url(images/mision.jpg);">
+                                                <span class="overlay rounded" style="opacity: .35;"></span>
+                                                <div class="text-center m-5">
+                                                    <h5 class="display-4 text-normal text-white text-shadow mb-1">MISION</h5>
+                                                    <h6 class="d-inline-block text-normal
+                                                         text-white text-shadow border-default
+                                                         border-left-0 border-right-0 mb-4">Ayudar a la mejora del bienestar de las personas mediante la práctica del deporte,
+                                                        con ética profesional mediante el Marketing Deportivo.</h6>
+                                                    <h5 class="display-4 text-normal text-white text-shadow mb-1">VISION</h5>
+                                                    <h6 class="d-inline-block text-normal
+                                                         text-white text-shadow border-default
+                                                         border-left-0 border-right-0 mb-4">er una corporación deportiva líder y de referencia a nivel nacional,
+                                        mediante nuestras unidades de negocios buscamos fomentar la práctica del deporte sano, el respeto mutuo y el trabajo en equipo.</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <%--<div class="card card-mv">
                                     <div class="card-body">
                                         <h4 class="card-title">Vision</h4>
                                         <p class="card-text text-white">
                                             Ser una corporación deportiva líder y de referencia a nivel nacional,
                                         mediante nuestras unidades de negocios buscamos fomentar la práctica del deporte sano, el respeto mutuo y el trabajo en equipo.
                                         </p>
+                                        <h4 class="card-title">Mision</h4>
+                                        <p class="card-text text-white">
+                                            Ayudar a la mejora del bienestar de las personas mediante la práctica del deporte,
+                                        con ética profesional mediante el Marketing Deportivo.
+                                        </p>
                                     </div>
                                     <img class="card-img-bottom" src="images/vision.jpg" alt="vision" />
-                                </div>
+                                </div>--%>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-sm-12 col-md-4 col-lg-4 col-12 pb-2">
-                                <h3 class="text-muted text-normal text-uppercase text-bold text-white">FACEBOOK</h3>
-                                <hr class="margin-bottom-1x" />
                                 <div class="fb-page"
                                     data-href="https://www.facebook.com/sports.events.agency/"
                                     data-tabs="timeline" data-width="500"
@@ -339,16 +370,6 @@
                                         <a href="https://www.facebook.com/sports.events.agency/">SEA - Sports Events Agency</a>
                                     </blockquote>
                                 </div>
-                            </div>
-                            <div class="col-sm-12 col-md-8 col-lg-8 col-12 pb-2  pb-3 zoomIn" data-wow-delay="0.6s">
-                                <h3 class="text-muted text-normal text-uppercase text-bold text-white">TWITTER</h3>
-                                <hr class="margin-bottom-1x" />
-                                <a class="twitter-timeline"
-                                    data-lang="es"
-                                    data-height="500"
-                                    target="_blank"
-                                    href="https://twitter.com/SEA_SRL?ref_src=twsrc%5Etfw">SEA - Tweets</a>
-                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                             </div>
                         </div>
                     </div>
