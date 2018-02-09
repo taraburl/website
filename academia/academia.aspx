@@ -56,9 +56,13 @@
                     <div class="grid-sizer"></div>
                     <asp:Repeater ID="Repeater1" runat="server" DataSourceID="ObjectDataSource1">
                         <ItemTemplate>
-                            <div class="grid-item gallery-item">
+                            <div class="grid-item gallery-item img-gallery">
                                 <a href="/images/galeria/<%# Eval("ID") %>.jpg" data-size="1000x667">
-                                    <img src="/images/galeria/<%# Eval("ID") %>.jpg" alt="<%# Eval("Modulo") %>"></a><span class="caption"><%# Eval("Descripcion") %></span>
+                                    <img src="/images/galeria/<%# Eval("ID") %>.jpg" alt="<%# Eval("Modulo") %>"/>
+                                </a>
+                                <span class="caption">
+                                    <%# Eval("Descripcion") %>
+                                </span>
                             </div>
                         </ItemTemplate>
                     </asp:Repeater>

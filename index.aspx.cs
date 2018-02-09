@@ -14,6 +14,10 @@ public partial class inicio : System.Web.UI.Page
         email.Text = "";
         asunto.Text = "";
         comment.Text = "";
+        if (IsPostBack)
+        {
+            
+        }
     }
 
     protected void EnviarMail(object sender, EventArgs e)

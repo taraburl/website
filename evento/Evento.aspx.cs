@@ -24,4 +24,5 @@ public partial class carrito_Evento : System.Web.UI.Page
         List<GrupoEquipoCL> listGrupoEquipoCL = GrupoEquipoBLL.SelectByGrupo(idGrupo);
         return listGrupoEquipoCL;
     }
+
 }

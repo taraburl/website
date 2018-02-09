@@ -29,7 +29,7 @@
                         <div class="single-post-meta">
                             <div class="column">
                                 <div class="meta-link">
-                                    <span>Evento</span><%# Eval("Evento.Nombre") %>
+                                    <span>Evento</span><a href="Evento.aspx?ID=<%# Eval("IDEvento") %>"><%# Eval("Evento.Nombre") %></a>
                                 </div>
                             </div>
                             <div class="column">
@@ -52,12 +52,12 @@
                                 <div class="entry-share">
                                     <span class="text-white">Compartir Noticia:</span>
                                     <div class="share-links">
-                                        <a class="social-button shape-circle sb-facebook"
+                                        <a class="social-button shape-circle sb-facebook fb text-white"
                                             href="#" data-toggle="tooltip"
                                             data-placement="top" title="Facebook"><i class="socicon-facebook"
                                                 onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('sport.sea.com.bo/evento/noticiadetallada.aspx?ID=<%# Eval("IdNoticia") %>'),
                                             'facebook-share-dialog','width=626,height=436'); return false;"></i></a>
-                                        <a class="social-button shape-circle sb-twitter"
+                                        <a class="social-button shape-circle sb-twitter tw text-white"
                                             href="https://twitter.com/share"
                                             data-size="large"
                                             data-text="SEA"

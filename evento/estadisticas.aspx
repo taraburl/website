@@ -20,7 +20,7 @@
                                     <h1 class="text-white"><%# Eval("ScoreEquipo") %></h1>
                                 </div>
                                 <div class="col-lg-4 col-6">
-                                    <span class="badge badge-default badge-rounded animated pulse infinite">VS</span><br />
+                                    <span class="badge badge-default badge-rounded ">VS</span><br />
                                     <span class="text-white text-bold"><%# Eval("HoraForDisplay") %></span><br />
                                     <span class="text-white text-bold"><%# Eval("FechaForDisplay") %></span>
                                 </div>

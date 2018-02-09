@@ -16,15 +16,15 @@
         <div class="box-body table-responsive">
             <asp:GridView ID="GridView1" runat="server"
                 CssClass="table text-center table-striped table-bordered table-hover table-sm"
-                AutoGenerateColumns="False" DataSourceID="ObjectDataSource1"  ShowHeaderWhenEmpty="true">
+                AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" ShowHeaderWhenEmpty="true">
                 <Columns>
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                     <asp:BoundField DataField="Categoria" HeaderText="Categoria" SortExpression="Categoria" />
                     <asp:BoundField DataField="FechaInicioForDisplay" HeaderText="Fecha de Inicio" SortExpression="FechaInicioForDisplay" />
                     <asp:BoundField DataField="FechaFinForDisplay" HeaderText="Fecha Fin" SortExpression="FechaFinForDisplay" />
-                    <asp:BoundField DataField="CantidadGrupos" HeaderText="Candidad de Grupos" SortExpression="CantidadGrupos" />
-                    <asp:BoundField DataField="CantidadEquipos" HeaderText="Cantidad de Equipos" SortExpression="CantidadEquipos" />
-                    <asp:BoundField DataField="CantidadJugadoresPorEquipo" HeaderText="Cantidad de Jugadores Por Equipo" SortExpression="CantidadJugadoresPorEquipo" />
+                    <asp:BoundField DataField="CantidadGrupos" HeaderText="Cant. Grupos" SortExpression="CantidadGrupos" />
+                    <asp:BoundField DataField="CantidadEquipos" HeaderText="Cant. Equipos" SortExpression="CantidadEquipos" />
+                    <asp:BoundField DataField="CantidadJugadoresPorEquipo" HeaderText="Cant. Jugadores Por Equipo" SortExpression="CantidadJugadoresPorEquipo" />
                     <asp:TemplateField HeaderText="Actualizar">
                         <ItemTemplate>
                             <a class="btn btn-block btn-info btn-circle actualizarFilaEvento<%# Eval("IdEvento") %>" href="javascript:actualizarEvento(<%# Eval("IdEvento")%>)">
@@ -40,6 +40,12 @@
                     <asp:TemplateField HeaderText="Subir Logo">
                         <ItemTemplate>
                             <a class="btn btn-block btn-warning btn-circle" href="SubirImagenEvento.aspx?ID=<%# Eval("IdEvento")%>">
+                                <i class="fa  fa-file-photo-o" aria-hidden="true"></i></a>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Banner Publicidad">
+                        <ItemTemplate>
+                            <a class="btn btn-block btn-success btn-circle" href="SubirBannerEvento.aspx?ID=<%# Eval("IdEvento")%>">
                                 <i class="fa  fa-file-photo-o" aria-hidden="true"></i></a>
                         </ItemTemplate>
                     </asp:TemplateField>

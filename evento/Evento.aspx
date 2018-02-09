@@ -21,7 +21,7 @@
         </div>
     </div>
     <!-- //breadcrumbs -->
-    <div class="container padding-bottom-2x mb-2">
+    <div class="container padding-bottom-2x ">
         <asp:HiddenField runnat="server" ID="IdEvento" />
         <div class="row align-items-center fondo-cards">
             <asp:Repeater runat="server" ID="RepeaterEvento" DataSourceID="odsEvento">
@@ -110,15 +110,24 @@
             <div class="padding-left-none padding-right-none col-lg-12">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item"><a class="nav-link active text-white" href="#noticias" data-toggle="tab" role="tab">Fixture</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#tablapos" data-toggle="tab" role="tab">Tabla de Posiciones</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-white" href="#" data-toggle="dropdown" role="button">Tabla de Posiciones</a>
+                        <div class="dropdown-menu" id="tabla-pos-grupos">
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-white" href="#" data-toggle="dropdown" role="button">Tabla de Goleadores</a>
+                        <div class="dropdown-menu" id="tabla-goleadores">
+                        </div>
+                    </li>
                 </ul>
-                <div class="tab-content">
+                <div class="tab-content" id="tablas-pos">
                     <div class="tab-pane transition fade show active" id="noticias" role="tabpanel">
                         <div class="row widget widget-featured-posts">
                             <div class="col-lg-12 padding-right-none padding-left-none">
                                 <asp:Repeater runat="server" ID="RepeaterJugadores" DataSourceID="ObjectDataSource3">
                                     <ItemTemplate>
-                                        <div class="row" style="border-bottom: 1px solid #48AEC5; padding: 15px;">
+                                        <div class="row fixture-colum">
                                             <div class="col-lg-2 col-3 text-center">
                                                 <img src="../images/equipos/<%# Eval("IdEquipo") %>.png" alt="logo evento" class="d-block w-150 mx-auto img-thumbnail mb-2 tamano-img-fixture" />
                                                 <h5><%# Eval("Equipo.Nombre") %></h5>
@@ -163,58 +172,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane transition fade scale" id="tablapos" role="tabpanel" style="margin-top: -10px !important;">
-                        <div class="row padding-top-1x widget widget-featured-posts" style="padding-top: 0px !important;">
-                            <div class="table-responsive" style="width: 100% !important;">
-                                <asp:GridView
-                                    runat="server"
-                                    ID="gvPosiciones"
-                                    AutoGenerateColumns="False"
-                                    DataSourceID="odsTablaPosiciones"
-                                    CssClass="table text-center">
-                                    <Columns>
-                                        <asp:TemplateField HeaderText="Logo">
-                                            <ItemTemplate>
-                                                <img src="../images/equipos/<%# Eval("IdEquipo") %>.png" alt="logo evento" class="d-block w-150 mx-auto mb-2 logo-tabla-equipo" />
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Equipo">
-                                            <ItemTemplate>
-                                                <%# Eval("Equipo.Nombre") %>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:BoundField DataField="IdRival" HeaderText="Partidos Jugados" SortExpression="IdRival"></asp:BoundField>
-                                        <asp:BoundField DataField="IdCancha" HeaderText="Goles a Favor" SortExpression="IdCancha"></asp:BoundField>
-                                        <asp:BoundField DataField="IdGrupo" HeaderText="Goles en Contra" SortExpression="IdGrupo"></asp:BoundField>
-                                        <asp:TemplateField HeaderText="Diferencia">
-                                            <ItemTemplate>
-                                                <%# Convert.ToInt32(Eval("IdCancha")) - Convert.ToInt32(Eval("IdGrupo")) %>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:BoundField DataField="Eliminado" HeaderText="Puntos" SortExpression="Eliminado"></asp:BoundField>
-                                    </Columns>
-                                    <HeaderStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
-                                </asp:GridView>
-                                <asp:ObjectDataSource runat="server" ID="odsTablaPosiciones" OldValuesParameterFormatString="original_{0}" SelectMethod="SelectPosiciones" TypeName="FixtureBLL">
-                                    <SelectParameters>
-                                        <asp:QueryStringParameter QueryStringField="ID" Name="idEvento" Type="String"></asp:QueryStringParameter>
-                                    </SelectParameters>
-                                </asp:ObjectDataSource>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="alert alert-image-bg fade show text-center parallax">
+        <div class="row padding-top-1x">
+            <div class="col-xl-12 col-lg-12 padding-right-none padding-left-none" style="min-height: 200px;">
                 <asp:Repeater runat="server" ID="Repeater1" DataSourceID="odsEvento">
                     <ItemTemplate>
-                        <div class="h3 text-medium text-white">
-                            <i class="icon-clock" style="font-size: 33px; margin-top: -5px;"></i>
-                            &nbsp;&nbsp;Mantente informado con noticias de nuestro evento&nbsp;&nbsp;&nbsp;
-                            <div class="mt-3 hidden-xl-up"></div>
-                            <a class="btn btn-primary" href="noticias.aspx?ID=<%# Eval("IdEvento") %>">Ver Noticias</a>
+                        <div class="img-cover rounded" style="background-image: url(/images/publicidad/<%# Eval("IdEvento")%>.jpg); background-size: cover;"></div>
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>

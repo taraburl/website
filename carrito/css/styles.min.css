@@ -696,8 +696,8 @@ figure {
 }
 
 [class^='col-'] .img-cover {
-    left: 15px;
-    width: calc(100% - 30px);
+    left: 0px;
+    width: 100%;
 }
 
 .opacity-100 {
@@ -2566,7 +2566,7 @@ button:focus {
     }
 
     .market-button.mb-light-skin {
-        border-color: rgba(255,255,255,0.12);
+        border-color: rgba(255,255,255,1);
         background-color: transparent;
     }
 
@@ -2645,7 +2645,7 @@ button:focus {
     margin-right: 18px;
     margin-bottom: 5px;
     transition: color .3s;
-    color: #606975 !important;
+    color: #fff !important;
     font-size: 13px;
     text-decoration: none;
     vertical-align: middle;
@@ -2655,7 +2655,6 @@ button:focus {
         width: 36px;
         height: 36px;
         margin-right: 8px;
-        border: 1px solid #e1e7ec;
         line-height: 35px;
         text-align: center;
     }
@@ -2753,7 +2752,7 @@ button:focus {
 }
 
 .sb-facebook:hover, .sb-facebook:focus {
-    color: #3b5998 !important;
+    color: #fff !important;
 }
 
 .sb-flickr:hover, .sb-flickr:focus {
@@ -2865,7 +2864,7 @@ button:focus {
 }
 
 .sb-twitter:hover, .sb-twitter:focus {
-    color: #55acee !important;
+    color: #fff !important;
 }
 
 .sb-vimeo:hover, .sb-vimeo:focus {
@@ -2911,7 +2910,7 @@ button:focus {
 .sb-light-skin {
     transition: all .3s;
     background-color: transparent;
-    color: rgba(255,255,255,0.6) !important;
+    color: white !important;
 }
 
     .sb-light-skin:hover, .sb-light-skin:focus {
@@ -2927,7 +2926,7 @@ button:focus {
         }
 
 .nav-tabs {
-    border-bottom-color: #48AEC5;
+    border-bottom-color: #999999;
     background-color: #081A28 !important;
 }
 
@@ -2972,13 +2971,13 @@ button:focus {
 
 .tab-content {
     padding: 10px 10px 0px 10px;
-    border-right: 1px solid #48AEC5;
-    border-bottom: 1px solid #48AEC5;
-    border-left: 1px solid #48AEC5;
+    /*border-right: 1px solid #999999;
+    border-bottom: 1px solid #999999;
+    border-left: 1px solid #999999;*/
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     overflow: hidden;
-    background-color: rgba(71,174,197,0.3);
+    background-color: rgba(153,153,153,0.1);
 }
 
     .tab-content p:last-child, .tab-content ul:last-child, .tab-content ol:last-child {
@@ -3013,7 +3012,7 @@ button:focus {
     }
 
     .nav-pills .nav-item.show .nav-link, .nav-pills .nav-link.active {
-        background-color: #0da9ef !important;
+        background-color: #999999 !important;
         color: #fff;
         cursor: default;
     }
@@ -3099,7 +3098,7 @@ button:focus {
 
 .card {
     border-radius: 0px;
-    border-color: #48AEC5;
+    border-color: #999999;
 }
 
     .card .google-map {
@@ -3658,11 +3657,11 @@ button:focus {
         }
 
         .dropdown-menu .dropdown-item:hover {
-            color: #0da9ef;
+            color: #081A28;
         }
 
         .dropdown-menu .dropdown-item.active {
-            color: #0da9ef;
+            color: #081A28;
         }
 
     .dropdown-menu a.dropdown-item {
@@ -6474,7 +6473,7 @@ video {
 
 .site-footer {
     padding-top: 72px;
-    background-color: #48AEC5;
+    background-color: #999999;
     background-position: center;
 }
 
@@ -7609,7 +7608,7 @@ video {
 }
 
 .fondo-cards {
-    background-color: #48AEC5 !important;
+    background-color: #999999 !important;
 }
 
 .card-logo {
@@ -7633,7 +7632,7 @@ video {
 
 .accordion .card {
     margin-bottom: 0px !important;
-    background-color: #fff !important;
+    background-color: rgba(153,153,153,0.1) !important;
     border: none !important;
 }
 
@@ -7642,7 +7641,7 @@ video {
 }
 
 .accordion .card .card-header {
-    background-color: #48AEC5 !important;
+    background-color: #999999 !important;
 }
 
     .accordion .card .card-header h4 a {
@@ -7654,11 +7653,11 @@ video {
 }
 
 .equipos-sector {
-    background-color: rgba(71,174,197,0.3);
+    background-color: rgba(153,153,153,0.1);
 }
 
 .nav-link.active {
-    background-color: #48AEC5 !important;
+    background-color: #999999 !important;
 }
 
 .tamano-img-fixture {
@@ -7670,12 +7669,12 @@ video {
 .btn-sea {
     border-radius: 7px !important;
     background: rgba(255,255,255,0) !important;
-    border: 1px solid #48AEC5;
+    border: 1px solid #999999;
     margin-left: -10px !important;
 }
 
     .btn-sea:hover {
-        background: #48AEC5 !important;
+        background: #999999 !important;
     }
 
 .table {
@@ -7687,13 +7686,13 @@ video {
 }
 
     .table th {
-        border-color: #47AEC5 !important;
+        border-color: rgba(255,255,255,0) !important;
         text-align: center !important;
     }
 
     .table td {
         padding: 5px !important;
-        border-color: #47AEC5 !important;
+        border-color: rgba(255,255,255,0) !important;
         border-right: 0px !important;
     }
 
@@ -7735,7 +7734,7 @@ video {
     }
 
     .datos-equipos p {
-        color: #48AEC5;
+        color: #fff;
         font-weight: bold;
     }
 
@@ -7744,8 +7743,8 @@ video {
 }
 
 .estadisticas-title {
-    background-color: #48AEC5 !important;
-    border-color: #48AEC5 !important;
+    background-color: #999 !important;
+    border-color: #999 !important;
     /*overflow: hidden;*/
 }
 
@@ -7831,10 +7830,148 @@ span.yottie-widget-video-preview-play, #yottie_1 .yottie-widget-video-preview-pl
 }
 
 
-.pswp__share--download{
+.pswp__share--download {
     display: none !important;
 }
 
-.pswp__img{
+.pswp__img {
     object-fit: contain !important;
+}
+
+.redes-sociales {
+    width: 45px;
+    height: 160px;
+    position: fixed;
+    top: 50%;
+    right: 0;
+    z-index: 1000;
+    margin-top: -80px;
+}
+
+    .redes-sociales ul {
+        position: relative;
+    }
+
+    .redes-sociales a {
+        display: inline-block;
+        color: #fff;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-decoration: none;
+        -webkit-transition: all 500ms ease;
+        -o-transition: all 500ms ease;
+        transition: all 500ms ease;
+        position: absolute;
+        right: 0;
+    }
+
+        .redes-sociales a:hover {
+            width: 45px;
+        }
+
+    .redes-sociales .tw {
+        top: 0;
+    }
+
+    .redes-sociales .fb {
+        top: 40px;
+    }
+
+    .redes-sociales .ln {
+        top: 80px;
+    }
+
+    .redes-sociales .ins {
+        top: 120px;
+    }
+
+.tw {
+    background: #1ec3f3;
+}
+
+.fb {
+    background: #3c599f;
+}
+
+.ln {
+    background: #e62118;
+}
+
+.tw:hover {
+    background: #45bced;
+}
+
+.fb:hover {
+    background: #4a6ec9;
+}
+
+.ln:hover {
+    background: #e62118;
+}
+
+.ins {
+    background-image: url(../../../images/instagram.png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+    .ins:hover {
+        background-image: url(../../../images/instagram.png);
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+
+
+.img-gallery img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    margin: auto;
+    background-image: url(/images/evento.jpg);
+    background-size: cover;
+}
+
+.fixture-colum {
+    border-bottom: 1px solid #999999;
+    padding: 15px;
+}
+
+.equipos-sector a {
+    color: #fff !important;
+}
+
+    .equipos-sector a:hover {
+        color: #081A28 !important;
+    }
+
+
+.grupo-sector a {
+    color: white !important;
+}
+
+.equipos-score .row {
+    margin-top: 15px;
+}
+
+.card-mv {
+    background-color: #48AEC5 !important;
+    border-color: #48AEC5 !important;
+    min-height: 500px !important;
+}
+
+
+.table th {
+    border-bottom: 1px solid white !important;
+}
+
+.fixture-number{
+    width: 10% !important;
 }

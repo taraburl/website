@@ -83,7 +83,7 @@
                 <label for="Nombre">Nombre:</label>
                 <div class=" input-group">
                     <span class="input-group-addon"><i class="fa fa-circle-thin"></i></span>
-                    <input class="form-control" placeholder="Insertar Nombre" id="Nombre" type="text" />
+                    <input class="form-control" placeholder="Insertar Nombre" id="Nombre" type="text" maxlength="25" />
                 </div>
             </div>
             <div class="col-xs-12 col-lg-6 col-md-6">
