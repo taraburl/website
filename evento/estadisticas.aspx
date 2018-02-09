@@ -15,19 +15,19 @@
                         </div>
                         <div class="col-lg-10 col-6 text-center" style="vertical-align: middle !important;">
                             <div class="row">
-                                <h1 class="nombre-team-estadisticas col-lg-3"><%# Eval("Equipo.Nombre") %></h1>
+                                <h1 class="nombre-team-estadisticas text-gris col-lg-3"><%# Eval("Equipo.Nombre") %></h1>
                                 <div class="col-lg-1 col-3">
-                                    <h1 class="text-white"><%# Eval("ScoreEquipo") %></h1>
+                                    <h1 class="text-gris"><%# Eval("ScoreEquipo") %></h1>
                                 </div>
                                 <div class="col-lg-4 col-6">
                                     <span class="badge badge-default badge-rounded ">VS</span><br />
-                                    <span class="text-white text-bold"><%# Eval("HoraForDisplay") %></span><br />
-                                    <span class="text-white text-bold"><%# Eval("FechaForDisplay") %></span>
+                                    <span class="text-gris text-bold"><%# Eval("HoraForDisplay") %></span><br />
+                                    <span class="text-gris text-bold"><%# Eval("FechaForDisplay") %></span>
                                 </div>
                                 <div class="col-lg-1 col-3">
-                                    <h1 class="text-white"><%# Eval("ScoreRival") %></h1>
+                                    <h1 class="text-gris"><%# Eval("ScoreRival") %></h1>
                                 </div>
-                                <h1 class="nombre-team-estadisticas col-lg-3"><%# Eval("Rival.Nombre") %></h1>
+                                <h1 class="nombre-team-estadisticas text-gris col-lg-3"><%# Eval("Rival.Nombre") %></h1>
                             </div>
                         </div>
                         <div class="col-lg-1 left col-3 pulse animated infinite">
@@ -247,7 +247,7 @@
                             </asp:TemplateField>
                             <asp:BoundField DataField="Eliminado" HeaderText="Pts." SortExpression="Eliminado"></asp:BoundField>
                         </Columns>
-                        <HeaderStyle BackColor="#47AEC5" Font-Bold="True" ForeColor="White" />
+                        <HeaderStyle BackColor="#f6f7f7" Font-Bold="True" ForeColor="#333b44" />
                     </asp:GridView>
                     <asp:ObjectDataSource runat="server" ID="odsTablaPosiciones" OldValuesParameterFormatString="original_{0}" SelectMethod="SelectPosiciones" TypeName="FixtureBLL">
                         <SelectParameters>

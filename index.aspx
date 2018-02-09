@@ -267,22 +267,16 @@
     </header>
     <div class="offcanvas-wrapper">
         <form id="form1" runat="server">
-            <section class="hero-slider" style="background-image: url(images/slider1.jpg);">
-                <div class="owl-carousel large-controls dots-inside" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: false, &quot;loop&quot;: false, &quot;autoplay&quot;: false, &quot;autoplayTimeout&quot;: 300000 }">
+            <section class="hero-slider" style="background-image: url(images/background1.jpg);">
+                <div class="owl-carousel large-controls dots-inside" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 300000 }">
                     <div class="item">
                         <div class="container padding-top-3x">
-                            <div class="row justify-content-center align-items-center">
-                                <div class="col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center">
-                                    <div class="from-bottom">
-                                        <img class="d-inline-block w-150 mb-4 pulse animated infinite" src="images/logo.png" alt="SEA-logo" />
+                            <div class="row right">
+                                <div class="col-lg-12 col-md-6 padding-bottom-2x text-md-right text-right align-text-top">
+                                    <div class="from-left  col-12 col-lg-5" style="float: right;">
+                                        <img class="d-inline-block w-25 mb-4 pulse animated infinite" src="images/logo.png" alt="SEA-logo" />
                                         <div class="h2 text-body text-normal mb-2 pt-1 text-bold text-white">SEA SRL nace en Bolivia el año 2013 bajo la motivación de nuestros directores de poder aportar y apoyar al deporte en nuestro país.</div>
                                     </div>
-                                    <a class="btn btn-primary scale-up delay-1 scroll" href="#contacto">Contactanos</a>
-                                </div>
-                                <div class="col-md-6 padding-bottom-2x mb-3 zoomIn" data-wow-delay="0.6s">
-                                    <a class="twitter-timeline" data-lang="es" data-height="400" target="_blank"
-                                        href="https://twitter.com/SEA_SRL?ref_src=twsrc%5Etfw">SEA - Tweets</a>
-                                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                                 </div>
                             </div>
                         </div>
@@ -303,7 +297,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 order-md-1">
                         <div class="row">
-                            <div class="col-sm-12 col-md-4 col-lg-4 col-12 pb-2">
+                            <div class="col-sm-12 col-md-6 col-lg-6 col-12 pb-2">
                                 <div class="card card-mv">
                                     <img class="card-img-top" src="images/mision.jpg" alt="mision" />
                                     <div class="card-body">
@@ -315,7 +309,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-12 col-md-4 col-lg-4 col-12 pb-2">
+                            <div class="col-sm-12 col-md-6 col-lg-6 col-12 pb-2">
                                 <div class="card card-mv">
                                     <div class="card-body">
                                         <h4 class="card-title">Vision</h4>
@@ -327,14 +321,34 @@
                                     <img class="card-img-bottom" src="images/vision.jpg" alt="vision" />
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-sm-12 col-md-4 col-lg-4 col-12 pb-2">
-                                <div class="fb-page card-block" data-href="https://www.facebook.com/sports.events.agency/"
-                                    data-tabs="timeline,events,messages"
-                                    data-small-header="true"
-                                    data-width="500"
+                                <h3 class="text-muted text-normal text-uppercase text-bold text-white">FACEBOOK</h3>
+                                <hr class="margin-bottom-1x" />
+                                <div class="fb-page"
+                                    data-href="https://www.facebook.com/sports.events.agency/"
+                                    data-tabs="timeline" data-width="500"
+                                    data-height="500"
+                                    data-small-header="false"
                                     data-adapt-container-width="true"
-                                    data-hide-cover="false" data-show-facepile="true">
+                                    data-hide-cover="false"
+                                    data-show-facepile="true">
+                                    <blockquote cite="https://www.facebook.com/sports.events.agency/"
+                                        class="fb-xfbml-parse-ignore">
+                                        <a href="https://www.facebook.com/sports.events.agency/">SEA - Sports Events Agency</a>
+                                    </blockquote>
                                 </div>
+                            </div>
+                            <div class="col-sm-12 col-md-8 col-lg-8 col-12 pb-2  pb-3 zoomIn" data-wow-delay="0.6s">
+                                <h3 class="text-muted text-normal text-uppercase text-bold text-white">TWITTER</h3>
+                                <hr class="margin-bottom-1x" />
+                                <a class="twitter-timeline"
+                                    data-lang="es"
+                                    data-height="500"
+                                    target="_blank"
+                                    href="https://twitter.com/SEA_SRL?ref_src=twsrc%5Etfw">SEA - Tweets</a>
+                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                             </div>
                         </div>
                     </div>

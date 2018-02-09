@@ -3012,7 +3012,7 @@ button:focus {
     }
 
     .nav-pills .nav-item.show .nav-link, .nav-pills .nav-link.active {
-        background-color: #999999 !important;
+        background-color: #f7f7f7 !important;
         color: #fff;
         cursor: default;
     }
@@ -3098,7 +3098,7 @@ button:focus {
 
 .card {
     border-radius: 0px;
-    border-color: #999999;
+    border-color: #f7f7f7;
 }
 
     .card .google-map {
@@ -7608,7 +7608,7 @@ video {
 }
 
 .fondo-cards {
-    background-color: #999999 !important;
+    background-color: #f7f7f7 !important;
 }
 
 .card-logo {
@@ -7624,6 +7624,7 @@ video {
 
 .titulo-seccion {
     background-color: #081A28 !important;
+    border-bottom: 1px solid white;
 }
 
     .titulo-seccion h2 {
@@ -7641,7 +7642,7 @@ video {
 }
 
 .accordion .card .card-header {
-    background-color: #999999 !important;
+    background-color: #081A28 !important;
 }
 
     .accordion .card .card-header h4 a {
@@ -7657,7 +7658,8 @@ video {
 }
 
 .nav-link.active {
-    background-color: #999999 !important;
+    background-color: #f7f7f7 !important;
+    color: #3e3d3d !important;
 }
 
 .tamano-img-fixture {
@@ -7743,8 +7745,8 @@ video {
 }
 
 .estadisticas-title {
-    background-color: #999 !important;
-    border-color: #999 !important;
+    background-color: #f6f7f7 !important;
+    border-color: #f6f7f7 !important;
     /*overflow: hidden;*/
 }
 
@@ -7774,7 +7776,7 @@ video {
 
 
 .card-std {
-    background-color: rgba(72,174,197, 0.3) !important;
+    background-color: rgba(153,153,153,0.1) !important;
     border: hidden !important;
 }
 
@@ -7972,6 +7974,11 @@ span.yottie-widget-video-preview-play, #yottie_1 .yottie-widget-video-preview-pl
     border-bottom: 1px solid white !important;
 }
 
-.fixture-number{
+.fixture-number {
     width: 10% !important;
+}
+
+
+.text-gris {
+    color: #333b44 !important;
 }

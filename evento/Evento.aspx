@@ -32,11 +32,11 @@
                         </div>
                     </div>
                     <div class="col-lg-8 card">
-                        <div class="text-md-left text-center text-white card-body">
+                        <div class="text-md-left text-center text-gris card-body">
                             <div class="mt-30 hidden-md-up"></div>
-                            <h2 class="text-white"><%# Eval("Nombre") %></h2>
-                            <h5 class="text-white">DEL <%# Eval("FechaInicioForDisplay") %> AL <%# Eval("FechaInicioForDisplay") %></h5>
-                            <h5 class="text-white"><%# Eval("Categoria") %></h5>
+                            <h2 class="text-gris"><%# Eval("Nombre") %></h2>
+                            <h5 class="text-gris">DEL <%# Eval("FechaInicioForDisplay") %> AL <%# Eval("FechaInicioForDisplay") %></h5>
+                            <h5 class="text-gris"><%# Eval("Categoria") %></h5>
                             <p><%# Eval("Descripcion") %></p>
                         </div>
                     </div>
