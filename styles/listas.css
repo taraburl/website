@@ -49,7 +49,7 @@
 
     #masleidas .window {
         max-height: 610px !important;
-        /*overflow-y: scroll !important;*/
+        overflow-y: scroll !important;
         padding-right: 0px !important;
         margin: 0 auto;
         border-radius: 6px;

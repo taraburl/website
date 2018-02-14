@@ -107,7 +107,7 @@
                 <section class="promo-box" style="background-image: url(/images/background2.jpg);">
                     <span class="overlay-dark" style="opacity: .4;"></span>
                     <div class="promo-box-content text-center padding-top-2x padding-bottom-2x">
-                        <h3 class="text-bold text-light text-shadow">Inscripcones a la Academia de Fútbol SEA</h3>
+                        <h3 class="text-bold text-light text-shadow">Inscripcones a la Academia de Fútbol</h3>
                         <a class="btn btn-primary" href="../carrito/Inscripciones.aspx">Inscribete Ahora</a>
                     </div>
                 </section>

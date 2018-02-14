@@ -11,6 +11,7 @@ public partial class carrito_Evento : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Session["modulo"] = "Eventos";
+        hdnEvento.Value = Request.QueryString["ID"];
     }
     [WebMethod]
     public static List<Grupo> ListarGrupos(int idEvento)
@@ -23,6 +24,12 @@ public partial class carrito_Evento : System.Web.UI.Page
     {
         List<GrupoEquipoCL> listGrupoEquipoCL = GrupoEquipoBLL.SelectByGrupo(idGrupo);
         return listGrupoEquipoCL;
+    }
+    [WebMethod]
+    public static List<Posiciones> ListarPosiciones(int idGrupo)
+    {
+        List<Posiciones> listPosiciones = PosicionesBLL.SelectByGrupo(idGrupo);
+        return listPosiciones;
     }
 
 }

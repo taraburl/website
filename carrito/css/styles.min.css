@@ -4161,7 +4161,7 @@ a.list-group-item {
 .owl-carousel {
     display: none;
     position: relative;
-    /*width: 100%;*/
+    width: 100%;
     z-index: 1;
     -webkit-tap-highlight-color: transparent;
 }
@@ -4375,11 +4375,12 @@ a.list-group-item {
 
         .owl-carousel .owl-dots .owl-dot {
             display: inline-block;
-            width: 6px;
-            height: 6px;
+            width: 10px;
+            height: 10px;
             margin: 0 6px;
             transition: opacity .25s;
             border-radius: 50%;
+            border: 1px solid gray;
             background-color: #fff;
             opacity: .3;
         }
@@ -4519,7 +4520,7 @@ a.list-group-item {
             padding: 10px 22px 14px;
             border-top-left-radius: 7px;
             border-top-right-radius: 7px;
-            background-color: #081A28;
+            /*background-color: #081A28;*/
         }
 
         .hero-slider > .owl-carousel .owl-prev, .hero-slider > .owl-carousel .owl-next {
@@ -4614,15 +4615,15 @@ a.list-group-item {
 
         .gallery-item > a[data-type='video']::after {
             left: 50%;
-            width: 46px;
+            width: 50px;
             height: 46px;
             margin-top: -22px;
             margin-left: -22px;
             padding-left: 5px;
             transform: none;
-            border-radius: 50%;
-            background-color: #48AEC5;
-            color: #081A28;
+            border-radius: 12px;
+            background-color: #f00;
+            color: #fff;
             font-size: 27px;
             line-height: 42px;
             box-shadow: 0px 4px 15px 0px rgba(0,0,0,0.25);
@@ -7624,7 +7625,6 @@ video {
 
 .titulo-seccion {
     background-color: #081A28 !important;
-    border-bottom: 1px solid white;
 }
 
     .titulo-seccion h2 {
@@ -7981,4 +7981,166 @@ span.yottie-widget-video-preview-play, #yottie_1 .yottie-widget-video-preview-pl
 
 .text-gris {
     color: #333b44 !important;
+}
+
+@-webkit-keyframes imageAnimation {
+    0% {
+        -less-vendorify: auto;
+        -o-animation-timing-function: ease-in;
+        -ms-animation-timing-function: ease-in;
+        -moz-animation-timing-function: ease-in;
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    8% {
+        -o-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        -moz-transform: scale(1.05);
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+        -less-vendorify: auto;
+        -o-animation-timing-function: ease-out;
+        -ms-animation-timing-function: ease-out;
+        -moz-animation-timing-function: ease-out;
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+    }
+
+    17%,25% {
+        -less-vendorify: auto;
+        -o-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+}
+
+@-moz-keyframes imageAnimation {
+    0% {
+        -less-vendorify: auto;
+        -o-animation-timing-function: ease-in;
+        -ms-animation-timing-function: ease-in;
+        -moz-animation-timing-function: ease-in;
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    8% {
+        -o-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        -moz-transform: scale(1.05);
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+        -less-vendorify: auto;
+        -o-animation-timing-function: ease-out;
+        -ms-animation-timing-function: ease-out;
+        -moz-animation-timing-function: ease-out;
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+    }
+
+    17%,25% {
+        -less-vendorify: auto;
+        -o-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+}
+
+@-o-keyframes imageAnimation {
+    0% {
+        -less-vendorify: auto;
+        -o-animation-timing-function: ease-in;
+        -ms-animation-timing-function: ease-in;
+        -moz-animation-timing-function: ease-in;
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    8% {
+        -o-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        -moz-transform: scale(1.05);
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+        -less-vendorify: auto;
+        -o-animation-timing-function: ease-out;
+        -ms-animation-timing-function: ease-out;
+        -moz-animation-timing-function: ease-out;
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+    }
+
+    17%,25% {
+        -less-vendorify: auto;
+        -o-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+}
+
+@keyframes imageAnimation {
+    0% {
+        -less-vendorify: auto;
+        -o-animation-timing-function: ease-in;
+        -ms-animation-timing-function: ease-in;
+        -moz-animation-timing-function: ease-in;
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    8% {
+        -o-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        -moz-transform: scale(1.05);
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+        -less-vendorify: auto;
+        -o-animation-timing-function: ease-out;
+        -ms-animation-timing-function: ease-out;
+        -moz-animation-timing-function: ease-out;
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+    }
+
+    17%,25% {
+        -less-vendorify: auto;
+        -o-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+}
+
+#main-carousel .owl-item.active .image {
+    -webkit-animation: imageAnimation 36s infinite linear;
+    animation: imageAnimation 36s infinite linear;
+}
+
+#main-carousel .owl-item .image {
+    width: 100%;
+    min-height: 580px;
+    background-position: center;
+    background-color: #f5f5f5;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.item .container {
+    position: absolute;
+    z-index: 1000;
+    right: 5%;
+    top: 0%;
+}
+
+.ancho-tbl {
+    width: 9% !important;
 }

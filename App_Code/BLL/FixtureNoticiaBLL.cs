@@ -95,6 +95,12 @@ public class FixtureNoticiaBLL
             new FixtureNoticiaDSTableAdapters.tbl_fixtureNoticiaTableAdapter();
         adapter.DeleteState(id);
     }
+    public static void DeleteByFixture(int id)
+    {
+        FixtureNoticiaDSTableAdapters.tbl_fixtureNoticiaTableAdapter adapter =
+            new FixtureNoticiaDSTableAdapters.tbl_fixtureNoticiaTableAdapter();
+        adapter.DeleteByFixture(id);
+    }
     private static FixtureNoticias RowToDto(FixtureNoticiaDS.tbl_fixtureNoticiaRow row)
     {
         FixtureNoticias objFixtureNoticias = new FixtureNoticias();

@@ -81,6 +81,12 @@ public class NoticiaBLL
             new NoticiaDSTableAdapters.tbl_noticiasTableAdapter();
         adapter.DeleteNoticia(id);
     }
+    public static void DeleteEvento(int id)
+    {
+        NoticiaDSTableAdapters.tbl_noticiasTableAdapter adapter =
+            new NoticiaDSTableAdapters.tbl_noticiasTableAdapter();
+        adapter.DeleteAllEvents(id);
+    }
     private static Noticia RowToDto(NoticiaDS.tbl_noticiasRow row)
     {
         Noticia objNoticia = new Noticia();

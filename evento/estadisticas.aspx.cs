@@ -15,5 +15,7 @@ public partial class carrito_estadisticas : System.Web.UI.Page
         Session["evento"] = fixture.Evento.IdEvento;
         Session["equipo"] = fixture.IdEquipo;
         Session["rival"] = fixture.IdRival;
+        hdnEvento.Value = Convert.ToString(fixture.Evento.IdEvento);
+        hdnGrupo.Value = Convert.ToString(fixture.IdGrupo);
     }
 }

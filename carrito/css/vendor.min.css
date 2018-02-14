@@ -1999,7 +1999,7 @@ tbody.collapse.show {
         .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
             color: white;
             background-color: #999999;
-            border-color: #999999 #999999 #999999;
+            /*border-color: #999999 #999999 #999999;*/
         }
 
     .nav-tabs .dropdown-menu {

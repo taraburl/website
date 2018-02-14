@@ -71,6 +71,13 @@ public class Fixture
             return Hora.ToString();
         }
     }
+    public DateTime HoraCompleta
+    {
+        get
+        {
+            return Convert.ToDateTime(Fecha.ToShortDateString() + " " + HoraForDisplay);
+        }
+    }
     public string Partido
     {
         get

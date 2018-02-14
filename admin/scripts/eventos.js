@@ -59,8 +59,11 @@ function eliminarEvento(id) {
                 mensajeConfirmacion("Error", "Error al eliminar evento", "error");
                 return;
             }
+            var linkEliminar = $('.eliminarFilaEvento' + resultado);
+            var trActualizado = linkEliminar.parent().parent();
+            trActualizado.remove();
             mensajeConfirmacion("Bien!", "Evento Eliminado", "success");
-                    }
+        }
     });
 }
 
@@ -214,7 +217,7 @@ function guardarEvento() {
                     '<td>' + objEvento.CantidadJugadoresPorEquipo + '</td>' +
                     '<td><a class="btn btn-block btn-info btn-circle actualizarFilaEvento' + objEvento.IdEvento + '" href="javascript:actualizarEvento(' + objEvento.IdEvento + ')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>' +
                     '<td><a class="btn btn-block btn-danger btn-circle eliminarFilaEvento' + objEvento.IdEvento + '" href="javascript:eliminarEvento(' + objEvento.IdEvento + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>' +
-                    '<td><a class="btn btn-block btn-warning btn-circle" href="SubirImagenEvento.aspx?ID=' + objEvento.IdEvento + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>' + 
+                    '<td><a class="btn btn-block btn-warning btn-circle" href="SubirImagenEvento.aspx?ID=' + objEvento.IdEvento + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                     '<td><a class="btn btn-block btn-success btn-circle" href="SubirBannerEvento.aspx?ID=' + objEvento.IdEvento + '"><i class="fa  fa-file-photo-o" aria-hidden="true"></i></a></td>' +
                 '</tr>';
                 var table = $('#ContentPlaceHolder1_GridView1');

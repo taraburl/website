@@ -65,6 +65,25 @@ public class EventoBLL
     {
         EventoDSTableAdapters.tbl_eventoTableAdapter adapter = new EventoDSTableAdapters.tbl_eventoTableAdapter();
         adapter.DeleteEvento(id);
+        NoticiaBLL.DeleteEvento(id);
+        List<Grupo> listGrupos = GrupoBLL.SelectByEvento(id);
+        foreach (Grupo objGrupo in listGrupos)
+        {
+            GrupoBLL.Delete(objGrupo.IdGrupo);
+            GrupoEquipoBLL.DeleteByGrupo(objGrupo.IdGrupo);
+            List<Fixture> listFixture = FixtureBLL.SelectByGrupo(objGrupo.IdGrupo + "");
+            foreach (Fixture objFixture in listFixture)
+            {
+                FixtureNoticiaBLL.DeleteByFixture(objFixture.IdFixture);
+            }
+            FixtureBLL.DeleteByGrupo(objGrupo.IdGrupo);
+        }
+        List<Equipos> listEquipos = EquipoBLL.SelectByEvento(id);
+        foreach (Equipos objEquipo in listEquipos)
+        {
+            JugadorEquipoBLL.DeleteByEquipo(objEquipo.IdEquipo);
+        }
+        EquipoBLL.DeleteByEvento(id);
     }
     private static Evento RowToDto(EventoDS.tbl_eventoRow row)
     {

@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="inicio" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -21,9 +20,9 @@
     <script src="scripts/jquery-1.9.1.min.js"></script>
     <script src="carrito/js/main.js"></script>
     <script src="scripts/jquery.yottie.bundled.js"></script>
-    <script src="scripts/smoothScroll.js"></script>
+    <%--<script src="scripts/smoothScroll.js"></script>--%>
     <script src="scripts/wow.min.js"></script>
-    <script src="styles/slick/slick.js"></script>
+    <%--<script src="styles/slick/slick.js"></script>--%>
     <script src="scripts/js.js"></script>
     <script type="text/javascript">
         new WOW().init();
@@ -74,7 +73,7 @@
                             </ItemTemplate>
                         </asp:Repeater>
                         <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="SelectAll" TypeName="EventoBLL"></asp:ObjectDataSource>
-                        <%--<li><a href="evento/listanoticias.aspx">Noticias</a></li>--%>
+                        <%# Eval("Nombre")%>
                         <li><a href="evento/info.aspx">Acerca de Nuestros Eventos</a></li>
                     </ul>
                 </li>
@@ -141,7 +140,7 @@
                     </ul>
                 </li>
                 <li><a href="#">Marketing Deportivo</a></li>
-                <li><a href="#">Marketing Deportivo</></a></li>
+                <li><a href="#">Marketing Deportivo</a></li>
                 <li><a href="#">Complejo Deportivo</a></li>
                 <li><a href="#">Students & Athletics</a></li>
                 <li><a href="#">SEA TV</a></li>
@@ -214,7 +213,7 @@
             <div class="inner">
                 <div class="tools">
                     <div class="cart" id="UseriIcons">
-                        <a href="/carrito/MiPerfil.aspx"></a><i class="icon-head"></i>
+                        <a href="#"></a><i class="icon-head"></i>
                         <ul class="toolbar-dropdown">
                             <li class="sub-menu-user">
                                 <div class="user-ava">
@@ -231,7 +230,7 @@
                         </ul>
                     </div>
                     <div class="cart" id="loginIcons" style="display: none;">
-                        <a href="login.aspx"></a><i class="icon-head"></i>
+                        <a href="#"></a><i class="icon-head"></i>
                         <ul class="toolbar-dropdown">
                             <li><a href="/login.aspx"><i class="icon-unlock"></i>Iniciar Sesion</a></li>
                         </ul>
@@ -267,15 +266,16 @@
     </header>
     <div class="offcanvas-wrapper">
         <form id="form1" runat="server">
-            <section class="hero-slider" style="background-image: url(images/background1.jpg);">
-                <div class="owl-carousel large-controls dots-inside" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 300000 }">
+            <section class="hero-slider" id="main-carousel">
+                <div class="owl-carousel large-controls dots-inside" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 7000 }">
                     <div class="item">
+                        <div class="image" style="background-image: url(images/background1.jpg);">
+                            <span class="overlay" style="opacity: .35;"></span>
+                        </div>
                         <div class="container padding-top-3x">
                             <div class="row right">
                                 <div class="col-lg-12 col-md-6 padding-bottom-2x text-md-right text-right align-text-top">
                                     <div class="from-left  col-12 col-lg-5" style="float: right;">
-                                        <span class="overlay rounded" style="opacity: .35;"></span>
-                                        <img class="d-inline-block w-25 mb-4 pulse animated infinite" src="images/logo.png" alt="SEA-logo" />
                                         <div class="h2 text-body text-normal mb-2 pt-1 text-bold text-white">SEA SRL nace en Bolivia el año 2013 bajo la motivación de nuestros directores de poder aportar y apoyar al deporte en nuestro país.</div>
                                     </div>
                                 </div>
@@ -298,18 +298,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 order-md-1">
                         <div class="row">
-                            <%--<div class="col-sm-12 col-md-4 col-lg-4 col-12 pb-2">
-                                <div class="card card-mv">
-                                    <img class="card-img-top" src="images/mision.jpg" alt="mision" />
-                                    <div class="card-body">
-                                        <h4 class="card-title">Mision</h4>
-                                        <p class="card-text text-white">
-                                            Ayudar a la mejora del bienestar de las personas mediante la práctica del deporte,
-                                        con ética profesional mediante el Marketing Deportivo.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>--%>
+                            <%# Eval("Nombre")%>
                             <div class="col-sm-12 col-md-4 col-lg-4 col-12 pb-2  pb-3 zoomIn" data-wow-delay="0.6s">
                                 <a class="twitter-timeline"
                                     data-lang="es"
@@ -321,8 +310,8 @@
                             <div class="col-sm-12 col-md-4 col-lg-4 col-12 pb-2">
                                 <section style="min-height: 500px !important;">
                                     <div class="justify-content-center">
-                                        <div class="col-lg-12">
-                                            <div class="fw-section rounded padding-top-1x padding-bottom-1x" style="background-image: url(images/mision.jpg);">
+                                        <div class="col-lg-12 padding-right-none padding-left-none">
+                                            <div class="fw-section rounded padding-top-1x padding-bottom-1x" style="background-image: url(images/mision.jpg); min-height: 500px !important;">
                                                 <span class="overlay rounded" style="opacity: .35;"></span>
                                                 <div class="text-center m-5">
                                                     <h5 class="display-4 text-normal text-white text-shadow mb-1">MISION</h5>
@@ -340,21 +329,7 @@
                                         </div>
                                     </div>
                                 </section>
-                                <%--<div class="card card-mv">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Vision</h4>
-                                        <p class="card-text text-white">
-                                            Ser una corporación deportiva líder y de referencia a nivel nacional,
-                                        mediante nuestras unidades de negocios buscamos fomentar la práctica del deporte sano, el respeto mutuo y el trabajo en equipo.
-                                        </p>
-                                        <h4 class="card-title">Mision</h4>
-                                        <p class="card-text text-white">
-                                            Ayudar a la mejora del bienestar de las personas mediante la práctica del deporte,
-                                        con ética profesional mediante el Marketing Deportivo.
-                                        </p>
-                                    </div>
-                                    <img class="card-img-bottom" src="images/vision.jpg" alt="vision" />
-                                </div>--%>
+                                <%# Eval("Nombre")%>
                             </div>
                             <div class="col-sm-12 col-md-4 col-lg-4 col-12 pb-2">
                                 <div class="fb-page"
@@ -384,7 +359,7 @@
                             <asp:Repeater runat="server" ID="repeterNoticias" DataSourceID="ObjectDataSource3">
                                 <ItemTemplate>
                                     <div class="col-lg-6 col-sm-6 col-12 padding-right-none padding-left-none">
-                                        <section class="promo-box" style="background-image: url(images/noticia/<%# Eval("IdNoticia")  %>.png); height: 200px !important;">
+                                        <section class="promo-box" style='background-image: url(images/noticia/<%# Eval("IdNoticia") %>.png); height: 200px !important;'>
                                             <div class="promo-box-content text-center padding-top-3x padding-bottom-2x">
                                                 <h4 class="text-bold text-light text-shadow"><%# Eval("Titulo") %></h4>
                                                 <a class="btn btn-sm btn-primary btn-rounded" href="evento/noticiadetallada.aspx?ID=<%# Eval("IdNoticia") %>">Ver Noticia</a>
@@ -429,11 +404,11 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-3 text-center">
-                                                <img src="/images/equipos/<%# Eval("IdRival") %>.png" alt="logo evento" class="img-rounded img-responsive" style="width: 50px !important; margin: auto; height: 50px !important; object-fit: contain;" />
+                                                <img src="/images/equipos/<%# Eval("IdRival") %>.png" alt="logo evento" class="img-rounded img-responsive" style="width: 50px !important;height: 50px !important; margin: auto; height: 50px !important; object-fit: contain;" />
                                                 <p><%# Eval("Rival.Nombre") %></p>
                                             </div>
                                             <div class="col-lg-3 col-12 text-center">
-                                                <img src="/images/evento/<%# Eval("Evento.IdEvento") %>.png" alt="logo evento" class="img-rounded img-responsive" style="width: 50px !important; margin: auto;" />
+                                                <img src="/images/evento/<%# Eval("Evento.IdEvento") %>.png" alt="logo evento" class="img-rounded img-responsive" style="width: 50px !important;height: 50px !important;object-fit:  contain;" />
                                                 <p style="font-size: 13px;"><%# Eval("Evento.Nombre") %></p>
                                             </div>
                                         </div>
@@ -460,7 +435,7 @@
                     data-yt-content-responsive="%7B%22480%22%3A%7B%22columns%22%3A%221%22%2C%22rows%22%3A%222%22%2C%22gutter%22%3A%2220%22%7D%2C%22600%22%3A%7B%22columns%22%3A%222%22%2C%22rows%22%3A%222%22%2C%22gutter%22%3A%2220%22%7D%2C%22800%22%3A%7B%22columns%22%3A%223%22%2C%22rows%22%3A%222%22%2C%22gutter%22%3A%2220%22%7D%2C%221000%22%3A%7B%22columns%22%3A%224%22%2C%22rows%22%3A%222%22%2C%22gutter%22%3A%2220%22%7D%7D">
                 </div>
             </div>
-            <div id="contacto" class="scroll container-index padding-bottom-2x" style="background-image: url(images/contactenos.jpg); background-size: cover; background-position: center center;">
+            <div id="contacto" class="container-index padding-bottom-2x" style="background-image: url(images/contactenos.jpg); background-size: cover; background-position: center center;">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-7">
@@ -513,8 +488,8 @@
                                 </div>
                                 <div class="col-12 text-right">
                                     <div class="form-group">
-                                        <asp:LinkButton ID="btnGuardarImagen" Text="Enviar" runat="server" CssClass="btn btn-primary scale-up delay-1"
-                                            OnClick="EnviarMail" OnClientClick="return false;"></asp:LinkButton>
+                                        <asp:LinkButton ID="btnEnviarMail" Text="Enviar" runat="server" CssClass="btn btn-primary"
+                                            OnClick="EnviarMail"></asp:LinkButton>
                                     </div>
                                 </div>
                             </div>
@@ -538,6 +513,10 @@
                     </div>
                 </div>
             </div>
+            <%--<asp:Timer ID="TimerPartidos" runat="server" OnTick="EstadosPartidos" Enabled="true" Interval="100000">
+            </asp:Timer>
+            <asp:ScriptManager ID="ScriptManager1" runat="server">
+            </asp:ScriptManager>--%>
         </form>
         <div class="redes-sociales">
             <ul class="list-unstyled text-center animatedParent animateOnce" data-sequence='300'>
@@ -649,8 +628,8 @@
                             <p class="text-white">Celular: +591 785 57777</p>
                             <p><a class="navi-link-light" href="mailto:info@sea.com.bo">info@sea.comb.bo</a></p>
                             <a class="social-button shape-circle sb-twitter tw sb-light-skin" href="https://twitter.com/SEA_SRL" target="_blank"><i class="socicon-twitter"></i></a>
-                            <a class="social-button shape-circle sb-youtube ln sb-light-skin" href="https://www.youtube.com/user/SportsEventsAgency" target="_blank"><i class="socicon-youtube"></i></a>
                             <a class="social-button shape-circle sb-facebook fb sb-light-skin" href="https://www.facebook.com/sports.events.agency/" target="_blank"><i class="socicon-facebook"></i></a>
+                            <a class="social-button shape-circle sb-youtube ln sb-light-skin" href="https://www.youtube.com/user/SportsEventsAgency" target="_blank"><i class="socicon-youtube"></i></a>
                             <a class="social-button shape-circle sb-instagram ins sb-light-skin" href="https://www.instagram.com/sea_srl/?hl=es" target="_blank"><i class="socicon-instagram"></i></a>
                         </section>
                     </div>
@@ -747,7 +726,6 @@
     </div>
     <a class="scroll-to-top-btn" href="#"><i class="icon-arrow-up"></i></a>
     <div class="site-backdrop"></div>
-    </bod>
     <script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
@@ -755,4 +733,5 @@
     js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.11';
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+</body>
 </html>

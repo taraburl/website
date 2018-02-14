@@ -8,6 +8,8 @@
     <div class="page-title estadisticas-title navbar-sticky">
         <div class="equipos-score container">
             <div class="row">
+                <asp:HiddenField ID="hdnEvento" runat="server" />
+                <asp:HiddenField ID="hdnGrupo" runat="server" />
                 <asp:Repeater runat="server" ID="repeaterEquiposVersus" DataSourceID="odsDatosPartido">
                     <ItemTemplate>
                         <div class="col-lg-1 col-3 pulse animated infinite">
@@ -19,8 +21,8 @@
                                 <div class="col-lg-1 col-3">
                                     <h1 class="text-gris"><%# Eval("ScoreEquipo") %></h1>
                                 </div>
-                                <div class="col-lg-4 col-6">
-                                    <span class="badge badge-default badge-rounded ">VS</span><br />
+                                <div class="col-lg-4 col-6" style="margin-top: -15px !important;">
+                                    <span class="badge badge-danger badge-rounded "><%# Eval("Estado").ToString() == "En Curso" ? Eval("Estado") : "VS"%></span><br />
                                     <span class="text-gris text-bold"><%# Eval("HoraForDisplay") %></span><br />
                                     <span class="text-gris text-bold"><%# Eval("FechaForDisplay") %></span>
                                 </div>
@@ -163,7 +165,7 @@
                     <asp:Repeater runat="server" ID="repeater1" DataSourceID="odsGol">
                         <ItemTemplate>
                             <a class="list-group-item" href="#">
-                                <img src="../images/gol.png" alt="gol" style="width: 20px !important; height: 20px !important; object-fit: contain;"/>
+                                <img src="../images/gol.png" alt="gol" style="width: 20px !important; height: 20px !important; object-fit: contain;" />
                                 <span><%# Eval("Jugador.Nombre") %></span>   <%# Eval("Descripcion") %></a>
                         </ItemTemplate>
                     </asp:Repeater>
@@ -176,7 +178,7 @@
                     <asp:Repeater runat="server" ID="repeater2" DataSourceID="odsRojas">
                         <ItemTemplate>
                             <a class="list-group-item" href="#">
-                                <img src="../images/roja.png" alt="gol" style="width: 20px !important; height: 20px !important; object-fit: contain;"/>
+                                <img src="../images/roja.png" alt="gol" style="width: 20px !important; height: 20px !important; object-fit: contain;" />
                                 <span><%# Eval("Jugador.Nombre") %></span>  <%# Eval("Descripcion") %></a>
                         </ItemTemplate>
                     </asp:Repeater>
@@ -189,7 +191,7 @@
                     <asp:Repeater runat="server" ID="repeater3" DataSourceID="odsAmarilla">
                         <ItemTemplate>
                             <a class="list-group-item" href="#">
-                                <img src="../images/amarilla.png" alt="gol" style="width: 20px !important; height: 20px !important; object-fit: contain;"/>
+                                <img src="../images/amarilla.png" alt="gol" style="width: 20px !important; height: 20px !important; object-fit: contain;" />
                                 <span><%# Eval("Jugador.Nombre") %></span>   <%# Eval("Descripcion") %></a>
                         </ItemTemplate>
                     </asp:Repeater>
@@ -226,34 +228,19 @@
                 <h6 class="text-normal text-bold text-uppercase">Tabla de Posiciones</h6>
                 <hr class="margin-bottom-1x" />
                 <div class="card card-std table-responsive">
-                    <asp:GridView
-                        runat="server"
-                        ID="gvPosiciones"
-                        AutoGenerateColumns="False"
-                        DataKeyNames="IdEquipo"
-                        DataSourceID="odsTablaPosiciones"
-                        CssClass="table">
-                        <Columns>
-                            <asp:TemplateField HeaderText="Equipo">
-                                <ItemTemplate>
-                                    <%# Eval("Equipo.Nombre") %>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:BoundField DataField="IdRival" HeaderText="P.J." SortExpression="IdRival"></asp:BoundField>
-                            <asp:TemplateField HeaderText="Dif.">
-                                <ItemTemplate>
-                                    <%# Convert.ToInt32(Eval("IdCancha")) - Convert.ToInt32(Eval("IdGrupo")) %>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:BoundField DataField="Eliminado" HeaderText="Pts." SortExpression="Eliminado"></asp:BoundField>
-                        </Columns>
-                        <HeaderStyle BackColor="#f6f7f7" Font-Bold="True" ForeColor="#333b44" />
-                    </asp:GridView>
-                    <asp:ObjectDataSource runat="server" ID="odsTablaPosiciones" OldValuesParameterFormatString="original_{0}" SelectMethod="SelectPosiciones" TypeName="FixtureBLL">
-                        <SelectParameters>
-                            <asp:SessionParameter SessionField="evento" Name="idEvento" Type="String"></asp:SessionParameter>
-                        </SelectParameters>
-                    </asp:ObjectDataSource>
+                    <table class="table">
+                        <thead style="background-color: #f6f7f7; color: #333b44; font-weight: bold;">
+                            <tr>
+                                <th>POS</th>
+                                <th>EQUIPO</th>
+                                <th>PJ</th>
+                                <th>DIF.</th>
+                                <th>PTS.</th>
+                            </tr>
+                        </thead>
+                        <tbody id="estadisticas-pos">
+                        </tbody>
+                    </table>
                 </div>
                 <h6 class="text-normal text-bold text-uppercase margin-top-1x">Imagenes de Nuestro Evento</h6>
                 <hr class="margin-bottom-1x" />

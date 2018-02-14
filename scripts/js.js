@@ -1,5 +1,4 @@
 ﻿$(document).ready(function () {
-    $('.scroll a').smoothScroll(500);
     $("#CartIcons").hide();
     if (sessionStorage.getItem("idUsuario")) {
         $("#signup").hide();

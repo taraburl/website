@@ -91,6 +91,12 @@ public class JugadorEquipoBLL
             new JugadorEquipoDSTableAdapters.tbl_jugadorEquipoTableAdapter();
         adapter.DeleteJugadorEquipo(id);
     }
+    public static void DeleteByEquipo(int id)
+    {
+        JugadorEquipoDSTableAdapters.tbl_jugadorEquipoTableAdapter adapter =
+            new JugadorEquipoDSTableAdapters.tbl_jugadorEquipoTableAdapter();
+        adapter.DeleteByEquipo(id);
+    }
     private static JugadorEquipo RowToDto(JugadorEquipoDS.tbl_jugadorEquipoRow row)
     {
         JugadorEquipo objJugadorEquipo = new JugadorEquipo();

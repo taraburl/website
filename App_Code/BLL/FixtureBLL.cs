@@ -9,6 +9,18 @@ public class FixtureBLL
     {
 
     }
+    public static List<Fixture> SelectNoEliminados()
+    {
+        FixtureDSTableAdapters.tbl_fixtureTableAdapter adapter =
+            new FixtureDSTableAdapters.tbl_fixtureTableAdapter();
+        FixtureDS.tbl_fixtureDataTable table = adapter.SelectNoEliminados();
+        List<Fixture> listFixture = new List<Fixture>();
+        foreach (FixtureDS.tbl_fixtureRow row in table)
+        {
+            listFixture.Add(RowToDto(row));
+        }
+        return listFixture;
+    }
     public static List<Fixture> SelectByGrupo(string idGrupo)
     {
         FixtureDSTableAdapters.tbl_fixtureTableAdapter adapter =
@@ -99,13 +111,30 @@ public class FixtureBLL
             Convert.ToInt32(puntos),
             Convert.ToInt32(id), Convert.ToInt32(id));
     }
+    public static void UpdateEstado(int id, string estado)
+    {
+        FixtureDSTableAdapters.tbl_fixtureTableAdapter adapter =
+            new FixtureDSTableAdapters.tbl_fixtureTableAdapter();
+        adapter.UpdateEstado(estado, id);
+    }
+    public static void UpdatePuntos(int id, int puntos)
+    {
+        FixtureDSTableAdapters.tbl_fixtureTableAdapter adapter =
+            new FixtureDSTableAdapters.tbl_fixtureTableAdapter();
+        adapter.UpdatePuntos(puntos, id);
+    }
     public static void Delete(string id)
     {
         FixtureDSTableAdapters.tbl_fixtureTableAdapter adapter =
             new FixtureDSTableAdapters.tbl_fixtureTableAdapter();
         adapter.DeleteFixture(Convert.ToInt32(id));
     }
-
+    public static void DeleteByGrupo(int id)
+    {
+        FixtureDSTableAdapters.tbl_fixtureTableAdapter adapter =
+            new FixtureDSTableAdapters.tbl_fixtureTableAdapter();
+        adapter.DeleteByGrupo(id);
+    }
     public static void UpdateScoreEquipo(int scoreEquipo, string id)
     {
         FixtureDSTableAdapters.tbl_fixtureTableAdapter adapter =

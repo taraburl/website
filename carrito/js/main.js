@@ -1,4 +1,25 @@
-﻿$(document).ready(function () {
+﻿(function () {
+    function estadosPartidos() {
+        var parametros = {};
+        $.ajax({
+            url: '../../index.aspx/EstadosPartidos',
+            dataType: 'json',
+            type: 'POST',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(parametros),
+            success: function (data) {
+                console.log("ejecutado correctamente");
+            },
+            error: function (data) {
+                console.log("error al ejecutar");
+            }
+        });
+    }
+    estadosPartidos();
+    setInterval(estadosPartidos, 600000);
+})();
+
+$(document).ready(function () {
     if (!localStorage.getItem("carrito")) {
         (localStorage.setItem("carrito", "{}"));
     }
@@ -24,6 +45,7 @@
     cargarMiCarrito();
     loadCartPay();
 });
+
 
 function logout() {
     sessionStorage.clear();

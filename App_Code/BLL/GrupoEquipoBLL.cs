@@ -33,6 +33,18 @@ public class GrupoEquipoBLL
         }
         return RowToDto(table[0]);
     }
+    public static GrupoEquipoCL SelectById(int idGrupo)
+    {
+        GrupoEquipoTableAdapters.tbl_grupoEquipoTableAdapter adapter =
+             new GrupoEquipoTableAdapters.tbl_grupoEquipoTableAdapter();
+        GrupoEquipo.tbl_grupoEquipoDataTable table = adapter.SelectById(idGrupo);
+        List<GrupoEquipoCL> listGrupoEquipoCL = new List<GrupoEquipoCL>();
+        if (table.Rows.Count == 0)
+        {
+            return null;
+        }
+        return RowToDto(table[0]);
+    }
     public static List<GrupoEquipoCL> SelectByEvento(int id)
     {
         GrupoEquipoTableAdapters.tbl_grupoEquipoTableAdapter adapter =
@@ -63,6 +75,7 @@ public class GrupoEquipoBLL
             new GrupoEquipoTableAdapters.tbl_grupoEquipoTableAdapter();
         GrupoEquipo.tbl_grupoEquipoDataTable table =
             adapter.InsertWithReturn(Convert.ToInt32(idGrupo), Convert.ToInt32(idEquipo), 0);
+        PosicionesBLL.Insertar(Convert.ToInt32(idGrupo), Convert.ToInt32(idEquipo), 0, 0, 0, 0, 0, 0, 0, 0);
         if (table.Rows.Count == 0)
         {
             return null;
@@ -71,9 +84,17 @@ public class GrupoEquipoBLL
     }
     public static void Delete(int id)
     {
+        GrupoEquipoCL objGrupoEquipo = GrupoEquipoBLL.SelectById(id);
+        PosicionesBLL.DeleteEquipo(objGrupoEquipo.IdEquipo);
         GrupoEquipoTableAdapters.tbl_grupoEquipoTableAdapter adapter =
             new GrupoEquipoTableAdapters.tbl_grupoEquipoTableAdapter();
         adapter.DeleteGrupoEquipo(id);
+    }
+    public static void DeleteByGrupo(int id)
+    {
+        GrupoEquipoTableAdapters.tbl_grupoEquipoTableAdapter adapter =
+            new GrupoEquipoTableAdapters.tbl_grupoEquipoTableAdapter();
+        adapter.DeleteByGrupo(id);
     }
     private static GrupoEquipoCL RowToDto(GrupoEquipo.tbl_grupoEquipoRow row)
     {

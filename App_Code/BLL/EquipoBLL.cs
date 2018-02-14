@@ -79,6 +79,12 @@ public class EquipoBLL
             new EquipoDSTableAdapters.tbl_equipoTableAdapter();
         adapter.DeleteEquipo(id);
     }
+    public static void DeleteByEvento(int id)
+    {
+        EquipoDSTableAdapters.tbl_equipoTableAdapter adapter =
+            new EquipoDSTableAdapters.tbl_equipoTableAdapter();
+        adapter.DeleteByEvento(id);
+    }
     private static Equipos RowToDto(EquipoDS.tbl_equipoRow row)
     {
         Equipos objEquipo = new Equipos();
