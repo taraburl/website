@@ -3097,7 +3097,7 @@ button:focus {
     }
 
 .card {
-    border-radius: 0px;
+    border-radius: 5px;
     border-color: #f7f7f7;
 }
 
@@ -7610,6 +7610,7 @@ video {
 
 .fondo-cards {
     background-color: #f7f7f7 !important;
+    border-radius: 5px !important;
 }
 
 .card-logo {
@@ -7676,7 +7677,9 @@ video {
 }
 
     .btn-sea:hover {
-        background: #999999 !important;
+        background: white !important;
+        color: #333b44;
+        border-color: #333b44;
     }
 
 .table {
@@ -8143,4 +8146,16 @@ span.yottie-widget-video-preview-play, #yottie_1 .yottie-widget-video-preview-pl
 
 .ancho-tbl {
     width: 9% !important;
+}
+
+table img {
+    height: 50px !important;
+    width: 50px !important;
+    object-fit: contain !important;
+    border-radius: 4px !important;
+}
+
+.img-jugador {
+    height: 70px !important;
+    width: 70px !important;
 }

@@ -8,7 +8,7 @@ public class GrupoBLL
 {
     public GrupoBLL()
     {
-       
+
     }
     public static List<Grupo> SelectAll()
     {
@@ -71,6 +71,8 @@ public class GrupoBLL
     {
         GrupoDSTableAdapters.tbl_grupoTableAdapter adapter = new GrupoDSTableAdapters.tbl_grupoTableAdapter();
         adapter.DeleteGrupo(id);
+        GrupoEquipoBLL.DeleteByGrupo(id);
+        PosicionesBLL.DeleteByGrupo(id);
     }
     private static Grupo RowToDto(GrupoDS.tbl_grupoRow row)
     {

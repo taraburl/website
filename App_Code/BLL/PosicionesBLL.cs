@@ -56,6 +56,12 @@ public class PosicionesBLL
             new PosicionesDSTableAdapters.tbl_posicionesTableAdapter();
         adapter.DeleteEquipo(idEquipo);
     }
+    public static void DeleteByGrupo(int idGrupo)
+    {
+        PosicionesDSTableAdapters.tbl_posicionesTableAdapter adapter =
+            new PosicionesDSTableAdapters.tbl_posicionesTableAdapter();
+        adapter.DeleteByGrupo(idGrupo);
+    }
     private static Posiciones RowToDto(PosicionesDS.tbl_posicionesRow row)
     {
         Posiciones objPosiciones = new Posiciones();

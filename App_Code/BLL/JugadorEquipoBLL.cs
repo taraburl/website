@@ -37,7 +37,7 @@ public class JugadorEquipoBLL
     {
         JugadorEquipoDSTableAdapters.tbl_jugadorEquipoTableAdapter adapter =
             new JugadorEquipoDSTableAdapters.tbl_jugadorEquipoTableAdapter();
-        JugadorEquipoDS.tbl_jugadorEquipoDataTable table = adapter.SelectByTipo(tipo,Convert.ToInt32(idEquipo));
+        JugadorEquipoDS.tbl_jugadorEquipoDataTable table = adapter.SelectByTipo(tipo, Convert.ToInt32(idEquipo));
         List<JugadorEquipo> listJugadorEquipo = new List<JugadorEquipo>();
         foreach (JugadorEquipoDS.tbl_jugadorEquipoRow row in table)
         {
@@ -66,6 +66,8 @@ public class JugadorEquipoBLL
         {
             return null;
         }
+        int idJugadorEquipo = RowToDto(table[0]).IdJugadorEquipo;
+        GolesBLL.Insertar(idJugadorEquipo, 0, 0);
         return RowToDto(table[0]);
     }
     public static JugadorEquipo SelectById(int id)
@@ -89,6 +91,7 @@ public class JugadorEquipoBLL
     {
         JugadorEquipoDSTableAdapters.tbl_jugadorEquipoTableAdapter adapter =
             new JugadorEquipoDSTableAdapters.tbl_jugadorEquipoTableAdapter();
+        GolesBLL.DeleteByJugador(id);
         adapter.DeleteJugadorEquipo(id);
     }
     public static void DeleteByEquipo(int id)

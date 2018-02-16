@@ -78,11 +78,7 @@ public class EventoBLL
             }
             FixtureBLL.DeleteByGrupo(objGrupo.IdGrupo);
         }
-        List<Equipos> listEquipos = EquipoBLL.SelectByEvento(id);
-        foreach (Equipos objEquipo in listEquipos)
-        {
-            JugadorEquipoBLL.DeleteByEquipo(objEquipo.IdEquipo);
-        }
+        GolesBLL.DeleteByEvento(id);
         EquipoBLL.DeleteByEvento(id);
     }
     private static Evento RowToDto(EventoDS.tbl_eventoRow row)

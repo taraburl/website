@@ -31,5 +31,11 @@ public partial class carrito_Evento : System.Web.UI.Page
         List<Posiciones> listPosiciones = PosicionesBLL.SelectByGrupo(idGrupo);
         return listPosiciones;
     }
+    [WebMethod]
+    public static List<Goles> ListarGoleadores(int idEvento)
+    {
+        List<Goles> listaGoles = GolesBLL.SelectByEvento(idEvento);
+        return listaGoles;
+    }
 
 }

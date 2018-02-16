@@ -78,6 +78,7 @@ public class EquipoBLL
         EquipoDSTableAdapters.tbl_equipoTableAdapter adapter =
             new EquipoDSTableAdapters.tbl_equipoTableAdapter();
         adapter.DeleteEquipo(id);
+        JugadorEquipoBLL.DeleteByEquipo(id);
     }
     public static void DeleteByEvento(int id)
     {

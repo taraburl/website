@@ -23,20 +23,20 @@
     <!-- //breadcrumbs -->
     <div class="container padding-bottom-2x ">
         <asp:HiddenField runat="server" ID="hdnEvento" />
-        <div class="row align-items-center">
+        <div class="row align-items-center fondo-cards">
             <asp:Repeater runat="server" ID="RepeaterEvento" DataSourceID="odsEvento">
                 <ItemTemplate>
-                    <div class="col-lg-4">
-                        <div class="">
+                    <div class="col-lg-4 card">
+                        <div class="card-body">
                             <img class="d-block w-290 m-auto logo-evento" src="../images/evento/<%# Eval("IdEvento") %>.png" alt="Logo <%# Eval("Nombre") %>" />
                         </div>
                     </div>
                     <div class="col-lg-8">
-                        <div class="text-md-left text-center text-white">
+                        <div class="text-md-left text-center text-gris">
                             <div class="mt-30 hidden-md-up"></div>
-                            <h2 class="text-white"><%# Eval("Nombre") %></h2>
-                            <h5 class="text-white">DEL <%# Eval("FechaInicioForDisplay") %> AL <%# Eval("FechaFinForDisplay") %></h5>
-                            <h5 class="text-white"><%# Eval("Categoria") %></h5>
+                            <h2 class="text-gris"><%# Eval("Nombre") %></h2>
+                            <h5 class="text-gris">DEL <%# Eval("FechaInicioForDisplay") %> AL <%# Eval("FechaFinForDisplay") %></h5>
+                            <h5 class="text-gris"><%# Eval("Categoria") %></h5>
                             <p class="text-justify"><%# Eval("Descripcion") %></p>
                         </div>
                     </div>
@@ -48,43 +48,13 @@
                 </SelectParameters>
             </asp:ObjectDataSource>
         </div>
-        <%--<div class="row padding-top-1x">
-            <div class="col-lg-12 padding-right-none padding-left-none titulo-seccion">
+        <div class="row padding-top-1x">
+            <div class="col-lg-12 titulo-seccion">
                 <div class="text-center">
                     <h2>Grupos</h2>
                 </div>
             </div>
             <div class="accordion padding-left-none padding-right-none col-lg-12" id="accordionGrupos" role="tablist"></div>
-        </div>--%>
-        <div class="row padding-top-1x">
-            <div class="col-lg-12 padding-right-none padding-left-none titulo-seccion">
-                <div class="text-center">
-                    <h2>Equipos</h2>
-                </div>
-            </div>
-            <div class="col-lg-12 padding-top-1x  equipos-sector">
-                <div class="row">
-                    <asp:Repeater runat="server" ID="RepeaterEquipos" DataSourceID="odsEquiposEvento">
-                        <ItemTemplate>
-                            <div class="col-md-3 col-sm-6 col-lg-2 col-6 mb-30 text-center">
-                                <img class="d-block w-150 mx-auto img-thumbnail mb-2 tamano-img" src="../images/equipos/<%# Eval("IdEquipo") %>.png" alt="Equipo" />
-                                <h6><%# Eval("Equipo.Nombre") %></h6>
-                                <p class="text-white">
-                                    <%# Eval("Grupo.Nombre") %>
-                                </p>
-                                <div>
-                                    <a class="text-medium text-decoration-none" href="jugadores.aspx?ID=<%# Eval("IdEquipo") %>">Ver Jugadores&nbsp;<i class="icon-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                    <asp:ObjectDataSource ID="odsEquiposEvento" runat="server" SelectMethod="SelectByEvento" TypeName="GrupoEquipoBLL">
-                        <SelectParameters>
-                            <asp:QueryStringParameter Name="id" QueryStringField="ID" Type="Int32" />
-                        </SelectParameters>
-                    </asp:ObjectDataSource>
-                </div>
-            </div>
         </div>
         <div class="padding-right-none padding-left-none margin-right-none margin-left-none row gallery-wrapper owl-carousel padding-top-1x"
             data-owl-carousel="{ &quot;nav&quot;: false,
@@ -108,9 +78,70 @@
             </asp:ObjectDataSource>
         </div>
         <div class="row padding-top-1x">
+            <div class="accordion padding-left-none padding-right-none col-lg-12" id="accordionEquipos" role="tablist">
+                <div class="card">
+                    <div class="card-header gruposheader" role="tab">
+                        <h2>
+                            <a class="collapsed text-center text-white" href="#accordTeam" data-toggle="collapse" data-parent="#accordionEquipos">Equipos</a>
+                        </h2>
+                    </div>
+                    <div class="collapse" id="accordTeam" role="tabpanel">
+                        <div class="card-body">
+                            <div class="row">
+                                <asp:Repeater runat="server" ID="Repeater2" DataSourceID="odsEquiposEvento">
+                                    <ItemTemplate>
+                                        <div class="col-md-3 col-sm-6 col-lg-2 col-6 mb-30 text-center">
+                                            <img class="d-block w-150 mx-auto img-thumbnail mb-2 tamano-img" src="../images/equipos/<%# Eval("IdEquipo") %>.png" alt="Equipo" />
+                                            <h6><%# Eval("Equipo.Nombre") %></h6>
+                                            <p class="text-white">
+                                                <%# Eval("Grupo.Nombre") %>
+                                            </p>
+                                            <div>
+                                                <a class="text-medium text-decoration-none" href="jugadores.aspx?ID=<%# Eval("IdEquipo") %>">Ver Jugadores&nbsp;<i class="icon-arrow-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                                <asp:ObjectDataSource ID="odsEquiposEvento" runat="server" SelectMethod="SelectByEvento" TypeName="GrupoEquipoBLL">
+                                    <SelectParameters>
+                                        <asp:QueryStringParameter Name="id" QueryStringField="ID" Type="Int32" />
+                                    </SelectParameters>
+                                </asp:ObjectDataSource>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%--<div class="row padding-top-1x">
             <div class="col-lg-12 padding-right-none padding-left-none titulo-seccion">
                 <div class="text-center">
-                    <h2>DATOS OFICIALES</h2>
+                    <h2>Equipos</h2>
+                </div>
+            </div>
+            <div class="col-lg-12 padding-top-1x  equipos-sector">
+                <div class="row">
+                    <asp:Repeater runat="server" ID="RepeaterEquipos" DataSourceID="odsEquiposEvento">
+                        <ItemTemplate>
+                            <div class="col-md-3 col-sm-6 col-lg-2 col-6 mb-30 text-center">
+                                <img class="d-block w-150 mx-auto img-thumbnail mb-2 tamano-img" src="../images/equipos/<%# Eval("IdEquipo") %>.png" alt="Equipo" />
+                                <h6><%# Eval("Equipo.Nombre") %></h6>
+                                <p class="text-white">
+                                    <%# Eval("Grupo.Nombre") %>
+                                </p>
+                                <div>
+                                    <a class="text-medium text-decoration-none" href="jugadores.aspx?ID=<%# Eval("IdEquipo") %>">Ver Jugadores&nbsp;<i class="icon-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
+            </div>
+        </div>--%>
+        <div class="row padding-top-1x">
+            <div class="col-lg-12 padding-right-none padding-left-none titulo-seccion">
+                <div class="text-center">
+                    <h2>Datos Oficiales</h2>
                 </div>
             </div>
             <div class="padding-left-none padding-right-none col-lg-12">
@@ -127,7 +158,7 @@
                                     <ItemTemplate>
                                         <div class="row fixture-colum">
                                             <div class="col-lg-2 col-3 text-center">
-                                                <img src="../images/equipos/<%# Eval("IdEquipo") %>.png" alt="logo evento" class="d-block w-150 mx-auto img-thumbnail mb-2 tamano-img-fixture" />
+                                                <img src="../images/equipos/<%# Eval("IdEquipo") %>.png" alt="<%# Eval("Equipo.Nombre") %>" class="d-block w-150 mx-auto img-thumbnail mb-2 tamano-img-fixture" />
                                                 <h5><%# Eval("Equipo.Nombre") %></h5>
                                             </div>
                                             <div class="col-lg-1 col-1 text-center padding-top-1x">
@@ -146,7 +177,7 @@
                                                 <h1><%# Eval("Estado").ToString() != "Pendiente" ? Eval("ScoreRival") : ""%></h1>
                                             </div>
                                             <div class="col-lg-2 col-3 text-center">
-                                                <img src="../images/equipos/<%# Eval("IdRival") %>.png" alt="logo evento" class="d-block w-150 mx-auto img-thumbnail mb-2 tamano-img-fixture" />
+                                                <img src="../images/equipos/<%# Eval("IdRival") %>.png" alt="<%# Eval("Rival.Nombre") %>" class="d-block w-150 mx-auto img-thumbnail mb-2 tamano-img-fixture" />
                                                 <h5><%# Eval("Rival.Nombre") %></h5>
                                             </div>
                                             <div class="col-lg-3 col-6 text-center text-white" style="padding-top: .90rem !important;">
@@ -173,6 +204,38 @@
                     <div class="tab-pane transition fade scale" id="pos-tab" role="tabpanel">
                     </div>
                     <div class="tab-pane transition fade scale" id="gol-tab" role="tabpanel">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="3"></th>
+                                        <th class="ancho-tbl">PJ</th>
+                                        <th class="ancho-tbl">GOLES</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="table-gol">
+                                    <asp:Repeater runat="server" ID="repeaterGoles" DataSourceID="odsGoles">
+                                        <ItemTemplate>
+                                            <tr>
+                                                <td class="ancho-tbl">
+                                                    <img src='../images/jugadores/<%# Eval("Jugador.IdJugadorEquipo")%>.png' alt='<%# Eval("Jugador.Nombre")%>' class="img-jugador" /></td>
+                                                <td class="ancho-tbl">
+                                                    <img src='../images/equipos/<%# Eval("Jugador.Equipo.IdEquipo")%>.png' alt='<%# Eval("Jugador.Equipo.Nombre")%>' /></td>
+                                                <td class="text-left"><%# Eval("Jugador.Nombre") %><br />
+                                                    <span class="text-muted"><%# Eval("Jugador.Equipo.Nombre") %></span></td>
+                                                <td><%# Eval("PartidosJugados")%></td>
+                                                <td><%# Eval("Gol")%></td>
+                                            </tr>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                    <asp:ObjectDataSource runat="server" ID="odsGoles" SelectMethod="SelectByEvento" TypeName="GolesBLL">
+                                        <SelectParameters>
+                                            <asp:QueryStringParameter QueryStringField="ID" Name="idEvento" Type="Int32"></asp:QueryStringParameter>
+                                        </SelectParameters>
+                                    </asp:ObjectDataSource>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -181,7 +244,7 @@
             <div class="col-xl-12 col-lg-12 padding-right-none padding-left-none" style="min-height: 200px;">
                 <asp:Repeater runat="server" ID="Repeater1" DataSourceID="odsEvento">
                     <ItemTemplate>
-                        <div class="img-cover rounded" style="background-image: url(/images/publicidad/<%# Eval("IdEvento")%>.jpg); background-size: cover;"></div>
+                        <div class="img-cover rounded" style="background-image: url(/images/publicidad/<%# Eval("IdEvento")%>.jpg); background-size: cover; object-fit: contain !important;"></div>
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>

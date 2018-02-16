@@ -269,14 +269,14 @@
             <section class="hero-slider" id="main-carousel">
                 <div class="owl-carousel large-controls dots-inside" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 7000 }">
                     <div class="item">
-                        <div class="image" style="background-image: url(images/background1.jpg);">
-                            <span class="overlay" style="opacity: .35;"></span>
+                        <div class="image fw-section" style="background-image: url(images/background1.jpg);">
+                            <span class="overlay" style="opacity: .25;"></span>
                         </div>
                         <div class="container padding-top-3x">
                             <div class="row right">
                                 <div class="col-lg-12 col-md-6 padding-bottom-2x text-md-right text-right align-text-top">
                                     <div class="from-left  col-12 col-lg-5" style="float: right;">
-                                        <div class="h2 text-body text-normal mb-2 pt-1 text-bold text-white">SEA SRL nace en Bolivia el año 2013 bajo la motivación de nuestros directores de poder aportar y apoyar al deporte en nuestro país.</div>
+                                        <div class="h2 text-body mb-2 pt-1 text-bold text-white text-bold">SEA SRL nace en Bolivia el año 2013 bajo la motivación de nuestros directores de poder aportar y apoyar al deporte en nuestro país.</div>
                                     </div>
                                 </div>
                             </div>
@@ -285,7 +285,7 @@
                 </div>
             </section>
             <section class="bg-white">
-                <h4 class="text-left sponsors-title">Con el Apoyo de</h4>
+                <h4 class="text-left sponsors-title margin-bottom-none">Con el Apoyo de</h4>
                 <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 4000, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:2}, &quot;470&quot;:{&quot;items&quot;:3},&quot;630&quot;:{&quot;items&quot;:4},&quot;991&quot;:{&quot;items&quot;:5},&quot;1200&quot;:{&quot;items&quot;:6}} }">
                     <asp:Repeater runat="server" DataSourceID="odsSponsorDS" ID="Repeater4">
                         <ItemTemplate>
@@ -322,7 +322,7 @@
                                                     <h5 class="display-4 text-normal text-white text-shadow mb-1">VISION</h5>
                                                     <h6 class="d-inline-block text-normal
                                                          text-white text-shadow border-default
-                                                         border-left-0 border-right-0 mb-4">er una corporación deportiva líder y de referencia a nivel nacional,
+                                                         border-left-0 border-right-0 mb-4">Ser una corporación deportiva líder y de referencia a nivel nacional,
                                         mediante nuestras unidades de negocios buscamos fomentar la práctica del deporte sano, el respeto mutuo y el trabajo en equipo.</h6>
                                                 </div>
                                             </div>

@@ -25,6 +25,20 @@ function cargarGrupo(id) {
         success: function (data) {
             var ObjGrupo = data.d;
             ObjGrupo.forEach(function (grupo) {
+                $("#accordionGrupos").append(
+                    '<div class="card">' +
+                         '<div class="card-header gruposheader" role="tab">' +
+                            '<h4>' +
+                                '<a class="collapsed"  href="#collapse' + grupo.IdGrupo + '" data-toggle="collapse" data-parent="#accordionGrupos">' + grupo.Nombre + '</a>' +
+                            '</h4>' +
+                         '</div>' +
+                         '<div class="collapse" id="collapse' + grupo.IdGrupo + '" role="tabpanel">' +
+                            '<div class="card-body">' +
+                                    '<div class="row grupo-sector" id="bodycollapse' + grupo.IdGrupo + '"></div>' +
+                            '</div>' +
+                         '</div>' +
+                    '</div>' +
+                   '</div>');
                 $("#pos-tab").append(
                     "<div class='row padding-top-1x widget widget-featured-posts' style='padding-top: 0px !important;'>" +
                         "<div class='col-12 margin-left-none'>" +
@@ -35,9 +49,8 @@ function cargarGrupo(id) {
                         "<div class='col-12 table-responsive' id='grupopos" + grupo.IdGrupo + "'>" +
                         "</div>" +
                     "</div>");
-                //cargarEquipos(grupo.IdGrupo);
+                cargarEquipos(grupo.IdGrupo);
                 cargartablaposiciones(grupo.IdGrupo);
-                //cargartablagoleadores(grupo.IdGrupo, grupo.Nombre);
             });
         }
     });
@@ -143,7 +156,7 @@ function cargartablagrupo() {
                         "<tr>" +
                         "<td>" + pos + "</td>" +
                         "<td>" + grupo.Equipo.Nombre + "</td>" +
-                        "<td>" + grupo.Perdidos + "</td>" +
+                        "<td>" + grupo.PartidosJugados + "</td>" +
                         "<td>" + grupo.Diferencia + "</td>" +
                         "<td>" + grupo.Puntos + "</td>" +
                     "</tr>");
@@ -168,11 +181,6 @@ function cargartablagoleadores(id, nombre) {
                    "</div>");
 }
 
-
-/**
- * @param String name
- * @return String
- */
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),

@@ -25,6 +25,7 @@ public partial class inicio : System.Web.UI.Page
         asunto.Text = "";
         comment.Text = "";
         new SendEmail(emailde, de, asuntode, mensajede, "luistj103@gmail.com", "Luis Taraune");
+        Response.Redirect(Request.Url.ToString(), false);
     }
     [WebMethod]
     public static void EstadosPartidos()
@@ -43,21 +44,21 @@ public partial class inicio : System.Web.UI.Page
             {
                 if (objFixture.ScoreEquipo > objFixture.ScoreRival)
                 {
+                    FixtureBLL.UpdatePuntos(objFixture.IdFixture, 3);
                     ganador(objFixture.IdFixture, objFixture.IdEquipo);
                     perdedor(objFixture.IdFixture, objFixture.IdRival);
-                    FixtureBLL.UpdatePuntos(objFixture.IdFixture, 3);
                 }
                 else if (objFixture.ScoreEquipo > objFixture.ScoreRival)
                 {
+                    FixtureBLL.UpdatePuntos(objFixture.IdFixture, 3);
                     ganador(objFixture.IdFixture, objFixture.IdRival);
                     perdedor(objFixture.IdFixture, objFixture.IdEquipo);
-                    FixtureBLL.UpdatePuntos(objFixture.IdFixture, 3);
                 }
-                else if (objFixture.ScoreEquipo > objFixture.ScoreRival)
+                else if (objFixture.ScoreEquipo == objFixture.ScoreRival)
                 {
+                    FixtureBLL.UpdatePuntos(objFixture.IdFixture, 1);
                     empate(objFixture.IdFixture, objFixture.IdRival);
                     empate(objFixture.IdFixture, objFixture.IdEquipo);
-                    FixtureBLL.UpdatePuntos(objFixture.IdFixture, 1);
                 }
                 FixtureBLL.UpdateEstado(objFixture.IdFixture, "Finalizado");
             }
@@ -73,6 +74,13 @@ public partial class inicio : System.Web.UI.Page
         int gc = objPosiciones.GolesContra + objFixture.ScoreRival;
         int dif = objPosiciones.Diferencia + (gf - gc);
         int pts = objPosiciones.Puntos + objFixture.Puntos;
+        List<JugadorEquipo> listJugadores = JugadorEquipoBLL.SelectByEquipo(idEquipo);
+        foreach (JugadorEquipo objJugador in listJugadores)
+        {
+            Goles objGol = GolesBLL.SelectByJugador(objJugador.IdJugadorEquipo);
+            int partidosjugados = objGol.PartidosJugados + 1;
+            GolesBLL.UpdatePJ(objJugador.IdJugadorEquipo, partidosjugados);
+        }
         PosicionesBLL.Update(objPosiciones.IdGrupo, objPosiciones.IdEquipo,
             pj, g, objPosiciones.Empates, objPosiciones.Perdidos, gf, gc, dif, pts,
             objPosiciones.IdPosiciones);
@@ -86,6 +94,13 @@ public partial class inicio : System.Web.UI.Page
         int gf = objPosiciones.GolesFavor + objFixture.ScoreRival;
         int gc = objPosiciones.GolesContra + objFixture.ScoreEquipo;
         int dif = objPosiciones.Diferencia + (gf - gc);
+        List<JugadorEquipo> listJugadores = JugadorEquipoBLL.SelectByEquipo(idEquipo);
+        foreach (JugadorEquipo objJugador in listJugadores)
+        {
+            Goles objGol = GolesBLL.SelectByJugador(objJugador.IdJugadorEquipo);
+            int partidosjugados = objGol.PartidosJugados + 1;
+            GolesBLL.UpdatePJ(objJugador.IdJugadorEquipo, partidosjugados);
+        }
         PosicionesBLL.Update(objPosiciones.IdGrupo, objPosiciones.IdEquipo,
             pj, objPosiciones.Ganados, objPosiciones.Empates, p, gf, gc, dif, objPosiciones.Puntos,
             objPosiciones.IdPosiciones);
@@ -100,6 +115,13 @@ public partial class inicio : System.Web.UI.Page
         int gc = objPosiciones.GolesContra + objFixture.ScoreEquipo;
         int dif = objPosiciones.Diferencia + (gf - gc);
         int pts = objPosiciones.Puntos + objFixture.Puntos;
+        List<JugadorEquipo> listJugadores = JugadorEquipoBLL.SelectByEquipo(idEquipo);
+        foreach (JugadorEquipo objJugador in listJugadores)
+        {
+            Goles objGol = GolesBLL.SelectByJugador(objJugador.IdJugadorEquipo);
+            int partidosjugados = objGol.PartidosJugados + 1;
+            GolesBLL.UpdatePJ(objJugador.IdJugadorEquipo, partidosjugados);
+        }
         PosicionesBLL.Update(objPosiciones.IdGrupo, objPosiciones.IdEquipo,
             pj, objPosiciones.Ganados, e, objPosiciones.Perdidos, gf, gc, dif, pts,
             objPosiciones.IdPosiciones);

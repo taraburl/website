@@ -1150,7 +1150,7 @@ pre {
 
     .table th, .table td {
         padding: .75rem;
-        vertical-align: top;
+        vertical-align: middle;
         border-top: 1px solid #e9ecef;
     }
 
@@ -2050,7 +2050,7 @@ tbody.collapse.show {
     background-color: #f7f7f7;
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
+    border-radius: 5px;
 }
 
 .card-body {

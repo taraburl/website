@@ -62,11 +62,17 @@ public class FixtureNoticiaBLL
         FixtureNoticiaDSTableAdapters.tbl_fixtureNoticiaTableAdapter adapter =
              new FixtureNoticiaDSTableAdapters.tbl_fixtureNoticiaTableAdapter();
         FixtureNoticiaDS.tbl_fixtureNoticiaDataTable table =
-            adapter.InsertWithReturn(Convert.ToInt32(idFixture),Convert.ToInt32(idEquipo), Convert.ToInt32(idJugador),
+            adapter.InsertWithReturn(Convert.ToInt32(idFixture), Convert.ToInt32(idEquipo), Convert.ToInt32(idJugador),
             tipo, descripcion, Convert.ToDateTime(fecha), TimeSpan.Parse(hora), 0);
         if (table.Rows.Count == 0)
         {
             return null;
+        }
+        if (tipo == "Gol")
+        {
+            Goles objGol = GolesBLL.SelectByJugador(Convert.ToInt32(idJugador));
+            int goles = objGol.Gol + 1;
+            GolesBLL.UpdateGoles(goles, Convert.ToInt32(idJugador));
         }
         return RowToDto(table[0]);
     }
@@ -86,13 +92,46 @@ public class FixtureNoticiaBLL
     {
         FixtureNoticiaDSTableAdapters.tbl_fixtureNoticiaTableAdapter adapter =
              new FixtureNoticiaDSTableAdapters.tbl_fixtureNoticiaTableAdapter();
-        adapter.UpdateRow(Convert.ToInt32(idFixture),Convert.ToInt32(idEquipo), Convert.ToInt32(idJugador),
-            tipo, descripcion,fecha, hora, 0, id);
+        FixtureNoticias objfixture = FixtureNoticiaBLL.SelectById(Convert.ToInt32(id));
+        string tipoActual = objfixture.Tipo;
+        if (tipoActual == "Gol" && tipo != "Gol" && Convert.ToInt32(idJugador) == objfixture.IdJugador)
+        {
+            int goles = GolesBLL.SelectByJugador(objfixture.IdJugador).Gol - 1;
+            GolesBLL.UpdateGoles(goles, Convert.ToInt32(objfixture.IdJugador));
+        }
+        else if (tipoActual != "Gol" && tipo == "Gol" && Convert.ToInt32(idJugador) == objfixture.IdJugador)
+        {
+            int goles = GolesBLL.SelectByJugador(objfixture.IdJugador).Gol + 1;
+            GolesBLL.UpdateGoles(goles, Convert.ToInt32(objfixture.IdJugador));
+        }
+        else if (tipoActual != "Gol" && tipo == "Gol" && Convert.ToInt32(idJugador) != objfixture.IdJugador)
+        {
+            int goles = GolesBLL.SelectByJugador(Convert.ToInt32(idJugador)).Gol + 1;
+            GolesBLL.UpdateGoles(goles, Convert.ToInt32(Convert.ToInt32(idJugador)));
+            int gols = GolesBLL.SelectByJugador(Convert.ToInt32(objfixture.IdJugador)).Gol - 1;
+            GolesBLL.UpdateGoles(goles, Convert.ToInt32(Convert.ToInt32(objfixture.IdJugador)));
+        }
+        else if (tipoActual == "Gol" && tipo != "Gol" && Convert.ToInt32(idJugador) == objfixture.IdJugador)
+        {
+            int goles = GolesBLL.SelectByJugador(Convert.ToInt32(idJugador)).Gol - 1;
+            GolesBLL.UpdateGoles(goles, Convert.ToInt32(Convert.ToInt32(idJugador)));
+            int gols = GolesBLL.SelectByJugador(Convert.ToInt32(objfixture.IdJugador)).Gol + 1;
+            GolesBLL.UpdateGoles(goles, Convert.ToInt32(Convert.ToInt32(objfixture.IdJugador)));
+        }
+        adapter.UpdateRow(Convert.ToInt32(idFixture), Convert.ToInt32(idEquipo), Convert.ToInt32(idJugador),
+            tipo, descripcion, fecha, hora, 0, id);
     }
     public static void Delete(int id)
     {
         FixtureNoticiaDSTableAdapters.tbl_fixtureNoticiaTableAdapter adapter =
             new FixtureNoticiaDSTableAdapters.tbl_fixtureNoticiaTableAdapter();
+        FixtureNoticias objFix = FixtureNoticiaBLL.SelectById(id);
+        int goles = GolesBLL.SelectByJugador(objFix.IdJugador).Gol - 1;
+        if (objFix.Tipo == "Gol")
+        {
+            Goles objGol = GolesBLL.SelectByJugador(objFix.IdJugador);
+            GolesBLL.UpdateGoles(goles, Convert.ToInt32(objFix.IdJugador));
+        }
         adapter.DeleteState(id);
     }
     public static void DeleteByFixture(int id)
