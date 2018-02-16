@@ -41,6 +41,9 @@
                 <li>
                     <span><a href="/index.aspx"><span>Inicio</span></a></span>
                 </li>
+                <li>
+                    <span><a href="http://173.212.197.57:81/" target="_blank"><span>Boliva Soccer Camp 2018</span></a></span>
+                </li>
                 <li class="has-children">
                     <span>
                         <a href="#">Club Atlético Juniors</a>
@@ -105,6 +108,9 @@
             <ul class="menu">
                 <li><a href="#">Inicio</a></li>
                 <li id="admincell"><a href="admin/index.aspx">Panel Administrador</a></li>
+                <li>
+                    <span><a href="http://173.212.197.57:81/" target="_blank"><span>Boliva Soccer Camp 2018</span></a></span>
+                </li>
                 <li class="has-children">
                     <span>
                         <a href="#">Club Atlético Juniors</a>
@@ -185,6 +191,7 @@
                 <li>
                     <a href="#"><span>Club Atlético Juniors</span></a>
                     <ul class="sub-menu">
+                        <li><a href="http://173.212.197.57:81/" target="_blank">Bolivia Soccer Camp 2018</a></li>
                         <li><a href="#">Club Atlético Juniors</a></li>
                         <li><a href="academia/academia.aspx">Academia de Fútbol</a></li>
                         <li><a href="carrito/inicio.aspx">Catálogo de Productos</a></li>
@@ -404,11 +411,11 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-3 text-center">
-                                                <img src="/images/equipos/<%# Eval("IdRival") %>.png" alt="logo evento" class="img-rounded img-responsive" style="width: 50px !important;height: 50px !important; margin: auto; height: 50px !important; object-fit: contain;" />
+                                                <img src="/images/equipos/<%# Eval("IdRival") %>.png" alt="logo evento" class="img-rounded img-responsive" style="width: 50px !important; height: 50px !important; margin: auto; height: 50px !important; object-fit: contain;" />
                                                 <p><%# Eval("Rival.Nombre") %></p>
                                             </div>
                                             <div class="col-lg-3 col-12 text-center">
-                                                <img src="/images/evento/<%# Eval("Evento.IdEvento") %>.png" alt="logo evento" class="img-rounded img-responsive" style="width: 50px !important;height: 50px !important;object-fit:  contain;" />
+                                                <img src="/images/evento/<%# Eval("Evento.IdEvento") %>.png" alt="logo evento" class="img-rounded img-responsive" style="width: 50px !important; height: 50px !important; object-fit: contain;" />
                                                 <p style="font-size: 13px;"><%# Eval("Evento.Nombre") %></p>
                                             </div>
                                         </div>

@@ -33,6 +33,9 @@
                 <li>
                     <span><a href="/index.aspx"><span>Inicio</span></a></span>
                 </li>
+                <li>
+                    <span><a href="http://173.212.197.57:81/" target="_blank"><span>Boliva Soccer Camp 2018</span></a></span>
+                </li>
                 <li class="has-children">
                     <span>
                         <a href="#">Club Atlético Juniors</a>
@@ -97,6 +100,9 @@
             <ul class="menu">
                 <li><a href="/index.aspx">Inicio</a></li>
                 <li id="admincell"><a href="admin/index.aspx">Panel Administrador</a></li>
+                <li>
+                    <span><a href="http://173.212.197.57:81/" target="_blank"><span>Boliva Soccer Camp 2018</span></a></span>
+                </li>
                 <li class="has-children">
                     <span>
                         <a href="#">Club Atlético Juniors</a>
@@ -177,6 +183,7 @@
                 <li>
                     <a href="#"><span>Club Atlético Juniors</span></a>
                     <ul class="sub-menu">
+                        <li><a href="http://173.212.197.57:81/" target="_blank">Bolivia Soccer Camp 2018</a></li>
                         <li><a href="#">Club Atlético Juniors</a></li>
                         <li><a href="/academia/academia.aspx">Academia de Fútbol</a></li>
                         <li><a href="/carrito/inicio.aspx">Catálogo de Productos</a></li>
