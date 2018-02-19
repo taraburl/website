@@ -470,7 +470,7 @@
                         <div class="embed">
                             <asp:Repeater runat="server" ID="repeaterVideoBig" DataSourceID="odsBigVideo">
                                 <ItemTemplate>
-                                    <img data-video="<%# Eval("URL") %>" src="http://img.youtube.com/vi/<%# Eval("Imagen") %>/0.jpg" alt="video" />
+                                    <img data-video="http://www.youtube.com/embed/<%# Eval("Imagen") %>" src="http://img.youtube.com/vi/<%# Eval("Imagen") %>/0.jpg" alt="video" />
                                     <div class="play">
                                     </div>
                                 </ItemTemplate>
@@ -484,7 +484,7 @@
                                 <ItemTemplate>
                                     <li>
                                         <h4>
-                                            <a data-video="<%# Eval("URL") %>">
+                                            <a data-video="http://www.youtube.com/embed/<%# Eval("Imagen") %>">
                                                 <img src="http://img.youtube.com/vi/<%#Eval("Imagen") %>/0.jpg" data-original="http://img.youtube.com/vi/<%#Eval("Imagen") %>/0.jpg"
                                                     alt="<%# Eval("Descripcion") %>" />
                                                 <%# Eval("Descripcion") %>
