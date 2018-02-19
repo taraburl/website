@@ -120,6 +120,28 @@
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
+              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="sea.dbo.tbl_video" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="SelectTop1" GetMethodModifier="Public" GetMethodName="SelectTop1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="SelectTop1" UserSourceName="SelectTop1">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT TOP 1 id, url, descripcion, modulo, eliminado
+FROM     tbl_video
+WHERE eliminado = 0
+ORDER by id DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="sea.dbo.tbl_video" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="SelectTop5" GetMethodModifier="Public" GetMethodName="SelectTop5" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="SelectTop5" UserSourceName="SelectTop5">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT TOP 5 id, url, descripcion, modulo, eliminado
+FROM     tbl_video
+WHERE eliminado = 0
+ORDER by id DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="sea.dbo.sp_videoUpdate" DbObjectType="StoredProcedure" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="updateById" GetMethodModifier="Public" GetMethodName="updateById" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="updateById" UserSourceName="updateById">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
@@ -146,7 +168,7 @@
   <xs:element name="VideoDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="VideoDS" msprop:Generator_UserDSName="VideoDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="tbl_video" msprop:Generator_TableClassName="tbl_videoDataTable" msprop:Generator_TableVarName="tabletbl_video" msprop:Generator_TablePropName="tbl_video" msprop:Generator_RowDeletingName="tbl_videoRowDeleting" msprop:Generator_RowChangingName="tbl_videoRowChanging" msprop:Generator_RowEvHandlerName="tbl_videoRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_videoRowDeleted" msprop:Generator_UserTableName="tbl_video" msprop:Generator_RowChangedName="tbl_videoRowChanged" msprop:Generator_RowEvArgName="tbl_videoRowChangeEvent" msprop:Generator_RowClassName="tbl_videoRow">
+        <xs:element name="tbl_video" msprop:Generator_TableClassName="tbl_videoDataTable" msprop:Generator_TableVarName="tabletbl_video" msprop:Generator_RowChangedName="tbl_videoRowChanged" msprop:Generator_TablePropName="tbl_video" msprop:Generator_RowDeletingName="tbl_videoRowDeleting" msprop:Generator_RowChangingName="tbl_videoRowChanging" msprop:Generator_RowEvHandlerName="tbl_videoRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_videoRowDeleted" msprop:Generator_RowClassName="tbl_videoRow" msprop:Generator_UserTableName="tbl_video" msprop:Generator_RowEvArgName="tbl_videoRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />

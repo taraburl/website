@@ -44,6 +44,26 @@ $(document).ready(function () {
     loadCart();
     cargarMiCarrito();
     loadCartPay();
+    $('body').on('click', '#videos .embed', function (e) {
+        e.preventDefault();
+        var dataVideo = $('#videos .embed img').attr('data-video');
+        $('#loader').fadeIn(400);
+        $('#videos .embed').html('').append('<iframe></iframe>');
+        $('#videos .embed iframe').attr({ src: dataVideo + '?wmode=transparent&amp;autoplay=1&amp;hd=1&amp;controls=1&amp;showinfo=0&amp;autohide=1' }).load(function () { });
+        return false;
+    });
+    $('body').on('click', '#videos li a', function (e) {
+        e.preventDefault();
+
+        $('#videos li a').removeClass('active').filter(this).addClass('active');
+
+        $('#loader').fadeIn(400);
+        $('#videos .embed').html('').append('<iframe></iframe>');
+        $('#videos .embed iframe').attr({ src: $(this).attr('data-video') + '?wmode=transparent&amp;autoplay=1&amp;hd=1&amp;controls=1&amp;showinfo=0&amp;autohide=1' }).load(function () { });
+
+        return false;
+
+    });
 });
 
 

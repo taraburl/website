@@ -29,9 +29,6 @@
     </script>
 </head>
 <body>
-    <noscript>
-      <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-T4DJFPZ" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
-    </noscript>
     <div class="offcanvas-container" id="shop-categories">
         <div class="offcanvas-header">
             <h3 class="offcanvas-title">MENU</h3>
@@ -40,9 +37,6 @@
             <ul class="menu">
                 <li>
                     <span><a href="/index.aspx"><span>Inicio</span></a></span>
-                </li>
-                <li>
-                    <span><a href="http://173.212.197.57:81/" target="_blank"><span>Boliva Soccer Camp 2018</span></a></span>
                 </li>
                 <li class="has-children">
                     <span>
@@ -87,8 +81,15 @@
                     <span><a href="#">Marketing Deportivo</a></span></li>
                 <li>
                     <span><a href="#">Complejo Deportivo</a></span></li>
-                <li>
-                    <span><a href="#">Students & Athletics</a></span></li>
+                <li class="has-children">
+                    <span>
+                        <a href="#">Students & Athletics</a>
+                        <span class="sub-menu-toggle"></span>
+                    </span>
+                    <ul class="offcanvas-submenu">
+                        <a href="http://173.212.197.57:81/" target="_blank"><span>Boliva Soccer Camp 2018</span></a>
+                    </ul>
+                </li>
                 <li>
                     <span><a href="#">SEA TV</a></span></li>
             </ul>
@@ -108,9 +109,6 @@
             <ul class="menu">
                 <li><a href="#">Inicio</a></li>
                 <li id="admincell"><a href="admin/index.aspx">Panel Administrador</a></li>
-                <li>
-                    <span><a href="http://173.212.197.57:81/" target="_blank"><span>Boliva Soccer Camp 2018</span></a></span>
-                </li>
                 <li class="has-children">
                     <span>
                         <a href="#">Club Atlético Juniors</a>
@@ -148,7 +146,15 @@
                 <li><a href="#">Marketing Deportivo</a></li>
                 <li><a href="#">Marketing Deportivo</a></li>
                 <li><a href="#">Complejo Deportivo</a></li>
-                <li><a href="#">Students & Athletics</a></li>
+                <li class="has-children">
+                    <span>
+                        <a href="#">Students & Athletics</a>
+                        <span class="sub-menu-toggle"></span>
+                    </span>
+                    <ul class="offcanvas-submenu">
+                        <a href="http://173.212.197.57:81/" target="_blank"><span>Boliva Soccer Camp 2018</span></a>
+                    </ul>
+                </li>
                 <li><a href="#">SEA TV</a></li>
             </ul>
         </nav>
@@ -191,7 +197,6 @@
                 <li>
                     <a href="#"><span>Club Atlético Juniors</span></a>
                     <ul class="sub-menu">
-                        <li><a href="http://173.212.197.57:81/" target="_blank">Bolivia Soccer Camp 2018</a></li>
                         <li><a href="#">Club Atlético Juniors</a></li>
                         <li><a href="academia/academia.aspx">Academia de Fútbol</a></li>
                         <li><a href="carrito/inicio.aspx">Catálogo de Productos</a></li>
@@ -211,7 +216,12 @@
                 </li>
                 <li><a href="#"><span>Marketing Deportivo</span></a></li>
                 <li><a href="#"><span>Complejo Deportivo</span></a></li>
-                <li><a href="#"><span>Students & Athletics</span></a></li>
+                <li>
+                    <a href="#"><span>Students & Athletics</span></a>
+                    <ul class="sub-menu">
+                        <li><a href="http://173.212.197.57:81/" target="_blank">Bolivia Soccer Camp 2018</a></li>
+                    </ul>
+                </li>
                 <li><a href="#"><span>SEA TV</span></a></li>
             </ul>
         </nav>
@@ -273,6 +283,7 @@
     </header>
     <div class="offcanvas-wrapper">
         <form id="form1" runat="server">
+            <%--SLIDERS--%>
             <section class="hero-slider" id="main-carousel">
                 <div class="owl-carousel large-controls dots-inside" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 7000 }">
                     <div class="item">
@@ -291,87 +302,96 @@
                     </div>
                 </div>
             </section>
-            <section class="bg-white">
-                <h4 class="text-left sponsors-title margin-bottom-none">Con el Apoyo de</h4>
-                <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 4000, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:2}, &quot;470&quot;:{&quot;items&quot;:3},&quot;630&quot;:{&quot;items&quot;:4},&quot;991&quot;:{&quot;items&quot;:5},&quot;1200&quot;:{&quot;items&quot;:6}} }">
-                    <asp:Repeater runat="server" DataSourceID="odsSponsorDS" ID="Repeater4">
-                        <ItemTemplate>
-                            <img class="d-block w-110 m-auto" src="images/sponsors/<%# Eval("ID") %>.png" alt="<%# Eval("Nombre") %>" style="object-fit: contain; height: 80px;" />
-                        </ItemTemplate>
-                    </asp:Repeater>
+            <%--SPONSORS--%>
+            <section class="bg-faded">
+                <div class="sponsors-title">
+                    <h4 class="text-left margin-bottom-none container-index">Con el Apoyo de</h4>
+                </div>
+                <div class="container-index">
+                    <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 4000, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:2}, &quot;470&quot;:{&quot;items&quot;:3},&quot;630&quot;:{&quot;items&quot;:4},&quot;991&quot;:{&quot;items&quot;:5},&quot;1200&quot;:{&quot;items&quot;:6}} }">
+                        <asp:Repeater runat="server" DataSourceID="odsSponsorDS" ID="Repeater4">
+                            <ItemTemplate>
+                                <img class="d-block w-110 m-auto" src="images/sponsors/<%# Eval("ID") %>.png" alt="<%# Eval("Nombre") %>" style="object-fit: contain; height: 80px;" />
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
                 </div>
             </section>
+            <%--MISION/VISION/FACEBOOK--%>
             <div class="mb-2 padding-top-1x container-index">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 order-md-1">
-                        <div class="row">
-                            <%# Eval("Nombre")%>
-                            <div class="col-sm-12 col-md-4 col-lg-4 col-12 pb-2  pb-3 zoomIn" data-wow-delay="0.6s">
-                                <a class="twitter-timeline"
-                                    data-lang="es"
-                                    data-height="500"
-                                    target="_blank"
-                                    href="https://twitter.com/SEA_SRL?ref_src=twsrc%5Etfw">SEA - Tweets</a>
-                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                            </div>
-                            <div class="col-sm-12 col-md-4 col-lg-4 col-12 pb-2">
-                                <section style="min-height: 500px !important;">
-                                    <div class="justify-content-center">
-                                        <div class="col-lg-12 padding-right-none padding-left-none">
-                                            <div class="fw-section rounded padding-top-1x padding-bottom-1x" style="background-image: url(images/mision.jpg); min-height: 500px !important;">
-                                                <span class="overlay rounded" style="opacity: .35;"></span>
-                                                <div class="text-center m-5">
-                                                    <h5 class="display-4 text-normal text-white text-shadow mb-1">MISION</h5>
-                                                    <h6 class="d-inline-block text-normal
+                    <div class="col-sm-12 col-md-8 col-lg-8 col-12 pb-2">
+                        <section style="min-height: 500px !important;">
+                            <div class="justify-content-center">
+                                <div class="col-lg-12 padding-right-none padding-left-none">
+                                    <div class="fw-section rounded padding-top-1x padding-bottom-1x" style="min-height: 500px !important;">
+                                        <div class="text-justify">
+                                            <h2 class="display-4 text-white text-normal text-shadow text-center">
+                                                <img src="images/logo.png" width="50" height="50" /><br />
+                                                SOBRE NOSOTROS</h2>
+                                            <h6 class="d-inline-block text-normal
+                                                         text-white text-shadow mb-4">SEA SRL nace en Bolivia el año 2013 bajo la motivación de nuestros directores de poder aportar y apoyar al deporte en nuestro país.
+                                                <br />
+                                                Mediante nuestras diferentes unidades de negocios buscamos aportar al país de una manera diferente, el “deporte” es nuestra motivación para poder crear valor en las personas y empresas.
+                                                <br />
+                                                La práctica de las diferentes disciplinas deportivas, el Marketing Deportivo, los eventos deportivos, el Marketing Digital y las redes sociales son las herramientas que utilizamos para impulsar nuestra gran pasión.
+                                            </h6>
+                                            <h3 class="text-normal text-white text-shadow mb-1">Misión</h3>
+                                            <h6 class="d-inline-block text-normal
                                                          text-white text-shadow border-default
-                                                         border-left-0 border-right-0 mb-4">Ayudar a la mejora del bienestar de las personas mediante la práctica del deporte,
+                                                         border-left-0 border-right-0 border-bottom-0 mb-4">Ayudar a la mejora del bienestar de las personas mediante la práctica del deporte,
                                                         con ética profesional mediante el Marketing Deportivo.</h6>
-                                                    <h5 class="display-4 text-normal text-white text-shadow mb-1">VISION</h5>
-                                                    <h6 class="d-inline-block text-normal
+                                            <h3 class="text-normal text-white text-shadow mb-1">Visión</h3>
+                                            <h6 class="d-inline-block text-normal
                                                          text-white text-shadow border-default
-                                                         border-left-0 border-right-0 mb-4">Ser una corporación deportiva líder y de referencia a nivel nacional,
+                                                         border-left-0 border-right-0 border-bottom-0 mb-4">Ser una corporación deportiva líder y de referencia a nivel nacional,
                                         mediante nuestras unidades de negocios buscamos fomentar la práctica del deporte sano, el respeto mutuo y el trabajo en equipo.</h6>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
-                                </section>
-                                <%# Eval("Nombre")%>
-                            </div>
-                            <div class="col-sm-12 col-md-4 col-lg-4 col-12 pb-2">
-                                <div class="fb-page"
-                                    data-href="https://www.facebook.com/sports.events.agency/"
-                                    data-tabs="timeline" data-width="500"
-                                    data-height="500"
-                                    data-small-header="false"
-                                    data-adapt-container-width="true"
-                                    data-hide-cover="false"
-                                    data-show-facepile="true">
-                                    <blockquote cite="https://www.facebook.com/sports.events.agency/"
-                                        class="fb-xfbml-parse-ignore">
-                                        <a href="https://www.facebook.com/sports.events.agency/">SEA - Sports Events Agency</a>
-                                    </blockquote>
                                 </div>
                             </div>
+                        </section>
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4 col-12 pb-2">
+                        <div class="fb-page"
+                            data-href="https://www.facebook.com/sports.events.agency/"
+                            data-tabs="timeline" data-width="500"
+                            data-height="500"
+                            data-small-header="false"
+                            data-adapt-container-width="true"
+                            data-hide-cover="false"
+                            data-show-facepile="true">
+                            <blockquote cite="https://www.facebook.com/sports.events.agency/"
+                                class="fb-xfbml-parse-ignore">
+                                <a href="https://www.facebook.com/sports.events.agency/">SEA - Sports Events Agency</a>
+                            </blockquote>
                         </div>
                     </div>
                 </div>
             </div>
+            <%--NOTICIAS/DATOS OFICIALES--%>
             <div class="padding-bottom-1x mb-2 container-index">
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-6 col-12 pb-2" id="masleidas">
                         <h3 class="text-muted text-normal text-uppercase padding-top-2x text-bold text-white">NOTICIAS</h3>
                         <hr class="margin-bottom-1x" />
-                        <div class="window row">
+                        <div class="window">
                             <asp:Repeater runat="server" ID="repeterNoticias" DataSourceID="ObjectDataSource3">
                                 <ItemTemplate>
-                                    <div class="col-lg-6 col-sm-6 col-12 padding-right-none padding-left-none">
-                                        <section class="promo-box" style='background-image: url(images/noticia/<%# Eval("IdNoticia") %>.png); height: 200px !important;'>
-                                            <div class="promo-box-content text-center padding-top-3x padding-bottom-2x">
-                                                <h4 class="text-bold text-light text-shadow"><%# Eval("Titulo") %></h4>
-                                                <a class="btn btn-sm btn-primary btn-rounded" href="evento/noticiadetallada.aspx?ID=<%# Eval("IdNoticia") %>">Ver Noticia</a>
-                                            </div>
-                                        </section>
+                                    <div class="masleida">
+                                        <a class="foto ajax" href="evento/noticiadetallada.aspx?ID=<%# Eval("IdNoticia") %>">
+                                            <img src="images/noticia/<%# Eval("IdNoticia") %>.png" alt="<%# Eval("Titulo") %>" />
+                                        </a>
+                                        <h3>
+                                            <a class="ajax" href="evento/Evento.aspx?ID=<%# Eval("IdEvento") %>">
+                                                <%# Eval("Evento.Nombre") %>
+                                            </a>
+                                        </h3>
+                                        <h4>
+                                            <a class="ajax" href="evento/noticiadetallada.aspx?ID=<%# Eval("IdNoticia") %>">
+                                                <%# Eval("Titulo") %>
+                                            </a>
+                                        </h4>
                                     </div>
                                 </ItemTemplate>
                             </asp:Repeater>
@@ -396,7 +416,7 @@
                                                         <%# Eval("ScoreEquipo")%>
                                                     </h3>
                                                     <div class="col-lg-6 col-6">
-                                                        <p class="badge bg-danger text-center flash animated infinite">VS</p>
+                                                        <p class="badge bg-danger text-center">VS</p>
                                                     </div>
                                                     <h3 class="col-lg-3 col-3">
                                                         <%# Eval("ScoreRival")%>
@@ -428,7 +448,8 @@
                     </div>
                 </div>
             </div>
-            <div class="padding-bottom-1x mb-2 container-index">
+            <%--YOUTUBE--%>
+            <%--<div class="padding-bottom-1x mb-2 container-index">
                 <div data-yt
                     data-yt-channel="https://www.youtube.com/channel/UCxqs4wK9T-dvoK235ZNsAPg"
                     data-yt-lang="es"
@@ -441,8 +462,46 @@
                     data-yt-content-auto-pause-on-hover="true"
                     data-yt-content-responsive="%7B%22480%22%3A%7B%22columns%22%3A%221%22%2C%22rows%22%3A%222%22%2C%22gutter%22%3A%2220%22%7D%2C%22600%22%3A%7B%22columns%22%3A%222%22%2C%22rows%22%3A%222%22%2C%22gutter%22%3A%2220%22%7D%2C%22800%22%3A%7B%22columns%22%3A%223%22%2C%22rows%22%3A%222%22%2C%22gutter%22%3A%2220%22%7D%2C%221000%22%3A%7B%22columns%22%3A%224%22%2C%22rows%22%3A%222%22%2C%22gutter%22%3A%2220%22%7D%7D">
                 </div>
+            </div>--%>
+            <div id="videos" class="container-index">
+                <h3 class="titulo">VIDEOS</h3>
+                <div class="videos_container">
+                    <div class="video_big">
+                        <div class="embed">
+                            <asp:Repeater runat="server" ID="repeaterVideoBig" DataSourceID="odsBigVideo">
+                                <ItemTemplate>
+                                    <img data-video="<%# Eval("URL") %>" src="http://img.youtube.com/vi/<%# Eval("Imagen") %>/0.jpg" alt="video" />
+                                    <div class="play">
+                                    </div>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                            <asp:ObjectDataSource runat="server" ID="odsBigVideo" SelectMethod="SelectTop1" TypeName="VideoBLL"></asp:ObjectDataSource>
+                        </div>
+                    </div>
+                    <div class="videos_small">
+                        <ul>
+                            <asp:Repeater runat="server" ID="repeaterVideoList" DataSourceID="odsVideoList">
+                                <ItemTemplate>
+                                    <li>
+                                        <h4>
+                                            <a data-video="<%# Eval("URL") %>">
+                                                <img src="http://img.youtube.com/vi/<%#Eval("Imagen") %>/0.jpg" data-original="http://img.youtube.com/vi/<%#Eval("Imagen") %>/0.jpg"
+                                                    alt="<%# Eval("Descripcion") %>" />
+                                                <%# Eval("Descripcion") %>
+                                            </a>
+                                        </h4>
+                                    </li>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                            <asp:ObjectDataSource runat="server" ID="odsVideoList" SelectMethod="SelectTop5" TypeName="VideoBLL"></asp:ObjectDataSource>
+                        </ul>
+                    </div>
+                    <div class="clear">
+                    </div>
+                </div>
             </div>
-            <div id="contacto" class="container-index padding-bottom-2x" style="background-image: url(images/contactenos.jpg); background-size: cover; background-position: center center;">
+            <%--CONTACTO--%>
+            <div class="padding-bottom-2x" style="background-image: url(images/contactenos.jpg); background-size: cover; background-position: center center;">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-7">
@@ -520,10 +579,6 @@
                     </div>
                 </div>
             </div>
-            <%--<asp:Timer ID="TimerPartidos" runat="server" OnTick="EstadosPartidos" Enabled="true" Interval="100000">
-            </asp:Timer>
-            <asp:ScriptManager ID="ScriptManager1" runat="server">
-            </asp:ScriptManager>--%>
         </form>
         <div class="redes-sociales">
             <ul class="list-unstyled text-center animatedParent animateOnce" data-sequence='300'>
@@ -553,8 +608,8 @@
             <div class="container">
                 <div class="row margin-bottom-2x text-justify">
                     <div class="col-lg-2 col-md-3 margin-bottom-1x">
-                        <div class="text-center">
-                            <img alt="logo" src="images/atletico.png" style="height: 50px;" class="margin-bottom-1x" />
+                        <div class="text-center rounded p-2">
+                            <img alt="logo" src="images/atletico.png" style="height: 50px;" />
                         </div>
                         <section class="widget widget-links widget-light-skin">
                             <h3 class="widget-title"></h3>
@@ -567,8 +622,8 @@
                         </section>
                     </div>
                     <div class="col-lg-2 col-md-3 margin-bottom-1x">
-                        <div class="text-center">
-                            <img alt="logo" src="images/logo.png" style="height: 50px;" class="margin-bottom-1x" />
+                        <div class="text-center rounded p-2">
+                            <img alt="logo" src="images/logo.png" style="height: 50px;" />
                         </div>
                         <section class="widget widget-links widget-light-skin">
                             <h3 class="widget-title"></h3>
@@ -582,8 +637,8 @@
                         </section>
                     </div>
                     <div class="col-lg-2 col-md-3 margin-bottom-1x">
-                        <div class="text-center">
-                            <img alt="logo" src="images/logo.png" style="height: 50px;" class="margin-bottom-1x" />
+                        <div class="text-center rounded p-2">
+                            <img alt="logo" src="images/logo.png" style="height: 50px;" />
                         </div>
                         <section class="widget widget-links widget-light-skin">
                             <h3 class="widget-title"></h3>
@@ -593,8 +648,8 @@
                         </section>
                     </div>
                     <div class="col-lg-2 col-md-3 margin-bottom-1x">
-                        <div class="text-center">
-                            <img alt="logo" src="images/logo.png" style="height: 50px;" class="margin-bottom-1x" />
+                        <div class="text-center rounded p-2">
+                            <img alt="logo" src="images/logo.png" style="height: 50px;" />
                         </div>
                         <section class="widget widget-links widget-light-skin">
                             <h3 class="widget-title"></h3>
@@ -604,8 +659,8 @@
                         </section>
                     </div>
                     <div class="col-lg-2 col-md-3 margin-bottom-1x">
-                        <div class="text-center">
-                            <img alt="logo" src="images/S&A.png" style="height: 50px;" class="margin-bottom-1x" />
+                        <div class="text-center rounded p-2">
+                            <img alt="logo" src="images/S&A.png" style="height: 50px;" />
                         </div>
                         <section class="widget widget-links widget-light-skin">
                             <h3 class="widget-title"></h3>
@@ -615,8 +670,8 @@
                         </section>
                     </div>
                     <div class="col-lg-2 col-md-3 margin-bottom-1x">
-                        <div class="text-center">
-                            <img alt="logo" src="images/seatv.png" style="height: 50px;" class="margin-bottom-1x" />
+                        <div class="text-center rounded p-2">
+                            <img alt="logo" src="images/seatv.png" style="height: 50px;" />
                         </div>
                         <section class="widget widget-links widget-light-skin">
                             <h3 class="widget-title"></h3>
@@ -674,7 +729,7 @@
         <div class=" bg-white margin-top-none">
             <div class="container">
                 <div class="col-md-12">
-                    <div class="margin-bottom-1 row">
+                    <div class="margin-bottom-1x row padding-top-1x">
                         <asp:Repeater runat="server" DataSourceID="odsSponsorDS" ID="repaterSponsors">
                             <ItemTemplate>
                                 <img class="col-6 col-lg-2 col-md-3 col-sm-6"
@@ -692,7 +747,7 @@
                 </div>
                 <div class="row">
                     <!-- Copyright-->
-                    <p class="footer-copyright">© Todos los derechos reservado. Desarrollado por<a href="http://www.osbolivia.com/" target="_blank"> &nbsp;OsBolivia</a></p>
+                    <p class="footer-copyright">© Todos los derechos reservados. Desarrollado por<a href="http://www.osbolivia.com/" target="_blank"> &nbsp;OsBolivia</a></p>
                 </div>
             </div>
         </div>

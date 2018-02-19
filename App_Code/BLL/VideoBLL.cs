@@ -9,6 +9,30 @@ public class VideoBLL
     {
 
     }
+    public static List<Video> SelectTop5()
+    {
+        VideoDSTableAdapters.tbl_videoTableAdapter adapter
+            = new VideoDSTableAdapters.tbl_videoTableAdapter();
+        VideoDS.tbl_videoDataTable table = adapter.SelectTop5();
+        List<Video> listVideo = new List<Video>();
+        foreach (VideoDS.tbl_videoRow row in table)
+        {
+            listVideo.Add(RowToDto(row));
+        }
+        return listVideo;
+    }
+    public static List<Video> SelectTop1()
+    {
+        VideoDSTableAdapters.tbl_videoTableAdapter adapter
+            = new VideoDSTableAdapters.tbl_videoTableAdapter();
+        VideoDS.tbl_videoDataTable table = adapter.SelectTop1();
+        List<Video> listVideo = new List<Video>();
+        foreach (VideoDS.tbl_videoRow row in table)
+        {
+            listVideo.Add(RowToDto(row));
+        }
+        return listVideo;
+    }
     public static List<Video> SelectByModulo(string modulo)
     {
         VideoDSTableAdapters.tbl_videoTableAdapter adapter

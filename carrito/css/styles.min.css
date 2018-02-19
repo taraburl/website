@@ -5,9 +5,9 @@
     position: absolute;
     top: 100%;
     left: 0;
-    width: 200px;
+    width: 300px;
     margin-top: -7px !important;
-    padding: 10px 0 !important;
+    padding: 0px 0 !important;
     border: 1px solid #e1e7ec;
     border-radius: 5px;
     background-color: #fff;
@@ -5874,63 +5874,67 @@ video {
         }
 
         .site-menu ul > li:hover > a {
-            color: #0da9ef;
-        }
-
-        .site-menu ul > li.active > a {
             color: #48AEC5;
         }
 
-    .site-menu > ul {
-        display: table;
-        height: 100%;
-        min-height: 100%;
+.sub-menu li a:hover {
+    background-color: gainsboro;
+}
+
+.site-menu ul > li.active > a {
+    color: #48AEC5;
+}
+
+.site-menu > ul {
+    display: table;
+    height: 100%;
+    min-height: 100%;
+}
+
+    .site-menu > ul > li {
+        display: table-cell;
+        position: relative;
+        vertical-align: middle;
     }
 
-        .site-menu > ul > li {
-            display: table-cell;
-            position: relative;
-            vertical-align: middle;
+        .site-menu > ul > li > a {
+            display: table;
+            height: 100%;
+            min-height: 100%;
+            border-top: 1px solid transparent;
+            letter-spacing: .05em;
+            text-transform: uppercase;
         }
 
-            .site-menu > ul > li > a {
-                display: table;
-                height: 100%;
-                min-height: 100%;
-                border-top: 1px solid transparent;
-                letter-spacing: .05em;
-                text-transform: uppercase;
+            .site-menu > ul > li > a > span {
+                display: table-cell;
+                vertical-align: middle;
             }
 
-                .site-menu > ul > li > a > span {
-                    display: table-cell;
-                    vertical-align: middle;
-                }
-
-            .site-menu > ul > li.active > a {
-                border-top-color: #0da9ef;
-            }
-
-    .site-menu ul > li:hover > .sub-menu {
-        display: block;
-        -webkit-animation: submenu-show 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        animation: submenu-show 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    }
-
-    .site-menu ul > li:hover > .mega-menu {
-        display: table;
-        -webkit-animation: megamenu-show 0.45s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        animation: megamenu-show 0.45s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    }
-
-        .site-menu ul > li:hover > .mega-menu .sub-menu {
-            -webkit-animation: none;
-            animation: none;
+        .site-menu > ul > li.active > a {
+            border-top-color: #0da9ef;
         }
 
-    .site-menu > ul > li.has-megamenu {
-        position: static;
+.site-menu ul > li:hover > .sub-menu {
+    display: block;
+    -webkit-animation: submenu-show 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation: submenu-show 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.site-menu ul > li:hover > .mega-menu {
+    display: table;
+    -webkit-animation: megamenu-show 0.45s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation: megamenu-show 0.45s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+    .site-menu ul > li:hover > .mega-menu .sub-menu {
+        -webkit-animation: none;
+        animation: none;
     }
+
+.site-menu > ul > li.has-megamenu {
+    position: static;
+}
 
 .toolbar {
     position: absolute;
@@ -7788,8 +7792,8 @@ video {
 }
 
 .container-index {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    width: 90% !important;
+    margin: auto;
 }
 
 #yottie_1 .yottie-widget-nav {
@@ -8158,4 +8162,245 @@ table img {
 .img-jugador {
     height: 70px !important;
     width: 70px !important;
+}
+
+
+img:not([src]) {
+    visibility: hidden !important;
+}
+
+/* Fixes Firefox anomaly during image load */
+@-moz-document url-prefix() {
+    img:-moz-loading {
+        visibility: hidden !important;
+    }
+}
+
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(0,0,0,.0);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-button {
+    background-color: rgba(0,0,0,.2);
+}
+
+::-webkit-scrollbar-corner {
+    background-color: black;
+}
+
+#videos {
+    width: 100%;
+    /*background: #48aec5;*/
+    padding: 0 0 2%;
+    margin: 2% auto;
+    text-align: left;
+    border-radius: 5px;
+}
+
+    #videos .titulo {
+        padding: 10px 1%;
+        display: block;
+        background: #081a28;
+        margin: 0 0 1px;
+        font-size: 200%/100%;
+        text-transform: uppercase;
+        color: #fff;
+        border-bottom: 1px solid #fff;
+        letter-spacing: 0;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+    }
+
+    #videos .videos_container {
+        width: 95%;
+        padding: 2% 0 0;
+        margin: 0 auto;
+        outline: 0;
+        border: none;
+        list-style: none;
+        box-sizing: border-box;
+    }
+
+    #videos .video_big {
+        float: left;
+        width: 65%;
+        height: 350px;
+        position: relative;
+    }
+
+        #videos .video_big .embed {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+            #videos .video_big .embed img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+
+            #videos .video_big .embed .play {
+                width: 75px;
+                height: 75px;
+                position: absolute;
+                top: 50%;
+                opacity: .95;
+                left: 50%;
+                cursor: pointer;
+                margin: -38px 0 0 -38px;
+                background: url(../../images/play.png) no-repeat center center;
+                transition: all 300ms ease-out;
+                -moz-transition: all 300ms ease-out;
+                -webkit-transition: all 300ms ease-out;
+            }
+
+    #videos .videos_small {
+        float: left;
+        width: 32%;
+        margin: 0 0 0 3%;
+    }
+
+        #videos .videos_small ul {
+            width: 100%;
+        }
+
+        #videos .videos_small li {
+            display: block;
+            overflow: hidden;
+            height: 60px;
+            margin: 0 0 10px;
+        }
+
+            #videos .videos_small li h4 a.active, #videos .videos_small li h4 a:hover {
+                border-color: #48aec5;
+                color: #fff;
+            }
+
+            #videos .videos_small li h4 a {
+                display: block;
+                padding: 0 5% 0 0;
+                height: 64px;
+                font-size: 100%;
+                line-height: 110%;
+                font-weight: normal;
+                color: #f4f4f4;
+                border-right: 5px solid #fff;
+            }
+
+            #videos .videos_small li img {
+                float: left;
+                height: 60px;
+                object-fit: contain;
+                margin: 0 5% 0 0;
+                border-radius: 4px;
+                overflow: hidden;
+            }
+
+.clear {
+    clear: both;
+}
+
+#videos .video_big .embed iframe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-width: 100%;
+    width: auto;
+    min-height: 100%;
+    height: auto;
+    border-radius: 4px;
+    overflow: hidden;
+    border: none;
+}
+
+@media only screen and (max-width: 1024px) {
+    #videos .video_big {
+        height: 275px;
+    }
+
+    #videos .videos_small li {
+        height: 50px;
+        margin: 0 0 5px;
+    }
+
+        #videos .videos_small li img {
+            height: 50px;
+        }
+
+        #videos .videos_small li h4 a {
+            font-size: 90%;
+            line-height: 100%;
+        }
+
+    #masleidas .titulo {
+        font-size: 135%;
+    }
+
+    .masleida h2 {
+    }
+
+        .masleida h2 a {
+            font-size: 70%;
+        }
+}
+
+@media only screen and (max-width: 800px) {
+    .titulo {
+        font-size: 250%;
+    }
+
+    h3.titulo {
+        font-size: 200%;
+    }
+
+    #videos .video_big .embed img {
+        width: 170%;
+        margin-left: 0;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #videos .video_big {
+        float: none;
+        width: 100%;
+    }
+
+    #videos .videos_small {
+        float: none;
+        width: 100%;
+        height: auto;
+        margin: 15px auto 0;
+    }
+
+        #videos .videos_small ul {
+            height: auto;
+        }
+}
+
+@media only screen and (max-width: 375px) {
+    .titulo {
+        font-size: 200%;
+    }
+
+    h3.titulo {
+        font-size: 150%;
+    }
+
+    #videos .titulo {
+        font-size: 200%;
+    }
 }

@@ -84,7 +84,7 @@
               <Mapping SourceColumn="puntos" DataSetColumn="puntos" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteByGrupo" Modifier="Public" Name="DeleteByGrupo" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="DeleteByGrupo">
+              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteByGrupo" Modifier="Public" Name="DeleteByGrupo" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteByGrupo">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE tbl_fixture
@@ -96,7 +96,7 @@ WHERE  (idGrupo = @idGrupo)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="sea.dbo.sp_fixtureDelete" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="DeleteFixture" Modifier="Public" Name="DeleteFixture" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteFixture">
+              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="sea.dbo.sp_fixtureDelete" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="DeleteFixture" Modifier="Public" Name="DeleteFixture" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="DeleteFixture">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.sp_fixtureDelete</CommandText>
@@ -131,9 +131,10 @@ WHERE  (idGrupo = @idGrupo)</CommandText>
               <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="sea.dbo.tbl_fixture" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="SelectActuales" GetMethodModifier="Public" GetMethodName="SelectActuales" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="SelectActuales" UserSourceName="SelectActuales">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT id, idEquipo, idRival, idCancha, hora, fecha, eliminado, idGrupo, estado, scoreEquipo, scoreRival,  puntos
+                    <CommandText>SELECT TOP 5 id, idEquipo, idRival, idCancha, hora, fecha, eliminado, idGrupo, estado, scoreEquipo, scoreRival,  puntos
 FROM     tbl_fixture
-WHERE  (eliminado = 0) AND (estado = 'En Curso')
+WHERE  (eliminado = 0) AND fecha &lt;= GETDATE()
+ORDER BY fecha desc
 </CommandText>
                     <Parameters />
                   </DbCommand>
@@ -249,7 +250,7 @@ ORDER BY eliminado DESC</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateEstado" Modifier="Public" Name="UpdateEstado" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="UpdateEstado">
+              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateEstado" Modifier="Public" Name="UpdateEstado" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="UpdateEstado">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE tbl_fixture
@@ -262,7 +263,7 @@ WHERE  (id = @id) AND (eliminado = 0)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="sea.dbo.sp_fixtureUpdate" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="UpdateFixture" Modifier="Public" Name="UpdateFixture" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="UpdateFixture">
+              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="sea.dbo.sp_fixtureUpdate" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="UpdateFixture" Modifier="Public" Name="UpdateFixture" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="UpdateFixture">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.sp_fixtureUpdate</CommandText>
@@ -285,7 +286,7 @@ WHERE  (id = @id) AND (eliminado = 0)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdatePuntos" Modifier="Public" Name="UpdatePuntos" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="UpdatePuntos">
+              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdatePuntos" Modifier="Public" Name="UpdatePuntos" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="UpdatePuntos">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE tbl_fixture
@@ -298,7 +299,7 @@ WHERE  (id = @id)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateScoreEquipo" Modifier="Public" Name="UpdateScoreEquipo" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="UpdateScoreEquipo">
+              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateScoreEquipo" Modifier="Public" Name="UpdateScoreEquipo" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="UpdateScoreEquipo">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE tbl_fixture
@@ -311,7 +312,7 @@ WHERE  (id = @id)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateScoreRival" Modifier="Public" Name="UpdateScoreRival" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="UpdateScoreRival">
+              <DbSource ConnectionRef="seaConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateScoreRival" Modifier="Public" Name="UpdateScoreRival" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="UpdateScoreRival">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE tbl_fixture
@@ -334,7 +335,7 @@ WHERE  (id = @id)</CommandText>
   <xs:element name="FixtureDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="FixtureDS" msprop:Generator_UserDSName="FixtureDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="tbl_fixture" msprop:Generator_TableClassName="tbl_fixtureDataTable" msprop:Generator_TableVarName="tabletbl_fixture" msprop:Generator_RowChangedName="tbl_fixtureRowChanged" msprop:Generator_TablePropName="tbl_fixture" msprop:Generator_RowDeletingName="tbl_fixtureRowDeleting" msprop:Generator_RowChangingName="tbl_fixtureRowChanging" msprop:Generator_RowEvHandlerName="tbl_fixtureRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_fixtureRowDeleted" msprop:Generator_RowClassName="tbl_fixtureRow" msprop:Generator_UserTableName="tbl_fixture" msprop:Generator_RowEvArgName="tbl_fixtureRowChangeEvent">
+        <xs:element name="tbl_fixture" msprop:Generator_TableClassName="tbl_fixtureDataTable" msprop:Generator_TableVarName="tabletbl_fixture" msprop:Generator_TablePropName="tbl_fixture" msprop:Generator_RowDeletingName="tbl_fixtureRowDeleting" msprop:Generator_RowChangingName="tbl_fixtureRowChanging" msprop:Generator_RowEvHandlerName="tbl_fixtureRowChangeEventHandler" msprop:Generator_RowDeletedName="tbl_fixtureRowDeleted" msprop:Generator_UserTableName="tbl_fixture" msprop:Generator_RowChangedName="tbl_fixtureRowChanged" msprop:Generator_RowEvArgName="tbl_fixtureRowChangeEvent" msprop:Generator_RowClassName="tbl_fixtureRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />

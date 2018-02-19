@@ -7,7 +7,7 @@
     <div class="page-title">
         <div class="container">
             <div class="column">
-                <h1>Inscripciones a la Academia de Futbol SEA</h1>
+                <h1>Inscripciones a la Academia de Futbol</h1>
             </div>
             <div class="column">
                 <ul class="breadcrumbs">
@@ -15,7 +15,7 @@
                         <a href="../index.aspx">Inicio</a>
                     </li>
                     <li class="separator">&nbsp;</li>
-                    <li>Inscripciones a la Academia de Futbol SEA</li>
+                    <li>Inscripciones a la Academia de Futbol</li>
                 </ul>
             </div>
         </div>

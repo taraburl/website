@@ -59,13 +59,12 @@
 
 .masleida {
     float: left;
-    width: 50%;
-    height: 300px;
+    width: 48%;
+    height: 250px;
     position: relative;
-    margin: 0 0 0 .76%;
+    margin: .76%;
     border-radius: 0px;
     overflow: hidden;
-    background: black;
 }
 
     .masleida.nomargin {
@@ -96,9 +95,11 @@
         width: auto;
         min-height: 100%;
         position: absolute;
+        /*object-fit: contain;*/
         top: 0;
         transition: all 1s;
         opacity: 1;
+        border-radius: 5px !important;
         -moz-opacity: 1;
         -webkit-opacity: 1;
         -o-opacity: 1;
@@ -136,6 +137,31 @@
             font-size: 20px;
             text-decoration: none;
         }
+
+    .masleida h3 {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 0;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+.masleida h3 a {
+    display: block;
+    color: #fff;
+    width: 100%;
+    font: 70%/120% 'Open Sans';
+    text-shadow: 0 0 3px rgba(0,0,0,.3);
+    padding: 7px 15px;
+    background: rgba(0,0,0,.4);
+    text-transform: uppercase;
+    letter-spacing: -.5px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    text-decoration: none;
+}
+
 
 .ajax:hover {
     color: white !important;
